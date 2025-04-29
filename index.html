@@ -15,37 +15,30 @@
       overflow: hidden;
     }
 
-    .header {
-      height: 20%;
-      text-align: center;
-      font-size: 9vw; /* 반응형 폰트 */
-      font-weight: bold;
-      border-bottom: 2px solid black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .content {
-      height: calc(80% - 40px); /* 노란바 제외한 나머지 */
-      display: flex;
-      flex-direction: column;
-    }
-
     .section {
       flex: 1;
       border-bottom: 2px solid black;
-      padding-left: 40px;     /* 왼쪽 여백을 더 크게 */
-      padding-right: 20px;    /* 오른쪽은 그대로 */
+      padding-left: 40px;
+      padding-right: 20px;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start; /* 기본 왼쪽 정렬 */
       align-items: center;
-      font-size: 5vw; /* 반응형 폰트 */
+      font-size: 5vw;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
     }
 
-    .symbol {
-      font-size: 2.5vw;
-      margin-left: 0.5vw;
+    .header-section {
+      flex: 2;
+      font-size: 9vw;
+      font-weight: bold;
+      justify-content: center; /* 헤더만 가운데 정렬 */
+    }
+
+    .content {
+      height: calc(100% - 40px); /* footer 제외 */
+      display: flex;
+      flex-direction: column;
     }
 
     .yellow-bar {
@@ -55,50 +48,80 @@
       width: 100%;
       background-color: #FFD700;
       color: black;
-      font-size: 1.2vw; /* 반응형 폰트 */
+      font-size: 1.2vw;
       font-weight: bold;
       display: flex;
       justify-content: space-around;
       align-items: center;
       height: 40px;
       border-top: 2px solid black;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    Archive of Matter(s)
-  </div>
-
   <div class="content">
-    <div class="section">
-      <span>COPPER → CONDUCTOR II</span></span>
+    <div class="section header-section" data-color="#000000" data-invert="true">
+      Archive of Matter(s)
     </div>
 
-    <div class="section">
-      <span>DUST GHOSTLY OBJECT</span></span>
+    <div class="section" data-color="#D2691E">
+      <span>COPPER → CONDUCTOR II</span>
     </div>
 
-    <div class="section">
+    <div class="section" data-color="#A9A9A9">
+      <span>DUST GHOSTLY OBJECT</span>
+    </div>
+
+    <div class="section" data-color="#87CEEB">
       <span>WEATHER EMBODIED</span>
     </div>
 
-    <div class="section">
+    <div class="section" data-color="#D8BFD8">
       <span>HUMAN</span>
     </div>
 
-    <div class="section">
+    <div class="section" data-color="#D8BFD8">
       <span>HUMAN</span>
     </div>
   </div>
 
-  <div class="yellow-bar">
+  <div class="yellow-bar" id="footer-bar">
     <span>KNOWLEDGEMENT</span>
     <span>SIGNALS</span>
     <span>SEDIMENTS</span>
     <span>CONTACT ZONE</span>
   </div>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const footer = document.getElementById('footer-bar');
+    const defaultFooterColor = '#FFD700';
+    const defaultFooterTextColor = 'black';
+
+    sections.forEach(section => {
+      const color = section.getAttribute('data-color');
+      const invert = section.getAttribute('data-invert') === 'true';
+
+      section.addEventListener('mouseenter', () => {
+        section.style.backgroundColor = color;
+        footer.style.backgroundColor = color;
+
+        if (invert) {
+          section.style.color = 'white';
+          footer.style.color = 'white';
+        }
+      });
+
+      section.addEventListener('mouseleave', () => {
+        section.style.backgroundColor = 'white';
+        section.style.color = 'black';
+        footer.style.backgroundColor = defaultFooterColor;
+        footer.style.color = defaultFooterTextColor;
+      });
+    });
+  </script>
 
 </body>
 </html>
