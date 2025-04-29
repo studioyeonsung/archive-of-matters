@@ -12,41 +12,40 @@
       font-family: sans-serif;
       background-color: white;
       color: black;
-      overflow: hidden; /* 스크롤 없이 화면에 맞게 고정 */
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      padding-bottom: 40px; /* footer 공간 확보 */
+      overflow: hidden;
     }
 
     .header {
-      flex: 2;
+      height: 20%;
       text-align: center;
-      font-size: 40px;
+      font-size: 9vw; /* 반응형 폰트 */
       font-weight: bold;
-      padding: 20px;
       border-bottom: 2px solid black;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
+    .content {
+      height: calc(80% - 40px); /* 노란바 제외한 나머지 */
+      display: flex;
+      flex-direction: column;
+    }
+
     .section {
       flex: 1;
       border-bottom: 2px solid black;
-      padding: 0 20px;
+      padding-left: 40px;     /* 왼쪽 여백을 더 크게 */
+      padding-right: 20px;    /* 오른쪽은 그대로 */
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 24px;
+      font-size: 5vw; /* 반응형 폰트 */
     }
 
     .symbol {
-      font-size: 22px;
-      margin-left: 8px;
+      font-size: 2.5vw;
+      margin-left: 0.5vw;
     }
 
     .yellow-bar {
@@ -56,7 +55,7 @@
       width: 100%;
       background-color: #FFD700;
       color: black;
-      font-size: 14px;
+      font-size: 1.2vw; /* 반응형 폰트 */
       font-weight: bold;
       display: flex;
       justify-content: space-around;
@@ -68,29 +67,25 @@
 </head>
 <body>
 
-  <div class="container">
-    <div class="header">
-      Archive of Matter(s)
+  <div class="header">
+    Archive of Matter(s)
+  </div>
+
+  <div class="content">
+    <div class="section">
+      <span>COPPER → CONDUCTOR II</span></span>
     </div>
 
     <div class="section">
-      <span>COPPER <span class="symbol">●</span></span>
-      <span>→ CONDUCTOR II</span>
+      <span>DUST GHOSTLY OBJECT</span></span>
     </div>
 
     <div class="section">
-      <span>DUST <span class="symbol">⸰⸰</span></span>
-      <span>GHOSTLY OBJECT</span>
+      <span>WEATHER EMBODIED</span>
     </div>
 
     <div class="section">
-      <span>WEATHER</span>
-      <span style="font-size: 32px;">⬭</span>
-      <span>EMBODIED</span>
-    </div>
-
-    <div class="section">
-      <span>HUMAN <span class="symbol">◐</span></span>
+      <span>HUMAN</span>
     </div>
 
     <div class="section">
