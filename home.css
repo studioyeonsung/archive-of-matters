@@ -113,14 +113,14 @@ html, body {
   font-family: 'SuisseIntl-Italic';
   display: inline-block;
   padding-right: 4rem;
-  font-size: clamp(16px, 5vw, 70px);
+  font-size: clamp(16px, 5vw, 67px);
 }
 
 .newsletter-text {
   font-family: 'SuisseIntl-Medium';
   display: inline-block;
   padding-right: 4rem;
-  font-size: clamp(16px, 5vw, 70px);
+  font-size: clamp(16px, 5vw, 67px);
   text-transform: uppercase;
 }
 
