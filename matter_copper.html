@@ -2,156 +2,137 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>COPPER - Archive of Matter(s)</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      color: black;
-      background-color: white;
-    }
-
-    .nav-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid black;
-      padding: 10px 20px;
-      font-size: 1.2vw;
-      font-weight: bold;
-    }
-
-    .nav-left {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .nav-right {
-      display: flex;
-      gap: 30px;
-    }
-
-    .page-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      font-size: 1.2vw;
-      font-weight: bold;
-      border-bottom: 2px solid black;
-    }
-
-    .main-content {
-      display: flex;
-      padding: 20px;
-      padding-bottom: 60px; /* footer 여백 */
-    }
-
-    .left-column {
-    width: 25%;
-    padding-right: 20px;
-    font-size: 0.9vw;
-    ine-height: 1.5em;
-    border-right: 1px solid black; /* ← 구분선 */
-    }
-
-
-    .left-column ul {
-      list-style: none;
-      padding-left: 0;
-      margin-bottom: 20px;
-    }
-
-    .left-column li::before {
-      content: "↳ ";
-    }
-
-    .right-column {
-      width: 75%;
-    }
-
-    .right-column img {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin-bottom: 20px;
-    }
-
-    .yellow-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #FFD700;
-      color: black;
-      font-size: 0.9vw;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      height: 40px;
-      border-top: 2px solid black;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="line-overlay"></div>
 
-  <div class="nav-bar">
-    <div class="nav-left">
-      <span>Archive of Matter(s) →</span>
+  <div class="page-container">
+    <!-- 헤더 -->
+    <div class="nav-bar">
+      <div class="nav-left">Archive of Matter(s) →</div>
+      <div class="nav-right">
+        <a href="matter_copper.html" class="nav-link">COPPER</a>
+        <span class="dot">•</span>
+        <span class="nav-group">
+          DUST (
+          <a href="matter_dust_fine.html" class="nav-link">FINE DUST</a> /
+          <a href="matter_dust_saharan.html" class="nav-link">SAHARAN DUST</a>)
+        </span>
+        <span class="dot">•</span>
+        <a href="matter_weather.html" class="nav-link">WEATHER</a>
+      </div>
     </div>
-    <div class="nav-right">
-      <span>DUST</span>
-      <span>WEATHER</span>
-      <span>MATTER(S)</span>
+
+    <!-- 본문 -->
+    <div class="main-content">
+      <div class="main-header-row">
+        <div class="copper-toggle" onclick="toggleOdyssey()">
+          COPPER <span id="toggleIcon">▼</span>
+        </div>
+        <div class="right-header">
+          The conductor of colonial capital, still vibrating across bodies and empires.
+        </div>
+      </div>
+
+      <div class="columns-wrapper">
+        <!-- 왼쪽 칼럼 -->
+        <div class="left-column">
+          <div class="section odyssey-wrapper">
+            <div class="odyssey-list" id="odysseySection">
+              <div class="odyssey-row">
+                ↳ Rusty Odyssey <span class="odyssey-tag">Film</span>
+              </div>
+              <div class="divider"></div>
+              <div class="odyssey-row">
+                ↳ Rusty Odyssey <span class="odyssey-tag">Installation</span>
+              </div>
+              <div class="divider"></div>
+              <div class="odyssey-row">
+                ↳ Rusty Odyssey <span class="odyssey-tag">Research</span>
+              </div>
+              <div class="divider"></div>
+            </div>
+          </div>
+
+          <div class="section bottom-section">
+            <p>In the project Rusty Odyssey, copper becomes a protagonist that rewrites Eurocentric historical narratives, tracing the intertwined routes of the Netherlands, Japan, and Korea into an alternative cartography of inherited colonial capitalism.</p>
+            <p>This project grounds itself on a layered foundation of research essays, reimagining copper not simply as a mineral but as a human agent animated by capital’s circulations. Copper, thus, becomes a medium through which decolonial discourse is not represented, but experimentally re-formed.</p>
+            <p>The practice traverses multiple registers—experimental documentary, installation, and textual research—each unfolding different sensory, material, and political dimensions of copper. Through this multi-modal engagement, Rusty Odyssey invites a re-sensing of history: one in which matter itself remembers, carries, and resists inherited violence.</p>
+          </div>
+        </div>
+
+        <!-- 오른쪽 칼럼 -->
+        <div class="right-column">
+          <div class="right-inner-columns">
+            <div class="image-area">
+              <img src="Images/Copper/01_online_01.png" alt="Still 1" />
+              <div class="caption">Rusty Odyssey, 2021, 14 min 13 sec, video still</div>
+              <img src="Images/Copper/01_online_02.png" alt="Still 2" />
+              <div class="caption">Rusty Odyssey, 2021, 14 min 13 sec, video still</div>
+              <img src="Images/Copper/01_online_03.png" alt="Still 3" />
+              <div class="caption">Rusty Odyssey, 2021, 14 min 13 sec, video still</div>
+              <img src="Images/Copper/01_online_04.png" alt="Still 4" />
+              <div class="caption">Rusty Odyssey, 2021, 14 min 13 sec, video still</div>
+            </div>
+
+            <div class="text-area">
+              <div class="project-title">RUSTY ODYSSEY</div>
+              <div class="project-meta">
+                2020, research-driven experimental film,<br />
+                single-channel video, color, sound, 14min 25sec
+              </div>
+              <div class="project-buttons">
+                <button>Film</button>
+                <button>Archive</button>
+                <button>Essay</button>
+              </div>
+              <div class="project-description">
+                <p>
+                  Rusty Odyssey depicts the colonial faces of three copper coins (VOC Duit,
+                  Japanese Sen, and Euro coin) tracing their guilty chronicle from the 18th
+                  century till the present day in the Netherlands, Japan, and Korea.
+                  Transcending time and territories, the film cuts the temporal dimension
+                  of the geographies where the coins were born and follows the
+                  transformation of the monetary material as vitalized by capital.
+                </p>
+                <p>
+                  Rusty Odyssey reveals the colonial phantom behind the faces of the
+                  coins through the sites in which history is staged. The fluctuating
+                  heartbeat of copper—an inheritor of colonial capitalism—still lives on.
+                </p>
+              </div>
+              <div class="project-links">
+                ↳ Trailer Link<br/>↳ Screening Link
+              </div>
+              <div class="project-credits">
+                ↳<br/>Directed, Produced, Researched, Written, Edited, and Visual Design by: Yeon Sung<br/>Camera: Yeon Yoon, Yeon Sung
+                <br/>3D Modeling Advisor: Jeongsik Kim
+                <br/>Sound Design: Jack Bardwell
+                <br/>Exhibition Production Design: Heejung Kim
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="page-header">
-    <span>COPPER</span>
-    <span>The conductor of colonial capital, still vibrating across bodies and empires.</span>
-  </div>
-
-  <div class="main-content">
-    <div class="left-column">
-      <ul>
-        <li>Rusty Odyssey</li>
-        <li>Rusty Odyssey</li>
-        <li>Rusty Odyssey</li>
-      </ul>
-      <p>
-        Copper, the first matter explored within The Matter Trilogy, serves not merely as a material, but as an active conductor—transmitting the logics of colonial capitalism across eras and geographies.
-      </p>
-      <p>
-        In the project Rusty Odyssey, copper becomes a protagonist that rewrites Eurocentric historical narratives, tracing the intertwined routes of the Netherlands, Japan, and Korea into an alternative cartography of inherited colonial capitalism.
-      </p>
-      <p>
-        This project grounds itself on a layered foundation of research essays, reimagining copper not simply as a mineral but as a human agent animated by capital's circulations. Copper, thus, becomes a medium through which decolonial discourse is not represented, but experimentally re-formed.
-      </p>
-      <p>
-        The practice traverses multiple registers—experimental documentary, installation, and textual research—each unfolding different sensory, material, and political dimensions of copper. Through this multi-modal engagement, Rusty Odyssey writes a re-sensing of history: one in which matter itself remembers, carries, and resists inherited violence.
-      </p>
-    </div>
-
-    <div class="right-column">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Copper-surface.jpg/640px-Copper-surface.jpg" alt="Copper Image" />
-      <!-- 위 이미지 URL은 예시. 너의 이미지로 바꿔줘! -->
-    </div>
-  </div>
-
+  <!-- 푸터 -->
   <div class="yellow-bar">
-    <span>KNOWLEDGEMENT</span>
-    <span>SIGNALS</span>
-    <span>SEDIMENTS</span>
-    <span>CONTACT ZONE</span>
+    <div class="yellow-left">
+      <select>
+        <option>ENG</option>
+        <option>한국어</option>
+      </select>
+      <span>EMAIL</span>
+      <span>NEWSLETTER</span>
+    </div>
+    <div class="yellow-right">© STUDIO YEON SUNG, 2025</div>
   </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
