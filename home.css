@@ -58,7 +58,7 @@ html, body {
 
 .section.heading h1 {
   font-family: 'SuisseIntl-Bold';
-  font-size: clamp(32px, 10vw, 120px);
+  font-size: clamp(32px, 10vw, 100px);
 }
 
 .section.subtitle {
