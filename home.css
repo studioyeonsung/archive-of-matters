@@ -80,13 +80,13 @@ html, body {
 
 .matter-title {
   font-family: 'SuisseIntl-Medium';
-  font-size: clamp(20px, 7vw, 100px);
+  font-size: clamp(20px, 7vw, 90px);
   text-align: left;
 }
 
 .sub {
   font-family: 'SuisseIntl-Regular';
-  font-size: clamp(12px, 4vw, 90px);
+  font-size: clamp(12px, 4vw, 70px);
   margin-left: 10px;
 }
 
