@@ -80,7 +80,7 @@ html, body {
 
 .matter-title {
   font-family: 'SuisseIntl-Medium';
-  font-size: clamp(20px, 8vw, 110px);
+  font-size: clamp(20px, 7vw, 100px);
   text-align: left;
 }
 
