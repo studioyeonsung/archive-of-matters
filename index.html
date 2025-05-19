@@ -1,127 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Archive of Matter(s)</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: sans-serif;
-      background-color: white;
-      color: black;
-      overflow: hidden;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    .section {
-      flex: 1;
-      border-bottom: 2px solid black;
-      padding-left: 40px;
-      padding-right: 20px;
-      display: flex;
-      justify-content: flex-start; /* 기본 왼쪽 정렬 */
-      align-items: center;
-      font-size: 5vw;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      cursor: pointer;
-    }
+  <!-- ✅ 타이틀 (검색 결과 & 탭 제목) -->
+  <title>STUDIO YEON SUNG 연성 | ARCHIVE OF MATTER(S)</title>
 
-    .header-section {
-      flex: 2;
-      font-size: 9vw;
-      font-weight: bold;
-      justify-content: center; /* 헤더만 가운데 정렬 */
-    }
+  <!-- ✅ SEO 기본 -->
+  <meta name="description" content="STUDIO YEON SUNG (연성) is an artist-researcher. ARCHIVE OF MATTER(S) is her living archive for material, sound, and environmental research.">
+  <meta name="keywords" content="Yeon Sung, 연성, 연성 작가, STUDIO YEON SUNG, archive of matters, artist, researcher, sound art, Korean artist, bio art, material, environmental systems">
+  <meta name="author" content="Yeon Sung (연성)">
 
-    .content {
-      height: calc(100% - 40px); /* footer 제외 */
-      display: flex;
-      flex-direction: column;
-    }
+  <!-- ✅ Open Graph (SNS 공유 시 미리보기) -->
+  <meta property="og:title" content="STUDIO YEON SUNG 연성 | ARCHIVE OF MATTER(S)" />
+  <meta property="og:description" content="The official archive of artist-researcher Yeon Sung (연성). Explore her work in materiality, sound, and environment." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://archiveofmatters.art" />
+  <meta property="og:image" content="https://archiveofmatters.art/preview.jpg" />
 
-    .yellow-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #FFD700;
-      color: black;
-      font-size: 1.2vw;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      height: 40px;
-      border-top: 2px solid black;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-  </style>
+  <!-- ✅ Twitter 카드 (선택) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="STUDIO YEON SUNG 연성 | ARCHIVE OF MATTER(S)" />
+  <meta name="twitter:description" content="Explore the living archive of artist Yeon Sung (연성)." />
+  <meta name="twitter:image" content="https://archiveofmatters.art/preview.jpg" />
+
+  <link rel="stylesheet" href="home.css" />
 </head>
+
+
+
 <body>
 
-  <div class="content">
-    <div class="section header-section" data-color="#000000" data-invert="true">
-      Archive of Matter(s)
+  <div class="container">
+    <div class="section heading" data-color="black">
+      <h1>ARCHIVE OF MATTER(S)</h1>
     </div>
 
-    <div class="section" data-color="#D2691E">
-      <span>COPPER → CONDUCTOR II</span>
+    <div class="section subtitle" data-color="black">
+      <div class="subtitle-text">Working—on, with, through—Matter(s)</div>
     </div>
 
-    <div class="section" data-color="#A9A9A9">
-      <span>DUST GHOSTLY OBJECT</span>
+    <div class="section matter" data-color="#FFD700">
+      <div class="matter-title">COPPER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🪨 &nbsp;🔫 &nbsp;🪙&nbsp; 📋</div>
     </div>
 
-    <div class="section" data-color="#87CEEB">
-      <span>WEATHER EMBODIED</span>
+    <div class="section matter" data-color="#39FF14">
+      <div class="matter-title">
+        DUST <span class="sub">FINE DUST / SAHARAN DUST</span> &nbsp;&nbsp;🌬 📢 ☢️
+      </div>
     </div>
 
-    <div class="section" data-color="#D8BFD8">
-      <span>HUMAN</span>
+    <div class="section matter" data-color="#00BFFF">
+      <div class="matter-title">WEATHER &nbsp;🌪 ⛅ 🚴🏻 ⛱️</div>
     </div>
 
-    <div class="section" data-color="#D8BFD8">
-      <span>HUMAN</span>
+    <div class="section announcement" data-color="black">
+      <div class="marquee-wrapper">
+        <div class="marquee-track">
+          <div class="announcement-text">
+            NEW WEBSITE WILL BE OPEN IN JULY. I PROMISE. I’M WORKING EVERYDAY. • 
+          </div>
+        </div>
+      </div>
     </div>
+
+    <a href="https://your-newsletter-link.com" target="_blank" class="section newsletter" data-color="black">
+      <div class="marquee-wrapper">
+        <div class="marquee-track">
+          <div class="newsletter-text">
+            CLICK TO SUBSCRIBE NEWSLETTER FOR THE UPDATES • 
+          </div>
+        </div>
+      </div>
+    </a>
   </div>
 
-  <div class="yellow-bar" id="footer-bar">
-    <span>KNOWLEDGEMENT</span>
-    <span>SIGNALS</span>
-    <span>SEDIMENTS</span>
-    <span>CONTACT ZONE</span>
-  </div>
+  <footer>
+    <div class="footer-left">
+      <span>IN THE MEANTIME &gt;</span>
+      <a href="mailto:yeon@gmail.com">EMAIL</a>
+      <a href="https://your-cv-link.com" target="_blank">CV</a>
+      <a href="https://your-portfolio-link.com" target="_blank">PORTFOLIO</a>
+    </div>
+    <div class="footer-right">
+      <span>© STUDIO YEON SUNG, 2025</span>
+    </div>
+  </footer>
 
-  <script>
-    const sections = document.querySelectorAll('.section');
-    const footer = document.getElementById('footer-bar');
-    const defaultFooterColor = '#FFD700';
-    const defaultFooterTextColor = 'black';
-
-    sections.forEach(section => {
-      const color = section.getAttribute('data-color');
-      const invert = section.getAttribute('data-invert') === 'true';
-
-      section.addEventListener('mouseenter', () => {
-        section.style.backgroundColor = color;
-        footer.style.backgroundColor = color;
-
-        if (invert) {
-          section.style.color = 'white';
-          footer.style.color = 'white';
-        }
-      });
-
-      section.addEventListener('mouseleave', () => {
-        section.style.backgroundColor = 'white';
-        section.style.color = 'black';
-        footer.style.backgroundColor = defaultFooterColor;
-        footer.style.color = defaultFooterTextColor;
-      });
-    });
-  </script>
-
+  <script src="home.js"></script>
 </body>
 </html>
