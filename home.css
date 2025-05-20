@@ -216,19 +216,19 @@ a.section.newsletter {
 @media (max-width: 1280px) {
 
   .section.heading {
-    flex: 1.2;
-  }
-  .section.subtitle {
-    flex: 0.8;
-  }
-  .section.matter {
     flex: 1.1;
   }
+  .section.subtitle {
+    flex: 0.7;
+  }
+  .section.matter {
+    flex: 1.0;
+  }
   .section.announcement {
-    flex: 0.8;
+    flex: 0.7;
   }
   .section.newsletter {
-    flex: 0.8;
+    flex: 0.7;
   }
   .section.heading h1 {
     font-size: 8vw;
