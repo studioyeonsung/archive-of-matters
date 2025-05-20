@@ -19,7 +19,7 @@
   src: url('Fonts/SuisseIntl-RegularItalic.otf') format('opentype');
 }
 
-/* === 기본 설정 === */
+/* === BASE RESET === */
 * {
   margin: 0;
   padding: 0;
@@ -35,6 +35,7 @@ html, body {
   color: black;
 }
 
+/* === STRUCTURE === */
 .container {
   display: flex;
   flex-direction: column;
@@ -58,7 +59,7 @@ html, body {
 
 .section.heading h1 {
   font-family: 'SuisseIntl-Medium';
-  font-size: clamp(32px, 12vw, 130px);
+  font-size: 7vw;
 }
 
 .section.subtitle {
@@ -69,7 +70,7 @@ html, body {
 
 .subtitle-text {
   font-family: 'SuisseIntl-Italic';
-  font-size: clamp(16px, 5vw, 60px);
+  font-size: 3.5vw;
 }
 
 .section.matter {
@@ -80,13 +81,13 @@ html, body {
 
 .matter-title {
   font-family: 'SuisseIntl-Medium';
-  font-size: clamp(20px, 7vw, 90px);
+  font-size: 5vw;
   text-align: left;
 }
 
 .sub {
   font-family: 'SuisseIntl-Regular';
-  font-size: clamp(12px, 4vw, 60px);
+  font-size: 2.4vw;
   margin-left: 10px;
 }
 
@@ -113,24 +114,25 @@ html, body {
   font-family: 'SuisseIntl-Italic';
   display: inline-block;
   padding-right: 4rem;
-  font-size: clamp(16px, 5vw, 67px);
+  font-size: 3.2vw;
 }
 
 .newsletter-text {
   font-family: 'SuisseIntl-Medium';
   display: inline-block;
   padding-right: 4rem;
-  font-size: clamp(16px, 5vw, 67px);
+  font-size: 3.2vw;
   text-transform: uppercase;
 }
 
+/* === FOOTER === */
 footer {
   background-color: #ffea00;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 30px;
-  font-size: 20px;
+  font-size: 1.2vw;
   font-weight: bold;
   height: 40px;
   border-top: 0px solid black;
@@ -154,7 +156,7 @@ footer a:hover {
 }
 
 .footer-right {
-  font-size: 20px;
+  font-size: 1.2vw;
   font-weight: 400;
 }
 
@@ -163,84 +165,3 @@ a.section.newsletter {
   color: inherit;
   cursor: pointer;
 }
-
-/* 📐 MacBook 16" and smaller (≤1536px) */
-@media (max-width: 1536px) {
-  .section.heading h1 {
-    font-size: clamp(28px, 10vw, 100px);
-  }
-  .subtitle-text {
-    font-size: clamp(14px, 4.5vw, 45px);
-  }
-  .matter-title {
-    font-size: clamp(18px, 6vw, 75px);
-  }
-  .sub {
-    font-size: clamp(11px, 3.5vw, 40px);
-  }
-  .announcement-text,
-  .newsletter-text {
-    font-size: clamp(14px, 4.5vw, 50px);
-  }
-}
-
-/* 📐 MacBook 13" to 15" (≤1280px) */
-@media (max-width: 1280px) {
-  .section.heading h1 {
-    font-size: clamp(24px, 8.5vw, 85px);
-  }
-  .subtitle-text {
-    font-size: clamp(12px, 4vw, 36px);
-  }
-  .matter-title {
-    font-size: clamp(16px, 5.5vw, 65px);
-  }
-  .sub {
-    font-size: clamp(10px, 3vw, 32px);
-  }
-  .announcement-text,
-  .newsletter-text {
-    font-size: clamp(12px, 4vw, 40px);
-  }
-}
-
-/* 📱 Tablet (≤768px) */
-@media (max-width: 768px) {
-  .section.heading h1 {
-    font-size: clamp(20px, 7.5vw, 65px);
-  }
-  .subtitle-text {
-    font-size: clamp(10px, 3.5vw, 28px);
-  }
-  .matter-title {
-    font-size: clamp(14px, 5vw, 48px);
-  }
-  .sub {
-    font-size: clamp(9px, 2.8vw, 26px);
-  }
-  .announcement-text,
-  .newsletter-text {
-    font-size: clamp(11px, 3.5vw, 34px);
-  }
-}
-
-/* 📱 Mobile (≤480px) */
-@media (max-width: 480px) {
-  .section.heading h1 {
-    font-size: clamp(18px, 7vw, 50px);
-  }
-  .subtitle-text {
-    font-size: clamp(9px, 3vw, 22px);
-  }
-  .matter-title {
-    font-size: clamp(12px, 4.5vw, 40px);
-  }
-  .sub {
-    font-size: clamp(8px, 2.5vw, 20px);
-  }
-  .announcement-text,
-  .newsletter-text {
-    font-size: clamp(10px, 3vw, 28px);
-  }
-}
-
