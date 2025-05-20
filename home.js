@@ -1,13 +1,14 @@
-// 색상 반전 유지 (matter 섹션만 예외 처리)
+// 1. Hover color effect (preserve black text for .matter section)
 document.querySelectorAll('.section').forEach(section => {
   const color = section.getAttribute('data-color');
+  
   section.addEventListener('mouseenter', () => {
     section.style.backgroundColor = color;
 
     if (!section.classList.contains('matter')) {
       section.style.color = 'white';
     } else {
-      section.style.color = 'black'; // matter 섹션은 항상 검정 유지
+      section.style.color = 'black'; // Keep black text for matter sections
     }
   });
 
@@ -17,11 +18,11 @@ document.querySelectorAll('.section').forEach(section => {
   });
 });
 
-// 마우스 기반 marquee
+// 2. Marquee animation on mouse hover
 document.querySelectorAll('.marquee-wrapper').forEach(wrapper => {
   const track = wrapper.querySelector('.marquee-track');
-  const original = track.innerHTML;
-  track.innerHTML = original + original;
+  const originalContent = track.innerHTML;
+  track.innerHTML = originalContent + originalContent;
 
   let offset = 0;
   let speed = 1;
@@ -43,18 +44,19 @@ document.querySelectorAll('.marquee-wrapper').forEach(wrapper => {
   });
 });
 
-<script>
-  function checkViewport() {
-    const blocker = document.getElementById('mobile-blocker');
-    if (window.innerWidth <= 768) {
-      blocker.style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // prevent scroll
-    } else {
-      blocker.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-  }
+// 3. Block access on mobile/tablet (<= 768px)
+function checkViewport() {
+  const blocker = document.getElementById('mobile-blocker');
+  if (!blocker) return; // Prevent error if element is missing
 
-  window.addEventListener('DOMContentLoaded', checkViewport);
-  window.addEventListener('resize', checkViewport);
-</script>
+  if (window.innerWidth <= 768) {
+    blocker.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Disable scroll
+  } else {
+    blocker.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+}
+
+window.addEventListener('DOMContentLoaded', checkViewport);
+window.addEventListener('resize', checkViewport);
