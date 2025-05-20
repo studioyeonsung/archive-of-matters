@@ -42,3 +42,19 @@ document.querySelectorAll('.marquee-wrapper').forEach(wrapper => {
     animationId = null;
   });
 });
+
+<script>
+  function checkViewport() {
+    const blocker = document.getElementById('mobile-blocker');
+    if (window.innerWidth <= 768) {
+      blocker.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // prevent scroll
+    } else {
+      blocker.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', checkViewport);
+  window.addEventListener('resize', checkViewport);
+</script>
