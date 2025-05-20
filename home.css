@@ -215,25 +215,24 @@ a.section.newsletter {
 /* 📐 MacBook 13" (≤1280px) */
 @media (max-width: 1280px) {
   .section.heading h1 {
-    font-size: 5.5vw;
+    font-size: 8vw;
   }
   .subtitle-text {
-    font-size: 3vw;
+    font-size: 5vw;
   }
   .matter-title {
-    font-size: 4vw;
+    font-size: 7vw;
   }
   .sub {
-    font-size: 2vw;
+    font-size: 3vw;
   }
   .announcement-text,
   .newsletter-text {
-    font-size: 2.5vw;
+    font-size: 4vw;
   }
   .footer {
-    font-size: 1vw;
+    font-size: 1.3vw;
   }
-}
 
 /* 📱 Tablet (≤768px) */
 @media (max-width: 768px) {
