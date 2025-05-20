@@ -214,6 +214,22 @@ a.section.newsletter {
 
 /* 📐 MacBook 13" (≤1280px) */
 @media (max-width: 1280px) {
+
+  .section.heading {
+    flex: 1.2;
+  }
+  .section.subtitle {
+    flex: 0.8;
+  }
+  .section.matter {
+    flex: 1.1;
+  }
+  .section.announcement {
+    flex: 0.8;
+  }
+  .section.newsletter {
+    flex: 0.8;
+  }
   .section.heading h1 {
     font-size: 8vw;
   }
@@ -233,6 +249,7 @@ a.section.newsletter {
   .footer {
     font-size: 1.3vw;
   }
+}
 
 /* 📱 Tablet (≤768px) */
 @media (max-width: 768px) {
