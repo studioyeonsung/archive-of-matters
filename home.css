@@ -186,7 +186,30 @@ a.section.newsletter {
   }
 }
 
-/* 📐 MacBook 13" to 15" (≤1280px) */
+/* 📐 MacBook 15" (≤1440px) */
+@media (max-width: 1440px) {
+  .section.heading h1 {
+    font-size: 8vw;
+  }
+  .subtitle-text {
+    font-size: 5vw;
+  }
+  .matter-title {
+    font-size: 7vw;
+  }
+  .sub {
+    font-size: 3vw;
+  }
+  .announcement-text,
+  .newsletter-text {
+    font-size: 4vw;
+  }
+  .footer {
+    font-size: 1.3vw;
+  }
+}
+
+/* 📐 MacBook 13" (≤1280px) */
 @media (max-width: 1280px) {
   .section.heading h1 {
     font-size: 5.5vw;
@@ -204,7 +227,7 @@ a.section.newsletter {
   .newsletter-text {
     font-size: 2.5vw;
   }
-  footer {
+  .footer {
     font-size: 1vw;
   }
 }
@@ -227,7 +250,7 @@ a.section.newsletter {
   .newsletter-text {
     font-size: 2.2vw;
   }
-  footer {
+  .footer {
     font-size: 0.9vw;
     padding: 0 20px;
   }
@@ -251,7 +274,7 @@ a.section.newsletter {
   .newsletter-text {
     font-size: 1.8vw;
   }
-  footer {
+  .footer {
     font-size: 0.8vw;
     flex-direction: column;
     height: auto;
