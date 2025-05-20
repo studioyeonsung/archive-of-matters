@@ -166,25 +166,7 @@ a.section.newsletter {
   cursor: pointer;
 }
 
-/* 📐 MacBook 16" and smaller (≤1536px) */
-@media (max-width: 1536px) {
-  .section.heading h1 {
-    font-size: 6.2vw;
-  }
-  .subtitle-text {
-    font-size: 3.2vw;
-  }
-  .matter-title {
-    font-size: 4.5vw;
-  }
-  .sub {
-    font-size: 2.2vw;
-  }
-  .announcement-text,
-  .newsletter-text {
-    font-size: 2.8vw;
-  }
-}
+
 
 /* 📐 MacBook 15" (≤1440px) */
 @media (max-width: 1440px) {
