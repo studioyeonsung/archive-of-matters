@@ -303,3 +303,24 @@ a.section.newsletter {
     text-align: center;
   }
 }
+
+#mobile-blocker {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  color: black;
+  font-family: 'SuisseIntl-Regular', sans-serif;
+  z-index: 9999;
+  padding: 40px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
