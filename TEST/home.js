@@ -1,13 +1,14 @@
-// Hover background color effect
+// 1. Hover color effect (preserve black text for .matter section)
 document.querySelectorAll('.section').forEach(section => {
   const color = section.getAttribute('data-color');
-
+  
   section.addEventListener('mouseenter', () => {
     section.style.backgroundColor = color;
+
     if (!section.classList.contains('matter')) {
       section.style.color = 'white';
     } else {
-      section.style.color = 'black';
+      section.style.color = 'black'; // Keep black text for matter sections
     }
   });
 
@@ -17,14 +18,14 @@ document.querySelectorAll('.section').forEach(section => {
   });
 });
 
-// Marquee: scroll by default, stop on hover
+// 2. Marquee animation on mouse hover
 document.querySelectorAll('.marquee-wrapper').forEach(wrapper => {
   const track = wrapper.querySelector('.marquee-track');
   const originalContent = track.innerHTML;
   track.innerHTML = originalContent + originalContent;
 
   let offset = 0;
-  let speed = window.innerWidth <= 768 ? 0.5 : 1;
+  let speed = 1;
   let animationId = null;
 
   function animate() {
@@ -33,29 +34,29 @@ document.querySelectorAll('.marquee-wrapper').forEach(wrapper => {
     animationId = requestAnimationFrame(animate);
   }
 
-  animate();
-
   wrapper.addEventListener('mouseenter', () => {
-    cancelAnimationFrame(animationId);
-    animationId = null;
+    if (!animationId) animate();
   });
 
   wrapper.addEventListener('mouseleave', () => {
-    if (!animationId) animate();
+    cancelAnimationFrame(animationId);
+    animationId = null;
   });
 });
 
-// unblock mobile
-const blocker = document.getElementById('mobile-blocker');
-if (blocker) {
-  blocker.style.display = 'none';
-  document.body.style.overflow = 'auto';
-}
+// // 3. Block access on mobile/tablet (<= 768px)
+// function checkViewport() {
+//   const blocker = document.getElementById('mobile-blocker');
+//   if (!blocker) return; // Prevent error if element is missing
 
-// hamburger click
-const hamburger = document.querySelector('.hamburger');
-if (hamburger) {
-  hamburger.addEventListener('click', () => {
-    alert("📱 모바일 메뉴 준비 중입니다!");
-  });
-}
+//   if (window.innerWidth <= 768) {
+//     blocker.style.display = 'flex';
+//     document.body.style.overflow = 'hidden'; // Disable scroll
+//   } else {
+//     blocker.style.display = 'none';
+//     document.body.style.overflow = 'auto';
+//   }
+// }
+
+window.addEventListener('DOMContentLoaded', checkViewport);
+window.addEventListener('resize', checkViewport);
