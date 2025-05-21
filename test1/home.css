@@ -1,22 +1,22 @@
 /* === FONT FACE === */
 @font-face {
   font-family: 'SuisseIntl-Bold';
-  src: url('/archive-of-matters/test1/Fonts/SuisseIntl-Bold.ttf') format('truetype');
+  src: url('Fonts/SuisseIntl-Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'SuisseIntl-Medium';
-  src: url('/archive-of-matters/test1/Fonts/SuisseIntl-Medium.ttf') format('truetype');
+  src: url('Fonts/SuisseIntl-Medium.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'SuisseIntl-Regular';
-  src: url('/archive-of-matters/test1/Fonts/SuisseIntl-Regular.ttf') format('truetype');
+  src: url('Fonts/SuisseIntl-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'SuisseIntl-Italic';
-  src: url('/archive-of-matters/test1/Fonts/SuisseIntl-RegularItalic.otf') format('opentype');
+  src: url('Fonts/SuisseIntl-RegularItalic.otf') format('opentype');
 }
 
 /* === BASE RESET === */
