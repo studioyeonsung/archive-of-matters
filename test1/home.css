@@ -94,7 +94,7 @@ html, body {
 }
 
 .matter-emojis {
-  font-size: 5vw;
+  font-size: 6.5vw;
 }
 
 .sub {
@@ -177,6 +177,8 @@ a.section.newsletter {
   color: inherit;
   cursor: pointer;
 }
+
+/*Responsive*/
 
 /* 📐 MacBook 16" (≤1536px) */
 @media (max-width: 1536px) {
