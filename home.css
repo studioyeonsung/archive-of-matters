@@ -29,7 +29,7 @@
 html, body {
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   font-family: 'SuisseIntl-Regular', sans-serif;
   background-color: white;
   color: black;
@@ -39,7 +39,7 @@ html, body {
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  height: calc(100% - 40px);
 }
 
 .section {
@@ -74,35 +74,26 @@ html, body {
 }
 
 .section.matter {
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  padding: 20px 30px;
+  flex: 1.4;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .matter-title {
   font-family: 'SuisseIntl-Medium';
   font-size: 5vw;
+  text-align: left;
 }
 
 .sub {
   font-family: 'SuisseIntl-Regular';
   font-size: 2.4vw;
-  margin-top: 4px;
+  margin-left: 10px;
 }
 
-.matter-emojis {
-  margin-top: 6px;
-  font-size: 4vw;
-  text-align: center;
-}
-
-/* === ANNOUNCEMENT & NEWSLETTER === */
 .section.announcement,
 .section.newsletter {
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
+  flex: 1;
 }
 
 .marquee-wrapper {
@@ -117,16 +108,6 @@ html, body {
   white-space: nowrap;
   will-change: transform;
   transform: translateX(0);
-  animation: marqueeScroll 25s linear infinite;
-}
-
-@keyframes marqueeScroll {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
 }
 
 .announcement-text {
@@ -144,12 +125,6 @@ html, body {
   text-transform: uppercase;
 }
 
-a.section.newsletter {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-}
-
 /* === FOOTER === */
 footer {
   background-color: #ffea00;
@@ -161,7 +136,6 @@ footer {
   font-weight: bold;
   height: 40px;
   border-top: 0px solid black;
-  flex-wrap: wrap;
 }
 
 footer a {
@@ -179,7 +153,6 @@ footer a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
 }
 
 .footer-right {
@@ -187,112 +160,167 @@ footer a:hover {
   font-weight: 400;
 }
 
-/* === HAMBURGER ICON === */
-.hamburger {
-  font-size: 5vw;
+a.section.newsletter {
+  text-decoration: none;
+  color: inherit;
   cursor: pointer;
-  margin-right: 12px;
 }
 
-@media (min-width: 769px) {
-  .hamburger {
-    display: none;
-  }
-}
-
-/* === DEVICE SPECIFIC MEDIA QUERIES === */
-
-/* MacBook 16" */
+/* 📐 MacBook 16" (≤1536px) */
 @media (max-width: 1536px) {
-  .section.heading h1 { font-size: 8vw; }
-  .subtitle-text { font-size: 5vw; }
-  .matter-title { font-size: 7vw; }
-  .sub { font-size: 3vw; }
-  .announcement-text, .newsletter-text { font-size: 4vw; }
-  .footer { font-size: 1.3vw; }
+  .section.heading h1 {
+    font-size: 8vw;
+  }
+  .subtitle-text {
+    font-size: 5vw;
+  }
+  .matter-title {
+    font-size: 7vw;
+  }
+  .sub {
+    font-size: 3vw;
+  }
+  .announcement-text,
+  .newsletter-text {
+    font-size: 4vw;
+  }
+  .footer {
+    font-size: 1.3vw;
+  }
 }
 
-/* MacBook 13" 이하 */
+/* 📐 MacBook 15" (≤1440px) */
+@media (max-width: 1440px) {
+  .section.heading h1 {
+    font-size: 8vw;
+  }
+  .subtitle-text {
+    font-size: 5vw;
+  }
+  .matter-title {
+    font-size: 7vw;
+  }
+  .sub {
+    font-size: 3vw;
+  }
+  .announcement-text,
+  .newsletter-text {
+    font-size: 4vw;
+  }
+  .footer {
+    font-size: 1.3vw;
+  }
+}
+
+/* 📐 MacBook 13" (≤1280px) */
 @media (max-width: 1280px) {
-  .section.heading { flex: 1.1; }
-  .section.subtitle { flex: 0.7; }
-  .section.matter { flex: 1.0; }
-  .section.announcement { flex: 0.7; }
-  .section.newsletter { flex: 0.7; }
-  .footer-left, .footer-right { font-size: 1.4vw; }
+
+  .section.heading {
+    flex: 1.1;
+  }
+  .section.subtitle {
+    flex: 0.7;
+  }
+  .section.matter {
+    flex: 1.0;
+  }
+  .section.announcement {
+    flex: 0.7;
+  }
+  .section.newsletter {
+    flex: 0.7;
+  }
+  .section.heading h1 {
+    font-size: 8vw;
+  }
+  .subtitle-text {
+    font-size: 5vw;
+  }
+  .matter-title {
+    font-size: 6.5vw;
+  }
+  .sub {
+    font-size: 3vw;
+  }
+  .announcement-text,
+  .newsletter-text {
+    font-size: 4vw;
+  }
+  .footer-left, 
+  .footer-right {
+    font-size: 1.4vw;
+  }
 }
 
-/* Tablet (≤1024px) */
-@media (max-width: 1024px) {
-  .section {
-    padding: 12px 24px;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* 📱 Tablet (≤768px) */
+@media (max-width: 768px) {
+  .section.heading h1 {
+    font-size: 4.5vw;
   }
-
-  .section.heading h1 { font-size: 8.5vw; }
-  .subtitle-text { font-size: 3.2vw; }
-  .matter-title { font-size: 6.5vw; }
-  .sub { font-size: 3vw; margin-top: 6px; }
-  .matter-emojis { font-size: 6vw; }
-  .announcement-text, .newsletter-text {
-    font-size: 3.2vw;
-    white-space: normal;
-    line-height: 1.4;
-  }
-
-  .marquee-track {
-    animation: marqueeScroll 40s linear infinite;
-  }
-
-  footer {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  .subtitle-text {
     font-size: 2.5vw;
-    height: auto;
-    padding: 10px 24px;
-    gap: 8px;
+  }
+  .matter-title {
+    font-size: 3.5vw;
+  }
+  .sub {
+    font-size: 1.8vw;
+  }
+  .announcement-text,
+  .newsletter-text {
+    font-size: 2.2vw;
+  }
+  .footer {
+    font-size: 0.9vw;
+    padding: 0 20px;
   }
 }
 
-/* Mobile (≤480px) */
+/* 📱 Mobile (≤480px) */
 @media (max-width: 480px) {
-  .section {
-    padding: 10px 20px;
+  .section.heading h1 {
+    font-size: 4vw;
+  }
+  .subtitle-text {
+    font-size: 2vw;
+  }
+  .matter-title {
+    font-size: 3vw;
+  }
+  .sub {
+    font-size: 1.5vw;
+  }
+  .announcement-text,
+  .newsletter-text {
+    font-size: 1.8vw;
+  }
+  .footer {
+    font-size: 0.8vw;
     flex-direction: column;
-    align-items: center;
+    height: auto;
+    padding: 8px 16px;
+    gap: 4px;
     text-align: center;
   }
-
-  .section.heading h1 { font-size: 10vw; }
-  .subtitle-text { font-size: 4.5vw; }
-  .matter-title { font-size: 7vw; }
-  .sub { font-size: 3.8vw; margin-top: 4px; }
-  .matter-emojis { font-size: 6vw; }
-  .announcement-text, .newsletter-text {
-    font-size: 3.8vw;
-    white-space: normal;
-    line-height: 1.5;
-  }
-
-  footer {
-    flex-direction: column;
-    align-items: center;
-    font-size: 3.5vw;
-    gap: 4px;
-    padding: 10px 20px;
-    height: auto;
-  }
-
-  .footer-left {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 }
 
-/* === FORCE MOBILE BLOCKER OFF === */
 #mobile-blocker {
-  display: none !important;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  color: black;
+  font-family: 'SuisseIntl-Regular', sans-serif;
+  z-index: 9999;
+  padding: 40px;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
