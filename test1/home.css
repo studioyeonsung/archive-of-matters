@@ -282,10 +282,10 @@ a.section.newsletter {
   .newsletter-text {
     font-size: 2.2vw;
   }
-  .footer {
+/*  .footer {
     font-size: 0.9vw;
     padding: 0 20px;
-  }
+  }*/
 }
 
 /* 📱 Mobile (≤480px) */
@@ -306,15 +306,65 @@ a.section.newsletter {
   .newsletter-text {
     font-size: 1.8vw;
   }
-  .footer {
+/*  .footer {
     font-size: 0.8vw;
     flex-direction: column;
     height: auto;
     padding: 8px 16px;
     gap: 4px;
     text-align: center;
+  }*/
+}
+
+
+/* === FOOTER VISIBILITY LOGIC === */
+
+
+/* 기본값 (데스크탑): 햄버거 메뉴, 모바일용 텍스트 숨김 */
+.hamburger,
+.footer-mobile {
+  display: none;
+}
+
+.footer-left .footer-desktop,
+.footer-right .footer-desktop {
+  display: inline-block;
+}
+
+/* 태블릿 이하 (≤768px) */
+@media (max-width: 768px) {
+  .hamburger {
+    display: inline-block;
+    font-size: 6vw;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+
+  .footer-left .footer-desktop,
+  .footer-right .footer-desktop {
+    display: none;
+  }
+
+  .footer-mobile {
+    display: inline-block;
+    font-size: 3.5vw;
+  }
+
+  .footer {
+    padding: 0 16px;
+    font-size: 3.5vw;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    gap: 8px;
   }
 }
+
+
 
 /* remove blocker */
 #mobile-blocker {
