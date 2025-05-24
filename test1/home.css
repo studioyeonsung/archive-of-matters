@@ -684,7 +684,7 @@ a.section.newsletter {
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: 50dvh;
+  height: 70dvh;
   background-color: #ffea00;
   display: flex;
   flex-direction: column;
@@ -714,7 +714,7 @@ a.section.newsletter {
 .menu-content p {
   font-weight: bold;
   font-size: 6vw;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .menu-content a {
@@ -725,7 +725,7 @@ a.section.newsletter {
   color: black;
   margin: 10px 0;
   border-top: 2px solid black;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .menu-content a:last-of-type {
