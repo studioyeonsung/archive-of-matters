@@ -268,6 +268,11 @@ a.section.newsletter {
 
 /* 📱 iPad Pro (≤1024px) */
 @media (max-width: 1024px) {
+
+  .container {
+    height: calc(100% - 100px); 
+  }
+
   .section.heading {
     flex: 2;
   }
@@ -356,7 +361,7 @@ a.section.newsletter {
   display: inline-block;
 }
 
-/* 태블릿 이하 (≤768px) */
+/* 태블릿 이하 (≤1024px) */
 @media (max-width: 1024px) {
   .hamburger {
     display: inline-block;
@@ -376,9 +381,9 @@ a.section.newsletter {
   }
 
   .footer {
-    padding: 0 16px;
+    padding: 16px;
     font-size: 3.5vw;
-    height: auto;
+    height: 100px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
