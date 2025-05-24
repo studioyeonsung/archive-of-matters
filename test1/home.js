@@ -44,19 +44,38 @@ document.querySelectorAll('.marquee-wrapper').forEach(wrapper => {
   });
 });
 
-// // 3. Block access on mobile/tablet (<= 768px)
-// function checkViewport() {
-//   const blocker = document.getElementById('mobile-blocker');
-//   if (!blocker) return; // Prevent error if element is missing
+// 3. Mobile menu open/close interaction
+document.addEventListener("DOMContentLoaded", function () {
+  const menuIcon = document.querySelector(".menu");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuClose = document.getElementById("menu-close");
 
-//   if (window.innerWidth <= 768) {
-//     blocker.style.display = 'flex';
-//     document.body.style.overflow = 'hidden'; // Disable scroll
-//   } else {
-//     blocker.style.display = 'none';
-//     document.body.style.overflow = 'auto';
-//   }
-// }
+  if (menuIcon && mobileMenu && menuClose) {
+    menuIcon.addEventListener("click", () => {
+      mobileMenu.classList.add("active");
+    });
 
-window.addEventListener('DOMContentLoaded', checkViewport);
-window.addEventListener('resize', checkViewport);
+    menuClose.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+    });
+  } else {
+    console.warn("⛔ menu or close button not found");
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const popup = document.getElementById("july-popup");
+  const clickableSections = document.querySelectorAll('.heading, .subtitle, .matter, .announcement');
+
+  clickableSections.forEach(section => {
+    section.addEventListener('click', () => {
+      popup.classList.add("show");
+
+      // 2초 뒤에 자동으로 사라지게
+      setTimeout(() => {
+        popup.classList.remove("show");
+      }, 2000);
+    });
+  });
+});

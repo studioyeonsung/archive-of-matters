@@ -93,8 +93,18 @@ html, body {
   text-align: left;
 }
 
-.matter-emojis {
-  font-size: 5.5vw;
+.matter-emojis-copper {
+  font-size: 6vw;
+  margin-left: 10vw;
+}
+
+.matter-emojis-dust {
+  font-size: 6vw;
+  margin-left: 1vw;
+}
+
+.matter-emojis-weather {
+  font-size: 6vw;
 }
 
 .sub {
@@ -178,6 +188,14 @@ a.section.newsletter {
   cursor: pointer;
 }
 
+.footer-mobile {
+    display: none;
+}
+
+.menu{
+    display: none;
+  }
+
 /*Responsive*/
 
 /* 📐 MacBook 16" (≤1536px) */
@@ -200,6 +218,14 @@ a.section.newsletter {
   }
   .footer {
     font-size: 1.3vw;
+  }
+
+  .footer-mobile {
+    display: none;
+  }
+
+  .menu {
+    display: none;
   }
 }
 
@@ -224,6 +250,16 @@ a.section.newsletter {
   .footer {
     font-size: 1.3vw;
   }
+
+  .footer-mobile {
+    display: none;
+  }
+
+  .menu {
+    display: none;
+  }
+
+
 }
 
 /* 📐 MacBook 13" (≤1280px) */
@@ -264,20 +300,30 @@ a.section.newsletter {
   .footer-right {
     font-size: 1.4vw;
   }
+
+  .footer-mobile {
+    display: none;
+  }
+
+  .menu {
+    display: none;
+  }
 }
+
 
 /* 📱 iPad Pro (≤1024px) */
 @media (max-width: 1024px) {
-
   .container {
-    height: calc(100vh - 80px); 
+    height: calc(100vh - 40px); 
   }
 
   .section.heading {
     flex: 2;
   }
+
   .section.heading h1 {
-    font-size: 13vw;
+    font-size: 15vw;
+    line-height: 15vw;
   }
 
   .section.subtitle {
@@ -285,119 +331,261 @@ a.section.newsletter {
   }
 
   .subtitle-text {
-    font-size: 5vw;
+    font-size: 5.5vw;
   }
 
   .section.matter {
-    flex: 1.2;
+    flex: 0.8;
   }
 
   .matter-title {
     font-size: 10vw;
   }
 
-  .matter-emojis {
+ 
+  .matter-emojis-copper {
+    font-size: 9vw;
+    margin-left: 2vw;
+  }
+
+  .matter-emojis-dust{
+    font-size: 9vw;
+    margin-left: 0vw;
+  }
+
+  .matter-emojis-weather{
     font-size: 9vw;
   }
 
   .sub {
-    font-size: 1.8vw;
+    font-size: 2.4vw;
+    margin-left: -2vw;
   }
 
   .section.announcement,
   .section.newsletter {
+    flex: 0.3;
+  }
+
+  .announcement-text,
+  .newsletter-text {
+    font-size: 4vw;
+  }
+
+  /* Footer-related */
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4vw;
+    cursor: pointer;
+    height: 100%;
+  }
+
+  .menu-icon {
+  width: 40px;      
+  height: 40px;     
+  object-fit: contain;
+  }
+
+  .footer-left .footer-desktop,
+  .footer-right .footer-desktop {
+    display: none;
+  }
+
+  .footer-mobile {
+    display: inline-block;
+    font-size: 3vw;
+  }
+
+}
+
+
+/* 📱 iPad Air (≤820px) */
+@media (max-width: 820px) {
+  .container {
+    height: calc(100vh - 40px); 
+  }
+
+  .section.heading {
+    flex: 2;
+  }
+
+  .section.heading h1 {
+    font-size: 15vw;
+    line-height: 15vw;
+  }
+
+  .section.subtitle {
+    flex: 0.6;
+  }
+
+  .subtitle-text {
+    font-size: 5.5vw;
+  }
+
+  .section.matter {
+    flex: 0.8;
+  }
+
+  .matter-title {
+    font-size: 10vw;
+  }
+
+ 
+  .matter-emojis-copper {
+    font-size: 9vw;
+    margin-left: 2vw;
+  }
+
+  .matter-emojis-dust{
+    font-size: 9vw;
+    margin-left: -1vw;
+  }
+
+  .matter-emojis-weather{
+    font-size: 9vw;
+  }
+
+  .sub {
+    font-size: 2.4vw;
+    margin-left: -3vw;
+  }
+
+  .section.announcement,
+  .section.newsletter {
+    flex: 0.3;
+  }
+
+  .announcement-text,
+  .newsletter-text {
+    font-size: 4vw;
+  }
+
+  /* Footer-related */
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4vw;
+    cursor: pointer;
+    height: 100%;
+  }
+
+  .footer-left .footer-desktop,
+  .footer-right .footer-desktop {
+    display: none;
+  }
+
+  .footer-mobile {
+    display: inline-block;
+    font-size: 3vw;
+  }
+
+}
+
+
+
+
+
+/* 📱 iPad Mini (≤768px) */
+@media (max-width: 768px) {
+
+  .subtitle-text {
+    font-size: 5.4vw;
+  }
+}
+
+
+
+/* 📱 iPhone Pro Max (≤430px) */
+@media (max-width: 430px) {
+  .container {
+    height: calc(100vh - 40px); 
+  }
+
+  .section {
+  padding: 5px 10px;
+  border-bottom: 2px solid black;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+  .section.heading {
+    flex: 1.5;
+  }
+
+  .section.heading h1 {
+    font-size: 18vw;
+    line-height: 20vw;
+  }
+
+  .section.subtitle {
+    flex: 0.5;
+  }
+
+  .subtitle-text {
+    font-size: 7vw;
+  }
+
+  .section.matter {
     flex: 0.4;
   }
 
-  .announcement-text,
-  .newsletter-text {
-    font-size: 2.2vw;
-  }
-
-  .hamburger {
-    display: inline-block;
-    font-size: 6vw;
-    margin-right: 12px;
-    cursor: pointer;
-  }
-
-  .footer-left .footer-desktop,
-  .footer-right .footer-desktop {
-    display: none;
-  }
-
-  .footer-mobile {
-    display: inline-block;
-    font-size: 3.5vw;
-  }
-
-  .footer {
-    padding: 16px;
-    font-size: 3.5vw;
-    height: 80px; !important;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-left {
-    gap: 8px;
-  }
-}
-
-
-
-
-/* 📱 Mobile (≤480px) */
-@media (max-width: 480px) {
-  .section.heading h1 {
-    font-size: 4vw;
-  }
-  .subtitle-text {
-    font-size: 2vw;
-  }
   .matter-title {
-    font-size: 3vw;
+    font-size: 10vw;
   }
+
+ 
+  .matter-emojis-copper {
+    font-size: 10vw;
+    margin-left: 2vw;
+  }
+
+  .matter-emojis-dust{
+    font-size: 8.5vw;
+    margin-left: -2vw;
+  }
+
+  .matter-emojis-weather{
+    font-size: 9vw;
+  }
+
   .sub {
-    font-size: 1.5vw;
+    font-size: 2.4vw;
+    margin-left: -3vw;
   }
+
+  .section.announcement,
+  .section.newsletter {
+    flex: 0.2;
+  }
+
   .announcement-text,
   .newsletter-text {
-    font-size: 1.8vw;
+    font-size: 8vw;
   }
-/*  .footer {
-    font-size: 0.8vw;
-    flex-direction: column;
-    height: auto;
-    padding: 8px 16px;
-    gap: 4px;
-    text-align: center;
-  }*/
-}
+
+  /* Footer-related */
+
+  footer {
+  background-color: #ffea00;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 1.2vw;
+  font-weight: bold;
+  height: 40px;
+  border-top: 0px solid black;
+  }
 
 
-/* === FOOTER VISIBILITY LOGIC === */
-
-
-/* 기본값 (데스크탑): 햄버거 메뉴, 모바일용 텍스트 숨김 */
-.hamburger,
-.footer-mobile {
-  display: none;
-}
-
-.footer-left .footer-desktop,
-.footer-right .footer-desktop {
-  display: inline-block;
-}
-
-/* 태블릿 이하 (≤1024px) */
-@media (max-width: 1024px) {
-  .hamburger {
-    display: inline-block;
-    font-size: 6vw;
-    margin-right: 12px;
-    cursor: pointer;
+  .menu-icon {
+  width: 24px;      /* 필요시 조정 */
+  height: 24px;     /* 필요시 조정 */
+  object-fit: contain;
   }
 
   .footer-left .footer-desktop,
@@ -407,22 +595,38 @@ a.section.newsletter {
 
   .footer-mobile {
     display: inline-block;
-    font-size: 3.5vw;
-  }
-
-  .footer {
-    padding: 16px;
-    font-size: 3.5vw;
-    height: 80px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-left {
-    gap: 8px;
+    font-size: 5vw;
   }
 }
+
+
+/* 📱 iPhone Pro (≤390px) */
+@media (max-width: 390px) {
+
+  .sub {
+    font-size: 2.4vw;
+    margin-left: -5vw;
+  }
+
+  .section.matter {
+    flex: 0.3;
+  }
+
+  .matter-emojis-copper {
+    font-size: 9vw;
+    margin-left: 2vw;
+  }
+
+  .matter-emojis-dust{
+    font-size: 8vw;
+    margin-left: -2vw;
+  }
+
+  .matter-emojis-weather{
+    font-size: 9vw;
+  }
+}
+
 
 
 
@@ -430,3 +634,143 @@ a.section.newsletter {
 #mobile-blocker {
   display: none !important;
 }
+
+
+@keyframes scroll-left-announcement {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes scroll-left-newsletter {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@media (max-width: 1024px) {
+  .section.announcement .marquee-track {
+    animation: scroll-left-announcement 200s linear infinite;
+  }
+
+  .section.newsletter .marquee-track {
+    animation: scroll-left-newsletter 80s linear infinite;
+  }
+
+  .marquee-wrapper {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+  }
+
+  .marquee-track {
+    display: inline-block;
+    white-space: nowrap;
+    will-change: transform;
+  }
+
+  .announcement-text,
+  .newsletter-text {
+    display: inline-block;
+    padding-right: 4rem;
+    min-width: 200%; 
+  }
+}
+
+
+/* Mobile menu overlay */
+.mobile-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 50vh;
+  background-color: #ffea00;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  z-index: 9999;
+  text-align: center;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+  border-top: 2px solid black;
+  pointer-events: none;
+}
+
+.mobile-menu.active {
+  transform: translateY(0%);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-content {
+  margin-top: 100px;
+  width: 100%;
+}
+
+.menu-content p {
+  font-weight: bold;
+  font-size: 6vw;
+  margin-bottom: 20px;
+}
+
+.menu-content a {
+  display: block;
+  font-weight: bold;
+  font-size: 6vw;
+  text-decoration: none;
+  color: black;
+  margin: 10px 0;
+  border-top: 2px solid black;
+  padding-top: 10px;
+}
+
+.menu-content a:last-of-type {
+  border-bottom: 2px solid black;
+  padding-bottom: 10px;
+}
+
+.menu-footer {
+  margin-top: 50px;
+  font-size: 5vw;
+}
+
+.menu-close {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  width: 5vw;
+  height: 5vw;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.july-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 99999;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.july-popup.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
+
+
