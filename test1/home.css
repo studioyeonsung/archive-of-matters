@@ -266,20 +266,44 @@ a.section.newsletter {
   }
 }
 
-/* 📱 Tablet (≤768px) */
-@media (max-width: 768px) {
+/* 📱 iPad Pro (≤1024px) */
+@media (max-width: 1024px) {
+
+  .section.heading {
+    flex: 2;
+  }
   .section.heading h1 {
-    font-size: 4.5vw;
+    font-size: 13vw;
+
+  .section.subtitle {
+    flex: 0.6;
   }
+  
   .subtitle-text {
-    font-size: 2.5vw;
+    font-size: 5vw;
   }
+
+  .section.matter {
+    flex: 1.2;
+  }
+
   .matter-title {
-    font-size: 3.5vw;
+    font-size: 10vw;
   }
+
+  .matter-emojis {
+    font-size: 9vw;
+  }
+
   .sub {
     font-size: 1.8vw;
   }
+
+  .section.announcement
+  .section.newsletter {
+    flex: 0.4;
+  }
+
   .announcement-text,
   .newsletter-text {
     font-size: 2.2vw;
@@ -289,6 +313,8 @@ a.section.newsletter {
     padding: 0 20px;
   }*/
 }
+
+
 
 /* 📱 Mobile (≤480px) */
 @media (max-width: 480px) {
@@ -334,7 +360,7 @@ a.section.newsletter {
 }
 
 /* 태블릿 이하 (≤768px) */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hamburger {
     display: inline-block;
     font-size: 6vw;
