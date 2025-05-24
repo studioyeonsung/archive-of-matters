@@ -267,18 +267,18 @@ a.section.newsletter {
 }
 
 /* 📱 iPad Pro (≤1024px) */
-@media (max-width: 1025px) {
-
+@media (max-width: 1024px) {
   .section.heading {
     flex: 2;
   }
   .section.heading h1 {
     font-size: 13vw;
+  }
 
   .section.subtitle {
     flex: 0.6;
   }
-  
+
   .subtitle-text {
     font-size: 5vw;
   }
@@ -299,7 +299,7 @@ a.section.newsletter {
     font-size: 1.8vw;
   }
 
-  .section.announcement
+  .section.announcement,
   .section.newsletter {
     flex: 0.4;
   }
@@ -308,11 +308,8 @@ a.section.newsletter {
   .newsletter-text {
     font-size: 2.2vw;
   }
-/*  .footer {
-    font-size: 0.9vw;
-    padding: 0 20px;
-  }*/
 }
+
 
 
 
