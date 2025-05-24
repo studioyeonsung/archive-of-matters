@@ -656,11 +656,11 @@ a.section.newsletter {
 
 @media (max-width: 1024px) {
   .section.announcement .marquee-track {
-    animation: scroll-left-announcement 200s linear infinite;
+    animation: scroll-left-announcement 500s linear infinite;
   }
 
   .section.newsletter .marquee-track {
-    animation: scroll-left-newsletter 80s linear infinite;
+    animation: scroll-left-newsletter 200s linear infinite;
   }
 
   .marquee-wrapper {
