@@ -29,7 +29,7 @@
 
 html, body {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
   font-family: 'SuisseIntl-Regular', sans-serif;
   background-color: white;
@@ -270,7 +270,7 @@ a.section.newsletter {
 @media (max-width: 1024px) {
 
   .container {
-    height: calc(100% - 100px); 
+    height: calc(100vh - 80px); 
   }
 
   .section.heading {
@@ -383,7 +383,7 @@ a.section.newsletter {
   .footer {
     padding: 16px;
     font-size: 3.5vw;
-    height: 100px;
+    height: 80px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
