@@ -313,6 +313,36 @@ a.section.newsletter {
   .newsletter-text {
     font-size: 2.2vw;
   }
+
+  .hamburger {
+    display: inline-block;
+    font-size: 6vw;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+
+  .footer-left .footer-desktop,
+  .footer-right .footer-desktop {
+    display: none;
+  }
+
+  .footer-mobile {
+    display: inline-block;
+    font-size: 3.5vw;
+  }
+
+  .footer {
+    padding: 16px;
+    font-size: 3.5vw;
+    height: 80px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    gap: 8px;
+  }
 }
 
 
