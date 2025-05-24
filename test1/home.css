@@ -267,7 +267,7 @@ a.section.newsletter {
 }
 
 /* 📱 iPad Pro (≤1024px) */
-@media (max-width: 1024px) {
+@media (max-width: 1025px) {
 
   .section.heading {
     flex: 2;
