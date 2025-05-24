@@ -334,7 +334,7 @@ a.section.newsletter {
   .footer {
     padding: 16px;
     font-size: 3.5vw;
-    height: 80px;
+    height: 80px; !important;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
