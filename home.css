@@ -29,11 +29,12 @@
 
 html, body {
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   font-family: 'SuisseIntl-Regular', sans-serif;
   background-color: white;
   color: black;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* === STRUCTURE === */
@@ -314,7 +315,7 @@ a.section.newsletter {
 /* 📱 iPad Pro (≤1024px) */
 @media (max-width: 1024px) {
   .container {
-    height: calc(100vh - 40px); 
+    height: calc(100dvh - 40px); 
   }
 
   .section.heading {
@@ -404,7 +405,7 @@ a.section.newsletter {
 /* 📱 iPad Air (≤820px) */
 @media (max-width: 820px) {
   .container {
-    height: calc(100vh - 40px); 
+    height: calc(100dvh - 40px); 
   }
 
   .section.heading {
@@ -501,8 +502,10 @@ a.section.newsletter {
 /* 📱 iPhone Pro Max (≤430px) */
 @media (max-width: 430px) {
   .container {
-    height: calc(100vh - 40px); 
+    height: calc(100dvh - 40px); 
   }
+
+
 
   .section {
   padding: 5px 10px;
@@ -517,8 +520,8 @@ a.section.newsletter {
   }
 
   .section.heading h1 {
-    font-size: 18vw;
-    line-height: 20vw;
+    font-size: 17vw;
+    line-height: 16vw;
   }
 
   .section.subtitle {
@@ -603,6 +606,11 @@ a.section.newsletter {
 /* 📱 iPhone Pro (≤390px) */
 @media (max-width: 390px) {
 
+  .section.heading h1 {
+    font-size: 17vw;
+    line-height: 17vw;
+  }
+
   .sub {
     font-size: 2.4vw;
     margin-left: -5vw;
@@ -683,11 +691,11 @@ a.section.newsletter {
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: 50vh;
+  height: 70dvh;
   background-color: #ffea00;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   padding: 20px;
   z-index: 9999;
@@ -706,25 +714,32 @@ a.section.newsletter {
 }
 
 .menu-content {
-  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
   width: 100%;
+  margin-top: 0;
 }
 
 .menu-content p {
   font-weight: bold;
   font-size: 6vw;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .menu-content a {
   display: block;
+  width: 100%;
+  max-width: 500px;
   font-weight: bold;
   font-size: 6vw;
   text-decoration: none;
   color: black;
-  margin: 10px 0;
   border-top: 2px solid black;
-  padding-top: 10px;
+  padding-top: 20px;
+  text-align: center;
 }
 
 .menu-content a:last-of-type {
