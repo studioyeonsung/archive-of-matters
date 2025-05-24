@@ -505,6 +505,8 @@ a.section.newsletter {
     height: calc(100dvh - 40px); 
   }
 
+
+
   .section {
   padding: 5px 10px;
   border-bottom: 2px solid black;
@@ -518,8 +520,8 @@ a.section.newsletter {
   }
 
   .section.heading h1 {
-    font-size: 18vw;
-    line-height: 20vw;
+    font-size: 17vw;
+    line-height: 16vw;
   }
 
   .section.subtitle {
@@ -603,6 +605,11 @@ a.section.newsletter {
 
 /* 📱 iPhone Pro (≤390px) */
 @media (max-width: 390px) {
+
+  .section.heading h1 {
+    font-size: 17vw;
+    line-height: 17vw;
+  }
 
   .sub {
     font-size: 2.4vw;
