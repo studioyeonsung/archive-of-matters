@@ -76,7 +76,7 @@ html, body {
 }
 
 .section.matter {
-  flex: 1.2;
+  flex: 1.0;
   justify-content: flex-start;
   align-items: center;
 }
@@ -90,7 +90,7 @@ html, body {
 
 .matter-title {
   font-family: 'SuisseIntl-Medium';
-  font-size: 5vw;
+  font-size: 6vw;
   text-align: left;
 }
 
@@ -137,14 +137,14 @@ html, body {
   font-family: 'SuisseIntl-Italic';
   display: inline-block;
   padding-right: 4rem;
-  font-size: 3.2vw;
+  font-size: 3vw;
 }
 
 .newsletter-text {
   font-family: 'SuisseIntl-Medium';
   display: inline-block;
   padding-right: 4rem;
-  font-size: 3.2vw;
+  font-size: 3vw;
   text-transform: uppercase;
 }
 
