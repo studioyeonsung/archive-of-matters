@@ -116,7 +116,7 @@ html, body {
 
 .section.announcement,
 .section.newsletter {
-  flex: 1;
+  flex: 0.7;
 }
 
 .marquee-wrapper {
