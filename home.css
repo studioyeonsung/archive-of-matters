@@ -76,7 +76,7 @@ html, body {
 }
 
 .section.matter {
-  flex: 1.4;
+  flex: 1.2;
   justify-content: flex-start;
   align-items: center;
 }
