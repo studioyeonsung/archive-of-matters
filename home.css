@@ -511,11 +511,9 @@ a.section.newsletter {
     height: calc(100dvh - 40px); 
   }
 
-
-
   .section {
   padding: 5px 15px;
-  border-bottom: 2px solid black;
+  border-bottom: 3px solid black;
   transition: background-color 0.3s ease, color 0.3s ease;
   display: flex;
   align-items: center;
