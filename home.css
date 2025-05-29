@@ -511,6 +511,8 @@ a.section.newsletter {
     height: calc(100dvh - 40px); 
   }
 
+
+
   .section {
   padding: 5px 15px;
   border-bottom: 3px solid black;
@@ -538,7 +540,6 @@ a.section.newsletter {
 
   .section.matter {
     flex: 0.4;
-    border-radius: 30px;
   }
 
   .matter-title {
@@ -552,12 +553,12 @@ a.section.newsletter {
   }
 
   .matter-emojis-dust{
-    font-size: 8vw;
+    font-size: 8.5vw;
     margin-left: -2vw;
   }
 
   .matter-emojis-weather{
-    font-size: 9vw;
+    font-size: 7vw;
   }
 
   .sub {
@@ -568,7 +569,6 @@ a.section.newsletter {
   .section.announcement,
   .section.newsletter {
     flex: 0.2;
-    border-radius: 20px;
   }
 
   .announcement-text,
@@ -612,9 +612,6 @@ a.section.newsletter {
 /* 📱 iPhone Pro (≤390px) */
 @media (max-width: 390px) {
 
-  .section {
-  padding: 0px 15px;
-
   .section.heading h1 {
     font-size: 17vw;
     line-height: 17vw;
@@ -627,7 +624,6 @@ a.section.newsletter {
 
   .section.matter {
     flex: 0.3;
-    border-radius: 30px;
   }
 
   .matter-emojis-copper {
@@ -641,11 +637,9 @@ a.section.newsletter {
   }
 
   .matter-emojis-weather{
-    font-size: 8vw;
+    font-size: 9vw;
   }
-
- 
-
+}
 
 
 
@@ -693,6 +687,16 @@ a.section.newsletter {
     display: inline-block;
     padding-right: 4rem;
     min-width: 200%; 
+  }
+
+  @media (max-width: 430px) {
+
+  .section.announcement .marquee-track {
+    animation: scroll-left-announcement 500s linear infinite !important;
+  }
+
+  .section.newsletter .marquee-track {
+    animation: scroll-left-newsletter 200s linear infinite !important;
   }
 }
 
@@ -796,7 +800,6 @@ a.section.newsletter {
   opacity: 1;
   pointer-events: auto;
 }
-
 
 
 
