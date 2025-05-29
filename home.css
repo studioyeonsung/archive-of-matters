@@ -540,6 +540,7 @@ a.section.newsletter {
 
   .section.matter {
     flex: 0.4;
+    border-radius: 30px;
   }
 
   .matter-title {
@@ -569,6 +570,7 @@ a.section.newsletter {
   .section.announcement,
   .section.newsletter {
     flex: 0.2;
+    border-radius: 20px;
   }
 
   .announcement-text,
