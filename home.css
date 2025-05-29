@@ -17,8 +17,6 @@
 @font-face {
   font-family: 'SuisseIntl-Italic';
   src: url('Fonts/SuisseIntl-RegularItalic.otf') format('opentype');
-
-
 }
 
 /* === BASE RESET === */
@@ -37,7 +35,6 @@ html, body {
   background-color: white;
   color: black;
   padding-bottom: env(safe-area-inset-bottom);
-
 }
 
 /* === STRUCTURE === */
@@ -45,16 +42,11 @@ html, body {
   display: flex;
   flex-direction: column;
   height: calc(100% - 40px);
-  background-color: black;
-  padding: 0px;
 }
 
 .section {
   padding: 5px 30px;
-  border-bottom: 5px solid black;
-  margin-bottom: 0px;
-  background-color: white;
-  
+  border-bottom: 3px solid black;
   transition: background-color 0.3s ease, color 0.3s ease;
   display: flex;
   align-items: center;
@@ -62,7 +54,6 @@ html, body {
 
 .section.heading {
   flex: 1.6;
-  border-radius: 50px; 
   border-top: 3px solid black;
   justify-content: center;
   text-align: center;
@@ -75,7 +66,6 @@ html, body {
 
 .section.subtitle {
   flex: 1;
-  border-radius: 35px; 
   justify-content: center;
   text-align: center;
 }
@@ -87,7 +77,6 @@ html, body {
 
 .section.matter {
   flex: 1.4;
-  border-radius: 50px; 
   justify-content: flex-start;
   align-items: center;
 }
@@ -128,7 +117,6 @@ html, body {
 .section.announcement,
 .section.newsletter {
   flex: 1;
-  border-radius: 35px; 
 }
 
 .marquee-wrapper {
@@ -163,17 +151,14 @@ html, body {
 /* === FOOTER === */
 footer {
   background-color: #ffea00;
-  color: black;
-  box-shadow: 0 3px 0 black;
-  margin-top: 0px;
-  padding: 20px;
-  font-size: 1.2vw;
-  font-weight: bold;
-  height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  padding: 0 30px;
+  font-size: 1.2vw;
+  font-weight: bold;
+  height: 40px;
+  border-top: 0px solid black;
 }
 
 footer a {
@@ -524,7 +509,7 @@ a.section.newsletter {
 
   .section {
   padding: 5px 10px;
-  border-bottom: 3px solid black;
+  border-bottom: 2px solid black;
   transition: background-color 0.3s ease, color 0.3s ease;
   display: flex;
   align-items: center;
@@ -549,40 +534,35 @@ a.section.newsletter {
 
   .section.matter {
     flex: 0.4;
-    border-radius: 30px; 
   }
 
   .matter-title {
-    font-size: 11vw;
-    padding: 5px 10px;
+    font-size: 10vw;
   }
 
  
   .matter-emojis-copper {
-    font-size: 9vw;
-    margin-left: 0vw;
+    font-size: 10vw;
+    margin-left: 2vw;
   }
 
   .matter-emojis-dust{
-/*    font-size: 8.5vw;
-    margin-left: -2vw;*/
-    display: none;
-  }
-
-  .matter-emojis-weather{
-    font-size: 8vw;
+    font-size: 8.5vw;
     margin-left: -2vw;
   }
 
+  .matter-emojis-weather{
+    font-size: 9vw;
+  }
+
   .sub {
-    font-size: 4vw;
-    margin-left: -7vw;
+    font-size: 2.4vw;
+    margin-left: -3vw;
   }
 
   .section.announcement,
   .section.newsletter {
     flex: 0.2;
-    border-radius: 20px; 
   }
 
   .announcement-text,
@@ -642,24 +622,18 @@ a.section.newsletter {
 
   .matter-emojis-copper {
     font-size: 9vw;
-    margin-left: 0vw;
+    margin-left: 2vw;
   }
 
   .matter-emojis-dust{
-    display: none;
-
+    font-size: 8vw;
+    margin-left: -2vw;
   }
 
   .matter-emojis-weather{
-    font-size: 8vw;
-    margin-left: -3vw;
+    font-size: 9vw;
   }
-
- .sub {
-    font-size: 4vw;
-    margin-left: -5vw;
-  }
-
+}
 
 
 
