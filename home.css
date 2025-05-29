@@ -514,7 +514,7 @@ a.section.newsletter {
 
 
   .section {
-  padding: 5px 10px;
+  padding: 5px 15px;
   border-bottom: 2px solid black;
   transition: background-color 0.3s ease, color 0.3s ease;
   display: flex;
@@ -554,7 +554,7 @@ a.section.newsletter {
   }
 
   .matter-emojis-dust{
-    font-size: 8.5vw;
+    font-size: 8vw;
     margin-left: -2vw;
   }
 
@@ -614,6 +614,9 @@ a.section.newsletter {
 /* 📱 iPhone Pro (≤390px) */
 @media (max-width: 390px) {
 
+  .section {
+  padding: 0px 15px;
+
   .section.heading h1 {
     font-size: 17vw;
     line-height: 17vw;
@@ -626,6 +629,7 @@ a.section.newsletter {
 
   .section.matter {
     flex: 0.3;
+    border-radius: 30px;
   }
 
   .matter-emojis-copper {
@@ -639,9 +643,11 @@ a.section.newsletter {
   }
 
   .matter-emojis-weather{
-    font-size: 9vw;
+    font-size: 8vw;
   }
-}
+
+ 
+
 
 
 
