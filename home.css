@@ -74,7 +74,7 @@ html, body {
 }
 
 .section.subtitle {
-  flex: 1;
+  flex: 0.7;
   border-radius: 35px; 
   justify-content: center;
   text-align: center;
@@ -86,7 +86,7 @@ html, body {
 }
 
 .section.matter {
-  flex: 1.4;
+  flex: 1.2;
   border-radius: 50px; 
   justify-content: flex-start;
   align-items: center;
@@ -127,8 +127,8 @@ html, body {
 
 .section.announcement,
 .section.newsletter {
-  flex: 1;
-  border-radius: 35px; 
+  flex: 0.5;
+  border-radius: 25px; 
 }
 
 .marquee-wrapper {
@@ -149,14 +149,14 @@ html, body {
   font-family: 'SuisseIntl-Italic';
   display: inline-block;
   padding-right: 4rem;
-  font-size: 3.2vw;
+  font-size: 2.5vw;
 }
 
 .newsletter-text {
   font-family: 'SuisseIntl-Medium';
   display: inline-block;
   padding-right: 4rem;
-  font-size: 3.2vw;
+  font-size: 2.5vw;
   text-transform: uppercase;
 }
 
