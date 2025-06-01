@@ -1,14 +1,14 @@
 window.addEventListener('DOMContentLoaded', () => {
-  const odyssey = document.getElementById("odysseySection");
-  odyssey.classList.remove("hidden");
+  const copper = document.getElementById("copperSection");
+  copper.classList.remove("hidden");
 
   const icon = document.getElementById("toggleIcon");
   icon.textContent = "▼";
 });
 
-function toggleOdyssey() {
-  const odyssey = document.getElementById("odysseySection");
+function toggleCopper() {
+  const copper = document.getElementById("copperSection");
   const icon = document.getElementById("toggleIcon");
-  const isHidden = odyssey.classList.toggle("hidden");
+  const isHidden = copper.classList.toggle("hidden");
   icon.textContent = isHidden ? "▲" : "▼";
 }

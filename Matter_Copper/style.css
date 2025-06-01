@@ -1,0 +1,380 @@
+/* === FONT FACE === */
+@font-face {
+  font-family: 'SuisseIntl-Bold';
+  src: url('Fonts/SuisseIntl-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SuisseIntl-Medium';
+  src: url('Fonts/SuisseIntl-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SuisseIntl-Regular';
+  src: url('Fonts/SuisseIntl-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SuisseIntl-Italic';
+  src: url('Fonts/SuisseIntl-RegularItalic.otf') format('opentype');
+
+
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: black transparent;
+}
+
+
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  margin: 0;
+  font-family: SuisseIntl-Regular, sans-serif;
+  background-color: white;
+  color: black;
+  padding-bottom: 40px; /* 🔥 footer 공간 확보 */
+}
+
+.content {
+  flex: 1;
+}
+
+
+.top-nav {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  border-bottom: 2px solid black;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.site-title {
+  flex: 1;
+  height: 100%;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  border-radius: 16px;
+  font-size: 1.3vw;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  box-sizing: border-box;
+}
+
+.top-tabs {
+  flex: 2;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: black;
+/*  padding: 10px;*/
+  box-sizing: border-box;
+}
+
+.top-tabs {
+  display: flex;
+  gap: 0px;
+  flex: 2;
+}
+
+.tab-copper {
+  flex: 1.0;
+}
+.tab-dust {
+  flex: 1.7;
+}
+.tab-weather {
+  flex: 1;
+}
+
+.tab-copper,
+.tab-dust,
+.tab-weather {
+  
+  height: 100%;
+  border: 2px solid black;
+  border-radius: 16px;
+  background-color: white;
+  font-size: 1.3vw;
+  padding: 0 12px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.sub-dust {
+  font-weight: normal;
+  font-size: 0.9vw;
+  margin-left: 20px;
+}
+
+
+
+
+.header-tabs {
+  display: flex;
+  margin-top: -2px;
+  width: 100%;
+  height: 40px;
+  border-bottom: 2px solid black;
+  box-sizing: border-box;
+  background-color: black;
+  gap: 0px;
+}
+
+.dropdown-wrapper {
+  flex: 1;
+  height: 100%;
+  position: relative; /* 드롭다운 기준점 */
+}
+
+.dropdown-btn {
+  width: 100%;
+  height: 100%;
+  background-color: #ffea00;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-weight: regular;
+  font-size: 1.1vw;
+  color: black;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  display: flex;               /* ✅ 플렉스 정렬로 전환 */
+  justify-content: flex-start; /* ✅ 좌측 정렬 */
+  align-items: center;         /* ✅ 수직 중앙 정렬 유지 */
+  padding-left: 50px;          /* ✅ 좌측 여백 추가 */
+}
+
+.dropdown-content {
+  display: block;
+  width: 100%;
+  background-color: black;
+  border: 2px solid black;
+  font-size: 1.1vw;
+  box-sizing: border-box;
+  position: static;
+  margin-bottom: 30px
+}
+
+.rustyodyssey {
+  width: 100%;
+  height: 35px;
+  background-color: #ffea00;
+  color: black;
+  font-size: 1.1vw;
+  font-weight: regular;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding-left: 50px; /* ✅ 왼쪽 여백 추가 */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* ✅ 텍스트 왼쪽 정렬 */
+  cursor: pointer;
+  margin-top: -2px;
+}
+
+
+/* 공통 스타일 */
+.rustyodyssey-tab1,
+.rustyodyssey-tab2,
+.rustyodyssey-tab3 {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: black;
+  font-weight: regular;
+  font-size: 1.1vw;
+  border: 2px solid black;
+  box-sizing: border-box;
+  border-radius: 10px;
+  text-align: left;
+}
+
+/*/* 테두리 겹침 없애기 */
+/*.rustyodyssey-tab2,
+.rustyodyssey-tab3 {
+  border-left: none;
+}
+*/
+
+
+
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.left-column {
+  flex: 1.1; /* Projects 드롭다운과 동일한 비율 */
+  min-width: 180px; /* 최소 너비 보장 (선택사항) */
+  background-color: black;
+}
+
+.right-column {
+  flex: 3.2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.box {
+  border: 2px solid black;
+  border-right: 3px solid black;
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 0px;
+  background-color: white;
+  border-radius: 13px;
+}
+
+.rustyodyssey-description {
+  font-size: 1vw;
+  margin-bottom: 10px;
+}
+
+.copper-description {
+  font-size: 1vw;
+  margin-bottom: 10px;
+}
+
+
+.subtitle {
+  font-size: 1.1vw;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.image-block img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.caption {
+  font-size: 0.8vw;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.text-block {
+  font-size: 0.9vw;
+}
+
+.text-block h2 {
+  font-size: 1.2vw;
+  margin-bottom: 5px;
+}
+
+.meta {
+  font-size: 0.8vw;
+  margin-bottom: 10px;
+}
+
+.button-row button {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  padding: 4px 10px;
+  font-size: 0.7vw;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.links, .credits {
+  font-size: 0.75vw;
+  margin-top: 10px;
+}
+
+.bottom-bar {
+  background-color: #FFD700;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-top: 2px solid black;
+  font-size: 0.9vw;
+  font-weight: bold;
+}
+
+.bar-left span {
+  margin-right: 20px;
+}
+
+/* === FOOTER === */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+
+  background-color: #ffea00;
+  color: black;
+  box-shadow: 0 3px 0 black;
+  padding: 0px 20px;
+  font-size: 1.2vw;
+  font-weight: bold;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+footer a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-right {
+  font-size: 1.2vw;
+  font-weight: 400;
+  padding: 0px 40px;
+}
+
+a.section.newsletter {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.footer-mobile {
+    display: none;
+}
+
+.menu{
+    display: none;
+  }
