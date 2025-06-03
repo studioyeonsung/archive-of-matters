@@ -17,8 +17,22 @@
 @font-face {
   font-family: 'SuisseIntl-Italic';
   src: url('Fonts/SuisseIntl-RegularItalic.otf') format('opentype');
+}
 
+/* === Apparat with separate names for each weight === */
+@font-face {
+  font-family: 'Apparat-Regular';
+  src: url('Fonts/Apparat-Regular.ttf') format('truetype');
+}
 
+@font-face {
+  font-family: 'Apparat-Medium';
+  src: url('Fonts/Apparat-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Apparat-Bold';
+  src: url('Fonts/Apparat-Bold.ttf') format('truetype');
 }
 
 /* === BASE RESET === */
@@ -33,7 +47,7 @@ html, body {
   width: 100%;
   height: 100dvh;
   overflow: hidden;
-  font-family: 'SuisseIntl-Regular', sans-serif;
+  font-family: 'Apparat-Regular', sans-serif;
   background-color: white;
   color: black;
   padding-bottom: env(safe-area-inset-bottom);
@@ -69,8 +83,18 @@ html, body {
 }
 
 .section.heading h1 {
-  font-family: 'SuisseIntl-Medium';
-  font-size: 7vw;
+  font-family: 'Apparat-Medium';
+  font-size: 8vw;
+}
+
+.bracket {
+  font-size: 1em;
+  transform: scaleY(0.85);
+  display: inline-block;
+  line-height: 1;
+  transform-origin: center;
+  position: relative;
+  top: -0.06em; 
 }
 
 .section.subtitle {
@@ -86,7 +110,7 @@ html, body {
 }
 
 .section.matter {
-  flex: 1.2;
+  flex: 1.1;
   border-radius: 50px; 
   justify-content: flex-start;
   align-items: center;
@@ -100,27 +124,27 @@ html, body {
 }
 
 .matter-title {
-  font-family: 'SuisseIntl-Medium';
+  font-family: 'Apparat-Medium';
   font-size: 5vw;
   text-align: left;
 }
 
 .matter-emojis-copper {
-  font-size: 6vw;
+  font-size: 5vw;
   margin-left: 10vw;
 }
 
 .matter-emojis-dust {
-  font-size: 6vw;
+  font-size: 5vw;
   margin-left: 1vw;
 }
 
 .matter-emojis-weather {
-  font-size: 6vw;
+  font-size: 5vw;
 }
 
 .sub {
-  font-family: 'SuisseIntl-Regular';
+  font-family: 'Apparat-Regular';
   font-size: 2.4vw;
   margin-left: 10px;
 }
@@ -153,7 +177,7 @@ html, body {
 }
 
 .newsletter-text {
-  font-family: 'SuisseIntl-Medium';
+  font-family: 'Apparat-Medium';
   display: inline-block;
   padding-right: 4rem;
   font-size: 2.5vw;
@@ -223,7 +247,7 @@ a.section.newsletter {
     font-size: 5vw;
   }
   .matter-title {
-    font-size: 7vw;
+    font-size: 6vw;
   }
   .sub {
     font-size: 3vw;
@@ -254,7 +278,7 @@ a.section.newsletter {
     font-size: 5vw;
   }
   .matter-title {
-    font-size: 7vw;
+    font-size: 6vw;
   }
   .sub {
     font-size: 3vw;
@@ -303,7 +327,7 @@ a.section.newsletter {
     font-size: 5vw;
   }
   .matter-title {
-    font-size: 6.5vw;
+    font-size: 5.5vw;
   }
   .sub {
     font-size: 3vw;
