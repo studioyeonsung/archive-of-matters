@@ -318,10 +318,10 @@ a.section.newsletter {
     flex: 1.0;
   }
   .section.announcement {
-    flex: 0.7;
+    flex: 0.5;
   }
   .section.newsletter {
-    flex: 0.7;
+    flex: 0.5;
   }
   .section.heading h1 {
     font-size: 8vw;
@@ -337,7 +337,7 @@ a.section.newsletter {
   }
   .announcement-text,
   .newsletter-text {
-    font-size: 3vw;
+    font-size: 2.7vw;
   }
   .footer-left, 
   .footer-right {
@@ -558,11 +558,11 @@ a.section.newsletter {
 }
 
   .section.heading {
-    flex: 1.5;
+    flex: 1.2;
   }
 
   .section.heading h1 {
-    font-size: 16vw;
+    font-size: 14vw;
     line-height: 16vw;
   }
 
