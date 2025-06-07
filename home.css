@@ -58,7 +58,7 @@ html, body {
 .container {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 40px);
+  min-height: calc(100dvh - 40px);
   background-color: black;
   padding: 0px;
 }
@@ -562,7 +562,7 @@ a.section.newsletter {
   }
 
   .section.heading h1 {
-    font-size: 17vw;
+    font-size: 16vw;
     line-height: 16vw;
   }
 
@@ -651,7 +651,7 @@ a.section.newsletter {
 @media (max-width: 390px) {
 
   .section.heading h1 {
-    font-size: 17vw;
+    font-size: 15vw;
     line-height: 17vw;
   }
 
