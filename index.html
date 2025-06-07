@@ -189,6 +189,27 @@
 
 
 <script src="home.js"></script>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("july-popup");
+    if (!popup) {
+      console.error("❌ .july-popup not found");
+      return;
+    }
+
+    document.querySelectorAll(".section").forEach(section => {
+      section.style.cursor = "pointer"; // 시각적으로 클릭 가능하게
+      section.addEventListener("click", (e) => {
+        e.preventDefault(); // 혹시 <a>일 경우 막기
+        console.log("✅ CLICK:", section.className);
+        popup.classList.add("show");
+        setTimeout(() => {
+          popup.classList.remove("show");
+        }, 2500);
+      });
+    });
+  });
+</script>
 
 </body>
 
