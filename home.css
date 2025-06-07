@@ -651,8 +651,8 @@ a.section.newsletter {
 @media (max-width: 390px) {
 
   .section.heading h1 {
-    font-size: 15vw;
-    line-height: 17vw;
+    font-size: 13vw;
+    line-height: 14vw;
   }
 
   .sub {
