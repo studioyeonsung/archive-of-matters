@@ -93,9 +93,9 @@ html, body {
   flex: 1.6;
   border-radius: 50px; 
   border-top: 3px solid black;
-
   display: flex;
   align-items: center;
+  text-align: center;
   justify-content: center;
 }
 
@@ -104,6 +104,7 @@ html, body {
   font-size: 7.5vw;
   line-height: 1;
   position: relative;
+  text-align: center;
   top: 0.1em;
 }
 
@@ -396,6 +397,7 @@ a.section.newsletter {
   .section.heading h1 {
     font-size: 15vw;
     line-height: 15vw;
+    text-align: center; 
   }
 
   .section.subtitle {
