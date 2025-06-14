@@ -35,6 +35,21 @@
   src: url('Fonts/Apparat-Bold.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'NewEdge-LightSlanted';
+  src: url('Fonts/NewEdge666-LightRoundedSlanted.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'NewEdge-Regular';
+  src: url('Fonts/NewEdge666-RegularRounded.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'NewEdge-Semibold';
+  src: url('Fonts/NewEdge666-SemiboldRounded.otf') format('opentype');
+}
+
 /* === BASE RESET === */
 
 * {
@@ -47,7 +62,7 @@ html, body {
   width: 100%;
   height: 100dvh;
   overflow: hidden;
-  font-family: 'Apparat-Regular', sans-serif;
+  font-family: 'NewEdge-Regular', sans-serif;
   background-color: white;
   color: black;
   padding-bottom: env(safe-area-inset-bottom);
@@ -78,13 +93,18 @@ html, body {
   flex: 1.6;
   border-radius: 50px; 
   border-top: 3px solid black;
+
+  display: flex;
+  align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
 .section.heading h1 {
-  font-family: 'Apparat-Medium';
-  font-size: 8vw;
+  font-family: 'NewEdge-Regular', sans-serif;
+  font-size: 7.5vw;
+  line-height: 1;
+  position: relative;
+  top: 0.1em;
 }
 
 .bracket {
@@ -105,8 +125,9 @@ html, body {
 }
 
 .subtitle-text {
-  font-family: 'SuisseIntl-Italic';
+  font-family: 'NewEdge-LightSlanted';
   font-size: 3.5vw;
+
 }
 
 .section.matter {
@@ -124,9 +145,11 @@ html, body {
 }
 
 .matter-title {
-  font-family: 'Apparat-Medium';
-  font-size: 5vw;
+  font-family: 'NewEdge-Regular', sans-serif;
+  font-size: 6vw;
   text-align: left;
+  position: relative;
+  top: 0.1em;
 }
 
 .matter-emojis-copper {
@@ -144,9 +167,11 @@ html, body {
 }
 
 .sub {
-  font-family: 'Apparat-Regular';
+  font-family: 'NewEdge-Regular', sans-serif;
   font-size: 2.4vw;
   margin-left: 10px;
+  position: relative;
+  top: 0.2em;
 }
 
 .section.announcement,
@@ -170,18 +195,22 @@ html, body {
 }
 
 .announcement-text {
-  font-family: 'SuisseIntl-Italic';
+  font-family: 'NewEdge-LightSlanted';
   display: inline-block;
   padding-right: 4rem;
   font-size: 2.5vw;
+  position: relative;
+  top: 0.1em;
 }
 
 .newsletter-text {
-  font-family: 'Apparat-Medium';
+  font-family: 'NewEdge-Regular', sans-serif;
   display: inline-block;
   padding-right: 4rem;
   font-size: 2.5vw;
   text-transform: uppercase;
+  position: relative;
+  top: 0.1em;
 }
 
 /* === FOOTER === */
@@ -192,7 +221,7 @@ footer {
   margin-top: 0px;
   padding: 20px;
   font-size: 1.2vw;
-font-family: 'Apparat-Medium', sans-serif;
+  font-family: 'NewEdge-Regular', sans-serif;
   height: 40px;
   display: flex;
   justify-content: space-between;
@@ -215,13 +244,13 @@ footer a:hover {
   display: flex;
   align-items: center;
   
-  font-family: 'Apparat-Medium', sans-serif;
+  font-family: 'NewEdge-Regular', sans-serif;
 }
 
 .footer-right {
   font-size: 1.2vw;
   letter-spacing: -0.0em;
-  font-family: 'Apparat-Medium', sans-serif;
+  font-family: 'NewEdge-Regular', sans-serif;
   font-weight: 500;
 }
 
