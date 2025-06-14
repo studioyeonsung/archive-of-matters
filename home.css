@@ -304,7 +304,7 @@ a.section.newsletter {
 /* 📐 MacBook 15" (≤1440px) */
 @media (max-width: 1440px) {
   .section.heading h1 {
-    font-size: 8vw;
+    font-size: 7vw;
   }
   .subtitle-text {
     font-size: 5vw;
@@ -353,7 +353,7 @@ a.section.newsletter {
     flex: 0.5;
   }
   .section.heading h1 {
-    font-size: 7vw;
+    font-size: 6vw;
   }
   .subtitle-text {
     font-size: 5vw;
