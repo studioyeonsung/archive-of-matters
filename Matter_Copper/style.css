@@ -35,6 +35,25 @@
   src: url('Fonts/Apparat-Bold.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'NewEdge-Light';
+  src: url('Fonts/NewEdge666-LightRounded.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'NewEdge-LightSlanted';
+  src: url('Fonts/NewEdge666-LightRoundedSlanted.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'NewEdge-Regular';
+  src: url('Fonts/NewEdge666-RegularRounded.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'NewEdge-Semibold';
+  src: url('Fonts/NewEdge666-SemiboldRounded.otf') format('opentype');
+}
 
 /* === RESET === */
 * {
@@ -46,7 +65,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Apparat-Regular', sans-serif;
+  font-family: 'NewEdge-Light', sans-serif;
   letter-spacing: 0.03em;
   font-weight: 400;
   color: black;
@@ -71,98 +90,116 @@ html, body {
 }
 
 .nav-left {
-  flex: 0.75;
+  flex: 0.7;
   height: 100%;
   background-color: white;
   color: black;
   border: 2px solid black;
   border-radius: 20px;
-  font-size: 1.3vw;
   padding: 0 40px;
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: flex-start;
   box-sizing: border-box;
-  font-family: 'Apparat-Medium';
 }
+
+.nav-left-title {
+  font-family: 'NewEdge-Regular', sans-serif;
+  font-size: 1.25vw;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+  padding-bottom: 2px; /* 👈 하단 공간 시각 보정 */
+  position: relative;
+  top: 0.15em;
+  letter-spacing: -0.03em; 
+
+  text-shadow:
+  0 0 3px #ffea00,
+  0 0 15px #ffea00,
+  0 0 30px #ffea00;
+
+}
+
 .nav-right {
   flex: 1;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   background-color: black;
-/*  padding: 10px;*/
   box-sizing: border-box;
   gap: 0px;
-}
-.nav-link {
-  text-decoration: none;
-  color: black;
-  font-weight: 700;
-}
-.nav-link:hover {
-  text-decoration: underline;
-}
-.nav-group {
-  font-weight: 400;
-  font-size: 1.1vw;
-}
-.nav-group .nav-link {
-  font-weight: 700;
-}
-.dot {
-  font-size: 1.2vw;
-  padding: 0 5px;
+  /* 자간은 이제 개별 타이틀에서 설정하므로 이쪽에선 제거 */
 }
 
+/* 각 섹션 너비 비율 */
 .nav-copper {
   flex: 0.7;
 }
 .nav-dust {
-  flex: 1.5;
-}
-.nav-weather {
   flex: 1;
 }
-
-.nav-about {
+.nav-weather {
   flex: 0.5;
 }
 
+/* 공통 nav 박스 스타일 */
 .nav-copper,
 .nav-dust,
-.nav-weather{
-  
+.nav-weather {
   height: 100%;
   border: 2px solid black;
   border-radius: 20px;
   background-color: white;
-  font-size: 1.3vw;
-  padding: 0 12px;
   color: black;
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   text-align: center;
+  padding: 4px 12px;
   box-sizing: border-box;
-  font-family: 'Apparat-Medium';
-  
-
+  font-family: 'NewEdge-Regular', sans-serif;
 }
 
-.nav-copper{
-  
+/* COPPER 박스만 다른 배경 */
+.nav-copper {
   background-color: #ffea00;
-  font-family: 'Apparat-Medium';
-
 }
 
+/* === 타이틀 공통 === */
+.nav-copper-title,
+.nav-dust-title,
+.nav-weather-title {
+  font-family: 'NewEdge-Regular', sans-serif;
+  font-size: 1.3vw;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 0.1em;
+}
+
+/* COPPER만 특별한 이펙트 적용 */
+.nav-copper-title {
+  text-shadow:
+    0 0 3px #ffea00,
+    0 0 15px #ffea00,
+    0 0 30px #ffea00;
+}
+
+/* 서브 타이틀 (DUST 아래 텍스트) */
 .sub-dust {
   font-weight: normal;
   font-size: 0.9vw;
-  margin-left: 20px;
-  font-family: 'Apparat-Regular', sans-serif;
+  font-family: 'NewEdge-Regular', sans-serif;
+  margin-top: 10px;
+  margin-left: 10px;
+  letter-spacing: -0.01em;
 }
+
 
 /* === MAIN CONTENT === */
 .main-content {
@@ -213,8 +250,8 @@ html, body {
   justify-content: flex-start;
   background-color: white;
   color: black;
-  font-family: 'Apparat-Regular', sans-serif;
-  font-size: 1.2vw;
+  font-family: 'NewEdge-Regular', sans-serif;
+  font-size: 1.1vw;
   border: 2px solid black;
   box-sizing: border-box;
   border-radius: 17px;
@@ -462,7 +499,7 @@ html, body {
   box-shadow: 0 3px 0 black;
   color: black;
   font-size: 1.2vw;
-  font-family: 'Apparat-Medium', sans-serif;
+  font-family: 'NewEdge-Regular', sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -488,7 +525,7 @@ html, body {
   display: flex;
   align-items: center;
   font-size: 1.2vw;
-  font-family: 'Apparat-Medium', sans-serif;
+  font-family: 'NewEdge-Regular', sans-serif;
   gap: 10px;
 }
 
@@ -506,7 +543,7 @@ html, body {
 .footer-right {
   font-size: 1.2vw;
   letter-spacing: -0.0em;
-  font-family: 'Apparat-Medium', sans-serif;
+  font-family: 'NewEdge-Regular', sans-serif;
   font-weight: 500;
 }
 
