@@ -1,0 +1,1524 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --section-color: #000000; /* Text and icons: black */
+}
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #000000; /* Bottom layer: black */
+    color: #000000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF; /* Rounded rectangle: white */
+    border-radius: 80px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Font Face */
+@font-face {
+    font-family: 'Rubik';
+    src: url('fonts/Rubik-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rubik-Light';
+    src: url('fonts/Rubik-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Rubik-Medium';
+    src: url('fonts/Rubik-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('fonts/Rubik-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rubik-Italic';
+    src: url('fonts/Rubik-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* Fixed Header */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: clamp(20px, 3vw, 40px) clamp(20px, 5vw, 80px);
+    z-index: 1000;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    pointer-events: auto;
+    position: relative;
+    transform: translateX(-28px);
+}
+
+.header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    pointer-events: auto;
+}
+
+/* 왼쪽 헤더만 margin 적용 → 오른쪽(weather·아카이브)는 모든 페이지 동일 위치 */
+.header-top-line {
+    display: flex;
+    align-items: center;
+    gap: clamp(28px, 5vw, 120px);
+}
+.header-left .header-top-line {
+    margin-left: clamp(20px, 3vw, 50px);
+}
+.header-right .header-top-line {
+    margin-left: 0;
+}
+
+.header-bottom-line {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.header-right-icon-1 {
+    margin-right: clamp(35px, 3.5vw, 60px);
+}
+
+.header-right-text-1 {
+    margin-right: clamp(70px, 7vw, 120px);
+}
+
+.header-right-icon-2 {
+    margin-right: clamp(15px, 1.5vw, 30px);
+    margin-left: -100px;
+}
+
+.header-right-text-2 {
+    margin-right: 0;
+    position: relative;
+    left: 100px;
+}
+
+.header-right-text-1 a,
+.header-right-text-2 a {
+    color: var(--section-color);
+    text-decoration: none;
+}
+
+.header-right-text-1 a:visited,
+.header-right-text-1 a:active,
+.header-right-text-2 a:visited,
+.header-right-text-2 a:active {
+    color: var(--section-color);
+}
+
+.header-right .header-bottom-line {
+    margin-left: calc(clamp(-120px, -12vw, -80px) + 20vw);
+    transform: translateX(calc(-50% - 80px));
+}
+
+.header-left .header-bottom-line {
+    margin-left: calc(30px + 20vw);
+    transform: translateX(-50%);
+}
+
+.header-left-about {
+    margin-right: clamp(30px, 3vw, 50px);
+}
+
+.header-left-about a {
+    color: var(--section-color);
+    text-decoration: none;
+}
+
+.header-left-about a:visited,
+.header-left-about a:active {
+    color: var(--section-color);
+}
+
+.header-left-arrow {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.dotted-line-left {
+    width: 40vw;
+    height: 2px;
+    margin-left: 30px;
+    position: relative;
+    transition: background 0.3s ease;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--section-color) 0,
+        var(--section-color) 5px,
+        transparent 5px,
+        transparent 9px
+    );
+}
+
+.dotted-line-right {
+    width: 40vw;
+    height: 2px;
+    transition: background 0.3s ease;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--section-color) 0,
+        var(--section-color) 5px,
+        transparent 5px,
+        transparent 9px
+    );
+}
+
+.header-icon {
+    width: clamp(16px, 2vw, 24px);
+    height: clamp(16px, 2vw, 24px);
+    max-width: 28px;
+    max-height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: none;
+    pointer-events: auto;
+    background-color: transparent;
+}
+
+.header-icon[src*="arrow"] {
+    width: clamp(12px, 1.4vw, 18px) !important;
+    height: clamp(12px, 1.4vw, 18px) !important;
+    max-width: 22px !important;
+    max-height: 22px !important;
+    object-fit: contain;
+}
+
+.menu-icon {
+    position: absolute;
+    display: none; /* 웹에서는 메뉴 아이콘 숨김 */
+    left: -20px;
+    top: calc(clamp(20px, 2.5vw, 30px) + 8px + 0.5px);
+    transform: translateY(-50%);
+    pointer-events: auto;
+}
+
+.nav-text {
+    font-family: 'Rubik', sans-serif;
+    font-size: clamp(12px, 1.45vw, 20px);
+    color: var(--section-color);
+    font-weight: 400;
+    white-space: nowrap;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: font-family 0.2s ease, color 0.3s ease;
+}
+
+.nav-text:hover:not(.nav-kor):not(.nav-kor *) {
+    font-family: 'Rubik-Italic', sans-serif;
+    font-style: italic;
+}
+
+.fixed-header a.nav-text {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav-kor {
+    font-family: "neutronic-hangeul", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.nav-kor-word-1,
+.nav-kor-word-2,
+.nav-kor-word-3 {
+    display: inline-block;
+    transition: font-family 0.2s ease;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.nav-kor-word-1 {
+    margin-right: clamp(20px, 2.8vw, 50px);
+}
+
+.nav-kor-word-1:hover {
+    font-family: 'Rubik-Italic', sans-serif;
+    font-style: italic;
+}
+
+.nav-kor-word-2 {
+    margin-right: clamp(28px, 5vw, 150px);
+}
+
+.nav-kor-word-2:hover {
+    font-family: 'Rubik-Italic', sans-serif;
+    font-style: italic;
+}
+
+.nav-kor-word-3 {
+    margin-right: 0;
+}
+
+.nav-kor-word-3:hover {
+    font-family: 'Rubik-Italic', sans-serif;
+    font-style: italic;
+}
+
+/* 오른쪽 헤더: 왼쪽처럼 단어를 형제로 두고 .header-top-line gap으로 간격 → 페이지별 위치 통일 */
+.header-right .header-top-line .nav-kor-word-1 {
+    margin-right: clamp(28px, 4vw, 60px);
+}
+.header-right .header-top-line .nav-kor-word-2 {
+    margin-right: clamp(40px, 6.5vw, 180px);
+}
+.header-right .header-top-line .nav-kor-word-3 {
+    margin-right: 0;
+}
+
+.nav-eng-word-1 {
+    margin-right: clamp(8px, 1.2vw, 20px);
+}
+
+.header-left-icon-1 {
+    margin-right: clamp(10px, 1.8vw, 28px);
+    transform: scale(1.5);
+}
+
+.nav-eng-word-2 {
+    margin-right: clamp(8px, 2.5vw, 20px);
+}
+
+.header-left-icon-2 {
+    margin-right: clamp(8px, 1.4vw, 18px);
+    transform: scale(1.7);
+}
+
+.nav-eng-word-3 {
+    margin-left: clamp(-40px, -3vw, -60px);
+}
+
+/* MATTER(S) 옆 화살표 → 화면 가운데 배치 */
+.header-matter-arrow {
+    position: fixed;
+    left: 50%;
+    right: auto;
+    top: clamp(20px, 3vw, 40px);
+    transform: translateX(-50%) translateY(4px);
+    width: clamp(12px, 1.4vw, 18px) !important;
+    height: clamp(12px, 1.4vw, 18px) !important;
+    max-width: 22px !important;
+    max-height: 22px !important;
+    object-fit: contain;
+}
+
+/* MATTER(S) 옆에 붙어있는 화살표 (흐름 유지, ABOUT 줄 아님) */
+.header-center-arrow {
+    flex-shrink: 0;
+}
+
+/* Scroll Container */
+.page-index .scroll-container {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.scroll-container {
+    width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.horizontal-wrapper {
+    position: relative;
+    display: flex;
+    width: fit-content;
+    height: 100vh;
+}
+
+/* 전체 스크롤 구간을 덮는 단일 그레인 레이어 (섹션 구분 없이 자연스럽게 연결) */
+.grain-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("assets/matters-grain.png");
+    background-repeat: repeat;
+    /* 원본 크기로 타일링 → 늘리지 않아서 깨짐 방지. 더 크게 보이게 하려면 원본 이미지 해상도를 키우세요 */
+    background-size: auto;
+    background-position: 0 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 1;
+}
+
+/* Matter Section - 너비·콘텐츠 크기는 100vw 유지, 섹션 간 겹침으로 간격만 절반 */
+.matter-section {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 1;
+}
+.matter-section:not(:last-child) {
+    margin-right: -25vw;
+}
+
+.section-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    padding: 120px 80px 180px;
+    z-index: 2;
+}
+
+.section-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(15%);
+}
+
+.matter-title-eng {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+    /* Filter will be applied via JavaScript */
+    filter: none;
+    transform: scale(1.2) translateX(10%) translateY(20%);
+    opacity: 0;
+}
+
+.section-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.matter-image {
+    max-width: 90%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.9;
+}
+
+.page-index .matter-image {
+    filter: grayscale(100%);
+}
+
+.matter-video {
+    max-width: 90%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    background: transparent;
+}
+
+.matter-section[data-section="01"] .matter-image {
+    max-width: 97.2%;
+    max-height: 86.4vh;
+    transform: translateX(-3%);
+    opacity: 1;
+}
+
+/* Section 01: 구리 - 두 번째 섹션처럼 영문·한글 타이틀 배치 */
+.matter-section[data-section="01"] .section-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.matter-section[data-section="01"] .section-left {
+    transform: none;
+    justify-content: flex-end;
+    padding-right: 2vw;
+}
+
+.matter-section[data-section="01"] .section-right {
+    transform: none;
+    justify-content: flex-start;
+    padding-left: 2vw;
+}
+
+.matter-section[data-section="01"] .matter-title-text {
+    font-size: 45px;
+    color: #000000;
+    letter-spacing: 0.02em;
+    user-select: none;
+    pointer-events: none;
+    line-height: 1;
+    opacity: 1;
+}
+
+.matter-section[data-section="01"] .matter-title-eng.matter-title-text {
+    font-family: "parabolica", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: none;
+    /* 타이틀 전체를 화면 아래쪽으로 더 많이 (30vh) 내림 */
+    transform: translateX(7vw) translateY(30vh);
+}
+
+.matter-section[data-section="01"] .matter-title-eng {
+    transform: scale(1) translateX(0) translateY(30vh);
+    max-height: 70vh;
+    max-width: 180px;
+    opacity: 1;
+}
+
+.matter-section[data-section="01"] .matter-title-kor.matter-title-text {
+    font-family: "jjjgothic", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: -0.03em;
+    transform: translateX(-7vw) translateY(30vh);
+    text-transform: none;
+    white-space: nowrap;
+    max-width: none;
+}
+
+/* Section 02: 미세먼지 - 섹션1과 동일한 텍스트 높이 (공통 translateY(3vh) 사용) */
+.matter-section[data-section="02"] .section-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.matter-section[data-section="02"] .matter-image {
+    max-width: 97.2%;
+    max-height: 86.4vh;
+    transform: translateX(5%);
+    opacity: 1;
+}
+
+.matter-section[data-section="02"] .section-left {
+    transform: none;
+    justify-content: flex-end;
+    padding-right: 2vw;
+}
+
+.matter-section[data-section="02"] .section-right {
+    transform: none;
+    justify-content: flex-start;
+    padding-left: 2vw;
+}
+
+/* 섹션 02 타이틀: 텍스트 "Fine Dust" / "미세먼지" (섹션 1과 동일 스타일) */
+.matter-section[data-section="02"] .matter-title-text {
+    font-size: 45px;
+    color: #000000;
+    letter-spacing: 0.02em;
+    user-select: none;
+    pointer-events: none;
+    line-height: 1;
+    opacity: 1;
+}
+.matter-section[data-section="02"] .matter-title-eng.matter-title-text {
+    font-family: "parabolica", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: none;
+    transform: translateX(7vw) translateY(30vh);
+}
+.matter-section[data-section="02"] .matter-title-kor.matter-title-text {
+    font-family: "jjjgothic", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: -0.03em;
+    transform: translateX(-7vw) translateY(30vh);
+    text-transform: none;
+    white-space: nowrap;
+    max-width: none;
+}
+
+/* Section 03: 사하라 먼지 - 섹션 1·2와 동일한 타이틀 스타일 */
+.matter-section[data-section="03"] .section-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.matter-section[data-section="03"] .matter-image {
+    max-width: 97.2%;
+    max-height: 86.4vh;
+    /* 현재보다 약 40% 크게, 오른쪽·위쪽으로 더 이동 */
+    transform: translateX(15%) translateY(-8%) scale(1.4);
+    opacity: 1;
+}
+
+.matter-section[data-section="03"] .section-left {
+    transform: none;
+    justify-content: flex-end;
+    padding-right: 2vw;
+}
+
+.matter-section[data-section="03"] .section-right {
+    transform: none;
+    justify-content: flex-start;
+    padding-left: 2vw;
+}
+
+.matter-section[data-section="03"] .matter-title-text {
+    font-size: 45px;
+    color: #000000;
+    letter-spacing: 0.02em;
+    user-select: none;
+    pointer-events: none;
+    line-height: 1;
+    opacity: 1;
+}
+.matter-section[data-section="03"] .matter-title-eng.matter-title-text {
+    font-family: "parabolica", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: none;
+    transform: translateX(7vw) translateY(30vh);
+}
+.matter-section[data-section="03"] .matter-title-kor.matter-title-text {
+    font-family: "jjjgothic", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: -0.03em;
+    transform: translateX(-7vw) translateY(30vh);
+    text-transform: none;
+    white-space: nowrap;
+    max-width: none;
+}
+
+/* Section 04: 날씨 - 섹션 1·2·3과 동일한 타이틀·이미지 스타일 */
+.matter-section[data-section="04"] .section-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.matter-section[data-section="04"] .matter-image {
+    max-width: 97.2%;
+    max-height: 86.4vh;
+    transform: translateX(-3%);
+    opacity: 1;
+}
+
+.matter-section[data-section="04"] .section-left {
+    transform: none;
+    justify-content: flex-end;
+    padding-right: 2vw;
+}
+
+.matter-section[data-section="04"] .section-right {
+    transform: none;
+    justify-content: flex-start;
+    padding-left: 2vw;
+}
+
+.matter-section[data-section="04"] .matter-title-text {
+    font-size: 45px;
+    color: #000000;
+    letter-spacing: 0.02em;
+    user-select: none;
+    pointer-events: none;
+    line-height: 1;
+    opacity: 1;
+}
+.matter-section[data-section="04"] .matter-title-eng.matter-title-text {
+    font-family: "parabolica", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: none;
+    transform: translateX(7vw) translateY(30vh);
+}
+.matter-section[data-section="04"] .matter-title-kor.matter-title-text {
+    font-family: "jjjgothic", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: -0.03em;
+    transform: translateX(-7vw) translateY(30vh);
+    text-transform: none;
+    white-space: nowrap;
+    max-width: none;
+}
+
+.section-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-15%);
+}
+
+.matter-title-kor {
+    max-width: 200px;
+    width: auto;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+    /* Filter will be applied via JavaScript */
+    filter: none;
+    transform: scale(1.5) translateX(-30%) translateY(100%);
+    opacity: 0;
+}
+
+.placeholder {
+    background-color: transparent;
+}
+
+.placeholder-text {
+    font-size: 48px;
+    color: #000000;
+    opacity: 0.3;
+}
+
+/* Timeline */
+.timeline-container {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.timeline-line {
+    position: absolute;
+    bottom: 30px;
+    left: 15%;
+    width: 70%;
+    height: 2px;
+    background-color: var(--section-color);
+    transition: background-color 0.3s ease;
+}
+
+.timeline-points {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    position: absolute;
+    left: 15%;
+    bottom: 30px;
+}
+
+.timeline-point {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;    pointer-events: none;
+}
+
+.timeline-number {
+    font-family: 'Rubik-Light', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--section-color);
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    white-space: nowrap;
+    pointer-events: auto;
+    user-select: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.timeline-number.active {
+    font-family: 'Rubik-Medium', sans-serif;
+}
+
+.timeline-marker {
+    width: 2px;
+    height: 12px;
+    background-color: var(--section-color);
+    position: absolute;
+    bottom:0px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background-color 0.3s ease;
+}
+
+.timeline-indicator {
+    position: absolute;
+    bottom: 25px;
+    left: 15%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--section-color);
+    transform: translateX(-50%);
+    z-index: 1001;
+    transition: left 0.1s ease-out, background-color 0.3s ease;
+    cursor: grab;
+    pointer-events: auto;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.timeline-indicator-hitbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    pointer-events: auto;
+    cursor: grab;
+    z-index: 1;
+}
+
+.timeline-indicator:active,
+.timeline-indicator:active .timeline-indicator-hitbox {
+    cursor: grabbing;
+}
+
+.timeline-number.active {
+    font-family: 'Rubik-Medium', sans-serif;
+}
+/* Copyright */
+.copyright {
+    position: fixed;
+    right: calc(clamp(40px, 8vw, 120px) - 60px);
+    bottom: 70px;
+    transform: rotate(90deg);
+    transform-origin: right bottom;
+    font-size: 12px;
+    color: var(--section-color);
+    white-space: nowrap;
+    z-index: 1000;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+/* 데스크톱 중심 스케치 질감 오버레이 */
+.matters-sketch-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 10000;
+    background-image: url("assets/matters-layer.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 102% 100%;
+    opacity: 1;
+    /* 분홍 아웃라인을 검은색으로: 비투명 픽셀을 검은색으로 변환 */
+    filter: brightness(0);
+}
+
+/* ========== About / News / Contact 페이지 ========== */
+/* About / News / Contact 모두 검은 배경 위 둥근 흰 캔버스(body::before) 유지 */
+
+.page-index {
+    overflow: hidden; /* 가로만 스크롤, 세로 스크롤 없음 */
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.page-about {
+    overflow: hidden; /* 전체 화면은 고정 */
+    min-height: 100vh;
+    /* index와 동일: 검은 배경 + 둥근 흰 캔버스(body::before) */
+    background-color: #000000;
+}
+
+.page-about .header-left-about,
+.page-news .header-right-text-1,
+.page-contact .header-right-text-2 {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+.page-contact {
+    overflow: hidden;
+    min-height: 100vh;
+    background-color: #000000; /* index와 동일: 검은 배경 + 흰 오버레이 */
+}
+
+.page-contact ::selection {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.page-contact ::-moz-selection {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.page-news {
+    overflow: hidden; /* about와 동일: 전체 화면 고정, 텍스트 영역만 스크롤 */
+    min-height: 100vh;
+    background-color: #000000; /* index와 동일: 검은 배경 + 흰 오버레이 */
+}
+
+.page-news ::selection {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.page-news ::-moz-selection {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.page-about ::selection {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.page-about ::-moz-selection {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.page-about .matters-sketch-layer {
+    display: none; /* About에선 홈용 overlay 대신 전용 about_layer 사용 */
+}
+
+/* About 페이지 최상단 고정 레이어 (홈 matters_layer와 동일 방식) */
+.about-sketch-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 10000;
+    /* about-layer.png 오버레이 적용 (index의 matters_layer와 동일한 방식) */
+    background-image: url("assets/about-layer.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 101%;
+    opacity: 1; /* 기본적으로 항상 보이도록 */
+    filter: brightness(0);
+}
+
+.page-news .about-sketch-layer {
+    background-image: url("assets/news-layer.png");
+}
+
+.page-contact .about-sketch-layer {
+    background-image: url("assets/contact-layer.png");
+}
+
+.header-icon-link {
+    display: inline-block;
+    text-decoration: none;
+    line-height: 0;
+}
+
+/* About 등 메뉴 아이콘이 링크로 감싸진 경우: 홈과 동일한 위치에 맞춤 */
+.header-left > .header-icon-link {
+    position: absolute;
+    left: -20px;
+    top: calc(clamp(20px, 2.5vw, 30px) + 8px + 0.5px);
+    transform: translateY(-50%);
+    width: clamp(16px, 2vw, 24px);
+    height: clamp(16px, 2vw, 24px);
+}
+
+/* 링크 안 아이콘은 절대 위치 중복 방지 → 홈과 같은 자리에 보이게 */
+.header-icon-link .menu-icon {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+}
+
+
+/* About / News 공통: 텍스트 박스(두 컬럼 스크롤 영역) 동일 적용 */
+.page-about .about-main,
+.page-news .about-main,
+.page-contact .about-main {
+    position: fixed;
+    z-index: 1; /* 헤더(1000)보다 아래에 두어 헤더가 항상 위에 보이도록 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* 텍스트 박스 높이 유지하면서 전체 위치를 약간 위로 이동 */
+    padding-top: 280px;
+    padding-left: clamp(40px, 8vw, 120px);
+    padding-right: clamp(40px, 8vw, 120px);
+    padding-bottom: 180px;
+    box-sizing: border-box;
+    /* About / News / Contact 본문은 투명하게 두고,
+       둥근 흰 캔버스는 body::before에서만 담당하게 함 */
+    background: transparent;
+}
+
+.page-about .about-scroll,
+.page-news .about-scroll,
+.page-contact .about-scroll {
+    width: 100%;
+    /* 메인 안에서 남은 세로 공간을 차지하도록 */
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* 안쪽 자식들이 스크롤할 수 있게 */
+}
+
+.page-about .about-content,
+.page-news .about-content,
+.page-contact .about-content {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    /* 텍스트 박스 영역이 남은 세로 공간을 채우도록 */
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+/* ABOUT: 영문·한글 텍스트 박스만 위로 이동 (크레딧 위치는 유지) */
+.page-about .about-content {
+    margin-top: -24px;
+}
+
+.page-about .about-col,
+.page-news .about-col,
+.page-contact .about-col {
+    overflow-y: auto;  /* 텍스트 컬럼 내부만 스크롤 */
+    overflow-x: hidden;
+    height: 100%;
+    min-height: 0;
+    padding-right: 8px;
+    scrollbar-color: #000000 transparent;
+    scrollbar-width: thin;
+}
+
+.page-about .about-col::-webkit-scrollbar,
+.page-news .about-col::-webkit-scrollbar,
+.page-contact .about-col::-webkit-scrollbar {
+    width: 6px;
+}
+
+.page-about .about-col::-webkit-scrollbar-track,
+.page-news .about-col::-webkit-scrollbar-track,
+.page-contact .about-col::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.page-about .about-col::-webkit-scrollbar-thumb,
+.page-news .about-col::-webkit-scrollbar-thumb,
+.page-contact .about-col::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 3px;
+}
+
+.page-about .about-col p,
+.page-news .about-col p,
+.page-contact .about-col p {
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(15px, 1.2vw, 17px);
+    line-height: 1.65;
+    letter-spacing: 0.03em;
+    color: #000000 !important;
+    margin-bottom: 1.2em;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block;
+}
+
+.page-about .about-col p:last-child,
+.page-news .about-col p:last-child,
+.page-contact .about-col p:last-child {
+    margin-bottom: 0;
+}
+
+/* Contact 그리드: intro(이메일 포함) · 인스타 문단 간격 */
+.page-contact .about-content.contact-content-grid .about-col-eng .contact-intro,
+.page-contact .about-content.contact-content-grid .about-col-kor .contact-intro {
+    margin-bottom: -1.2em !important;
+    margin-top: 0 !important;
+}
+.page-contact .about-content.contact-content-grid .contact-intro .contact-link {
+    display: inline-block;
+    margin-top: 2em;  /* 문장과 이메일 사이 두 줄 높이 띄움 */
+}
+.page-contact .about-content.contact-content-grid .contact-instagram-intro .contact-link {
+    display: inline-block;
+    margin-top: 2em;  /* 문장과 인스타 주소 사이 두 줄 높이 띄움 */
+}
+.page-contact .about-content.contact-content-grid .about-col-eng .contact-instagram-intro,
+.page-contact .about-content.contact-content-grid .about-col-kor .contact-instagram-intro {
+    margin-top: -1.5em !important;
+    margin-bottom: 0 !important;
+}
+
+/* News 페이지: 항목 스타일 (About과 동일 폰트/행간) */
+.news-entry {
+    margin-bottom: 3.2em;
+}
+
+.news-entry:last-of-type {
+    margin-bottom: 3.5em;
+}
+
+.page-news .about-col .news-date {
+    font-family: "parabolica", sans-serif;
+    font-size: clamp(12px, 0.9em, 14px);
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    color: #000000;
+    margin-bottom: 0.35em;
+    text-decoration: underline;
+    text-underline-offset: 0.35em;
+    opacity: 1;
+    visibility: visible;
+}
+
+.page-news .about-col-kor .news-date {
+    font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    color: #000000;
+}
+
+.page-news .about-col .news-body {
+    font-family: "parabolica", sans-serif;
+    font-size: clamp(15px, 1.1em, 18px);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #000000;
+    margin: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+.page-news .about-col-kor .news-body {
+    font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+}
+
+.news-body-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.news-body-link:hover {
+    text-decoration: underline;
+}
+
+.news-link-icon {
+    display: inline-block;
+    width: 0.9em;
+    height: 0.9em;
+    vertical-align: -0.05em;
+    margin-left: 0.2em;
+}
+
+.news-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0.9em;
+}
+
+.news-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35em 1em;
+    border-radius: 4px;
+    font-family: "parabolica", sans-serif;
+    font-size: clamp(13px, 1.05em, 15px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.page-news .about-col-eng .news-tag {
+    line-height: 1;
+    vertical-align: middle;
+    padding-top: 0.28em;
+    padding-bottom: 0.42em;
+}
+
+.page-news .about-col-kor .news-tag {
+    font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+}
+
+.news-tag--black {
+    background-color: #000000;
+}
+
+.news-tag--purple {
+    background-color: #7c3aed;
+}
+
+.news-tag--lime {
+    background-color: #84cc16;
+}
+
+.news-tag--grey {
+    background-color: #6b7280;
+}
+
+.news-tag--pink {
+    background-color: #ec4899;
+}
+
+.page-news .about-col .news-updated {
+    font-family: "parabolica", sans-serif;
+    font-size: clamp(11px, 0.85em, 13px);
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.news-updated-kor {
+    font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+}
+
+.page-about .about-col-eng .aom-medium-oblique,
+.page-news .about-col-eng .aom-medium-oblique,
+.page-contact .about-col-eng .aom-medium-oblique {
+    font-weight: 500;
+    font-style: italic;
+}
+
+.page-about .about-col-kor p,
+.page-news .about-col-kor p,
+.page-contact .about-col-kor p {
+    font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+}
+
+.page-about .about-col-kor p {
+    line-height: 1.85;
+}
+
+.contact-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+}
+
+.contact-link-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.2em;
+    margin-right: 0.35em;
+}
+
+/* Contact 페이지: 한/영 같은 높이 정렬 (이메일·인스타는 각 intro와 같은 블록) */
+.page-contact .about-content.contact-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 0;
+    column-gap: clamp(40px, 6vw, 80px);
+    align-items: start;
+}
+
+.page-contact .contact-content-grid .about-col-eng,
+.page-contact .contact-content-grid .about-col-kor {
+    display: contents;
+}
+
+.page-contact .contact-content-grid .about-col-eng .contact-intro { grid-column: 1; grid-row: 1; }
+.page-contact .contact-content-grid .about-col-eng .contact-instagram-intro { grid-column: 1; grid-row: 2; margin-top: -1.5em; }
+
+.page-contact .contact-content-grid .about-col-kor .contact-intro { grid-column: 2; grid-row: 1; }
+.page-contact .contact-content-grid .about-col-kor .contact-instagram-intro { grid-column: 2; grid-row: 2; margin-top: -1.5em; }
+
+.contact-block-1 {
+    min-height: 10em;
+}
+
+.contact-intro {
+    min-height: 6.5em;
+}
+
+.page-contact .contact-content-grid .contact-intro {
+    min-height: 0;
+}
+
+.contact-block-start {
+    margin-top: 1.8em;
+}
+
+.about-footer {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    /* 텍스트 박스 높이 유지: 위쪽 여백 유지해서 about-content 영역 크기 그대로 */
+    margin-top: clamp(64px, 7vw, 110px);
+    /* 크레딧만 아래로 이동 (레이아웃은 그대로, 시각적으로만 내림) */
+    transform: translateY(48px);
+    padding-top: 1.25em;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+}
+
+.about-credits-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    width: 100%;
+    max-width: 1300px;
+}
+
+.about-credits {
+    font-family: "parabolica", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--section-color);
+    text-align: left !important;
+}
+
+.about-credits .credit-bold {
+    font-family: "parabolica-medium", "parabolica", sans-serif;
+}
+
+.about-credits .credit-semibold {
+    font-family: "parabolica", sans-serif;
+    font-weight: 600;
+}
+
+.about-credits .credit-semibold + span {
+    margin-left: 0.35em;
+}
+
+.about-credits .credit-bold + span,
+.about-credits-kor .credit-bold-kor + span {
+    margin-left: 1.2em;
+}
+
+.about-credits .credit-bold:nth-of-type(3) {
+    margin-left: 4em;
+}
+
+.about-credits-kor {
+    font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+}
+
+.about-credits-kor .credit-bold-kor {
+    font-family: "neutronic-hangeul", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.about-credits-kor .credit-bold-kor:nth-of-type(3) {
+    margin-left: 4em;
+}
+
+/* News 페이지: 마지막 업데이트 행 (about-credits와 동일 스타일) */
+.news-updated-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    width: 100%;
+    max-width: 1300px;
+}
+
+.news-updated {
+    font-family: "parabolica", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--section-color);
+    text-align: left !important;
+}
+
+.news-updated .credit-bold {
+    font-family: "parabolica-medium", "parabolica", sans-serif;
+}
+
+.news-updated-kor .credit-bold-kor {
+    font-family: "neutronic-hangeul", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.page-about .about-col-kor .aom-semibold-kor {
+    font-family: "neutronic-hangeul", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.about-copyright {
+    position: fixed;
+    right: calc(clamp(40px, 8vw, 120px) - 60px);
+    bottom: 70px;
+    transform: rotate(90deg);
+    transform-origin: right bottom;
+    font-size: 12px;
+    color: var(--section-color);
+    white-space: nowrap;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* about-sketch-layer는 기본 z-index:10000 값을 그대로 사용 (index의 matters_layer와 동일) */
+
+/* Matter popup (in progress) — About 본문과 동일 폰트 */
+.matter-popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.matter-popup-overlay.is-open {
+    display: flex;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.matter-popup-box {
+    position: relative;
+    background-color: #000000;
+    border-radius: 24px;
+    padding: 3.75em clamp(32px, 5vw, 56px);
+    max-width: 90vw;
+    box-sizing: border-box;
+}
+
+.matter-popup-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    padding: 4px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.matter-popup-close img {
+    display: block;
+    width: 15px;
+    height: 15px;
+    filter: brightness(0) invert(1);
+}
+
+.matter-popup-eng {
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(16px, 1.35vw, 19px);
+    line-height: 1.2;
+    color: #ffffff;
+    margin: 0 0 0.2em 0;
+    text-align: center;
+}
+
+.matter-popup-eng + .matter-popup-eng {
+    margin-bottom: 1em;
+}
+
+.matter-popup-eng + .matter-popup-eng + .matter-popup-kor {
+    margin-top: 1.25em;
+}
+
+.matter-popup-kor {
+    font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+    font-size: clamp(15px, 1.2vw, 17px);
+    line-height: 1.35;
+    color: #ffffff;
+    margin: 0 0 0.2em 0;
+    text-align: center;
+}
+
+.matter-popup-kor:last-of-type {
+    margin-bottom: 0;
+}
+
+/* 팝업 뜨는 영역: 클릭 가능 커서 */
+.matter-image,
+.matter-title-eng,
+.matter-title-kor,
+.header-matter-icon {
+    cursor: pointer;
+}
