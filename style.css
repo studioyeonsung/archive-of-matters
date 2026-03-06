@@ -13,6 +13,16 @@ html {
     overflow-x: hidden;
 }
 
+/* Index only: hide scrollbar (page remains scrollable for horizontal effect) */
+html.is-index {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+html.is-index::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     width: 100%;
     overflow-x: hidden;
@@ -33,6 +43,56 @@ body::before {
     border-radius: 80px;
     z-index: 0;
     pointer-events: none;
+}
+
+/* Mobile placeholder: "Mobile version is on its way" screen */
+.mobile-placeholder {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background-color: #FFFFFF;
+        padding: 24px;
+        text-align: center;
+    }
+
+    .mobile-placeholder-eng-block,
+    .mobile-placeholder-kor-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .mobile-placeholder-kor-block {
+        margin-top: 2em;
+    }
+
+    .mobile-placeholder-eng,
+    .mobile-placeholder-kor {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        font-size: 1rem;
+        line-height: 1.25;
+        color: #000000;
+    }
+
+    .mobile-placeholder-eng + .mobile-placeholder-eng,
+    .mobile-placeholder-kor + .mobile-placeholder-kor {
+        margin-top: 0.15em;
+    }
+
+    .site-content {
+        display: none !important;
+    }
 }
 
 /* Font Face */
@@ -359,7 +419,8 @@ body::before {
 
 /* Scroll Container */
 .page-index .scroll-container {
-    width: 100vw;
+    width: 100%;
+    max-width: 100vw;
     height: 100vh;
     min-height: 100vh;
     max-height: 100vh;
@@ -375,6 +436,9 @@ body::before {
     z-index: 1;
 }
 
+.page-index .horizontal-wrapper {
+    overflow: hidden;
+}
 .horizontal-wrapper {
     position: relative;
     display: flex;
@@ -402,18 +466,24 @@ body::before {
 /* Matter Section - 너비·콘텐츠 크기는 100vw 유지, 섹션 간 겹침으로 간격만 절반 */
 .matter-section {
     width: 100vw;
+    max-width: 100%;
     height: 100vh;
+    max-height: 100vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     z-index: 1;
+    overflow: hidden;
 }
 .matter-section:not(:last-child) {
     margin-right: -25vw;
 }
 
+.page-index .section-content {
+    overflow: hidden;
+}
 .section-content {
     position: relative;
     width: 100%;
