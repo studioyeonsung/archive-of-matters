@@ -32,6 +32,8 @@
     </div>
 
     <div class="site-content">
+    <!-- 모바일 전용: 흰 캔버스(콘텐츠가 이 위에 보이도록 site-content 내부에 배치) -->
+    <div class="index-white-canvas" aria-hidden="true"></div>
     <!-- Fixed Header -->
     <header class="fixed-header">
         <img src="assets/home-icon-arrow.svg" alt="" class="header-icon nav-icon header-matter-arrow" aria-hidden="true">
@@ -65,6 +67,8 @@
                 <span class="nav-text header-right-text-2"><a href="/contact/">CONTACT</a></span>
             </div>
         </div>
+        <a href="/" class="mobile-title-link mobile-title-link-eng" aria-label="홈으로 이동 (영문 타이틀)"></a>
+        <a href="/" class="mobile-title-link mobile-title-link-kor" aria-label="홈으로 이동 (한글 타이틀)"></a>
     </header>
 
     <!-- Horizontal Scroll Container -->
@@ -81,7 +85,9 @@
                         <img src="assets/matters-copper-img.png" alt="Copper" class="matter-image">
                     </div>
                     <div class="section-right">
+                        <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow matter-move-arrow-left" aria-hidden="true">
                         <span class="matter-title-kor matter-title-text">구리</span>
+                        <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow matter-move-arrow-right" aria-hidden="true">
                     </div>
                 </div>
             </section>
@@ -96,7 +102,9 @@
                         <img src="assets/matters-finedust-img.png" alt="Fine Dust" class="matter-image">
                     </div>
                     <div class="section-right">
+                        <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow matter-move-arrow-left" aria-hidden="true">
                         <span class="matter-title-kor matter-title-text">미세먼지</span>
+                        <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow matter-move-arrow-right" aria-hidden="true">
                     </div>
                 </div>
             </section>
@@ -111,7 +119,9 @@
                         <img src="assets/matters-saharandust-img.png" alt="Saharan Dust" class="matter-image">
                     </div>
                     <div class="section-right">
+                        <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow matter-move-arrow-left" aria-hidden="true">
                         <span class="matter-title-kor matter-title-text">사하라 먼지</span>
+                        <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow matter-move-arrow-right" aria-hidden="true">
                     </div>
                 </div>
             </section>
@@ -126,14 +136,28 @@
                         <img src="assets/matters-weather-img.png" alt="Weather" class="matter-image">
                     </div>
                     <div class="section-right">
+                        <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow matter-move-arrow-left" aria-hidden="true">
                         <span class="matter-title-kor matter-title-text">날씨</span>
+                        <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow matter-move-arrow-right" aria-hidden="true">
                     </div>
                 </div>
             </section>
         </div>
     </div>
 
-    <!-- Bottom Timeline -->
+    <!-- 모바일 전용: 고정 화살표 (스크롤에 따라 이전/다음 섹션으로 이동) -->
+    <div class="matter-move-arrows-fixed" aria-label="물질 섹션 이동">
+        <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow-fixed matter-move-arrow-fixed-left">
+        <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow-fixed matter-move-arrow-fixed-right">
+    </div>
+
+    </div><!-- /.site-content -->
+
+    <!-- Sketch texture overlay (body 직계 → 모바일에서 가장자리 잘림 방지) -->
+    <div class="matters-sketch-layer" aria-hidden="true"></div>
+
+
+    <!-- Bottom Timeline (body 직계로 이동 → fixed가 뷰포트 기준으로 동작) -->
     <div class="timeline-container">
         <div class="timeline-line"></div>
         <div class="timeline-points">
@@ -159,12 +183,8 @@
         </div>
     </div>
 
-    <!-- Copyright -->
+    <!-- Copyright (body 직계로 이동 → 모바일에서 인디케이터 아래 가운데 표시) -->
     <div class="copyright">© 2025 STUDIO YEON SUNG</div>
-
-    <!-- Sketch texture overlay (fixed, desktop) -->
-    <div class="matters-sketch-layer" aria-hidden="true"></div>
-    </div><!-- /.site-content -->
 
     <!-- Adobe Typekit -->
     <script>

@@ -74,7 +74,103 @@ window.addEventListener('load', () => {
     // Set initial color for section 1
     updateSectionColor(0);
     initMatterPopup();
+    alignFixedArrowsWithKoreanTitle();
+    initMobileArrowNav();
 });
+
+// 모바일: 고정 화살표를 한글 물질 텍스트 라인과 세로 정렬
+function alignFixedArrowsWithKoreanTitle() {
+    const fixedArrows = document.querySelector('.page-index .matter-move-arrows-fixed');
+    if (!fixedArrows) return;
+
+    const update = () => {
+        if (window.innerWidth > 768) return;
+        const sectionRights = document.querySelectorAll('.page-index .matter-section .section-right');
+        if (!sectionRights.length) return;
+        const vh = window.innerHeight;
+        const vCenter = vh / 2;
+        let best = null;
+        let bestDist = Infinity;
+        sectionRights.forEach((el) => {
+            const r = el.getBoundingClientRect();
+            const centerY = r.top + r.height / 2;
+            const dist = Math.abs(centerY - vCenter);
+            if (r.top < vh && r.bottom > 0 && dist < bestDist) {
+                bestDist = dist;
+                best = r;
+            }
+        });
+        if (best) {
+            const centerY = best.top + best.height / 2;
+            fixedArrows.style.top = `${centerY + 28}px`; /* 모바일 화살표 한글 라인보다 살짝 아래 */
+        }
+    };
+
+    update();
+    window.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+    window.addEventListener('resize', update);
+    if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.addEventListener('refresh', update);
+    }
+}
+
+// 모바일: 고정 화살표 클릭 시 이전/다음 섹션으로 스크롤 (순환), 호버 시 클릭 가능 표시
+function initMobileArrowNav() {
+    const fixedArrowsWrap = document.querySelector('.page-index .matter-move-arrows-fixed');
+    if (!fixedArrowsWrap) return;
+
+    const arrowLeft = fixedArrowsWrap.querySelector('.matter-move-arrow-fixed-left');
+    const arrowRight = fixedArrowsWrap.querySelector('.matter-move-arrow-fixed-right');
+    if (!arrowLeft || !arrowRight) return;
+
+    const sections = document.querySelectorAll('.page-index .matter-section');
+    const scrollDistancePerSection = 300;
+    const scrollDistance = sections.length * scrollDistancePerSection;
+
+    function getCurrentSection() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const progress = Math.min(1, Math.max(0, scrollTop / scrollDistance));
+        // 인디케이터와 동일: progress = index / (sections.length - 1)
+        const index = Math.round(progress * (sections.length - 1));
+        return Math.max(0, Math.min(index, sections.length - 1));
+    }
+
+    function scrollToSection(index) {
+        // 인디케이터 숫자 클릭과 동일한 계산: 섹션이 가운데 오도록
+        const sectionProgress = index / (sections.length - 1);
+        const clampedProgress = Math.max(0, Math.min(1, sectionProgress));
+        const targetScroll = clampedProgress * scrollDistance;
+        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    }
+
+    function onLeftArrow() {
+        if (window.innerWidth > 768) return;
+        const current = getCurrentSection();
+        const prev = (current - 1 + sections.length) % sections.length;
+        scrollToSection(prev);
+    }
+
+    function onRightArrow() {
+        if (window.innerWidth > 768) return;
+        const current = getCurrentSection();
+        const next = (current + 1) % sections.length;
+        scrollToSection(next);
+    }
+
+    arrowLeft.addEventListener('click', (e) => {
+        e.preventDefault();
+        onLeftArrow();
+    });
+    arrowRight.addEventListener('click', (e) => {
+        e.preventDefault();
+        onRightArrow();
+    });
+
+    arrowLeft.setAttribute('role', 'button');
+    arrowLeft.setAttribute('aria-label', '이전 물질로');
+    arrowRight.setAttribute('role', 'button');
+    arrowRight.setAttribute('aria-label', '다음 물질로');
+}
 
 // Matter popup: open on matter image/title/header matter icon click; close on overlay or X
 function initMatterPopup() {
