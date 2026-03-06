@@ -1,0 +1,8 @@
+{
+  "name": "yeon-sung-website",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve . -p 3000"
+  }
+}
