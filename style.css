@@ -1186,7 +1186,7 @@ body::before {
 }
 .page-contact .about-content.contact-content-grid .about-col-eng .contact-instagram-intro,
 .page-contact .about-content.contact-content-grid .about-col-kor .contact-instagram-intro {
-    margin-top: 1.2em !important;
+    margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
 
@@ -1365,7 +1365,7 @@ body::before {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    row-gap: 0;
+    row-gap: clamp(1.2em, 3vw, 2em);
     column-gap: clamp(40px, 6vw, 80px);
     align-items: start;
 }
@@ -1376,10 +1376,10 @@ body::before {
 }
 
 .page-contact .contact-content-grid .about-col-eng .contact-intro { grid-column: 1; grid-row: 1; }
-.page-contact .contact-content-grid .about-col-eng .contact-instagram-intro { grid-column: 1; grid-row: 2; margin-top: 1.2em; }
+.page-contact .contact-content-grid .about-col-eng .contact-instagram-intro { grid-column: 1; grid-row: 2; }
 
 .page-contact .contact-content-grid .about-col-kor .contact-intro { grid-column: 2; grid-row: 1; }
-.page-contact .contact-content-grid .about-col-kor .contact-instagram-intro { grid-column: 2; grid-row: 2; margin-top: 1.2em; }
+.page-contact .contact-content-grid .about-col-kor .contact-instagram-intro { grid-column: 2; grid-row: 2; }
 
 .contact-block-1 {
     min-height: 10em;
