@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="is-index">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,7 @@
     <meta name="description" content="Archive of Matter(s) by Studio Yeon Sung (연성). Artistic research platform on copper, fine dust, Saharan dust, weather.">
     <meta name="keywords" content="Studio Yeon Sung, Yeon Sung, 연성, Archive of Matter(s), 아카이브 오브 매터즈, artistic research, copper, fine dust, Saharan dust, weather">
     <link rel="canonical" href="https://archiveofmatters.com/">
+    <link rel="icon" type="image/svg+xml" href="assets/home-icon-copper.svg">
     <meta property="og:title" content="ARCHIVE OF MATTER(S) | Studio Yeon Sung">
     <meta property="og:description" content="Archive of Matter(s) by Studio Yeon Sung. Artistic research platform on copper, fine dust, Saharan dust, weather.">
     <meta property="og:url" content="https://archiveofmatters.com/">
@@ -18,6 +19,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-index">
+    <!-- Mobile placeholder: shown only on small screens -->
+    <div class="mobile-placeholder" aria-live="polite">
+        <div class="mobile-placeholder-eng-block">
+            <p class="mobile-placeholder-eng">Mobile version is on its way.</p>
+            <p class="mobile-placeholder-eng">Visit on a desktop for now.</p>
+        </div>
+        <div class="mobile-placeholder-kor-block">
+            <p class="mobile-placeholder-kor">열심히 모바일 버전 작업 중입니다.</p>
+            <p class="mobile-placeholder-kor">데스크탑에서 방문해 주세요.</p>
+        </div>
+    </div>
+
+    <div class="site-content">
     <!-- Fixed Header -->
     <header class="fixed-header">
         <img src="assets/home-icon-arrow.svg" alt="" class="header-icon nav-icon header-matter-arrow" aria-hidden="true">
@@ -150,6 +164,7 @@
 
     <!-- Sketch texture overlay (fixed, desktop) -->
     <div class="matters-sketch-layer" aria-hidden="true"></div>
+    </div><!-- /.site-content -->
 
     <!-- Adobe Typekit -->
     <script>
