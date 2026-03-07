@@ -342,11 +342,11 @@ body::before {
     .page-index .fixed-header {
         z-index: 1000;
     }
-    /* 메뉴 열렸을 때 나머지 영역 검은색 반투명 레이어 */
+    /* 메뉴 열렸을 때 나머지 영역 검은색 반투명 레이어 (스케치 레이어보다 위) */
     .nav-overlay-backdrop {
         position: fixed;
         inset: 0;
-        z-index: 1001;
+        z-index: 10001;
         background: rgba(0, 0, 0, 0.65);
         pointer-events: none;
         visibility: hidden;
@@ -358,18 +358,18 @@ body::before {
         visibility: visible;
         opacity: 1;
     }
-    /* 모바일: 햄버거 메뉴 오버레이 — 상단 블랙 패널, 하단 라운드, 열림/닫힘 슬라이드 */
+    /* 모바일: 햄버거 메뉴 오버레이 — 상단 블랙 패널, 하단 라운드, 열림/닫힘 슬라이드 (스케치 레이어보다 위에) */
     .nav-overlay {
         display: block;
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        z-index: 1002;
-        padding-top: max(env(safe-area-inset-top), 8px);
+        z-index: 10002;
+        padding-top: max(env(safe-area-inset-top), env(safe-area-inset-bottom), 8px);
         padding-left: max(20px, env(safe-area-inset-left));
         padding-right: max(20px, env(safe-area-inset-right));
-        padding-bottom: max(env(safe-area-inset-bottom), 8px);
+        padding-bottom: max(env(safe-area-inset-top), env(safe-area-inset-bottom), 8px);
         background-color: #000000;
         border-radius: 0 0 28px 28px;
         box-sizing: border-box;
@@ -1735,13 +1735,18 @@ body::before {
     filter: brightness(0);
 }
 
-/* 모바일: 레이어 비율 유지, 이미지 왼쪽 부분이 보이도록 + 가장자리 잘림 방지 / 오버레이 이미지 숨김 */
+/* 모바일: matters-layer-mobile.png 오버레이 (이미지 그대로, 확대/영역 선택 없음) */
 @media (max-width: 768px) {
     .page-index {
         overflow: visible;
     }
     .matters-sketch-layer {
-        display: none;
+        display: block;
+        background-image: url("assets/matters-layer-mobile.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        filter: brightness(0);
     }
 }
 
