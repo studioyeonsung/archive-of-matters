@@ -351,11 +351,11 @@ body::before {
     .page-index .fixed-header {
         z-index: 1000;
     }
-    /* 메뉴 열렸을 때 나머지 영역 검은색 반투명 레이어 (스케치 레이어보다 위) */
+    /* 메뉴 열렸을 때 나머지 영역 검은색 반투명 레이어 (스케치 레이어·오버레이 이미지보다 위) */
     .nav-overlay-backdrop {
         position: fixed;
         inset: 0;
-        z-index: 10001;
+        z-index: 10003;
         background: rgba(0, 0, 0, 0.65);
         pointer-events: none;
         visibility: hidden;
@@ -367,14 +367,14 @@ body::before {
         visibility: visible;
         opacity: 1;
     }
-    /* 모바일: 햄버거 메뉴 오버레이 — 상단 블랙 패널, 하단 라운드 */
+    /* 모바일: 햄버거 메뉴 오버레이 — 상단 블랙 패널, 하단 라운드 (오버레이 이미지보다 위) */
     .nav-overlay {
         display: block;
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        z-index: 10002;
+        z-index: 10003;
         padding-top: max(env(safe-area-inset-top), env(safe-area-inset-bottom), 8px);
         padding-left: max(20px, env(safe-area-inset-left));
         padding-right: max(20px, env(safe-area-inset-right));
@@ -1265,6 +1265,19 @@ body::before {
     opacity: 1;
 }
 
+/* About / News / Contact: 그레인 레이어 고정 전체 화면 (인덱스와 동일 텍스처) */
+.page-about .grain-layer,
+.page-news .grain-layer,
+.page-contact .grain-layer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 10002;
+}
+
 /* Matter Section - 너비·콘텐츠 크기는 100vw 유지, 섹션 간 겹침으로 간격만 절반 */
 .matter-section {
     width: 100vw;
@@ -2002,10 +2015,16 @@ body::before {
     background-image: url("assets/contact-layer.png");
 }
 
-/* 모바일: Contact만 고정 레이어 숨김 (About은 about-layer-mobile.png 오버레이, index matters-layer-mobile과 동일) */
+/* 모바일: About/News/Contact 각각 레이어 오버레이 (마스크 위에 표시) */
 @media (max-width: 768px) {
     .page-contact .about-sketch-layer {
-        display: none !important;
+        display: block;
+        background-image: url("assets/contact-layer-mobile.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        filter: brightness(0);
+        z-index: 10002;
     }
     .page-about .about-sketch-layer {
         display: block;
@@ -2015,6 +2034,13 @@ body::before {
         background-size: cover;
         filter: brightness(0);
         z-index: 10002;
+    }
+    /* 메뉴 열렸을 때: About에서 메뉴가 오버레이 이미지 위에 오도록 */
+    body.page-about:has(.nav-overlay.is-open) .site-content {
+        z-index: 10003;
+    }
+    body.page-about:has(.nav-overlay.is-open) .about-sketch-layer {
+        z-index: 10001;
     }
     /* About: 레이어(z-index 10000) 위에 본문이 보이도록 */
     .page-about .site-content {
@@ -2105,22 +2131,30 @@ body::before {
     .page-about .about-content-desktop {
         display: grid;
     }
+    .page-contact .about-content-desktop {
+        display: grid;
+    }
     .page-about .about-content-mobile,
-    .page-news .about-content-mobile {
+    .page-news .about-content-mobile,
+    .page-contact .about-content-mobile {
         display: none !important;
     }
     .page-about .about-lang-switch-fixed,
-    .page-news .about-lang-switch-fixed {
+    .page-news .about-lang-switch-fixed,
+    .page-contact .about-lang-switch-fixed {
         display: none !important;
     }
     .page-about .top-mask,
     .page-about .bottom-mask,
     .page-news .top-mask,
-    .page-news .bottom-mask {
+    .page-news .bottom-mask,
+    .page-contact .top-mask,
+    .page-contact .bottom-mask {
         display: none !important;
     }
     .page-about .about-credits-fixed,
-    .page-news .news-updated-fixed {
+    .page-news .news-updated-fixed,
+    .page-contact .about-credits-fixed {
         display: none !important;
     }
 }
@@ -2380,7 +2414,7 @@ body::before {
         padding-left: clamp(23px, 8.64vw, 52px);
         padding-right: clamp(23px, 8.64vw, 52px);
         padding-top: 0;
-        padding-bottom: calc(2.4rem + 126px + env(safe-area-inset-bottom));
+        padding-bottom: calc(0.6rem + 90px + env(safe-area-inset-bottom));
         box-sizing: border-box;
     }
     .page-news .about-content-mobile .about-lang-switch {
@@ -2461,8 +2495,178 @@ body::before {
     }
 }
 
+/* CONTACT 모바일(768px 이하): About/News와 동일 프레임워크 — 1단, ENG/한국어 전환, 마스크·고정 크레딧 */
+@media (max-width: 768px) {
+    .page-contact .site-content {
+        position: relative;
+        z-index: 10001;
+    }
+    .page-contact .about-content-desktop {
+        display: none !important;
+    }
+    .page-contact .about-main {
+        z-index: 1;
+    }
+    .page-contact .bottom-mask {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: calc(11px + clamp(23px, 8.64vw, 52px));
+        right: calc(11px + clamp(23px, 8.64vw, 52px));
+        height: calc(126px + env(safe-area-inset-bottom));
+        background: #ffffff;
+        z-index: 5;
+        pointer-events: none;
+    }
+    .page-contact .top-mask {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: calc(11px + clamp(23px, 8.64vw, 52px));
+        right: calc(11px + clamp(23px, 8.64vw, 52px));
+        height: calc(128px + 4em);
+        background: #ffffff;
+        z-index: 5;
+        pointer-events: none;
+    }
+    .page-contact .fixed-header,
+    .page-contact .about-lang-switch-fixed {
+        z-index: 11;
+    }
+    .page-contact .fixed-header {
+        background-color: transparent;
+    }
+    .page-contact .about-lang-switch-fixed {
+        display: flex !important;
+        position: fixed;
+        top: 128px;
+        left: 0;
+        right: 0;
+        z-index: 11;
+        background: #ffffff;
+        flex-shrink: 0;
+        padding: 0.5em 0;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        gap: 0.35em;
+    }
+    .page-contact .about-lang-switch-fixed::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: 2em;
+        background: #ffffff;
+    }
+    .page-contact .about-content-mobile {
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        padding-left: clamp(23px, 8.64vw, 52px);
+        padding-right: clamp(23px, 8.64vw, 52px);
+        padding-top: 0;
+        padding-bottom: calc(2.4rem + 126px + env(safe-area-inset-bottom));
+        box-sizing: border-box;
+    }
+    .page-contact .about-content-mobile .about-lang-switch {
+        display: none !important;
+    }
+    .page-contact .about-content-mobile .about-text-wrap {
+        display: block;
+        width: 100%;
+        overflow-y: visible;
+        padding-top: calc(128px + 4em);
+    }
+    .page-contact .about-content-mobile .about-col-single {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        overflow-y: visible;
+    }
+    .page-contact .about-content-mobile .about-col-eng .contact-intro,
+    .page-contact .about-content-mobile .about-col-eng .contact-instagram-intro,
+    .page-contact .about-content-mobile .about-col-eng .contact-intro *,
+    .page-contact .about-content-mobile .about-col-eng .contact-instagram-intro * {
+        font-size: 16px !important;
+    }
+    .page-contact .about-content-mobile .about-col-eng .contact-intro,
+    .page-contact .about-content-mobile .about-col-eng .contact-instagram-intro {
+        line-height: 1.5;
+    }
+    .page-contact .about-content-mobile .about-col-kor .contact-intro,
+    .page-contact .about-content-mobile .about-col-kor .contact-instagram-intro,
+    .page-contact .about-content-mobile .about-col-kor .contact-intro *,
+    .page-contact .about-content-mobile .about-col-kor .contact-instagram-intro * {
+        font-size: 14.4px !important;
+    }
+    .page-contact .about-content-mobile .contact-instagram-intro {
+        margin-top: 4em;
+    }
+    .page-contact .about-content-mobile .contact-intro .contact-link,
+    .page-contact .about-content-mobile .contact-instagram-intro .contact-link {
+        display: inline-block;
+        margin-top: 1.5em;
+    }
+    .page-contact.contact-lang-eng .about-content-mobile .about-col-kor {
+        display: none !important;
+    }
+    .page-contact.contact-lang-kor .about-content-mobile .about-col-eng {
+        display: none !important;
+    }
+    /* Contact 모바일: 크레딧 없음 */
+    .page-contact .about-credits-fixed {
+        display: none !important;
+    }
+    .page-contact.contact-lang-eng .about-credits-fixed .about-credits-block-eng,
+    .page-contact.contact-lang-kor .about-credits-fixed .about-credits-block-kor {
+        display: block !important;
+    }
+    .page-contact .about-credits-fixed {
+        display: block;
+        position: fixed;
+        bottom: calc(65px + env(safe-area-inset-bottom));
+        left: calc(15px + clamp(23px, 8.64vw, 52px));
+        right: clamp(23px, 8.64vw, 52px);
+        width: auto;
+        padding-left: 0;
+        padding-right: 0;
+        box-sizing: border-box;
+        z-index: 10;
+        pointer-events: none;
+    }
+    .page-contact .about-credits-fixed .about-credits-block-eng,
+    .page-contact .about-credits-fixed .about-credits-block-kor {
+        display: block;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+    }
+    .page-contact .about-credits-fixed .about-credits p {
+        margin: 0;
+        padding: 0;
+    }
+    .page-contact .about-credits-fixed .credit-line-1,
+    .page-contact .about-credits-fixed .credit-line-2 {
+        display: block;
+    }
+    .page-contact .about-credits-fixed .credit-line-1 {
+        margin-bottom: 0.25em;
+    }
+    .page-contact .about-credits-fixed .about-credits-block-eng .about-credits {
+        line-height: 1.35;
+    }
+    .page-contact .about-credits-fixed .about-credits-block-eng .credit-line-1 {
+        margin-bottom: 0.15em;
+    }
+}
+
 .page-about .about-lang-switch,
-.page-news .about-lang-switch {
+.page-news .about-lang-switch,
+.page-contact .about-lang-switch {
     align-items: center;
     justify-content: center;
     gap: 0.35em;
@@ -2471,7 +2675,8 @@ body::before {
 }
 
 .page-about .about-lang-btn,
-.page-news .about-lang-btn {
+.page-news .about-lang-btn,
+.page-contact .about-lang-btn {
     background: none;
     border: none;
     padding: 0;
@@ -2483,25 +2688,29 @@ body::before {
 }
 
 .page-about .about-lang-btn[data-lang="kor"],
-.page-news .about-lang-btn[data-lang="kor"] {
+.page-news .about-lang-btn[data-lang="kor"],
+.page-contact .about-lang-btn[data-lang="kor"] {
     font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
 }
 
 .page-about .about-lang-btn:hover,
-.page-news .about-lang-btn:hover {
+.page-news .about-lang-btn:hover,
+.page-contact .about-lang-btn:hover {
     text-decoration: underline;
     text-underline-offset: 0.25em;
 }
 
 .page-about .about-lang-btn.is-active,
-.page-news .about-lang-btn.is-active {
+.page-news .about-lang-btn.is-active,
+.page-contact .about-lang-btn.is-active {
     text-decoration: underline;
     text-underline-offset: 0.25em;
     font-weight: 500;
 }
 
 .page-about .about-lang-sep,
-.page-news .about-lang-sep {
+.page-news .about-lang-sep,
+.page-contact .about-lang-sep {
     color: #000000;
     font-size: inherit;
     pointer-events: none;

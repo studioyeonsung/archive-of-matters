@@ -379,11 +379,12 @@ function initAboutLangSwitch() {
     const body = document.body;
     const isAbout = body.classList.contains('page-about');
     const isNews = body.classList.contains('page-news');
-    if (!isAbout && !isNews) return;
-    const scope = isAbout ? '.page-about' : '.page-news';
+    const isContact = body.classList.contains('page-contact');
+    if (!isAbout && !isNews && !isContact) return;
+    const scope = isAbout ? '.page-about' : isNews ? '.page-news' : '.page-contact';
     const allBtns = document.querySelectorAll(`${scope} .about-lang-btn[data-lang]`);
     if (!allBtns.length) return;
-    const langClassPrefix = isAbout ? 'about-lang' : 'news-lang';
+    const langClassPrefix = isAbout ? 'about-lang' : isNews ? 'news-lang' : 'contact-lang';
     allBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
             const lang = btn.getAttribute('data-lang');
