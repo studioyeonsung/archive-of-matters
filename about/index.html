@@ -129,6 +129,28 @@
         <button type="button" class="about-lang-btn" data-lang="kor">한국어</button>
     </div>
 
+    <!-- 모바일 전용: 하단 흰색 마스크만 사용 (상단은 고정 헤더가 마스크 역할) -->
+    <div class="bottom-mask" aria-hidden="true"></div>
+
+    <!-- 모바일 전용: 크레딧 — 마스크 바로 다음에 두어 z-index로 마스크 위 오버레이 -->
+    <div class="about-credits-fixed" aria-hidden="false">
+        <div class="about-credits-block about-credits-block-eng">
+            <p class="about-credits">
+                <span class="credit-line-1"><span class="credit-bold">Artistic Research</span> <span>Yeon Sung</span></span>
+                <span class="credit-line-2"><span class="credit-bold">Graphic Design &amp; Development</span> <span>Studio165</span></span>
+            </p>
+        </div>
+        <div class="about-credits-block about-credits-block-kor">
+            <p class="about-credits about-credits-kor">
+                <span class="credit-line-1"><span class="credit-bold-kor">아티스틱 리서치</span> <span>연성</span></span>
+                <span class="credit-line-2"><span class="credit-bold-kor">그래픽 디자인 &amp; 웹개발</span> <span>Studio165</span></span>
+            </p>
+        </div>
+    </div>
+
+    <!-- 모바일 전용: 상단 흰색 마스크(프레임 안쪽만) + 배경 프레임(R값·테두리) -->
+    <div class="top-mask" aria-hidden="true"></div>
+
     <!-- ABOUT Content: 데스크톱 = News와 동일 구조(2단) / 모바일 = 1단+언어선택 -->
     <main class="about-main">
         <div class="about-scroll">
@@ -252,19 +274,6 @@
                 </div>
                 </div><!-- /.about-text-wrap -->
 
-                <!-- 크레딧: .about-text-wrap 밖에 두어 스크롤 영역 높이가 텍스트만 기준으로 잡히게 (position:fixed로 하단 고정) -->
-                <div class="about-credits-block about-credits-block-eng">
-                    <p class="about-credits">
-                        <span class="credit-line-1"><span class="credit-bold">Artistic Research</span> <span>Yeon Sung</span></span>
-                        <span class="credit-line-2"><span class="credit-bold">Graphic Design &amp; Development</span> <span>Studio165</span></span>
-                    </p>
-                </div>
-                <div class="about-credits-block about-credits-block-kor">
-                    <p class="about-credits about-credits-kor">
-                        <span class="credit-line-1"><span class="credit-bold-kor">아티스틱 리서치</span> <span>연성</span></span>
-                        <span class="credit-line-2"><span class="credit-bold-kor">그래픽 디자인 &amp; 웹개발</span> <span>Studio165</span></span>
-                    </p>
-                </div>
             </div><!-- /.about-content-mobile -->
 
         </div>
