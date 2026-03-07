@@ -6,6 +6,7 @@
 
 :root {
     --section-color: #000000; /* Text and icons: black */
+    --vh: 100vh; /* JS에서 실제 보이는 높이(visualViewport)로 덮어씀 → 하단 탭/주소창 대응 */
 }
 
 html {
@@ -99,6 +100,9 @@ body::before {
     /* ===== 모바일 헤더 (1단계) ===== */
     .fixed-header {
         padding: 14px 20px;
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+        padding-top: max(14px, env(safe-area-inset-top));
         min-height: 118px;
         align-items: center;
         flex-wrap: wrap;
@@ -123,6 +127,8 @@ body::before {
         order: 1;
         z-index: 2;
         padding: 0 20px;
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
         box-sizing: border-box;
     }
 
@@ -315,6 +321,22 @@ body::before {
         position: relative;
         z-index: 1;
     }
+    /* 모바일: 실제 보이는 높이(--vh) 사용 → 브라우저 하단 탭/주소창에 가려지지 않게 */
+    .page-index .scroll-container {
+        height: var(--vh);
+        min-height: var(--vh);
+        max-height: var(--vh);
+    }
+    .page-index .horizontal-wrapper {
+        height: var(--vh);
+    }
+    .page-index .matter-section[data-section="01"],
+    .page-index .matter-section[data-section="02"],
+    .page-index .matter-section[data-section="03"],
+    .page-index .matter-section[data-section="04"] {
+        height: var(--vh);
+        max-height: var(--vh);
+    }
 
     /* ===== 모바일 인덱스: 물질 섹션 공통 (구리·미세먼지·사하라먼지·날씨) 이미지·영문·한글 셋팅 ===== */
     .page-index .matter-section[data-section="01"],
@@ -496,6 +518,84 @@ body::before {
     }
 }
 
+/* 작은 모바일 (iPhone XS, SE, 12 mini 등 ~400px 이하): 패딩·폰트·간격 축소 */
+@media (max-width: 400px) {
+    .mobile-title-link {
+        left: clamp(56px, 16vw, 72px);
+        right: clamp(12px, 4vw, 20px);
+    }
+    .fixed-header {
+        padding-left: max(12px, env(safe-area-inset-left));
+        padding-right: max(12px, env(safe-area-inset-right));
+        padding-top: max(12px, env(safe-area-inset-top));
+        min-height: 106px;
+    }
+    .header-left {
+        min-height: 106px;
+        padding-left: max(12px, env(safe-area-inset-left));
+        padding-right: max(12px, env(safe-area-inset-right));
+    }
+    .header-left .menu-icon {
+        left: clamp(24px, 8vw, 36px);
+        top: 52px;
+        width: 20px !important;
+        height: 20px !important;
+        min-width: 20px;
+        min-height: 20px;
+    }
+    .header-left .header-top-line {
+        top: 20px;
+        padding: 0 12px;
+    }
+    .header-right {
+        top: 76px;
+        padding: 0 12px;
+    }
+    .header-right::before {
+        max-width: min(95%, 300px);
+    }
+    .page-index .matter-move-arrows-fixed {
+        padding: 0 12px;
+        gap: clamp(120px, 35vw, 300px);
+    }
+    .page-index .matter-move-arrows-fixed .matter-move-arrow-fixed {
+        width: 28px;
+    }
+    .page-index .matter-section[data-section="01"] .matter-title-eng.matter-title-text,
+    .page-index .matter-section[data-section="01"] .matter-title-kor.matter-title-text,
+    .page-index .matter-section[data-section="02"] .matter-title-eng.matter-title-text,
+    .page-index .matter-section[data-section="02"] .matter-title-kor.matter-title-text,
+    .page-index .matter-section[data-section="03"] .matter-title-eng.matter-title-text,
+    .page-index .matter-section[data-section="03"] .matter-title-kor.matter-title-text,
+    .page-index .matter-section[data-section="04"] .matter-title-eng.matter-title-text,
+    .page-index .matter-section[data-section="04"] .matter-title-kor.matter-title-text {
+        font-size: clamp(28px, 9vw, 38px);
+    }
+    .page-index .matter-section[data-section="01"] .matter-image,
+    .page-index .matter-section[data-section="02"] .matter-image,
+    .page-index .matter-section[data-section="03"] .matter-image,
+    .page-index .matter-section[data-section="04"] .matter-image {
+        width: 90vw;
+        max-width: 90vw;
+        max-height: 65vh;
+    }
+    .page-index .matter-section[data-section="03"] .matter-image {
+        max-height: 78vh;
+    }
+    .page-index .matter-section[data-section="01"] .section-content,
+    .page-index .matter-section[data-section="02"] .section-content,
+    .page-index .matter-section[data-section="03"] .section-content,
+    .page-index .matter-section[data-section="04"] .section-content {
+        padding: 14px 0 18px;
+        gap: 8px;
+    }
+    .page-index .copyright,
+    .copyright {
+        bottom: max(72px, calc(env(safe-area-inset-bottom) + 56px));
+        font-size: 11px;
+    }
+}
+
 /* 모바일: 저작권을 인디케이터 아래 가운데 배치, 저작권 위치 유지 (인디케이터 위치는 아래쪽 모바일 블록에서) */
 @media (max-width: 768px) {
     .page-index .copyright,
@@ -503,7 +603,7 @@ body::before {
         display: block !important;
         right: auto;
         left: 50%;
-        bottom: 36px;
+        bottom: max(80px, calc(env(safe-area-inset-bottom) + 64px));
         transform: translateX(-50%);
         transform-origin: center bottom;
         text-align: center;
@@ -1374,20 +1474,20 @@ body::before {
     transition: color 0.3s ease;
 }
 
-/* 모바일: 인디케이터(타임라인)만 살짝 위로 (픽셀 확 줄임) */
+/* 모바일: 인디케이터(타임라인)만 살짝 위로 (픽셀 확 줄임) + 브라우저 하단 탭에 가리지 않게 */
 @media (max-width: 768px) {
     .timeline-container {
-        bottom: 52px;
+        bottom: max(72px, calc(env(safe-area-inset-bottom) + 56px));
     }
     .timeline-line,
     .timeline-points {
-        bottom: 42px;
+        bottom: max(62px, calc(env(safe-area-inset-bottom) + 46px));
     }
     .timeline-number {
-        bottom: 20px;
+        bottom: max(40px, calc(env(safe-area-inset-bottom) + 24px));
     }
     .timeline-indicator {
-        bottom: 37px;
+        bottom: max(57px, calc(env(safe-area-inset-bottom) + 41px));
     }
 }
 
@@ -1409,14 +1509,13 @@ body::before {
     filter: brightness(0);
 }
 
-/* 모바일: 레이어 비율 유지, 이미지 왼쪽 부분이 보이도록 + 가장자리 잘림 방지 */
+/* 모바일: 레이어 비율 유지, 이미지 왼쪽 부분이 보이도록 + 가장자리 잘림 방지 / 오버레이 이미지 숨김 */
 @media (max-width: 768px) {
     .page-index {
         overflow: visible;
     }
     .matters-sketch-layer {
-        background-size: cover;
-        background-position: left center;
+        display: none;
     }
 }
 

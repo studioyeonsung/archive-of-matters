@@ -70,6 +70,7 @@ function updateSectionColor(sectionIndex) {
 
 // Wait for window load to ensure all assets are loaded
 window.addEventListener('load', () => {
+    setVisualViewportHeight();
     initHorizontalScroll();
     // Set initial color for section 1
     updateSectionColor(0);
@@ -77,6 +78,20 @@ window.addEventListener('load', () => {
     alignFixedArrowsWithKoreanTitle();
     initMobileArrowNav();
 });
+
+// 모바일 브라우저 하단 탭/주소창이 보일 때 실제 보이는 높이를 --vh로 설정 (가려짐·레이아웃 튐 방지)
+function setVisualViewportHeight() {
+    const setVh = () => {
+        const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    setVh();
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', setVh);
+        window.visualViewport.addEventListener('scroll', setVh);
+    }
+    window.addEventListener('resize', setVh);
+}
 
 // 모바일: 고정 화살표를 한글 물질 텍스트 라인과 세로 정렬
 function alignFixedArrowsWithKoreanTitle() {
@@ -221,8 +236,16 @@ function initHorizontalScroll() {
     const scrollDistancePerSection = 300;
     const scrollDistance = sections.length * scrollDistancePerSection;
 
-    // Set body height to ensure scrollable space
-    document.body.style.minHeight = `${scrollDistance + window.innerHeight}px`;
+    // Set body height to ensure scrollable space (모바일: 실제 보이는 높이 사용)
+    const getViewHeight = () => (window.visualViewport && window.innerWidth <= 768 ? window.visualViewport.height : window.innerHeight);
+    const updateBodyMinHeight = () => {
+        document.body.style.minHeight = `${scrollDistance + getViewHeight()}px`;
+    };
+    updateBodyMinHeight();
+    if (window.visualViewport && window.innerWidth <= 768) {
+        window.visualViewport.addEventListener('resize', updateBodyMinHeight);
+    }
+    window.addEventListener('resize', updateBodyMinHeight);
 
     // Calculate total horizontal width dynamically
     const calculateTotalWidth = () => {
