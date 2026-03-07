@@ -107,8 +107,8 @@ body::before {
     /* ===== 모바일 헤더 (1단계) ===== */
     .fixed-header {
         padding: 2px 20px;
-        padding-left: max(20px, env(safe-area-inset-left));
-        padding-right: max(20px, env(safe-area-inset-right));
+        padding-left: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
+        padding-right: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
         padding-top: max(2px, env(safe-area-inset-top));
         min-height: 104px;
         align-items: center;
@@ -134,8 +134,8 @@ body::before {
         order: 1;
         z-index: 2;
         padding: 0 20px;
-        padding-left: max(20px, env(safe-area-inset-left));
-        padding-right: max(20px, env(safe-area-inset-right));
+        padding-left: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
+        padding-right: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
         box-sizing: border-box;
     }
 
@@ -155,7 +155,7 @@ body::before {
         z-index: 3;
     }
 
-    /* 영문 타이틀 'ARCHIVE OF MATTER(S)' 가운데 정렬, 한글과 동일 중앙축 → 오른쪽으로 이동 */
+    /* 영문 타이틀 'ARCHIVE OF MATTER(S)' 화면 가운데 정렬 */
     .header-left .header-top-line {
         position: absolute;
         left: 0;
@@ -174,7 +174,7 @@ body::before {
         width: 100%;
         padding: 0 20px;
         box-sizing: border-box;
-        transform: translateX(12px);
+        transform: none;
         pointer-events: none;
     }
     .header-left .header-top-line .nav-text {
@@ -192,23 +192,25 @@ body::before {
         display: none;
     }
 
-    /* 한글 타이틀 가운데 정렬, 영문과 간격 넓혀서 점선이 그 사이에 오도록 */
+    /* 한글 타이틀 화면 가운데 정렬, 영문보다 조금 위로 */
     .header-right {
         position: absolute;
         left: 0;
         width: 100%;
-        transform: translateX(12px);
-        top: 76px;
+        transform: none;
+        top: 68px;
         align-items: center;
         box-sizing: border-box;
         padding: 0 20px;
+        padding-left: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
+        padding-right: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
     }
 
-    /* 점선: 영문과 한글 사이 정중앙에 배치 */
+    /* 점선: 화면 가운데, 영문과 한글 사이 */
     .header-right::before {
         content: '';
         position: absolute;
-        top: -16px;
+        top: -14px;
         left: 50%;
         transform: translateX(-50%);
         width: 72%;
@@ -538,15 +540,15 @@ body::before {
         right: clamp(12px, 4vw, 20px);
     }
     .fixed-header {
-        padding-left: max(12px, env(safe-area-inset-left));
-        padding-right: max(12px, env(safe-area-inset-right));
+        padding-left: max(12px, env(safe-area-inset-left), env(safe-area-inset-right));
+        padding-right: max(12px, env(safe-area-inset-left), env(safe-area-inset-right));
         padding-top: max(2px, env(safe-area-inset-top));
         min-height: 104px;
     }
     .header-left {
         min-height: 104px;
-        padding-left: max(12px, env(safe-area-inset-left));
-        padding-right: max(12px, env(safe-area-inset-right));
+        padding-left: max(12px, env(safe-area-inset-left), env(safe-area-inset-right));
+        padding-right: max(12px, env(safe-area-inset-left), env(safe-area-inset-right));
     }
     .header-left .menu-icon {
         left: clamp(24px, 8vw, 36px);
@@ -563,11 +565,11 @@ body::before {
         padding: 0 12px;
     }
     .header-right {
-        top: 76px;
+        top: 68px;
         padding: 0 12px;
     }
     .header-right::before {
-        top: -16px;
+        top: -14px;
         max-width: min(72%, 240px);
     }
     .page-index .matter-move-arrows-fixed {
