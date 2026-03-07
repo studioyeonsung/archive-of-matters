@@ -27,7 +27,8 @@
     <div class="site-content">
     <!-- Fixed Header (same 구조 as index) -->
     <header class="fixed-header">
-        <a href="/" class="mobile-title-link" aria-label="Go to home"></a>
+        <a href="/" class="mobile-title-link mobile-title-link-eng" aria-label="홈으로 이동 (영문 타이틀)"></a>
+        <a href="/" class="mobile-title-link mobile-title-link-kor" aria-label="홈으로 이동 (한글 타이틀)"></a>
         <img src="/assets/home-icon-arrow.svg" alt="" class="header-icon nav-icon header-matter-arrow" aria-hidden="true">
         <div class="header-left">
             <img src="/assets/home-icon-menu.svg" alt="Menu" class="header-icon menu-icon">
@@ -71,15 +72,17 @@
                 <img src="/assets/menu-icon-close.svg" alt="">
             </button>
             <div class="nav-overlay-header">
-                <span class="nav-overlay-title-eng">ARCHIVE OF MATTER(S)</span>
-                <span class="nav-overlay-title-kor">아카이브 오브 매터(즈)</span>
+                <a href="/" class="nav-overlay-header-link">
+                    <span class="nav-overlay-title-eng">ARCHIVE OF MATTER(S)</span>
+                    <span class="nav-overlay-title-kor">아카이브 오브 매터(즈)</span>
+                </a>
             </div>
             <nav class="nav-overlay-list">
                 <div class="nav-overlay-sep"></div>
-                <a href="/" class="nav-overlay-item nav-overlay-item--parent">
+                <div class="nav-overlay-item nav-overlay-item--parent nav-overlay-item--matters">
                     <span class="nav-overlay-eng"><img src="/assets/menu-icon-arrow.svg" alt="" class="nav-overlay-arrow"> MATTER(S)</span>
-                    <span class="nav-overlay-kor">물질(들)</span>
-                </a>
+                    <button type="button" class="nav-overlay-kor nav-overlay-kor-matter-trigger">물질(들)</button>
+                </div>
                 <div class="nav-overlay-sep"></div>
                 <a href="/" class="nav-overlay-item nav-overlay-item--sub" data-section="01">
                     <span class="nav-overlay-eng">COPPER</span>
