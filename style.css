@@ -2115,8 +2115,8 @@ body::before {
         flex-direction: column;
         width: 100%;
         max-width: 100%;
-        padding-left: clamp(32px, 12vw, 72px);
-        padding-right: clamp(32px, 12vw, 72px);
+        padding-left: clamp(29px, 10.8vw, 65px);
+        padding-right: clamp(29px, 10.8vw, 65px);
         padding-top: 0;
         padding-bottom: 2rem;
         box-sizing: border-box;
@@ -2159,6 +2159,11 @@ body::before {
         font-size: 16px;
         line-height: 1.5;
         margin-bottom: 0.75em;
+    }
+    /* 모바일 한글 본문: 글자 크기 10% 축소 (16px → 약 14.4px) */
+    .page-about .about-content-mobile .about-col-kor.about-col-single p,
+    .page-about .about-content-mobile .about-col-kor.about-col-single p * {
+        font-size: 14.4px !important;
     }
     /* 모바일 한글 본문 행간 */
     .page-about .about-content-mobile .about-col-kor.about-col-single p {
