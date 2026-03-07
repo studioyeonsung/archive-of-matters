@@ -1492,20 +1492,27 @@ body::before {
     transition: color 0.3s ease;
 }
 
-/* 모바일: 인디케이터(타임라인)만 살짝 위로 (픽셀 확 줄임) + 브라우저 하단 탭에 가리지 않게 / 저작권·인디케이터 아래 여백 절반 → 인디케이터만 약간 더 위로 */
+/* 모바일: 인디케이터(타임라인) 고정 높이로 묶어서 브라우저 탭 사라질 때 숫자 붕 뜸 방지 */
 @media (max-width: 768px) {
     .timeline-container {
         bottom: max(46px, calc(env(safe-area-inset-bottom) + 38px));
+        height: 52px;
+        align-items: flex-end;
+        position: fixed;
     }
     .timeline-line,
     .timeline-points {
-        bottom: max(41px, calc(env(safe-area-inset-bottom) + 33px));
+        bottom: 14px;
+    }
+    .timeline-point {
+        min-height: 32px;
+        flex-shrink: 0;
     }
     .timeline-number {
-        bottom: max(28px, calc(env(safe-area-inset-bottom) + 20px));
+        bottom: 22px;
     }
     .timeline-indicator {
-        bottom: max(38px, calc(env(safe-area-inset-bottom) + 30px));
+        bottom: 14px;
     }
 }
 
