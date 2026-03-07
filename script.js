@@ -282,6 +282,7 @@ function initNavOverlay() {
 
     const openOverlay = () => {
         if (window.innerWidth > 768) return;
+        overlay.style.height = window.innerHeight + 'px';
         overlay.classList.add('is-open');
         if (backdrop) backdrop.classList.add('is-open');
         overlay.setAttribute('aria-hidden', 'false');
@@ -291,11 +292,17 @@ function initNavOverlay() {
 
     const closeOverlay = () => {
         overlay.classList.remove('is-open');
+        overlay.style.height = '';
         if (backdrop) backdrop.classList.remove('is-open');
         overlay.setAttribute('aria-hidden', 'true');
         if (backdrop) backdrop.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     };
+
+    const syncOverlayHeight = () => {
+        if (overlay.classList.contains('is-open')) overlay.style.height = window.innerHeight + 'px';
+    };
+    window.addEventListener('resize', syncOverlayHeight);
 
     menuIcon.addEventListener('click', (e) => {
         e.preventDefault();
