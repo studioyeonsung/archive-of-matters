@@ -91,11 +91,11 @@ body::before {
     }
     .mobile-title-link-eng {
         top: 0;
-        height: 40px;
+        height: 52px;
     }
     .mobile-title-link-kor {
-        top: 50px;
-        height: 44px;
+        top: 54px;
+        height: 50px;
     }
     .fixed-header:has(.mobile-title-link-eng:hover) .header-left .header-top-line .nav-text {
         font-style: italic;
@@ -105,7 +105,12 @@ body::before {
     }
 
     /* ===== 모바일 헤더 (1단계) ===== */
+    /* 타이틀/점선/한글 모두 같은 세로선에 맞춤 (뷰포트 왼쪽에서 더 오른쪽으로) */
     .fixed-header {
+        --header-title-x: 150px;
+        --header-mobile-gap: 14px;
+        /* 영문 텍스트 시각적 하단이 박스(38px) 밖으로 나오는 정도 반영 → 점선/한글 간격 균등 */
+        --header-eng-visual-offset: 8px;
         padding: 2px 20px;
         padding-left: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
         padding-right: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
@@ -155,27 +160,28 @@ body::before {
         z-index: 3;
     }
 
-    /* 영문 타이틀 'ARCHIVE OF MATTER(S)' 화면 가운데 정렬 */
+    /* 영문 타이틀 — 좌측 정렬 (--header-title-x와 동일 세로선) */
     .header-left .header-top-line {
         position: absolute;
         left: 0;
         right: 0;
-        margin-left: 0;
-        margin-right: 0;
+        margin: 0;
         top: 6px;
         height: 38px;
         min-height: 38px;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         flex-wrap: nowrap;
         gap: 4px;
-        text-align: center;
+        text-align: left;
         width: 100%;
-        padding: 0 20px;
+        padding: 0 20px 0 0;
+        padding-left: calc(var(--header-title-x) - 40px);
         box-sizing: border-box;
         transform: none;
         pointer-events: none;
+        z-index: 1;
     }
     .header-left .header-top-line .nav-text {
         pointer-events: none;
@@ -192,27 +198,29 @@ body::before {
         display: none;
     }
 
-    /* 한글 타이틀 화면 가운데 정렬, 영문보다 조금 위로 */
+    /* 한글 타이틀 — 좌측 정렬 (--header-title-x와 동일 세로선) */
     .header-right {
         position: absolute;
         left: 0;
+        right: 0;
         width: 100%;
         transform: none;
-        top: 68px;
+        top: calc(6px + 38px + var(--header-eng-visual-offset, 0px) + var(--header-mobile-gap) + 2px + var(--header-mobile-gap));
         align-items: center;
         box-sizing: border-box;
-        padding: 0 20px;
-        padding-left: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
+        padding: 0 20px 0 0;
+        padding-left: calc(var(--header-title-x) - 20px);
         padding-right: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
+        z-index: 1;
     }
 
-    /* 점선: 화면 가운데, 영문과 한글 사이 */
+    /* 점선: 좌측 정렬 (--header-title-x와 동일 세로선), 영문↔점선·점선↔한글 간격 동일 */
     .header-right::before {
         content: '';
         position: absolute;
-        top: -14px;
-        left: 50%;
-        transform: translateX(-50%);
+        top: calc(-1 * (var(--header-mobile-gap) + 2px));
+        left: calc(var(--header-title-x) - 20px);
+        transform: none;
         width: 72%;
         max-width: 260px;
         height: 2px;
@@ -230,13 +238,13 @@ body::before {
         margin-left: 0;
         margin-right: 0;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         flex-wrap: nowrap;
         gap: 4px;
-        text-align: center;
+        text-align: left;
         width: 100%;
-        padding: 0 20px;
+        padding: 0 20px 0 0;
         box-sizing: border-box;
         pointer-events: none;
     }
@@ -544,6 +552,9 @@ body::before {
         padding-right: max(12px, env(safe-area-inset-left), env(safe-area-inset-right));
         padding-top: max(2px, env(safe-area-inset-top));
         min-height: 104px;
+        --header-title-x: 132px;
+        --header-mobile-gap: 14px;
+        --header-eng-visual-offset: 8px;
     }
     .header-left {
         min-height: 104px;
@@ -559,17 +570,20 @@ body::before {
         min-height: 20px;
     }
     .header-left .header-top-line {
-        top: 10px;
+        top: max(10px, env(safe-area-inset-top));
         height: 34px;
         min-height: 34px;
-        padding: 0 12px;
+        padding: 0 12px 0 0;
+        padding-left: calc(var(--header-title-x) - 24px);
     }
     .header-right {
-        top: 68px;
-        padding: 0 12px;
+        top: calc(10px + 34px + var(--header-eng-visual-offset, 0px) + var(--header-mobile-gap) + 2px + var(--header-mobile-gap));
+        padding: 0 12px 0 0;
+        padding-left: calc(var(--header-title-x) - 12px);
     }
     .header-right::before {
-        top: -14px;
+        top: calc(-1 * (var(--header-mobile-gap) + 2px));
+        left: calc(var(--header-title-x) - 12px);
         max-width: min(72%, 240px);
     }
     .page-index .matter-move-arrows-fixed {
