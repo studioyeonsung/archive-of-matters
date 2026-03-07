@@ -77,6 +77,7 @@ window.addEventListener('load', () => {
     initMatterPopup();
     alignFixedArrowsWithKoreanTitle();
     initMobileArrowNav();
+    initMobileSwipeNav();
 });
 
 // 모바일 브라우저 하단 탭/주소창이 보일 때 실제 보이는 높이를 --vh로 설정 (가려짐·레이아웃 튐 방지)
@@ -185,6 +186,57 @@ function initMobileArrowNav() {
     arrowLeft.setAttribute('aria-label', '이전 물질로');
     arrowRight.setAttribute('role', 'button');
     arrowRight.setAttribute('aria-label', '다음 물질로');
+}
+
+// 모바일: 이미지 영역 좌우 스와이프로 이전/다음 섹션 부드럽게 이동
+function initMobileSwipeNav() {
+    const scrollContainer = document.querySelector('.page-index .scroll-container');
+    if (!scrollContainer) return;
+
+    const sections = document.querySelectorAll('.page-index .matter-section');
+    const scrollDistancePerSection = 300;
+    const scrollDistance = sections.length * scrollDistancePerSection;
+    const minSwipeDistance = 50;
+
+    function getCurrentSection() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const progress = Math.min(1, Math.max(0, scrollTop / scrollDistance));
+        const index = Math.round(progress * (sections.length - 1));
+        return Math.max(0, Math.min(index, sections.length - 1));
+    }
+
+    function scrollToSection(index) {
+        const sectionProgress = index / (sections.length - 1);
+        const clampedProgress = Math.max(0, Math.min(1, sectionProgress));
+        const targetScroll = clampedProgress * scrollDistance;
+        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    }
+
+    let startX = 0;
+    let startY = 0;
+
+    scrollContainer.addEventListener('touchstart', (e) => {
+        if (e.touches.length !== 1 || window.innerWidth > 768) return;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+
+    scrollContainer.addEventListener('touchend', (e) => {
+        if (e.changedTouches.length !== 1 || window.innerWidth > 768) return;
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        if (Math.abs(deltaX) < minSwipeDistance || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+        const current = getCurrentSection();
+        if (deltaX < 0) {
+            const next = (current + 1) % sections.length;
+            scrollToSection(next);
+        } else {
+            const prev = (current - 1 + sections.length) % sections.length;
+            scrollToSection(prev);
+        }
+    }, { passive: true });
 }
 
 // Matter popup: open on matter image/title/header matter icon click; close on overlay or X

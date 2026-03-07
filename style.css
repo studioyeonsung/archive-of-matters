@@ -487,7 +487,7 @@ body::before {
     .page-index .matter-section .matter-move-arrow {
         display: none !important; /* 고정 레이어만 사용 */
     }
-    /* 고정 화살표 레이어 (site-content 직계 → 뷰포트 기준 fixed) */
+    /* 고정 화살표: iPhone X(375px) 기준 비율 유지 – vw로 모든 모바일에서 동일 비율 */
     .page-index .matter-move-arrows-fixed {
         display: flex;
         position: fixed;
@@ -496,14 +496,14 @@ body::before {
         top: 58.5%; /* fallback; JS가 한글 라인에 맞춰 덮어씀 */
         transform: translateY(-50%);
         justify-content: center;
-        gap: 567px;
+        gap: 69.33vw; /* 260/375 ≈ iPhone X 기준 */
         align-items: center;
         padding: 0 20px;
         pointer-events: none;
         z-index: 100;
     }
     .page-index .matter-move-arrows-fixed .matter-move-arrow-fixed {
-        width: 34.56px;
+        width: 7.47vw; /* 28/375 ≈ iPhone X 기준 */
         height: auto;
         flex-shrink: 0;
         filter: brightness(0);
@@ -567,10 +567,10 @@ body::before {
     }
     .page-index .matter-move-arrows-fixed {
         padding: 0 12px;
-        gap: clamp(228px, 68vw, 567px);
+        gap: 69.33vw;
     }
     .page-index .matter-move-arrows-fixed .matter-move-arrow-fixed {
-        width: 28px;
+        width: 7.47vw;
     }
     .page-index .matter-section[data-section="01"] .matter-title-eng.matter-title-text,
     .page-index .matter-section[data-section="01"] .matter-title-kor.matter-title-text,
