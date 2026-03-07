@@ -358,13 +358,16 @@ body::before {
         visibility: visible;
         opacity: 1;
     }
-    /* 모바일: 햄버거 메뉴 오버레이 — 상단 블랙 패널, 하단 라운드, 열림/닫힘 슬라이드 (스케치 레이어보다 위에) */
+    /* 모바일: 햄버거 메뉴 오버레이 — 뷰포트 전체 높이 채움 (탭 있/없 동일한 하단 여백) */
     .nav-overlay {
         display: block;
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
+        bottom: 0;
+        height: 100vh;
+        height: 100dvh;
         z-index: 10002;
         padding-top: max(env(safe-area-inset-top), env(safe-area-inset-bottom), 8px);
         padding-left: max(20px, env(safe-area-inset-left));
@@ -373,7 +376,6 @@ body::before {
         background-color: #000000;
         border-radius: 0 0 28px 28px;
         box-sizing: border-box;
-        max-height: 58vh;
         overflow-y: auto;
         transform: translateY(-100%);
         visibility: hidden;
