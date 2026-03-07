@@ -110,7 +110,7 @@ body::before {
         padding-left: max(20px, env(safe-area-inset-left));
         padding-right: max(20px, env(safe-area-inset-right));
         padding-top: max(2px, env(safe-area-inset-top));
-        min-height: 86px;
+        min-height: 104px;
         align-items: center;
         flex-wrap: wrap;
     }
@@ -128,7 +128,7 @@ body::before {
         top: 0;
         width: 100%;
         height: 100%;
-        min-height: 86px;
+        min-height: 104px;
         display: flex;
         align-items: flex-start;
         order: 1;
@@ -162,9 +162,9 @@ body::before {
         right: 0;
         margin-left: 0;
         margin-right: 0;
-        top: 8px;
-        height: 36px;
-        min-height: 36px;
+        top: 6px;
+        height: 38px;
+        min-height: 38px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -192,23 +192,23 @@ body::before {
         display: none;
     }
 
-    /* 한글 타이틀 가운데 정렬, 영문과 동일 중앙축 → 오른쪽으로 이동 (점선과 겹치지 않도록 고정 간격) */
+    /* 한글 타이틀 가운데 정렬, 영문과 간격 넓혀서 점선이 그 사이에 오도록 */
     .header-right {
         position: absolute;
         left: 0;
         width: 100%;
         transform: translateX(12px);
-        top: 56px;
+        top: 76px;
         align-items: center;
         box-sizing: border-box;
         padding: 0 20px;
     }
 
-    /* 점선: 영문·한글 사이 고정 위치 (디바이스별 겹침/이동 방지) */
+    /* 점선: 영문과 한글 사이 정중앙에 배치 */
     .header-right::before {
         content: '';
         position: absolute;
-        top: -10px;
+        top: -16px;
         left: 50%;
         transform: translateX(-50%);
         width: 72%;
@@ -541,10 +541,10 @@ body::before {
         padding-left: max(12px, env(safe-area-inset-left));
         padding-right: max(12px, env(safe-area-inset-right));
         padding-top: max(2px, env(safe-area-inset-top));
-        min-height: 82px;
+        min-height: 104px;
     }
     .header-left {
-        min-height: 82px;
+        min-height: 104px;
         padding-left: max(12px, env(safe-area-inset-left));
         padding-right: max(12px, env(safe-area-inset-right));
     }
@@ -557,17 +557,17 @@ body::before {
         min-height: 20px;
     }
     .header-left .header-top-line {
-        top: 12px;
-        height: 32px;
-        min-height: 32px;
+        top: 10px;
+        height: 34px;
+        min-height: 34px;
         padding: 0 12px;
     }
     .header-right {
-        top: 56px;
+        top: 76px;
         padding: 0 12px;
     }
     .header-right::before {
-        top: -10px;
+        top: -16px;
         max-width: min(72%, 240px);
     }
     .page-index .matter-move-arrows-fixed {
