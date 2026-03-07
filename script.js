@@ -439,10 +439,12 @@ function initHorizontalScroll() {
         const hitbox = timelineIndicator.querySelector('.timeline-indicator-hitbox');
         const dragTarget = hitbox || timelineIndicator;
         
+        const getIndicatorLeft = () => parseFloat(timelineIndicator.style.left) || timelineStart;
+        
         dragTarget.addEventListener('mousedown', (e) => {
             isDragging = true;
             startX = e.clientX;
-            startLeft = parseFloat(timelineIndicator.style.left) || timelineStart;
+            startLeft = getIndicatorLeft();
             e.preventDefault();
             e.stopPropagation();
             return false;
@@ -466,6 +468,33 @@ function initHorizontalScroll() {
             if (isDragging) {
                 isDragging = false;
             }
+        });
+        
+        // 모바일: 인디케이터 원 홀드 후 드래그로 스크롤
+        dragTarget.addEventListener('touchstart', (e) => {
+            if (e.touches.length !== 1) return;
+            isDragging = true;
+            startX = e.touches[0].clientX;
+            startLeft = getIndicatorLeft();
+            e.preventDefault();
+        }, { passive: false });
+        
+        document.addEventListener('touchmove', (e) => {
+            if (!isDragging || e.touches.length !== 1) return;
+            e.preventDefault();
+            const { timelineWidth, timelineStart } = getTimelineDimensions();
+            const deltaX = e.touches[0].clientX - startX;
+            let newLeft = startLeft + deltaX;
+            newLeft = Math.max(timelineStart, Math.min(timelineStart + timelineWidth, newLeft));
+            timelineIndicator.style.left = `${newLeft}px`;
+            updateScrollFromIndicator(newLeft);
+        }, { passive: false });
+        
+        document.addEventListener('touchend', () => {
+            if (isDragging) isDragging = false;
+        });
+        document.addEventListener('touchcancel', () => {
+            if (isDragging) isDragging = false;
         });
     }
 
