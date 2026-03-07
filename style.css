@@ -63,17 +63,73 @@ body::before {
     display: none;
 }
 
-.mobile-title-link {
-    display: none;
+/* 모바일: About / News / Contact 에서만 플레이스홀더 표시, 본문 숨김 */
+@media (max-width: 768px) {
+    .page-about .mobile-placeholder,
+    .page-news .mobile-placeholder,
+    .page-contact .mobile-placeholder {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100dvh;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+        gap: 1.5em;
+        background-color: #ffffff;
+        position: relative;
+        z-index: 100;
+    }
+    .page-about .mobile-placeholder .mobile-placeholder-kor-block,
+    .page-news .mobile-placeholder .mobile-placeholder-kor-block,
+    .page-contact .mobile-placeholder .mobile-placeholder-kor-block {
+        display: block !important;
+    }
+    .page-about .mobile-placeholder .mobile-placeholder-eng-block,
+    .page-news .mobile-placeholder .mobile-placeholder-eng-block,
+    .page-contact .mobile-placeholder .mobile-placeholder-eng-block {
+        display: block !important;
+    }
+    .page-about .mobile-placeholder .mobile-placeholder-eng,
+    .page-news .mobile-placeholder .mobile-placeholder-eng,
+    .page-contact .mobile-placeholder .mobile-placeholder-eng {
+        display: block !important;
+        font-family: 'Rubik', sans-serif;
+        font-size: 15px;
+        line-height: 1.5;
+        color: #000000 !important;
+        margin: 0 0 0.25em 0;
+    }
+    .page-about .mobile-placeholder .mobile-placeholder-kor,
+    .page-news .mobile-placeholder .mobile-placeholder-kor,
+    .page-contact .mobile-placeholder .mobile-placeholder-kor {
+        display: block !important;
+        font-family: "neutronic-hangeul", sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #000000 !important;
+        margin: 0 0 0.25em 0;
+    }
+    .page-about .site-content,
+    .page-news .site-content,
+    .page-contact .site-content {
+        display: none !important;
+    }
+    /* 플레이스홀더만 보이게: 흰 캔버스(body::before) 숨김 */
+    html:has(body.page-about) body::before,
+    html:has(body.page-news) body::before,
+    html:has(body.page-contact) body::before {
+        display: none !important;
+    }
 }
 
 @media (max-width: 768px) {
-    /* 모바일: 플레이스홀더 숨기고 실제 콘텐츠 표시 */
-    .mobile-placeholder {
+    /* 모바일 인덱스: 플레이스홀더 숨기고 실제 콘텐츠 표시 */
+    .page-index .mobile-placeholder {
         display: none !important;
     }
-
-    .site-content {
+    .page-index .site-content {
         display: block !important;
     }
 
@@ -1914,7 +1970,7 @@ body::before {
         min-height: 0;
     }
     .page-about .fixed-header {
-        min-height: 72px;
+        min-height: 104px;
     }
     .page-about .about-main {
         padding-top: 0;
@@ -2038,15 +2094,13 @@ body::before {
     background-image: url("assets/contact-layer.png");
 }
 
-/* 모바일: about-layer-mobile.png 오버레이 (홈 matters-layer-mobile과 동일 세팅) */
+/* 모바일: about-layer-mobile.png — site-content::before로만 사용하고, 여기 레이어는 숨김 (배경이 가려지지 않게) */
 @media (max-width: 768px) {
     .page-about .about-sketch-layer {
-        display: block;
-        background-image: url("assets/about-layer-mobile.png");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        filter: brightness(0);
+        display: none !important;
+    }
+    .page-contact .about-sketch-layer {
+        display: none !important;
     }
 }
 
@@ -2133,13 +2187,46 @@ body::before {
     .page-about .about-content-mobile {
         display: none !important;
     }
+    .page-about .about-lang-switch-fixed {
+        display: none !important;
+    }
 }
 
 /* 모바일: .about-content-desktop·footer 숨김, .about-content-mobile만 표시 */
 @media (max-width: 768px) {
-    /* 스크롤 시 텍스트가 흰 영역 아래로 가려지게: 헤더에 흰 배경, ENG/한국어는 기존 흰 배경 유지 */
+    /* 스케치 레이어를 헤더·본문 사이에 두어: 본문 스크롤 시 가려지고, 헤더는 투명해 배경 효과 보임 */
+    .page-about .site-content {
+        position: relative;
+        z-index: 1;
+    }
+    .page-about .site-content::before {
+        content: '';
+        position: fixed;
+        top: 104px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("assets/about-layer-mobile.png");
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: cover;
+        filter: brightness(0);
+        z-index: 999;
+        pointer-events: none;
+    }
+    /* index처럼: 헤더는 흰 배경 + 검은 텍스트·검은 점선 (배경 효과는 헤더 아래만) */
     .page-about .fixed-header {
         background-color: #ffffff;
+        z-index: 1000;
+    }
+    .page-about .about-main {
+        position: relative;
+        z-index: 0;
+        background: transparent !important;
+    }
+    .page-about .about-scroll,
+    .page-about .about-content-mobile {
+        background: transparent !important;
     }
     .page-about .about-content-desktop {
         display: none !important;
@@ -2157,23 +2244,51 @@ body::before {
         margin-right: auto;
         flex: 1 1 auto;
         min-height: 0;
+        padding-top: calc(104px + 2.5em); /* 헤더(104px)+ENG/한국어 바 아래에서 시작 */
     }
     .page-about .about-lang-switch {
         display: flex;
-        position: sticky;
-        top: 72px; /* 고정 헤더 아래에 붙도록 */
-        z-index: 2;
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
         background: #ffffff;
         flex-shrink: 0;
+        padding-top: 0.5em;
         padding-bottom: 0.5em;
-        margin-bottom: 0.5em;
+        margin-bottom: 0;
+        justify-content: center;
+    }
+    /* 모바일: 본문 안 ENG/한국어는 숨기고, site-content 직계 고정 바만 사용 (레이어 위에 보이도록) */
+    .page-about .about-content-mobile .about-lang-switch {
+        visibility: hidden;
+        height: 0;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+    .page-about .about-lang-switch-fixed {
+        display: flex;
+        position: fixed;
+        top: 104px;
+        left: 0;
+        right: 0;
+        z-index: 1001;
+        background: #ffffff;
+        flex-shrink: 0;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        margin-bottom: 0;
+        justify-content: center;
+        align-items: center;
+        gap: 0.35em;
     }
     .page-about .about-content-mobile .about-text-wrap {
         flex: none;
         min-height: 0;
         display: block;
         overflow-y: visible;
-        padding-top: 2.5em; /* 첫 문장이 sticky ENG/한국어 바에 가려지지 않도록 */
     }
     .page-about .about-content-mobile .about-col-single {
         margin-bottom: 100px;
@@ -2281,7 +2396,7 @@ body::before {
         padding-bottom: calc(72px + 8vh) !important;
     }
     .page-about .fixed-header {
-        min-height: 72px !important;
+        min-height: 104px !important;
     }
     .page-about .about-content-mobile .about-credits-block-eng,
     .page-about .about-content-mobile .about-credits-block-kor {
