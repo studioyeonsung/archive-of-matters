@@ -4,9 +4,16 @@
     box-sizing: border-box;
 }
 
+img, video {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
 :root {
     --section-color: #000000; /* Text and icons: black */
-    --vh: 100vh; /* JS에서 실제 보이는 높이(visualViewport)로 덮어씀 → 하단 탭/주소창 대응 */
+    --vh: 100vh; /* fallback */
+    --vh: 100dvh; /* JS에서 덮어쓸 수 있음; 브라우저 주소창 변화 대응 */
 }
 
 html {
@@ -306,6 +313,7 @@ body::before {
         height: 100%;
         min-width: 100vw;
         min-height: 100vh;
+        min-height: 100dvh;
         background-color: #FFFFFF;
         border-radius: 50px;
         z-index: 0;
@@ -662,6 +670,9 @@ body::before {
     justify-content: space-between;
     align-items: flex-start;
     padding: clamp(20px, 3vw, 40px) clamp(20px, 5vw, 80px);
+    padding-top: max(clamp(20px, 3vw, 40px), env(safe-area-inset-top));
+    padding-left: max(clamp(20px, 5vw, 80px), env(safe-area-inset-left));
+    padding-right: max(clamp(20px, 5vw, 80px), env(safe-area-inset-right));
     z-index: 1000;
     background-color: transparent;
     pointer-events: none;
@@ -942,8 +953,11 @@ body::before {
     width: 100%;
     max-width: 100vw;
     height: 100vh;
+    height: 100dvh;
     min-height: 100vh;
+    min-height: 100dvh;
     max-height: 100vh;
+    max-height: 100dvh;
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -952,6 +966,7 @@ body::before {
 .scroll-container {
     width: 100vw;
     min-height: 100vh;
+    min-height: 100dvh;
     position: relative;
     z-index: 1;
 }
@@ -964,6 +979,7 @@ body::before {
     display: flex;
     width: fit-content;
     height: 100vh;
+    height: 100dvh;
 }
 
 /* 전체 스크롤 구간을 덮는 단일 그레인 레이어 (섹션 구분 없이 자연스럽게 연결) */
@@ -988,7 +1004,9 @@ body::before {
     width: 100vw;
     max-width: 100%;
     height: 100vh;
+    height: 100dvh;
     max-height: 100vh;
+    max-height: 100dvh;
     position: relative;
     display: flex;
     align-items: center;
@@ -1463,7 +1481,7 @@ body::before {
 .copyright {
     position: fixed;
     right: calc(clamp(40px, 8vw, 120px) - 60px);
-    bottom: 70px;
+    bottom: max(70px, calc(env(safe-area-inset-bottom) + 50px));
     transform: rotate(90deg);
     transform-origin: right bottom;
     font-size: 12px;
@@ -1498,6 +1516,7 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     pointer-events: none;
     z-index: 10000;
     background-image: url("assets/matters-layer.png");
@@ -1525,12 +1544,15 @@ body::before {
 .page-index {
     overflow: hidden; /* 가로만 스크롤, 세로 스크롤 없음 */
     height: 100vh;
+    height: 100dvh;
     min-height: 100vh;
+    min-height: 100dvh;
 }
 
 .page-about {
     overflow: hidden; /* 전체 화면은 고정 */
     min-height: 100vh;
+    min-height: 100dvh;
     /* index와 동일: 검은 배경 + 둥근 흰 캔버스(body::before) */
     background-color: #000000;
 }
@@ -1545,6 +1567,7 @@ body::before {
 .page-contact {
     overflow: hidden;
     min-height: 100vh;
+    min-height: 100dvh;
     background-color: #000000; /* index와 동일: 검은 배경 + 흰 오버레이 */
 }
 
@@ -1561,6 +1584,7 @@ body::before {
 .page-news {
     overflow: hidden; /* about와 동일: 전체 화면 고정, 텍스트 영역만 스크롤 */
     min-height: 100vh;
+    min-height: 100dvh;
     background-color: #000000; /* index와 동일: 검은 배경 + 흰 오버레이 */
 }
 
@@ -1595,6 +1619,7 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     pointer-events: none;
     z-index: 10000;
     /* about-layer.png 오버레이 적용 (index의 matters_layer와 동일한 방식) */
@@ -1649,13 +1674,14 @@ body::before {
     left: 0;
     width: 100%;
     height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     /* 텍스트 박스 높이 유지하면서 전체 위치를 약간 위로 이동 */
     padding-top: 280px;
     padding-left: clamp(40px, 8vw, 120px);
     padding-right: clamp(40px, 8vw, 120px);
-    padding-bottom: 180px;
+    padding-bottom: calc(180px + env(safe-area-inset-bottom, 0px));
     box-sizing: border-box;
     /* About / News / Contact 본문은 투명하게 두고,
        둥근 흰 캔버스는 body::before에서만 담당하게 함 */
@@ -2073,7 +2099,7 @@ body::before {
 .about-copyright {
     position: fixed;
     right: calc(clamp(40px, 8vw, 120px) - 60px);
-    bottom: 70px;
+    bottom: max(70px, calc(env(safe-area-inset-bottom) + 50px));
     transform: rotate(90deg);
     transform-origin: right bottom;
     font-size: 12px;
@@ -2108,6 +2134,7 @@ body::before {
     padding: 3.75em clamp(32px, 5vw, 56px);
     max-width: 90vw;
     box-sizing: border-box;
+    margin: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 .matter-popup-close {
