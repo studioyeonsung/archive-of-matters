@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/xzq8inj.css">
     <link rel="stylesheet" href="/style.css">
 </head>
-<body class="page-contact">
+<body class="page-contact contact-lang-eng">
     <!-- Mobile placeholder: shown only on small screens -->
     <div class="mobile-placeholder" aria-live="polite">
         <div class="mobile-placeholder-eng-block">
@@ -119,9 +119,40 @@
         </div>
     </div>
 
+    <!-- 모바일 전용: ENG/한국어 고정 바 (About/News와 동일) -->
+    <div class="about-lang-switch about-lang-switch-fixed" role="group" aria-label="언어 선택">
+        <button type="button" class="about-lang-btn is-active" data-lang="eng">ENG</button>
+        <span class="about-lang-sep">/</span>
+        <button type="button" class="about-lang-btn" data-lang="kor">한국어</button>
+    </div>
+
+    <!-- 모바일 전용: 하단 마스크 -->
+    <div class="bottom-mask" aria-hidden="true"></div>
+
+    <!-- 모바일 전용: 크레딧 고정 (마스크 위 오버레이, About과 동일) -->
+    <div class="about-credits-fixed" aria-hidden="false">
+        <div class="about-credits-block about-credits-block-eng">
+            <p class="about-credits">
+                <span class="credit-line-1"><span class="credit-bold">Artistic Research</span> <span>Yeon Sung</span></span>
+                <span class="credit-line-2"><span class="credit-bold">Graphic Design &amp; Development</span> <span>Studio165</span></span>
+            </p>
+        </div>
+        <div class="about-credits-block about-credits-block-kor">
+            <p class="about-credits about-credits-kor">
+                <span class="credit-line-1"><span class="credit-bold-kor">아티스틱 리서치</span> <span>연성</span></span>
+                <span class="credit-line-2"><span class="credit-bold-kor">그래픽 디자인 &amp; 웹개발</span> <span>Studio165</span></span>
+            </p>
+        </div>
+    </div>
+
+    <!-- 모바일 전용: 상단 마스크 -->
+    <div class="top-mask" aria-hidden="true"></div>
+
+    <!-- CONTACT Content: 데스크톱 = 2단 그리드 / 모바일 = 1단+언어선택 (About/News 프레임워크) -->
     <main class="about-main">
         <div class="about-scroll">
-            <div class="about-content contact-content-grid">
+            <!-- 데스크톱 전용: 2단 그리드 (모바일에서 숨김) -->
+            <div class="about-content about-content-desktop contact-content-grid">
                 <div class="about-col about-col-eng">
                     <p class="contact-intro">
                         Archive of Matter(s) is open to collaboration, research exchange, and collective inquiry. If you are working on related practices or have a project in mind, get in touch.<br>
@@ -143,6 +174,40 @@
                     </p>
                 </div>
             </div>
+
+            <!-- 모바일 전용: 1단 + 언어 선택(ENG/한국어) + 하단 고정 크레딧 -->
+            <div class="about-content about-content-single about-content-mobile">
+                <div class="about-lang-switch" role="group" aria-label="언어 선택">
+                    <button type="button" class="about-lang-btn is-active" data-lang="eng">ENG</button>
+                    <span class="about-lang-sep">/</span>
+                    <button type="button" class="about-lang-btn" data-lang="kor">한국어</button>
+                </div>
+                <div class="about-text-wrap">
+                    <div class="about-col about-col-eng about-col-single">
+                        <p class="contact-intro">
+                            Archive of Matter(s) is open to collaboration, research exchange, and collective inquiry. If you are working on related practices or have a project in mind, get in touch.<br>
+                            <a href="mailto:info@archiveofmatters.com" class="contact-link"><img src="/assets/contact-icon-arrow.svg" alt="" class="contact-link-icon" aria-hidden="true"> info@archiveofmatters.com</a>
+                        </p>
+                        <p class="contact-instagram-intro">
+                            Curious about the not-so-glamorous life of running this platform?<br>
+                            Follow the platform operator on Instagram.<br>
+                            <a href="https://instagram.com/studio.yeon.sung" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Instagram (external link)"><img src="/assets/contact-icon-arrow.svg" alt="" class="contact-link-icon" aria-hidden="true"> instagram.com/studio.yeon.sung</a>
+                        </p>
+                    </div>
+                    <div class="about-col about-col-kor about-col-single">
+                        <p class="contact-intro">
+                            아카이브 오브 매터(즈)는 콜라보레이션과 연구 교류에 열려 있습니다.<br>
+                            관련된 작업을 하고 있거나 함께하고 싶은 프로젝트가 있다면 언제든 연락 주세요.<br>
+                            <a href="mailto:info@archiveofmatters.com" class="contact-link"><img src="/assets/contact-icon-arrow.svg" alt="" class="contact-link-icon" aria-hidden="true"> info@archiveofmatters.com</a>
+                        </p>
+                        <p class="contact-instagram-intro">
+                            플랫폼 운영자의 재미없지만 가끔 올라오는 프로젝트 관련 일상이 궁금하다면 인스타그램에서 만나요.<br>
+                            <a href="https://instagram.com/studio.yeon.sung" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="인스타그램 (외부 링크)"><img src="/assets/contact-icon-arrow.svg" alt="" class="contact-link-icon" aria-hidden="true"> instagram.com/studio.yeon.sung</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -158,6 +223,10 @@
     </div><!-- /.site-content -->
 
     <div class="about-sketch-layer" aria-hidden="true"></div>
+
+    <!-- 그레인 텍스처 (인덱스 matters-grain과 동일) -->
+    <div class="grain-layer" aria-hidden="true"></div>
+
     <div class="copyright">© 2025 STUDIO YEON SUNG</div>
 
     <script>
