@@ -390,6 +390,8 @@ function initAboutLangSwitch() {
             allBtns.forEach((b) => {
                 if (b.getAttribute('data-lang') === lang) b.classList.add('is-active');
             });
+            /* 언어 전환 시 페이지 최상단으로 스크롤 */
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
         });
     });
 }
