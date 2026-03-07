@@ -378,17 +378,18 @@ function initNavOverlay() {
 function initAboutLangSwitch() {
     const body = document.body;
     if (!body.classList.contains('page-about')) return;
-    const wrap = document.querySelector('.page-about .about-content-single');
-    if (!wrap) return;
-    const btns = wrap.querySelectorAll('.about-lang-btn[data-lang]');
-    btns.forEach((btn) => {
+    const allBtns = document.querySelectorAll('.page-about .about-lang-btn[data-lang]');
+    if (!allBtns.length) return;
+    allBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
             const lang = btn.getAttribute('data-lang');
             if (!lang) return;
             body.classList.remove('about-lang-eng', 'about-lang-kor');
             body.classList.add(lang === 'kor' ? 'about-lang-kor' : 'about-lang-eng');
-            btns.forEach((b) => b.classList.remove('is-active'));
-            btn.classList.add('is-active');
+            allBtns.forEach((b) => b.classList.remove('is-active'));
+            allBtns.forEach((b) => {
+                if (b.getAttribute('data-lang') === lang) b.classList.add('is-active');
+            });
         });
     });
 }
