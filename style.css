@@ -1891,6 +1891,14 @@ body::before {
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
     }
+    html:has(body.page-about),
+    html:has(body.page-news),
+    html:has(body.page-contact) {
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        height: 100%;
+    }
     .page-about .about-main,
     .page-news .about-main,
     .page-contact .about-main {
@@ -2129,6 +2137,10 @@ body::before {
 
 /* 모바일: .about-content-desktop·footer 숨김, .about-content-mobile만 표시 */
 @media (max-width: 768px) {
+    /* 스크롤 시 텍스트가 흰 영역 아래로 가려지게: 헤더에 흰 배경, ENG/한국어는 기존 흰 배경 유지 */
+    .page-about .fixed-header {
+        background-color: #ffffff;
+    }
     .page-about .about-content-desktop {
         display: none !important;
     }
@@ -2148,13 +2160,20 @@ body::before {
     }
     .page-about .about-lang-switch {
         display: flex;
+        position: sticky;
+        top: 72px; /* 고정 헤더 아래에 붙도록 */
+        z-index: 2;
+        background: #ffffff;
+        flex-shrink: 0;
+        padding-bottom: 0.5em;
+        margin-bottom: 0.5em;
     }
     .page-about .about-content-mobile .about-text-wrap {
-        flex: 1 1 auto;
+        flex: none;
         min-height: 0;
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
+        display: block;
+        overflow-y: visible;
+        padding-top: 2.5em; /* 첫 문장이 sticky ENG/한국어 바에 가려지지 않도록 */
     }
     .page-about .about-content-mobile .about-col-single {
         margin-bottom: 100px;
@@ -2256,7 +2275,7 @@ body::before {
 /* 모바일 About: 텍스트 영역 높이 확 줄임, 전체를 위로 올림 */
 @media (max-width: 768px) {
     .page-about .about-main {
-        padding-top: 16vh !important;
+        padding-top: 72px !important; /* ENG/한국어를 헤더 바로 아래, 되게 위에 */
         padding-left: 10vw !important;
         padding-right: 10vw !important;
         padding-bottom: calc(72px + 8vh) !important;
@@ -2299,6 +2318,30 @@ body::before {
 .page-about .about-col::-webkit-scrollbar-thumb,
 .page-news .about-col::-webkit-scrollbar-thumb,
 .page-contact .about-col::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 3px;
+}
+
+/* About / News / Contact: 페이지(메인) 스크롤바 검은색 */
+html:has(body.page-about),
+html:has(body.page-news),
+html:has(body.page-contact) {
+    scrollbar-color: #000000 transparent;
+    scrollbar-width: thin;
+}
+html:has(body.page-about)::-webkit-scrollbar,
+html:has(body.page-news)::-webkit-scrollbar,
+html:has(body.page-contact)::-webkit-scrollbar {
+    width: 6px;
+}
+html:has(body.page-about)::-webkit-scrollbar-track,
+html:has(body.page-news)::-webkit-scrollbar-track,
+html:has(body.page-contact)::-webkit-scrollbar-track {
+    background: transparent;
+}
+html:has(body.page-about)::-webkit-scrollbar-thumb,
+html:has(body.page-news)::-webkit-scrollbar-thumb,
+html:has(body.page-contact)::-webkit-scrollbar-thumb {
     background: #000000;
     border-radius: 3px;
 }
