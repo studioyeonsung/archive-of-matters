@@ -2115,8 +2115,8 @@ body::before {
         flex-direction: column;
         width: 100%;
         max-width: 100%;
-        padding-left: clamp(29px, 10.8vw, 65px);
-        padding-right: clamp(29px, 10.8vw, 65px);
+        padding-left: clamp(23px, 8.64vw, 52px);
+        padding-right: clamp(23px, 8.64vw, 52px);
         padding-top: 0;
         padding-bottom: 2rem;
         box-sizing: border-box;
