@@ -93,20 +93,20 @@ function setVisualViewportHeight() {
     window.addEventListener('resize', setVh);
 }
 
-// 모바일: 고정 화살표를 한글 물질 텍스트 라인과 세로 정렬
+// 모바일: 고정 화살표를 영문 물질 텍스트(섹션 왼쪽) 라인과 세로 정렬
 function alignFixedArrowsWithKoreanTitle() {
     const fixedArrows = document.querySelector('.page-index .matter-move-arrows-fixed');
     if (!fixedArrows) return;
 
     const update = () => {
         if (window.innerWidth > 768) return;
-        const sectionRights = document.querySelectorAll('.page-index .matter-section .section-right');
-        if (!sectionRights.length) return;
+        const sectionLefts = document.querySelectorAll('.page-index .matter-section .section-left');
+        if (!sectionLefts.length) return;
         const vh = window.innerHeight;
         const vCenter = vh / 2;
         let best = null;
         let bestDist = Infinity;
-        sectionRights.forEach((el) => {
+        sectionLefts.forEach((el) => {
             const r = el.getBoundingClientRect();
             const centerY = r.top + r.height / 2;
             const dist = Math.abs(centerY - vCenter);
@@ -117,7 +117,7 @@ function alignFixedArrowsWithKoreanTitle() {
         });
         if (best) {
             const centerY = best.top + best.height / 2;
-            fixedArrows.style.top = `${centerY + 28}px`; /* 모바일 화살표 한글 라인보다 살짝 아래 */
+            fixedArrows.style.top = `${centerY - 16}px`; /* 영문 물질 텍스트보다 16px 위 */
         }
     };
 
