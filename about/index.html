@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/xzq8inj.css">
     <link rel="stylesheet" href="/style.css">
 </head>
-<body class="page-about">
+<body class="page-about about-lang-eng">
     <!-- Mobile placeholder: shown only on small screens -->
     <div class="mobile-placeholder" aria-live="polite">
         <div class="mobile-placeholder-eng-block">
@@ -122,10 +122,11 @@
         </div>
     </div>
 
-    <!-- ABOUT Content -->
+    <!-- ABOUT Content: 데스크톱 = News와 동일 구조(2단) / 모바일 = 1단+언어선택 -->
     <main class="about-main">
         <div class="about-scroll">
-            <div class="about-content">
+            <!-- 데스크톱 전용: News와 동일한 2단 (about-content만, -single 없음) -->
+            <div class="about-content about-content-desktop">
                 <div class="about-col about-col-eng">
                     <p>
                         <span class="aom-medium-oblique">Archive of Matter(s)</span> is a long-term artistic research platform working on, with, and through matter(s).
@@ -150,12 +151,6 @@
                         <span class="aom-medium-oblique">Archive of Matter(s)</span> is currently archived and operated independently by artist-researcher Yeon Sung.
                     </p>
                 </div>
-                <div class="about-credits-block about-credits-block-eng">
-                    <p class="about-credits">
-                        <span class="credit-line-1"><span class="credit-bold">Artistic Research</span> <span>Yeon Sung</span></span>
-                        <span class="credit-line-2"><span class="credit-bold">Graphic Design &amp; Development</span> <span>Studio165</span></span>
-                    </p>
-                </div>
                 <div class="about-col about-col-kor">
                     <p>
                         <span class="aom-semibold-kor">아카이브 오브 매터(즈)</span>는 물질(들)을 통해, 물질과 함께, 물질 위에서 작동하는 장기 예술 리서치 플랫폼이다.
@@ -178,12 +173,6 @@
                         <span class="aom-semibold-kor">아카이브 오브 매터(즈)</span>는 현재 예술가-연구자 연성(Yeon Sung)이 독자적으로 운영하고 있다.
                     </p>
                 </div>
-                <div class="about-credits-block about-credits-block-kor">
-                    <p class="about-credits about-credits-kor">
-                        <span class="credit-line-1"><span class="credit-bold-kor">아티스틱 리서치</span> <span>연성</span></span>
-                        <span class="credit-line-2"><span class="credit-bold-kor">그래픽 디자인 &amp; 웹개발</span> <span>Studio165</span></span>
-                    </p>
-                </div>
             </div>
 
             <footer class="about-footer">
@@ -196,6 +185,82 @@
                     </p>
                 </div>
             </footer>
+
+            <!-- 모바일 전용: 1단 + 언어 선택(ENG/한국어) + 하단 고정 크레딧 -->
+            <div class="about-content about-content-single about-content-mobile">
+                <!-- 언어 선택: ENG / 한국어 (기본 영문) -->
+                <div class="about-lang-switch" role="group" aria-label="언어 선택">
+                    <button type="button" class="about-lang-btn is-active" data-lang="eng">ENG</button>
+                    <span class="about-lang-sep">/</span>
+                    <button type="button" class="about-lang-btn" data-lang="kor">한국어</button>
+                </div>
+
+                <!-- 1단 텍스트 영역 (선택 언어에 따라 하나만 표시) — 크레딧은 밖에 두어 스크롤 영역 높이에 영향 없게 -->
+                <div class="about-text-wrap">
+                    <div class="about-col about-col-eng about-col-single">
+                    <p>
+                        <span class="aom-medium-oblique">Archive of Matter(s)</span> is a long-term artistic research platform working on, with, and through matter(s).
+                        <span class="aom-medium-oblique">Copper, Fine dust, Saharan dust, Weather</span> — the materials
+                        <span class="aom-medium-oblique">Archive of Matter(s)</span> engages with are not simply research subjects. Each carries the traces of colonial
+                        history, ecological crisis, and political entanglement within its very substance, already present in the everyday environments we breathe and touch.
+                    </p>
+                    <p>
+                        <span class="aom-medium-oblique">Archive of Matter(s)</span> does not document or display these materials. Instead, it explores ways of sensing and
+                        making together through custom-built apparatuses, performative interventions, and open-source tools. Matter is never passive. Neither is the human body.
+                        Toxic air passes through lungs. Radioactive dust settles in bones. Industrial weather weathers bodies. The boundary between self and world is not a given
+                        but a political condition. Each material in <span class="aom-medium-oblique">Archive of Matter(s)</span> is a site of inquiry — not to be represented, but to be sensed,
+                        built with, and performed through.
+                    </p>
+                    <p>
+                        <span class="aom-medium-oblique">Archive of Matter(s)</span> is aware of its own contradictions. It speaks the language of decolonial practice while operating within European
+                        institutional frameworks, and builds open-source tools while depending on specific technological infrastructures. It names and frames — knowing that naming is never neutral —
+                        and continues to do so. These tensions are not resolved here. <span class="aom-medium-oblique">Archive of Matter(s)</span> continues to operate within them. What does it mean
+                        to sense, build with, and perform through matter — rather than merely represent it?
+                    </p>
+                    <p>
+                        <span class="aom-medium-oblique">Archive of Matter(s)</span> is currently archived and operated independently by artist-researcher Yeon Sung.
+                    </p>
+                </div>
+                <div class="about-col about-col-kor about-col-single">
+                    <p>
+                        <span class="aom-semibold-kor">아카이브 오브 매터(즈)</span>는 물질(들)을 통해, 물질과 함께, 물질 위에서 작동하는 장기 예술 리서치 플랫폼이다.
+                        구리, 미세먼지, 사하라 먼지, 날씨 — <span class="aom-semibold-kor">아카이브 오브 매터(즈)</span>가 다루는 물질들은 단순한 연구 대상이 아니다.
+                        각각의 물질은 식민주의의 역사, 생태적 위기, 정치적 얽힘의 흔적을 몸속에 담고 있으며, 우리가 숨 쉬고 접촉하는 일상의 환경 속에 이미 존재한다.
+                    </p>
+                    <p>
+                        <span class="aom-semibold-kor">아카이브 오브 매터(즈)</span>는 그 물질들을 기록하거나 전시하는 것이 아니라, 직접 제작한 장치와 퍼포머티브 개입, 오픈소스 툴을 통해
+                        함께 감각하고 함께 만드는 방식을 탐구한다. 물질은 수동적이지 않다. 우리의 몸 역시 마찬가지다. 독성 공기는 폐를 통과하고, 방사성 먼지는 뼈에 쌓이고,
+                        산업화된 날씨는 몸을 마모시킨다. 자아와 세계의 경계는 주어진 것이 아니라 정치적 조건이다.
+                        <span class="aom-semibold-kor">아카이브 오브 매터(즈)</span>의 각 물질은 탐구의 장소다 — 재현되는 것이 아니라, 감각되고, 함께 만들어지고, 수행되는 것으로.
+                    </p>
+                    <p>
+                        <span class="aom-semibold-kor">아카이브 오브 매터(즈)</span>는 자신의 모순을 알고 있다. 유럽의 기관 구조 안에서 작동하면서 탈식민적 실천의 언어를 말하고,
+                        특정 기술 인프라에 의존하면서 오픈소스 툴을 만든다. 이름 붙이고 프레임을 만드는 행위가 결코 중립적이지 않다는 것을 알면서도, 계속해서 이름 붙이고 프레임을 만든다.
+                        이 긴장들은 여기서 해소되지 않는다 — <span class="aom-semibold-kor">아카이브 오브 매터(즈)</span>는 그 모순 안에서 계속 작동한다.
+                        물질을 재현하는 것이 아니라, 물질을 통해 감각하고, 함께 만들고, 수행한다는 것은 무엇을 의미하는가?
+                    </p>
+                    <p>
+                        <span class="aom-semibold-kor">아카이브 오브 매터(즈)</span>는 현재 예술가-연구자 연성(Yeon Sung)이 독자적으로 운영하고 있다.
+                    </p>
+                </div>
+                </div><!-- /.about-text-wrap -->
+
+                <!-- 크레딧: .about-text-wrap 밖에 두어 스크롤 영역 높이가 텍스트만 기준으로 잡히게 (position:fixed로 하단 고정) -->
+                <div class="about-credits-block about-credits-block-eng">
+                    <p class="about-credits">
+                        <span class="credit-line-1"><span class="credit-bold">Artistic Research</span> <span>Yeon Sung</span></span>
+                        <span class="credit-line-2"><span class="credit-bold">Graphic Design &amp; Development</span> <span>Studio165</span></span>
+                    </p>
+                </div>
+                <div class="about-credits-block about-credits-block-kor">
+                    <p class="about-credits about-credits-kor">
+                        <span class="credit-line-1"><span class="credit-bold-kor">아티스틱 리서치</span> <span>연성</span></span>
+                        <span class="credit-line-2"><span class="credit-bold-kor">그래픽 디자인 &amp; 웹개발</span> <span>Studio165</span></span>
+                    </p>
+                </div>
+            </div><!-- /.about-content-mobile -->
+
+        </div>
         </div>
     </main>
 

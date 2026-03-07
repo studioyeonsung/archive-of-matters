@@ -79,6 +79,7 @@ window.addEventListener('load', () => {
     initMobileArrowNav();
     initMobileSwipeNav();
     initNavOverlay();
+    initAboutLangSwitch();
 });
 
 // 모바일 브라우저 하단 탭/주소창이 보일 때 실제 보이는 높이를 --vh로 설정 (가려짐·레이아웃 튐 방지)
@@ -371,6 +372,24 @@ function initNavOverlay() {
 
     window.addEventListener('resize', () => {
         if (window.innerWidth > 768) closeOverlay();
+    });
+}
+
+function initAboutLangSwitch() {
+    const body = document.body;
+    if (!body.classList.contains('page-about')) return;
+    const wrap = document.querySelector('.page-about .about-content-single');
+    if (!wrap) return;
+    const btns = wrap.querySelectorAll('.about-lang-btn[data-lang]');
+    btns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            if (!lang) return;
+            body.classList.remove('about-lang-eng', 'about-lang-kor');
+            body.classList.add(lang === 'kor' ? 'about-lang-kor' : 'about-lang-eng');
+            btns.forEach((b) => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+        });
     });
 }
 

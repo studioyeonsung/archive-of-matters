@@ -1883,6 +1883,28 @@ body::before {
 
 /* 모바일 About: 위(영문)·아래(한글) 두 단으로 구분 — 그리드 무시하고 flex로 세로 배치, 텍스트 영역 높이 확대 */
 @media (max-width: 768px) {
+    /* 트윅: body 스크롤 사용 → 스크롤 시 브라우저 주소창/탭이 숨겨져 화면이 더 길어 보임 (홈과 동일) */
+    .page-about,
+    .page-news,
+    .page-contact {
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+    .page-about .about-main,
+    .page-news .about-main,
+    .page-contact .about-main {
+        position: static;
+        height: auto;
+        min-height: 100dvh;
+    }
+    .page-about .about-scroll,
+    .page-news .about-scroll,
+    .page-contact .about-scroll {
+        overflow-y: visible;
+        flex: none;
+        min-height: 0;
+    }
     .page-about .fixed-header {
         min-height: 72px;
     }
@@ -1891,15 +1913,14 @@ body::before {
         padding-left: 20px;
         padding-right: 20px;
         padding-bottom: 24px;
-        height: 100vh;
-        height: 100dvh;
+        height: auto;
+        min-height: 100dvh;
         display: flex;
         flex-direction: column;
     }
     .page-about .about-scroll {
-        flex: 1 1 auto;
         min-height: 0;
-        overflow-y: auto;
+        overflow-y: visible;
         -webkit-overflow-scrolling: touch;
         padding-top: 0;
         overflow-x: hidden;
@@ -2095,16 +2116,138 @@ body::before {
     min-height: 0;
 }
 
+/* ABOUT: 데스크톱 = News와 동일 구조(.about-content 2단) / 모바일 = 1단+언어선택 */
+/* 데스크톱: .about-content-desktop 표시, .about-content-mobile 숨김 (공통 .about-content 그리드 적용) */
+@media (min-width: 769px) {
+    .page-about .about-content-desktop {
+        display: grid;
+    }
+    .page-about .about-content-mobile {
+        display: none !important;
+    }
+}
+
+/* 모바일: .about-content-desktop·footer 숨김, .about-content-mobile만 표시 */
+@media (max-width: 768px) {
+    .page-about .about-content-desktop {
+        display: none !important;
+    }
+    .page-about .about-scroll > .about-footer {
+        display: none !important;
+    }
+    .page-about .about-content-mobile {
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: unset;
+        gap: 0;
+        max-width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
+        flex: 1 1 auto;
+        min-height: 0;
+    }
+    .page-about .about-lang-switch {
+        display: flex;
+    }
+    .page-about .about-content-mobile .about-text-wrap {
+        flex: 1 1 auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    .page-about .about-content-mobile .about-col-single {
+        margin-bottom: 100px;
+    }
+    .page-about.about-lang-eng .about-content-mobile .about-col-kor,
+    .page-about.about-lang-eng .about-credits-block-kor {
+        display: none !important;
+    }
+    .page-about.about-lang-kor .about-content-mobile .about-col-eng,
+    .page-about.about-lang-kor .about-credits-block-eng {
+        display: none !important;
+    }
+    .page-about.about-lang-eng .about-content-mobile .about-credits-block-eng,
+    .page-about.about-lang-kor .about-content-mobile .about-credits-block-kor {
+        display: block !important;
+    }
+    .page-about .about-content-mobile .about-credits-block-eng,
+    .page-about .about-content-mobile .about-credits-block-kor {
+        position: fixed;
+        bottom: max(72px, calc(env(safe-area-inset-bottom) + 56px));
+        left: clamp(40px, 8vw, 120px);
+        right: clamp(40px, 8vw, 120px);
+        margin-top: 0;
+        transform: none;
+        max-width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.page-about .about-lang-switch {
+    align-items: center;
+    justify-content: center;
+    gap: 0.35em;
+    margin-bottom: 1em;
+    flex-shrink: 0;
+}
+
+.page-about .about-lang-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: clamp(14px, 1.1vw, 16px);
+    font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+    color: #000000;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.page-about .about-lang-btn[data-lang="kor"] {
+    font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+}
+
+.page-about .about-lang-btn:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+}
+
+.page-about .about-lang-btn.is-active {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    font-weight: 500;
+}
+
+.page-about .about-lang-sep {
+    color: #000000;
+    font-size: inherit;
+    pointer-events: none;
+}
+
+.page-about .about-text-wrap {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.page-about .about-content-single .about-col-single {
+    width: 100%;
+    max-width: 650px;
+    margin-right: auto;
+    margin-left: 0;
+    height: auto;
+    overflow-y: visible;
+}
+
 /* ABOUT: 영문·한글 텍스트 박스만 위로 이동 (크레딧 위치는 유지) */
-.page-about .about-content {
+.page-about .about-content:not(.about-content-single) {
     margin-top: -24px;
 }
 
-/* About 전용: 텍스트 박스 영역 높이 확 줄임 (상하 패딩 대폭 확대) */
-.page-about .about-main {
-    padding-top: 420px;
-    padding-bottom: calc(520px + env(safe-area-inset-bottom, 0px));
-}
+/* About: 크레딧은 .about-text-wrap 밖으로 빼서 스크롤 영역 높이가 텍스트만 기준으로 잡히게 함. 데스크톱 패딩은 News/Contact와 동일(280/180) 사용. */
 
 .about-credits-block {
     display: none;
@@ -2120,6 +2263,12 @@ body::before {
     }
     .page-about .fixed-header {
         min-height: 72px !important;
+    }
+    .page-about .about-content-mobile .about-credits-block-eng,
+    .page-about .about-content-mobile .about-credits-block-kor {
+        left: 10vw;
+        right: 10vw;
+        bottom: max(80px, calc(env(safe-area-inset-bottom) + 64px));
     }
 }
 
