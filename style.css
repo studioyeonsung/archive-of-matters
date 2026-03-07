@@ -849,6 +849,18 @@ body::before {
         visibility: visible;
         opacity: 1;
     }
+    .page-about .copyright,
+    .page-news .copyright,
+    .page-contact .copyright {
+        z-index: 10001;
+        display: block !important;
+        right: auto !important;
+        left: 50% !important;
+        bottom: max(20px, calc(env(safe-area-inset-bottom) + 14px)) !important;
+        transform: translateX(-50%) !important;
+        transform-origin: center bottom;
+        text-align: center;
+    }
 }
 
 /* Font Face */
@@ -1869,6 +1881,107 @@ body::before {
     display: none; /* About에선 홈용 overlay 대신 전용 about_layer 사용 */
 }
 
+/* 모바일 About: 위(영문)·아래(한글) 두 단으로 구분 — 그리드 무시하고 flex로 세로 배치, 텍스트 영역 높이 확대 */
+@media (max-width: 768px) {
+    .page-about .fixed-header {
+        min-height: 72px;
+    }
+    .page-about .about-main {
+        padding-top: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 24px;
+        height: 100vh;
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+    }
+    .page-about .about-scroll {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-top: 0;
+        overflow-x: hidden;
+    }
+    .page-about .about-content {
+        display: flex !important;
+        flex-direction: column;
+        gap: 0;
+        max-width: 100%;
+        grid-template-columns: none;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+    .page-about .about-content .about-col-eng {
+        padding-bottom: 2em;
+        padding-top: 0.5em;
+        margin-bottom: 0;
+        margin-top: 0;
+        width: 100%;
+    }
+    .page-about .about-content .about-col-kor {
+        padding-top: 0.25em;
+        padding-bottom: 2em;
+        margin-top: 0;
+        width: 100%;
+    }
+    .page-about .about-credits-block {
+        width: 100%;
+        padding-top: 0;
+        padding-bottom: 0;
+        display: block;
+    }
+    .page-about .about-credits-block-eng {
+        margin-top: 0;
+    }
+    .page-about .about-credits-block-eng .about-credits {
+        margin-top: -2em !important;
+    }
+    .page-about .about-credits-block-kor .about-credits {
+        margin-top: -2em !important;
+    }
+    .page-about .about-credits-block .about-credits {
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        margin: 0;
+    }
+    .page-about .about-credits-block .about-credits .credit-line-2 {
+        display: block;
+        margin-top: 0.4em;
+    }
+    .page-about .about-footer {
+        display: none;
+    }
+    .page-about .about-col {
+        overflow-y: visible;
+        height: auto;
+        min-height: 0;
+        padding-right: 0;
+    }
+    .page-about .about-col p {
+        font-size: 15px;
+        line-height: 1.3;
+        margin-bottom: 0.5em;
+    }
+    .page-about .about-col-kor p {
+        line-height: 1.3;
+        margin-bottom: 0.5em;
+    }
+    .page-about .about-footer {
+        margin-top: 2.5em;
+        transform: none;
+        padding-top: 1.5em;
+    }
+    .page-about .about-credits-wrap {
+        grid-template-columns: 1fr;
+        gap: 0.75em;
+    }
+    .page-about .about-credits:first-child {
+        margin-bottom: 0.25em;
+    }
+}
+
 /* About 페이지 최상단 고정 레이어 (홈 matters_layer와 동일 방식) */
 .about-sketch-layer {
     position: fixed;
@@ -1894,6 +2007,18 @@ body::before {
 
 .page-contact .about-sketch-layer {
     background-image: url("assets/contact-layer.png");
+}
+
+/* 모바일: about-layer-mobile.png 오버레이 (홈 matters-layer-mobile과 동일 세팅) */
+@media (max-width: 768px) {
+    .page-about .about-sketch-layer {
+        display: block;
+        background-image: url("assets/about-layer-mobile.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        filter: brightness(0);
+    }
 }
 
 .header-icon-link {
@@ -1975,6 +2100,29 @@ body::before {
     margin-top: -24px;
 }
 
+/* About 전용: 텍스트 박스 영역 높이 확 줄임 (상하 패딩 대폭 확대) */
+.page-about .about-main {
+    padding-top: 420px;
+    padding-bottom: calc(520px + env(safe-area-inset-bottom, 0px));
+}
+
+.about-credits-block {
+    display: none;
+}
+
+/* 모바일 About: 텍스트 영역 높이 확 줄임, 전체를 위로 올림 */
+@media (max-width: 768px) {
+    .page-about .about-main {
+        padding-top: 16vh !important;
+        padding-left: 10vw !important;
+        padding-right: 10vw !important;
+        padding-bottom: calc(72px + 8vh) !important;
+    }
+    .page-about .fixed-header {
+        min-height: 72px !important;
+    }
+}
+
 .page-about .about-col,
 .page-news .about-col,
 .page-contact .about-col {
@@ -2024,6 +2172,11 @@ body::before {
 .page-news .about-col p:last-child,
 .page-contact .about-col p:last-child {
     margin-bottom: 0;
+}
+
+/* About 영문만 행간 (위 .about-col p 1.65보다 나중에 적용) */
+.page-about .about-col-eng p {
+    line-height: 1.55;
 }
 
 /* Contact 그리드: intro(이메일 포함) · 인스타 문단 간격 */
@@ -2362,8 +2515,20 @@ body::before {
     font-size: 12px;
     color: var(--section-color);
     white-space: nowrap;
-    z-index: 1000;
+    z-index: 10001;
     pointer-events: none;
+    transition: color 0.3s ease;
+    visibility: visible;
+    opacity: 1;
+}
+
+.page-about .copyright,
+.page-news .copyright,
+.page-contact .copyright {
+    color: #000000;
+    z-index: 10001;
+    visibility: visible;
+    opacity: 1;
 }
 
 /* about-sketch-layer는 기본 z-index:10000 값을 그대로 사용 (index의 matters_layer와 동일) */
