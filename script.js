@@ -282,7 +282,8 @@ function initNavOverlay() {
 
     const openOverlay = () => {
         if (window.innerWidth > 768) return;
-        overlay.style.height = window.innerHeight + 'px';
+        const margin = 24;
+        overlay.style.maxHeight = (window.innerHeight - margin * 2) + 'px';
         overlay.classList.add('is-open');
         if (backdrop) backdrop.classList.add('is-open');
         overlay.setAttribute('aria-hidden', 'false');
@@ -292,17 +293,20 @@ function initNavOverlay() {
 
     const closeOverlay = () => {
         overlay.classList.remove('is-open');
-        overlay.style.height = '';
+        overlay.style.maxHeight = '';
         if (backdrop) backdrop.classList.remove('is-open');
         overlay.setAttribute('aria-hidden', 'true');
         if (backdrop) backdrop.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     };
 
-    const syncOverlayHeight = () => {
-        if (overlay.classList.contains('is-open')) overlay.style.height = window.innerHeight + 'px';
+    const syncOverlayMaxHeight = () => {
+        if (overlay.classList.contains('is-open')) {
+            const margin = 24;
+            overlay.style.maxHeight = (window.innerHeight - margin * 2) + 'px';
+        }
     };
-    window.addEventListener('resize', syncOverlayHeight);
+    window.addEventListener('resize', syncOverlayMaxHeight);
 
     menuIcon.addEventListener('click', (e) => {
         e.preventDefault();
@@ -311,6 +315,28 @@ function initNavOverlay() {
     });
 
     if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+
+    const headerLink = overlay.querySelector('.nav-overlay-header-link');
+    if (headerLink) {
+        headerLink.addEventListener('click', () => {
+            closeOverlay();
+        });
+    }
+
+    overlay.addEventListener('click', (e) => {
+        const el = e.target && e.target.nodeType === 1 ? e.target : (e.target && e.target.parentElement);
+        if (!el || !el.closest('.nav-overlay-kor-matter-trigger')) return;
+        e.preventDefault();
+        e.stopPropagation();
+        closeOverlay();
+        const popup = document.getElementById('matter-popup');
+        if (popup) {
+            setTimeout(() => {
+                popup.classList.add('is-open');
+                popup.setAttribute('aria-hidden', 'false');
+            }, 400);
+        }
+    });
 
     document.addEventListener('click', (e) => {
         if (window.innerWidth > 768) return;
