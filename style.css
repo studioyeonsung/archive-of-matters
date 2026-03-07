@@ -105,15 +105,16 @@ body::before {
     }
 
     /* ===== 모바일 헤더 (1단계) ===== */
-    /* 타이틀/점선/한글 모두 같은 세로선에 맞춤 (뷰포트 왼쪽에서 더 오른쪽으로) */
+    /* 타이틀/점선/한글 모두 같은 세로선 — 뷰포트 기준으로 맞추기 위해 좌측 패딩은 .fixed-header만 사용 */
     .fixed-header {
-        --header-title-x: 150px;
-        --header-mobile-gap: 14px;
+        --header-title-x: 130px;
+        --header-outer-left: max(20px, env(safe-area-inset-left));
+        --header-mobile-gap: 10px;
         /* 영문 텍스트 시각적 하단이 박스(38px) 밖으로 나오는 정도 반영 → 점선/한글 간격 균등 */
-        --header-eng-visual-offset: 8px;
+        --header-eng-visual-offset: 6px;
         padding: 2px 20px;
-        padding-left: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
-        padding-right: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
+        padding-left: var(--header-outer-left);
+        padding-right: max(20px, env(safe-area-inset-right));
         padding-top: max(2px, env(safe-area-inset-top));
         min-height: 104px;
         align-items: center;
@@ -139,8 +140,8 @@ body::before {
         order: 1;
         z-index: 2;
         padding: 0 20px;
-        padding-left: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
-        padding-right: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
+        padding-left: 0;
+        padding-right: max(20px, env(safe-area-inset-right));
         box-sizing: border-box;
     }
 
@@ -158,13 +159,18 @@ body::before {
         min-height: 24px;
         flex-shrink: 0;
         z-index: 3;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+    }
+    .header-left .menu-icon:hover {
+        opacity: 0.7;
     }
 
-    /* 영문 타이틀 — 좌측 정렬 (--header-title-x와 동일 세로선) */
+    /* 영문 타이틀 — 뷰포트 기준 --header-title-x 세로선 (left로 배치해 한글·점선과 동일 기준) */
     .header-left .header-top-line {
         position: absolute;
-        left: 0;
-        right: 0;
+        left: calc(var(--header-title-x) - var(--header-outer-left) + 6px);
+        right: 20px;
         margin: 0;
         top: 6px;
         height: 38px;
@@ -175,9 +181,8 @@ body::before {
         flex-wrap: nowrap;
         gap: 4px;
         text-align: left;
-        width: 100%;
-        padding: 0 20px 0 0;
-        padding-left: calc(var(--header-title-x) - 40px);
+        width: auto;
+        padding: 0;
         box-sizing: border-box;
         transform: none;
         pointer-events: none;
@@ -198,7 +203,7 @@ body::before {
         display: none;
     }
 
-    /* 한글 타이틀 — 좌측 정렬 (--header-title-x와 동일 세로선) */
+    /* 한글 타이틀 — 뷰포트 기준 --header-title-x 세로선 */
     .header-right {
         position: absolute;
         left: 0;
@@ -209,17 +214,17 @@ body::before {
         align-items: center;
         box-sizing: border-box;
         padding: 0 20px 0 0;
-        padding-left: calc(var(--header-title-x) - 20px);
-        padding-right: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
+        padding-left: calc(var(--header-title-x) - var(--header-outer-left));
+        padding-right: max(20px, env(safe-area-inset-right));
         z-index: 1;
     }
 
-    /* 점선: 좌측 정렬 (--header-title-x와 동일 세로선), 영문↔점선·점선↔한글 간격 동일 */
+    /* 점선: 뷰포트 기준 --header-title-x 세로선 */
     .header-right::before {
         content: '';
         position: absolute;
-        top: calc(-1 * (var(--header-mobile-gap) + 2px));
-        left: calc(var(--header-title-x) - 20px);
+        top: calc(-1 * (var(--header-mobile-gap) + 2px) + 3px);
+        left: calc(var(--header-title-x) - var(--header-outer-left));
         transform: none;
         width: 72%;
         max-width: 260px;
@@ -336,6 +341,146 @@ body::before {
     }
     .page-index .fixed-header {
         z-index: 1000;
+    }
+    /* 메뉴 열렸을 때 나머지 영역 검은색 반투명 레이어 */
+    .nav-overlay-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 1001;
+        background: rgba(0, 0, 0, 0.65);
+        pointer-events: none;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .nav-overlay-backdrop.is-open {
+        pointer-events: auto;
+        visibility: visible;
+        opacity: 1;
+    }
+    /* 모바일: 햄버거 메뉴 오버레이 — 상단 블랙 패널, 하단 라운드, 열림/닫힘 슬라이드 */
+    .nav-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1002;
+        padding-top: max(env(safe-area-inset-top), 8px);
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+        padding-bottom: max(env(safe-area-inset-bottom), 8px);
+        background-color: #000000;
+        border-radius: 0 0 28px 28px;
+        box-sizing: border-box;
+        max-height: 58vh;
+        overflow-y: auto;
+        transform: translateY(-100%);
+        visibility: hidden;
+        pointer-events: none;
+        transition: transform 0.5s ease, visibility 0.5s ease;
+    }
+    .nav-overlay.is-open {
+        transform: translateY(0);
+        visibility: visible;
+        pointer-events: auto;
+    }
+    .nav-overlay-close {
+        position: absolute;
+        top: max(16px, env(safe-area-inset-top));
+        right: max(20px, env(safe-area-inset-right));
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+    }
+    .nav-overlay-close img {
+        width: 14px;
+        height: 14px;
+        filter: brightness(0) invert(1);
+    }
+    .nav-overlay-header {
+        display: grid;
+        grid-template-columns: 252px 0px minmax(0, 1fr);
+        align-items: center;
+        padding: 10px 36px 10px 0;
+    }
+    .nav-overlay-title-eng {
+        grid-column: 1;
+        font-family: 'Rubik', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #ffffff;
+        text-align: left;
+    }
+    .nav-overlay-title-kor {
+        grid-column: 3;
+        font-family: "neutronic-hangeul", sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        color: #ffffff;
+        text-align: left;
+        flex-shrink: 0;
+        margin-left: -50px;
+    }
+    .nav-overlay-list {
+        display: flex;
+        flex-direction: column;
+    }
+    .nav-overlay-sep {
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.4);
+        margin: 0;
+    }
+    .nav-overlay-item {
+        display: grid;
+        grid-template-columns: 252px 0px minmax(0, 1fr);
+        align-items: center;
+        padding: 11px 0;
+        text-decoration: none;
+        color: #ffffff;
+        transition: opacity 0.2s ease;
+    }
+    .nav-overlay-item:hover,
+    .nav-overlay-item:focus {
+        opacity: 0.85;
+    }
+    .nav-overlay-item--sub {
+        padding-left: 0;
+    }
+    .nav-overlay-item--sub .nav-overlay-eng {
+        padding-left: 80px;
+    }
+    .nav-overlay-eng {
+        grid-column: 1;
+        font-family: 'Rubik', sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        text-align: left;
+    }
+    .nav-overlay-arrow {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+        filter: brightness(0) invert(1);
+    }
+    .nav-overlay-kor {
+        grid-column: 3;
+        font-family: "neutronic-hangeul", sans-serif;
+        font-size: 11px;
+        font-weight: 400;
+        text-align: left;
+        flex-shrink: 0;
+        margin-left: -50px;
     }
     .page-index .scroll-container {
         position: relative;
@@ -541,6 +686,16 @@ body::before {
     }
 }
 
+/* 작은 디바이스 (iPhone X, XS 등 ~480px 이하): 헤더 20px 왼쪽, 햄버거는 제자리 */
+@media (max-width: 480px) {
+    .fixed-header {
+        transform: translateX(-20px);
+    }
+    .header-left .menu-icon {
+        transform: translateY(-50%) translateX(20px);
+    }
+}
+
 /* 작은 모바일 (iPhone XS, SE, 12 mini 등 ~400px 이하): 패딩·폰트·간격 축소 */
 @media (max-width: 400px) {
     .mobile-title-link {
@@ -548,18 +703,20 @@ body::before {
         right: clamp(12px, 4vw, 20px);
     }
     .fixed-header {
-        padding-left: max(12px, env(safe-area-inset-left), env(safe-area-inset-right));
-        padding-right: max(12px, env(safe-area-inset-left), env(safe-area-inset-right));
+        transform: translateX(-20px);
+        padding-left: max(12px, env(safe-area-inset-left));
+        padding-right: max(12px, env(safe-area-inset-right));
         padding-top: max(2px, env(safe-area-inset-top));
         min-height: 104px;
-        --header-title-x: 132px;
-        --header-mobile-gap: 14px;
-        --header-eng-visual-offset: 8px;
+        --header-title-x: 112px;
+        --header-outer-left: max(12px, env(safe-area-inset-left));
+        --header-mobile-gap: 10px;
+        --header-eng-visual-offset: 6px;
     }
     .header-left {
         min-height: 104px;
-        padding-left: max(12px, env(safe-area-inset-left), env(safe-area-inset-right));
-        padding-right: max(12px, env(safe-area-inset-left), env(safe-area-inset-right));
+        padding-left: 0;
+        padding-right: max(12px, env(safe-area-inset-right));
     }
     .header-left .menu-icon {
         left: clamp(24px, 8vw, 36px);
@@ -568,22 +725,24 @@ body::before {
         height: 20px !important;
         min-width: 20px;
         min-height: 20px;
+        transform: translateY(-50%) translateX(20px);
     }
     .header-left .header-top-line {
         top: max(10px, env(safe-area-inset-top));
         height: 34px;
         min-height: 34px;
-        padding: 0 12px 0 0;
-        padding-left: calc(var(--header-title-x) - 24px);
+        left: calc(var(--header-title-x) - var(--header-outer-left) + 6px);
+        right: 12px;
+        padding: 0;
     }
     .header-right {
         top: calc(10px + 34px + var(--header-eng-visual-offset, 0px) + var(--header-mobile-gap) + 2px + var(--header-mobile-gap));
         padding: 0 12px 0 0;
-        padding-left: calc(var(--header-title-x) - 12px);
+        padding-left: calc(var(--header-title-x) - var(--header-outer-left));
     }
     .header-right::before {
-        top: calc(-1 * (var(--header-mobile-gap) + 2px));
-        left: calc(var(--header-title-x) - 12px);
+        top: calc(-1 * (var(--header-mobile-gap) + 2px) + 3px);
+        left: calc(var(--header-title-x) - var(--header-outer-left));
         max-width: min(72%, 240px);
     }
     .page-index .matter-move-arrows-fixed {
@@ -720,14 +879,16 @@ body::before {
     pointer-events: auto;
 }
 
-/* 왼쪽 헤더만 margin 적용 → 오른쪽(weather·아카이브)는 모든 페이지 동일 위치 */
+/* 왼쪽 헤더만 margin 적용 → 오른쪽(weather·아카이브)는 모든 페이지 동일 위치 (데스크톱만) */
 .header-top-line {
     display: flex;
     align-items: center;
     gap: clamp(28px, 5vw, 120px);
 }
-.header-left .header-top-line {
-    margin-left: clamp(20px, 3vw, 50px);
+@media (min-width: 769px) {
+    .header-left .header-top-line {
+        margin-left: clamp(20px, 3vw, 50px);
+    }
 }
 .header-right .header-top-line {
     margin-left: 0;
@@ -749,7 +910,7 @@ body::before {
 
 .header-right-icon-2 {
     margin-right: clamp(15px, 1.5vw, 30px);
-    margin-left: -100px;
+    margin-left: -50px;
 }
 
 .header-right-text-2 {
@@ -846,6 +1007,21 @@ body::before {
     max-width: 22px !important;
     max-height: 22px !important;
     object-fit: contain;
+}
+
+.nav-overlay {
+    display: none !important; /* 데스크톱에서만 숨김 */
+}
+.nav-overlay-backdrop {
+    display: none !important; /* 데스크톱에서만 숨김 */
+}
+@media (max-width: 768px) {
+    .nav-overlay {
+        display: block !important; /* 모바일에서는 슬라이드용 block 유지 */
+    }
+    .nav-overlay-backdrop {
+        display: block !important; /* 모바일에서만 표시 */
+    }
 }
 
 .menu-icon {
