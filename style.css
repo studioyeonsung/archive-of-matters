@@ -859,7 +859,8 @@ body::before {
         opacity: 1;
     }
     .page-news .copyright,
-    .page-contact .copyright {
+    .page-contact .copyright,
+    .page-about .copyright {
         z-index: 10001;
         display: block !important;
         right: auto !important;
@@ -2001,10 +2002,18 @@ body::before {
     background-image: url("assets/contact-layer.png");
 }
 
-/* 모바일: Contact만 고정 레이어 숨김 (About은 레이어+텍스트 둘 다 보이게) */
+/* 모바일: Contact만 고정 레이어 숨김 (About은 about-layer-mobile.png 오버레이, index matters-layer-mobile과 동일) */
 @media (max-width: 768px) {
     .page-contact .about-sketch-layer {
         display: none !important;
+    }
+    .page-about .about-sketch-layer {
+        display: block;
+        background-image: url("assets/about-layer-mobile.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        filter: brightness(0);
     }
     /* About: 레이어(z-index 10000) 위에 본문이 보이도록 */
     .page-about .site-content {
@@ -2100,6 +2109,13 @@ body::before {
     .page-about .about-lang-switch-fixed {
         display: none !important;
     }
+    .page-about .top-mask,
+    .page-about .bottom-mask {
+        display: none !important;
+    }
+    .page-about .about-credits-fixed {
+        display: none !important;
+    }
 }
 
 /* ABOUT 모바일(768px 이하): 1단 레이아웃, 상단 EN/KR 전환, 선택 언어만 표시, 텍스트 영역 화면 너비 꽉 채움 */
@@ -2110,6 +2126,65 @@ body::before {
     .page-about .about-scroll > .about-footer {
         display: none !important;
     }
+    /* 레이어 순서: 본문(1) < 상단마스크(5) < 배경프레임(10) < 헤더·언어버튼(11) */
+    .page-about .about-main {
+        z-index: 1;
+    }
+    .page-about .bottom-mask {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: calc(11px + clamp(23px, 8.64vw, 52px));
+        right: calc(11px + clamp(23px, 8.64vw, 52px));
+        height: calc(126px + env(safe-area-inset-bottom));
+        background: #ffffff;
+        z-index: 5;
+        pointer-events: none;
+    }
+    /* 상단 마스크: 헤더+언어바 영역만 덮고, 좌우는 텍스트 영역 너비만(검은 배경 노출) — 너비 10px 축소(좌우 5px씩) */
+    .page-about .top-mask {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: calc(11px + clamp(23px, 8.64vw, 52px));
+        right: calc(11px + clamp(23px, 8.64vw, 52px));
+        height: calc(128px + 4em);
+        background: #ffffff;
+        z-index: 5;
+        pointer-events: none;
+    }
+    .page-about .fixed-header,
+    .page-about .about-lang-switch-fixed {
+        z-index: 11;
+    }
+    .page-about .fixed-header {
+        background-color: transparent;
+    }
+    .page-about .about-lang-switch-fixed {
+        display: flex !important;
+        position: fixed;
+        top: 128px;
+        left: 0;
+        right: 0;
+        z-index: 11;
+        background: #ffffff;
+        flex-shrink: 0;
+        padding: 0.5em 0;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        gap: 0.35em;
+    }
+    /* 본문 사라지는 위치만 아래로: 버튼 아래 흰 영역 연장 (패딩은 유지) */
+    .page-about .about-lang-switch-fixed::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: 2em;
+        background: #ffffff;
+    }
     .page-about .about-content-mobile {
         display: flex !important;
         flex-direction: column;
@@ -2118,24 +2193,8 @@ body::before {
         padding-left: clamp(23px, 8.64vw, 52px);
         padding-right: clamp(23px, 8.64vw, 52px);
         padding-top: 0;
-        padding-bottom: 2rem;
+        padding-bottom: calc(2.4rem + 126px + env(safe-area-inset-bottom));
         box-sizing: border-box;
-    }
-    /* 상단 고정 언어 전환: EN / 한국어 (헤더 바로 아래, 약간 내림) */
-    .page-about .about-lang-switch-fixed {
-        display: flex !important;
-        position: fixed;
-        top: 128px;
-        left: 0;
-        right: 0;
-        z-index: 1001;
-        background: #ffffff;
-        flex-shrink: 0;
-        padding: 0.5em 0;
-        margin: 0;
-        justify-content: center;
-        align-items: center;
-        gap: 0.35em;
     }
     /* 모바일 본문 안 언어 스위치는 숨김(고정 바만 사용) */
     .page-about .about-content-mobile .about-lang-switch {
@@ -2171,24 +2230,61 @@ body::before {
     }
     /* 선택한 언어만 표시 (기본 EN) */
     .page-about.about-lang-eng .about-content-mobile .about-col-kor,
-    .page-about.about-lang-eng .about-content-mobile .about-credits-block-kor {
+    .page-about.about-lang-eng .about-credits-fixed .about-credits-block-kor {
         display: none !important;
     }
     .page-about.about-lang-kor .about-content-mobile .about-col-eng,
-    .page-about.about-lang-kor .about-content-mobile .about-credits-block-eng {
+    .page-about.about-lang-kor .about-credits-fixed .about-credits-block-eng {
         display: none !important;
     }
-    .page-about.about-lang-eng .about-content-mobile .about-credits-block-eng,
-    .page-about.about-lang-kor .about-content-mobile .about-credits-block-kor {
+    .page-about.about-lang-eng .about-credits-fixed .about-credits-block-eng,
+    .page-about.about-lang-kor .about-credits-fixed .about-credits-block-kor {
         display: block !important;
     }
-    /* 크레딧: 모바일에서 하단에 표시(표시/숨김은 위 언어 규칙으로 처리) */
-    .page-about .about-content-mobile .about-credits-block-eng,
-    .page-about .about-content-mobile .about-credits-block-kor {
-        position: static;
-        margin-top: 2rem;
+    /* 크레딧: 마스크와 같은 영역에 두고 z-index로 마스크 위에 겹쳐 표시, 5px 더 위로 */
+    .page-about .about-credits-fixed {
+        display: block;
+        position: fixed;
+        bottom: calc(65px + env(safe-area-inset-bottom));
+        left: calc(15px + clamp(23px, 8.64vw, 52px));
+        right: clamp(23px, 8.64vw, 52px);
+        width: auto;
+        padding-left: 0;
+        padding-right: 0;
+        box-sizing: border-box;
+        z-index: 10;
+        pointer-events: none;
+    }
+    .page-about .about-credits-fixed .about-credits-block-eng,
+    .page-about .about-credits-fixed .about-credits-block-kor {
+        display: block;
+        margin: 0;
         padding: 0;
         font-size: 12px;
+    }
+    .page-about .about-credits-fixed .about-credits p {
+        margin: 0;
+        padding: 0;
+    }
+    .page-about .about-credits-fixed .credit-line-1,
+    .page-about .about-credits-fixed .credit-line-2 {
+        display: block;
+    }
+    .page-about .about-credits-fixed .credit-line-1 {
+        margin-bottom: 0.25em;
+    }
+    /* 영문 크레딧만 행간 축소 */
+    .page-about .about-credits-fixed .about-credits-block-eng .about-credits {
+        line-height: 1.35;
+    }
+    .page-about .about-credits-fixed .about-credits-block-eng .credit-line-1 {
+        margin-bottom: 0.15em;
+    }
+    .page-about.about-lang-eng .about-credits-fixed .about-credits-block-kor {
+        display: none !important;
+    }
+    .page-about.about-lang-kor .about-credits-fixed .about-credits-block-eng {
+        display: none !important;
     }
 }
 
