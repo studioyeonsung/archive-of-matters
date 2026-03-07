@@ -2709,6 +2709,7 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
 
 .about-credits .credit-bold {
     font-family: "parabolica-medium", "parabolica", sans-serif;
+    font-weight: 600;
 }
 
 .about-credits .credit-semibold {
