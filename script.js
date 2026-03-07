@@ -377,20 +377,23 @@ function initNavOverlay() {
 
 function initAboutLangSwitch() {
     const body = document.body;
-    if (!body.classList.contains('page-about')) return;
-    const allBtns = document.querySelectorAll('.page-about .about-lang-btn[data-lang]');
+    const isAbout = body.classList.contains('page-about');
+    const isNews = body.classList.contains('page-news');
+    if (!isAbout && !isNews) return;
+    const scope = isAbout ? '.page-about' : '.page-news';
+    const allBtns = document.querySelectorAll(`${scope} .about-lang-btn[data-lang]`);
     if (!allBtns.length) return;
+    const langClassPrefix = isAbout ? 'about-lang' : 'news-lang';
     allBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
             const lang = btn.getAttribute('data-lang');
             if (!lang) return;
-            body.classList.remove('about-lang-eng', 'about-lang-kor');
-            body.classList.add(lang === 'kor' ? 'about-lang-kor' : 'about-lang-eng');
+            body.classList.remove(`${langClassPrefix}-eng`, `${langClassPrefix}-kor`);
+            body.classList.add(lang === 'kor' ? `${langClassPrefix}-kor` : `${langClassPrefix}-eng`);
             allBtns.forEach((b) => b.classList.remove('is-active'));
             allBtns.forEach((b) => {
                 if (b.getAttribute('data-lang') === lang) b.classList.add('is-active');
             });
-            /* 언어 전환 시 페이지 최상단으로 스크롤 */
             window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
         });
     });
