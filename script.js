@@ -78,6 +78,7 @@ window.addEventListener('load', () => {
     alignFixedArrowsWithKoreanTitle();
     initMobileArrowNav();
     initMobileSwipeNav();
+    initNavOverlay();
 });
 
 // 모바일 브라우저 하단 탭/주소창이 보일 때 실제 보이는 높이를 --vh로 설정 (가려짐·레이아웃 튐 방지)
@@ -257,6 +258,7 @@ function initMatterPopup() {
     const triggers = document.querySelectorAll('.matter-image, .matter-title-eng, .matter-title-kor, .header-matter-icon');
     triggers.forEach((el) => {
         el.addEventListener('click', (e) => {
+            if (document.body.dataset.navCloseClick === '1') return;
             e.preventDefault();
             openPopup();
         });
@@ -268,6 +270,75 @@ function initMatterPopup() {
 
     const closeBtn = popup.querySelector('.matter-popup-close');
     if (closeBtn) closeBtn.addEventListener('click', closePopup);
+}
+
+// 모바일: 햄버거 메뉴 클릭 시 상단 네비 오버레이 열기/닫기, 인덱스에서 섹션 링크 시 스크롤
+function initNavOverlay() {
+    const overlay = document.getElementById('nav-overlay');
+    const backdrop = document.getElementById('nav-overlay-backdrop');
+    const menuIcon = document.querySelector('.menu-icon');
+    const closeBtn = overlay?.querySelector('.nav-overlay-close');
+    if (!overlay || !menuIcon) return;
+
+    const openOverlay = () => {
+        if (window.innerWidth > 768) return;
+        overlay.classList.add('is-open');
+        if (backdrop) backdrop.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        if (backdrop) backdrop.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeOverlay = () => {
+        overlay.classList.remove('is-open');
+        if (backdrop) backdrop.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        if (backdrop) backdrop.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    menuIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openOverlay();
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth > 768) return;
+        if (!overlay.classList.contains('is-open')) return;
+        if (overlay.contains(e.target)) return;
+        if (menuIcon.contains(e.target)) return;
+        if (backdrop && e.target === backdrop) { closeOverlay(); return; }
+        closeOverlay();
+        document.body.dataset.navCloseClick = '1';
+        setTimeout(() => { delete document.body.dataset.navCloseClick; }, 0);
+    }, true);
+
+    overlay.querySelectorAll('.nav-overlay-item[data-section]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+            if (window.innerWidth > 768) return;
+            const section = link.getAttribute('data-section');
+            if (!section || !document.body.classList.contains('page-index')) return;
+            e.preventDefault();
+            closeOverlay();
+            const sections = document.querySelectorAll('.page-index .matter-section');
+            const scrollDistancePerSection = 300;
+            const scrollDistance = sections.length * scrollDistancePerSection;
+            const index = parseInt(section, 10) - 1;
+            if (index >= 0 && index < sections.length) {
+                const sectionProgress = index / Math.max(1, sections.length - 1);
+                const clampedProgress = Math.max(0, Math.min(1, sectionProgress));
+                const targetScroll = clampedProgress * scrollDistance;
+                window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+            }
+        });
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) closeOverlay();
+    });
 }
 
 function initHorizontalScroll() {
