@@ -496,7 +496,7 @@ body::before {
         top: 58.5%; /* fallback; JS가 한글 라인에 맞춰 덮어씀 */
         transform: translateY(-50%);
         justify-content: center;
-        gap: 429px;
+        gap: 493px;
         align-items: center;
         padding: 0 20px;
         pointer-events: none;
@@ -564,7 +564,7 @@ body::before {
     }
     .page-index .matter-move-arrows-fixed {
         padding: 0 12px;
-        gap: clamp(172px, 51vw, 429px);
+        gap: clamp(198px, 59vw, 493px);
     }
     .page-index .matter-move-arrows-fixed .matter-move-arrow-fixed {
         width: 28px;
