@@ -163,6 +163,8 @@ body::before {
         margin-left: 0;
         margin-right: 0;
         top: 8px;
+        height: 36px;
+        min-height: 36px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -190,23 +192,23 @@ body::before {
         display: none;
     }
 
-    /* 한글 타이틀 가운데 정렬, 영문과 동일 중앙축 → 오른쪽으로 이동 */
+    /* 한글 타이틀 가운데 정렬, 영문과 동일 중앙축 → 오른쪽으로 이동 (점선과 겹치지 않도록 고정 간격) */
     .header-right {
         position: absolute;
         left: 0;
         width: 100%;
         transform: translateX(12px);
-        top: 62px;
+        top: 56px;
         align-items: center;
         box-sizing: border-box;
         padding: 0 20px;
     }
 
-    /* 점선: 영문·한글 사이, ARCHIVE OF MATTER(S) 텍스트보다 약간만 길게 */
+    /* 점선: 영문·한글 사이 고정 위치 (디바이스별 겹침/이동 방지) */
     .header-right::before {
         content: '';
         position: absolute;
-        top: -8px;
+        top: -10px;
         left: 50%;
         transform: translateX(-50%);
         width: 72%;
@@ -556,6 +558,8 @@ body::before {
     }
     .header-left .header-top-line {
         top: 12px;
+        height: 32px;
+        min-height: 32px;
         padding: 0 12px;
     }
     .header-right {
@@ -563,6 +567,7 @@ body::before {
         padding: 0 12px;
     }
     .header-right::before {
+        top: -10px;
         max-width: min(72%, 240px);
     }
     .page-index .matter-move-arrows-fixed {
