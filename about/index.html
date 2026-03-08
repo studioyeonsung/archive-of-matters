@@ -25,7 +25,6 @@
     </div>
 
     <div class="site-content">
-    <!-- Fixed Header (same 구조 as index) -->
     <header class="fixed-header">
         <a href="/" class="mobile-title-link mobile-title-link-eng" aria-label="홈으로 이동 (영문 타이틀)"></a>
         <a href="/" class="mobile-title-link mobile-title-link-kor" aria-label="홈으로 이동 (한글 타이틀)"></a>
@@ -64,7 +63,6 @@
         </div>
     </header>
 
-    <!-- 모바일: 햄버거 메뉴 오버레이 (상단 블랙 패널) -->
     <div class="nav-overlay-backdrop" id="nav-overlay-backdrop" aria-hidden="true"></div>
     <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
         <div class="nav-overlay-panel">
@@ -122,17 +120,14 @@
         </div>
     </div>
 
-    <!-- 모바일 전용: ENG/한국어 고정 바 (스크롤해도 레이어 위에 보이도록 site-content 직계) -->
     <div class="about-lang-switch about-lang-switch-fixed" role="group" aria-label="언어 선택">
         <button type="button" class="about-lang-btn is-active" data-lang="eng">ENG</button>
         <span class="about-lang-sep">/</span>
         <button type="button" class="about-lang-btn" data-lang="kor">한국어</button>
     </div>
 
-    <!-- 모바일 전용: 하단 흰색 마스크만 사용 (상단은 고정 헤더가 마스크 역할) -->
-    <div class="bottom-mask" aria-hidden="true"></div>
+    <div class="bottom-mask" aria-hidden="true">    </div>
 
-    <!-- 모바일 전용: 크레딧 — 마스크 바로 다음에 두어 z-index로 마스크 위 오버레이 -->
     <div class="about-credits-fixed" aria-hidden="false">
         <div class="about-credits-block about-credits-block-eng">
             <p class="about-credits">
@@ -148,13 +143,10 @@
         </div>
     </div>
 
-    <!-- 모바일 전용: 상단 흰색 마스크(프레임 안쪽만) + 배경 프레임(R값·테두리) -->
-    <div class="top-mask" aria-hidden="true"></div>
+    <div class="top-mask" aria-hidden="true">    </div>
 
-    <!-- ABOUT Content: 데스크톱 = News와 동일 구조(2단) / 모바일 = 1단+언어선택 -->
     <main class="about-main">
         <div class="about-scroll">
-            <!-- 데스크톱 전용: News와 동일한 2단 (about-content만, -single 없음) -->
             <div class="about-content about-content-desktop">
                 <div class="about-col about-col-eng">
                     <p>
@@ -215,16 +207,13 @@
                 </div>
             </footer>
 
-            <!-- 모바일 전용: 1단 + 언어 선택(ENG/한국어) + 하단 고정 크레딧 -->
             <div class="about-content about-content-single about-content-mobile">
-                <!-- 언어 선택: ENG / 한국어 (기본 영문) -->
                 <div class="about-lang-switch" role="group" aria-label="언어 선택">
                     <button type="button" class="about-lang-btn is-active" data-lang="eng">ENG</button>
                     <span class="about-lang-sep">/</span>
                     <button type="button" class="about-lang-btn" data-lang="kor">한국어</button>
                 </div>
 
-                <!-- 1단 텍스트 영역 (선택 언어에 따라 하나만 표시) — 크레딧은 밖에 두어 스크롤 영역 높이에 영향 없게 -->
                 <div class="about-text-wrap">
                     <div class="about-col about-col-eng about-col-single">
                     <p>
@@ -292,13 +281,10 @@
     </div>
     </div><!-- /.site-content -->
 
-    <!-- About 전용 스케치 레이어 (body 직계 → 홈 matters-sketch-layer와 동일) -->
     <div class="about-sketch-layer" aria-hidden="true"></div>
 
-    <!-- 그레인 텍스처 (인덱스 matters-grain과 동일) -->
     <div class="grain-layer" aria-hidden="true"></div>
 
-    <!-- Copyright (body 직계 → 홈과 동일, 모바일에서 하단 가운데 표시) -->
     <div class="copyright">© 2025 STUDIO YEON SUNG</div>
 
     <!-- Adobe Typekit -->
