@@ -13,7 +13,7 @@ img, video {
 :root {
     --section-color: #000000; /* Text and icons: black */
     --vh: 100vh; /* fallback */
-    --vh: 100dvh; /* JS에서 덮어쓸 수 있음; 브라우저 주소창 변화 대응 */
+    --vh: 100dvh;
 }
 
 html {
@@ -53,7 +53,6 @@ body::before {
     pointer-events: none;
 }
 
-/* 모바일 인덱스용 흰 캔버스(데스크톱에서는 숨김) */
 .index-white-canvas {
     display: none;
 }
@@ -63,7 +62,6 @@ body::before {
     display: none;
 }
 
-/* 모바일: About / News / Contact 실제 콘텐츠 표시 */
 @media (max-width: 768px) {
     .page-about .mobile-placeholder,
     .page-news .mobile-placeholder,
@@ -78,7 +76,6 @@ body::before {
 }
 
 @media (max-width: 768px) {
-    /* 모바일 인덱스: 플레이스홀더 숨기고 실제 콘텐츠 표시 */
     .page-index .mobile-placeholder {
         display: none !important;
     }
@@ -86,7 +83,6 @@ body::before {
         display: block !important;
     }
 
-    /* 모바일: 타이틀 전체를 하나의 터치 영역으로 (홈으로 이동), 영문/한글 각각 */
     .mobile-title-link {
         display: block;
         position: absolute;
@@ -113,13 +109,10 @@ body::before {
         font-style: italic;
     }
 
-    /* ===== 모바일 헤더 (1단계) ===== */
-    /* 타이틀/점선/한글 모두 같은 세로선 — 뷰포트 기준으로 맞추기 위해 좌측 패딩은 .fixed-header만 사용 */
     .fixed-header {
         --header-title-x: 130px;
         --header-outer-left: max(20px, env(safe-area-inset-left));
         --header-mobile-gap: 10px;
-        /* 영문 텍스트 시각적 하단이 박스(38px) 밖으로 나오는 정도 반영 → 점선/한글 간격 균등 */
         --header-eng-visual-offset: 6px;
         padding: 2px 20px;
         padding-left: var(--header-outer-left);
@@ -130,12 +123,10 @@ body::before {
         flex-wrap: wrap;
     }
 
-    /* 상단 중앙 화살표 아이콘 숨김 */
     .fixed-header > .header-matter-arrow {
         display: none;
     }
 
-    /* 좌측: 햄버거 메뉴 (점선 높이 가운데에 위치), 영문 타이틀은 전체 너비에서 가운데 */
     .header-left {
         transform: none;
         position: absolute;
@@ -175,7 +166,6 @@ body::before {
         opacity: 0.7;
     }
 
-    /* 영문 타이틀 — 뷰포트 기준 --header-title-x 세로선 (left로 배치해 한글·점선과 동일 기준) */
     .header-left .header-top-line {
         position: absolute;
         left: calc(var(--header-title-x) - var(--header-outer-left) + 6px);
@@ -212,7 +202,6 @@ body::before {
         display: none;
     }
 
-    /* 한글 타이틀 — 뷰포트 기준 --header-title-x 세로선 */
     .header-right {
         position: absolute;
         left: 0;
@@ -228,7 +217,6 @@ body::before {
         z-index: 1;
     }
 
-    /* 점선: 뷰포트 기준 --header-title-x 세로선 */
     .header-right::before {
         content: '';
         position: absolute;
@@ -275,9 +263,6 @@ body::before {
         display: none;
     }
 
-    /* ABOUT, NEWS, CONTACT 등 나머지 메뉴 숨김 (위에서 .header-bottom-line display:none으로 처리됨) */
-
-    /* 모바일 타이틀 텍스트 크기: 30% 줄임 → 추가로 10% 축소 */
     .fixed-header .nav-text {
         font-size: 20px;
     }
@@ -292,7 +277,6 @@ body::before {
         font-size: 20px;
     }
 
-    /* 단어 사이 간격 동일하게, 기본 문장처럼 줄임 */
     .header-left .header-top-line .nav-eng-word-1,
     .header-left .header-top-line .nav-eng-word-2 {
         margin-right: 4px !important;
@@ -312,7 +296,6 @@ body::before {
         margin-right: 0 !important;
     }
 
-    /* 전체 패딩: 모바일 시안에 맞춰 좁게 (인덱스는 가장자리 가림 방지로 0) */
     body {
         padding-left: 16px;
         padding-right: 16px;
@@ -322,14 +305,12 @@ body::before {
         padding-right: 0;
     }
 
-    /* 인덱스: 콘텐츠(물질 이미지·타이틀)가 흰 캔버스(body::before) 위에 보이도록 */
     .page-index .site-content {
         position: relative;
         z-index: 10;
         isolation: isolate;
     }
 
-    /* 모바일 인덱스: 흰 캔버스를 site-content 내부로 두어 콘텐츠가 확실히 위에 오게 */
     .page-index .index-white-canvas {
         display: block;
         position: fixed;
@@ -351,7 +332,6 @@ body::before {
     .page-index .fixed-header {
         z-index: 1000;
     }
-    /* 메뉴 열렸을 때 나머지 영역 검은색 반투명 레이어 (스케치 레이어·오버레이 이미지보다 위) */
     .nav-overlay-backdrop {
         position: fixed;
         inset: 0;
@@ -367,7 +347,6 @@ body::before {
         visibility: visible;
         opacity: 1;
     }
-    /* 모바일: 햄버거 메뉴 오버레이 — 상단 블랙 패널, 하단 라운드 (오버레이 이미지보다 위) */
     .nav-overlay {
         display: block;
         position: fixed;
@@ -540,7 +519,6 @@ body::before {
         position: relative;
         z-index: 1;
     }
-    /* 모바일: 실제 보이는 높이(--vh) 사용 → 브라우저 하단 탭/주소창에 가려지지 않게 */
     .page-index .scroll-container {
         height: var(--vh);
         min-height: var(--vh);
@@ -557,7 +535,6 @@ body::before {
         max-height: var(--vh);
     }
 
-    /* ===== 모바일 인덱스: 물질 섹션 공통 (구리·미세먼지·사하라먼지·날씨) 이미지·영문·한글 셋팅 ===== */
     .page-index .matter-section[data-section="01"],
     .page-index .matter-section[data-section="02"],
     .page-index .matter-section[data-section="03"],
@@ -671,12 +648,10 @@ body::before {
         transform: translateY(22px);
     }
 
-    /* 모바일: 사하라 먼지 한글만 폰트 메트릭 보정 – 다른 한글 타이틀과 높이 맞춤 */
     .page-index .matter-section[data-section="03"] .matter-title-kor.matter-title-text {
         transform: translateY(28px);
     }
 
-    /* 모바일: 물질 타이틀(영문·한글) 텍스트 크기 15% 추가 축소 */
     .page-index .matter-section[data-section="01"] .matter-title-eng.matter-title-text,
     .page-index .matter-section[data-section="01"] .matter-title-kor.matter-title-text,
     .page-index .matter-section[data-section="02"] .matter-title-eng.matter-title-text,
@@ -688,7 +663,6 @@ body::before {
         font-size: 32px;
     }
 
-    /* 모바일: 화살표는 viewport 고정(스크롤 컨테이너 밖 레이어), 타이틀·이미지는 스크롤 */
     .page-index .matter-section .section-right {
         display: flex;
         align-items: center;
@@ -696,25 +670,24 @@ body::before {
         gap: 100px;
     }
     .page-index .matter-section .matter-move-arrow {
-        display: none !important; /* 고정 레이어만 사용 */
+        display: none !important;
     }
-    /* 고정 화살표: iPhone X(375px) 기준 비율 유지 – vw로 모든 모바일에서 동일 비율 */
     .page-index .matter-move-arrows-fixed {
         display: flex;
         position: fixed;
         left: 0;
         right: 0;
-        top: 58.5%; /* fallback; JS가 한글 라인에 맞춰 덮어씀 */
+        top: 58.5%;
         transform: translateY(-50%);
         justify-content: center;
-        gap: 69.33vw; /* 260/375 ≈ iPhone X 기준 */
+        gap: 69.33vw;
         align-items: center;
         padding: 0 20px;
         pointer-events: none;
         z-index: 100;
     }
     .page-index .matter-move-arrows-fixed .matter-move-arrow-fixed {
-        width: 7.47vw; /* 28/375 ≈ iPhone X 기준 */
+        width: 7.47vw;
         height: auto;
         flex-shrink: 0;
         filter: brightness(0);
@@ -740,7 +713,6 @@ body::before {
     }
 }
 
-/* 작은 디바이스 (iPhone X, XS 등 ~480px 이하): 헤더 20px 왼쪽, 햄버거는 제자리 */
 @media (max-width: 480px) {
     .fixed-header {
         transform: translateX(-20px);
@@ -750,7 +722,6 @@ body::before {
     }
 }
 
-/* 작은 모바일 (iPhone XS, SE, 12 mini 등 ~400px 이하): 패딩·폰트·간격 축소 */
 @media (max-width: 400px) {
     .mobile-title-link {
         left: clamp(56px, 16vw, 72px);
@@ -841,7 +812,6 @@ body::before {
     }
 }
 
-/* 모바일: 저작권을 인디케이터 아래 가운데 배치, 저작권 위치 유지 (인디케이터 위치는 아래쪽 모바일 블록에서) */
 @media (max-width: 768px) {
     .page-index .copyright,
     .copyright {
@@ -945,7 +915,6 @@ body::before {
     pointer-events: auto;
 }
 
-/* 왼쪽 헤더만 margin 적용 → 오른쪽(weather·아카이브)는 모든 페이지 동일 위치 (데스크톱만) */
 .header-top-line {
     display: flex;
     align-items: center;
@@ -1076,23 +1045,23 @@ body::before {
 }
 
 .nav-overlay {
-    display: none !important; /* 데스크톱에서만 숨김 */
+    display: none !important;
 }
 .nav-overlay-backdrop {
-    display: none !important; /* 데스크톱에서만 숨김 */
+    display: none !important;
 }
 @media (max-width: 768px) {
     .nav-overlay {
-        display: block !important; /* 모바일에서는 슬라이드용 block 유지 */
+        display: block !important;
     }
     .nav-overlay-backdrop {
-        display: block !important; /* 모바일에서만 표시 */
+        display: block !important;
     }
 }
 
 .menu-icon {
     position: absolute;
-    display: none; /* 웹에서는 메뉴 아이콘 숨김 */
+    display: none;
     left: -20px;
     top: calc(clamp(20px, 2.5vw, 30px) + 8px + 0.5px);
     transform: translateY(-50%);
@@ -1162,7 +1131,6 @@ body::before {
     font-style: italic;
 }
 
-/* 오른쪽 헤더: 왼쪽처럼 단어를 형제로 두고 .header-top-line gap으로 간격 → 페이지별 위치 통일 */
 .header-right .header-top-line .nav-kor-word-1 {
     margin-right: clamp(28px, 4vw, 60px);
 }
@@ -1195,7 +1163,6 @@ body::before {
     margin-left: clamp(-40px, -3vw, -60px);
 }
 
-/* MATTER(S) 옆 화살표 → 화면 가운데 배치 */
 .header-matter-arrow {
     position: fixed;
     left: 50%;
@@ -1209,7 +1176,6 @@ body::before {
     object-fit: contain;
 }
 
-/* MATTER(S) 옆에 붙어있는 화살표 (흐름 유지, ABOUT 줄 아님) */
 .header-center-arrow {
     flex-shrink: 0;
 }
@@ -1248,7 +1214,6 @@ body::before {
     height: 100dvh;
 }
 
-/* 전체 스크롤 구간을 덮는 단일 그레인 레이어 (섹션 구분 없이 자연스럽게 연결) */
 .grain-layer {
     position: absolute;
     left: 0;
@@ -1257,7 +1222,6 @@ body::before {
     height: 100%;
     background-image: url("assets/matters-grain.png");
     background-repeat: repeat;
-    /* 원본 크기로 타일링 → 늘리지 않아서 깨짐 방지. 더 크게 보이게 하려면 원본 이미지 해상도를 키우세요 */
     background-size: auto;
     background-position: 0 0;
     z-index: 0;
@@ -1265,7 +1229,6 @@ body::before {
     opacity: 1;
 }
 
-/* About / News / Contact: 그레인 레이어 고정 전체 화면 (인덱스와 동일 텍스처) */
 .page-about .grain-layer,
 .page-news .grain-layer,
 .page-contact .grain-layer {
@@ -1278,7 +1241,6 @@ body::before {
     z-index: 10002;
 }
 
-/* Matter Section - 너비·콘텐츠 크기는 100vw 유지, 섹션 간 겹침으로 간격만 절반 */
 .matter-section {
     width: 100vw;
     max-width: 100%;
@@ -1302,7 +1264,6 @@ body::before {
     overflow: hidden;
 }
 
-/* 화살표 아이콘: 모바일에서만 표시 */
 .matter-move-arrow {
     display: none;
 }
@@ -1312,7 +1273,6 @@ body::before {
     }
 }
 
-/* 웹: 물질 타이틀 텍스트가 이미지 위에 오고 호버 시 포인터 커서 */
 .page-index .matter-section .section-left,
 .page-index .matter-section .section-right {
     position: relative;
@@ -1396,7 +1356,6 @@ body::before {
     opacity: 1;
 }
 
-/* Section 01: 구리 - 두 번째 섹션처럼 영문·한글 타이틀 배치 */
 .matter-section[data-section="01"] .section-center {
     display: flex;
     align-items: center;
@@ -1430,7 +1389,6 @@ body::before {
     font-weight: 400;
     font-style: normal;
     text-transform: none;
-    /* 타이틀 전체를 화면 아래쪽으로 더 많이 (30vh) 내림 */
     transform: translateX(7vw) translateY(30vh);
 }
 
@@ -1452,7 +1410,6 @@ body::before {
     max-width: none;
 }
 
-/* Section 02: 미세먼지 - 섹션1과 동일한 텍스트 높이 (공통 translateY(3vh) 사용) */
 .matter-section[data-section="02"] .section-center {
     display: flex;
     align-items: center;
@@ -1478,7 +1435,6 @@ body::before {
     padding-left: 2vw;
 }
 
-/* 섹션 02 타이틀: 텍스트 "Fine Dust" / "미세먼지" (섹션 1과 동일 스타일) */
 .matter-section[data-section="02"] .matter-title-text {
     font-size: 45px;
     color: #000000;
@@ -1506,7 +1462,6 @@ body::before {
     max-width: none;
 }
 
-/* Section 03: 사하라 먼지 - 섹션 1·2와 동일한 타이틀 스타일 */
 .matter-section[data-section="03"] .section-center {
     display: flex;
     align-items: center;
@@ -1515,8 +1470,6 @@ body::before {
 
 .matter-section[data-section="03"] .matter-image {
     max-width: 97.2%;
-    max-height: 86.4vh;
-    /* 웹: 위치 아래로, 크기 20% 확대 (scale 1.4 → 1.68) */
     transform: translateX(15%) translateY(-5%) scale(1.5);
     opacity: 1;
 }
@@ -1560,7 +1513,6 @@ body::before {
     max-width: none;
 }
 
-/* Section 04: 날씨 - 섹션 1·2·3과 동일한 타이틀·이미지 스타일 */
 .matter-section[data-section="04"] .section-center {
     display: flex;
     align-items: center;
@@ -1771,7 +1723,6 @@ body::before {
     transition: color 0.3s ease;
 }
 
-/* 모바일: 인디케이터(타임라인) 고정 높이로 묶어서 브라우저 탭 사라질 때 숫자 붕 뜸 방지 */
 @media (max-width: 768px) {
     .timeline-container {
         bottom: max(46px, calc(env(safe-area-inset-bottom) + 38px));
@@ -1795,7 +1746,6 @@ body::before {
     }
 }
 
-/* 데스크톱 중심 스케치 질감 오버레이 */
 .matters-sketch-layer {
     position: fixed;
     top: 0;
@@ -1810,11 +1760,9 @@ body::before {
     background-position: center;
     background-size: 102% 100%;
     opacity: 1;
-    /* 분홍 아웃라인을 검은색으로: 비투명 픽셀을 검은색으로 변환 */
     filter: brightness(0);
 }
 
-/* 모바일: matters-layer-mobile.png 오버레이 (이미지 그대로, 확대/영역 선택 없음) */
 @media (max-width: 768px) {
     .page-index {
         overflow: visible;
@@ -1829,11 +1777,8 @@ body::before {
     }
 }
 
-/* ========== About / News / Contact 페이지 ========== */
-/* About / News / Contact 모두 검은 배경 위 둥근 흰 캔버스(body::before) 유지 */
-
 .page-index {
-    overflow: hidden; /* 가로만 스크롤, 세로 스크롤 없음 */
+    overflow: hidden;
     height: 100vh;
     height: 100dvh;
     min-height: 100vh;
@@ -1841,10 +1786,9 @@ body::before {
 }
 
 .page-about {
-    overflow: hidden; /* 전체 화면은 고정 */
+    overflow: hidden;
     min-height: 100vh;
     min-height: 100dvh;
-    /* index와 동일: 검은 배경 + 둥근 흰 캔버스(body::before) */
     background-color: #000000;
 }
 
@@ -1859,7 +1803,7 @@ body::before {
     overflow: hidden;
     min-height: 100vh;
     min-height: 100dvh;
-    background-color: #000000; /* index와 동일: 검은 배경 + 흰 오버레이 */
+    background-color: #000000;
 }
 
 .page-contact ::selection {
@@ -1873,10 +1817,10 @@ body::before {
 }
 
 .page-news {
-    overflow: hidden; /* about와 동일: 전체 화면 고정, 텍스트 영역만 스크롤 */
+    overflow: hidden;
     min-height: 100vh;
     min-height: 100dvh;
-    background-color: #000000; /* index와 동일: 검은 배경 + 흰 오버레이 */
+    background-color: #000000;
 }
 
 .page-news ::selection {
@@ -1900,10 +1844,9 @@ body::before {
 }
 
 .page-about .matters-sketch-layer {
-    display: none; /* About에선 홈용 overlay 대신 전용 about_layer 사용 */
+    display: none;
 }
 
-/* 모바일 About/News/Contact: body 스크롤 사용, 공통 about-main/about-scroll 구조 (높이 제한 해제로 문서 전체 스크롤) */
 @media (max-width: 768px) {
     html:has(body.page-about),
     html:has(body.page-news),
@@ -1941,7 +1884,6 @@ body::before {
     }
 }
 
-/* 모바일 About 전용: 문서 전체 스크롤(주소창/하단 탭 자연 숨김), 텍스트 영역 고정 높이·내부 스크롤 제거 */
 @media (max-width: 768px) {
     html:has(body.page-about) {
         min-height: 100%;
@@ -1968,7 +1910,6 @@ body::before {
         min-height: auto;
         height: auto;
     }
-    /* 텍스트 영역: overflow-y: auto·고정 높이 없음, 콘텐츠만큼 늘어남 */
     .page-about .about-content-mobile {
         flex: none;
         min-height: auto;
@@ -1978,7 +1919,6 @@ body::before {
         min-height: auto;
         overflow-y: visible;
     }
-    /* 영문/한글 텍스트 컨테이너: 문서 흐름(static) 유지, 부모가 높이 인식하도록 */
     .page-about .about-content-mobile .about-col-single,
     .page-about .about-content-mobile .about-col {
         height: auto;
@@ -1988,7 +1928,6 @@ body::before {
     }
 }
 
-/* About 페이지 최상단 고정 레이어 (홈 matters_layer와 동일 방식) */
 .about-sketch-layer {
     position: fixed;
     top: 0;
@@ -1998,12 +1937,11 @@ body::before {
     height: 100dvh;
     pointer-events: none;
     z-index: 10000;
-    /* about-layer.png 오버레이 적용 (index의 matters_layer와 동일한 방식) */
     background-image: url("assets/about-layer.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 101%;
-    opacity: 1; /* 기본적으로 항상 보이도록 */
+    opacity: 1;
     filter: brightness(0);
 }
 
@@ -2015,7 +1953,6 @@ body::before {
     background-image: url("assets/contact-layer.png");
 }
 
-/* 모바일: About/News/Contact 각각 레이어 오버레이 (마스크 위에 표시) */
 @media (max-width: 768px) {
     .page-contact .about-sketch-layer {
         display: block;
@@ -2035,14 +1972,12 @@ body::before {
         filter: brightness(0);
         z-index: 10002;
     }
-    /* 메뉴 열렸을 때: About에서 메뉴가 오버레이 이미지 위에 오도록 */
     body.page-about:has(.nav-overlay.is-open) .site-content {
         z-index: 10003;
     }
     body.page-about:has(.nav-overlay.is-open) .about-sketch-layer {
         z-index: 10001;
     }
-    /* About: 레이어(z-index 10000) 위에 본문이 보이도록 */
     .page-about .site-content {
         position: relative;
         z-index: 10001;
@@ -2055,7 +1990,6 @@ body::before {
     line-height: 0;
 }
 
-/* About 등 메뉴 아이콘이 링크로 감싸진 경우: 홈과 동일한 위치에 맞춤 */
 .header-left > .header-icon-link {
     position: absolute;
     left: -20px;
@@ -2065,7 +1999,6 @@ body::before {
     height: clamp(16px, 2vw, 24px);
 }
 
-/* 링크 안 아이콘은 절대 위치 중복 방지 → 홈과 같은 자리에 보이게 */
 .header-icon-link .menu-icon {
     position: static;
     left: auto;
@@ -2074,13 +2007,12 @@ body::before {
 }
 
 
-/* About / News 공통: 데스크톱만 고정 레이아웃(모바일은 아래 미디어쿼리에서 문서 흐름으로 스크롤) */
 @media (min-width: 769px) {
 .page-about .about-main,
 .page-news .about-main,
 .page-contact .about-main {
     position: fixed;
-    z-index: 1; /* 헤더(1000)보다 아래에 두어 헤더가 항상 위에 보이도록 */
+    z-index: 1;
     top: 0;
     left: 0;
     width: 100%;
@@ -2088,14 +2020,11 @@ body::before {
     height: 100dvh;
     display: flex;
     flex-direction: column;
-    /* 텍스트 박스 높이 유지하면서 전체 위치를 약간 아래로 이동 */
     padding-top: 304px;
     padding-left: clamp(40px, 8vw, 120px);
     padding-right: clamp(40px, 8vw, 120px);
     padding-bottom: calc(180px + env(safe-area-inset-bottom, 0px));
     box-sizing: border-box;
-    /* About / News / Contact 본문은 투명하게 두고,
-       둥근 흰 캔버스는 body::before에서만 담당하게 함 */
     background: transparent;
 }
 
@@ -2103,11 +2032,10 @@ body::before {
 .page-news .about-scroll,
 .page-contact .about-scroll {
     width: 100%;
-    /* 메인 안에서 남은 세로 공간을 차지하도록 */
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    min-height: 0; /* 안쪽 자식들이 스크롤할 수 있게 */
+    min-height: 0;
 }
 
 .page-about .about-content,
@@ -2119,14 +2047,11 @@ body::before {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(40px, 6vw, 80px);
-    /* 텍스트 박스 영역이 남은 세로 공간을 채우도록 */
     flex: 1 1 auto;
     min-height: 0;
 }
 }
 
-/* ABOUT: 데스크톱(769px 이상) = 2단 구조만 표시, 모바일 = 1단+언어전환(아래 미디어쿼리) */
-/* NEWS: 데스크톱 = 2단 유지, 모바일 전용 요소는 768px 이하에서만 표시 */
 @media (min-width: 769px) {
     .page-about .about-content-desktop {
         display: grid;
@@ -2159,7 +2084,6 @@ body::before {
     }
 }
 
-/* ABOUT 모바일(768px 이하): 1단 레이아웃, 상단 EN/KR 전환, 선택 언어만 표시, 텍스트 영역 화면 너비 꽉 채움 */
 @media (max-width: 768px) {
     .page-about .about-content-desktop {
         display: none !important;
@@ -2167,7 +2091,6 @@ body::before {
     .page-about .about-scroll > .about-footer {
         display: none !important;
     }
-    /* 레이어 순서: 본문(1) < 상단마스크(5) < 배경프레임(10) < 헤더·언어버튼(11) */
     .page-about .about-main {
         z-index: 1;
     }
@@ -2182,7 +2105,6 @@ body::before {
         z-index: 5;
         pointer-events: none;
     }
-    /* 상단 마스크: 헤더+언어바 영역만 덮고, 좌우는 텍스트 영역 너비만(검은 배경 노출) — 너비 10px 축소(좌우 5px씩) */
     .page-about .top-mask {
         display: block;
         position: fixed;
@@ -2216,7 +2138,6 @@ body::before {
         align-items: center;
         gap: 0.35em;
     }
-    /* 본문 사라지는 위치만 아래로: 버튼 아래 흰 영역 연장 (패딩은 유지) */
     .page-about .about-lang-switch-fixed::after {
         content: '';
         position: absolute;
@@ -2237,7 +2158,6 @@ body::before {
         padding-bottom: calc(2.4rem + 126px + env(safe-area-inset-bottom));
         box-sizing: border-box;
     }
-    /* 모바일 본문 안 언어 스위치는 숨김(고정 바만 사용) */
     .page-about .about-content-mobile .about-lang-switch {
         display: none !important;
     }
@@ -2247,7 +2167,6 @@ body::before {
         overflow-y: visible;
         padding-top: calc(128px + 4em);
     }
-    /* 1단 텍스트: 화면 너비 꽉 채움 */
     .page-about .about-content-mobile .about-col-single {
         width: 100%;
         max-width: none;
@@ -2260,16 +2179,13 @@ body::before {
         line-height: 1.5;
         margin-bottom: 0.75em;
     }
-    /* 모바일 한글 본문: 글자 크기 10% 축소 (16px → 약 14.4px) */
     .page-about .about-content-mobile .about-col-kor.about-col-single p,
     .page-about .about-content-mobile .about-col-kor.about-col-single p * {
         font-size: 14.4px !important;
     }
-    /* 모바일 한글 본문 행간 */
     .page-about .about-content-mobile .about-col-kor.about-col-single p {
         line-height: 1.8;
     }
-    /* 선택한 언어만 표시 (기본 EN) */
     .page-about.about-lang-eng .about-content-mobile .about-col-kor,
     .page-about.about-lang-eng .about-credits-fixed .about-credits-block-kor {
         display: none !important;
@@ -2282,7 +2198,6 @@ body::before {
     .page-about.about-lang-kor .about-credits-fixed .about-credits-block-kor {
         display: block !important;
     }
-    /* 크레딧: 마스크와 같은 영역에 두고 z-index로 마스크 위에 겹쳐 표시, 5px 더 위로 */
     .page-about .about-credits-fixed {
         display: block;
         position: fixed;
@@ -2314,7 +2229,6 @@ body::before {
     .page-about .about-credits-fixed .credit-line-1 {
         margin-bottom: 0.25em;
     }
-    /* 영문 크레딧만 행간 축소 */
     .page-about .about-credits-fixed .about-credits-block-eng .about-credits {
         line-height: 1.35;
     }
@@ -2329,7 +2243,6 @@ body::before {
     }
 }
 
-/* NEWS 모바일(768px 이하): About과 동일 프레임워크 — 1단, ENG/한국어 전환, 마스크·고정 Last updated */
 @media (max-width: 768px) {
     .page-news .site-content {
         position: relative;
@@ -2433,7 +2346,6 @@ body::before {
         padding: 0;
         overflow-y: visible;
     }
-    /* News 모바일 본문: About과 동일 — 영문 16px, 한글 14.4px */
     .page-news .about-content-mobile .about-col-eng .news-date,
     .page-news .about-content-mobile .about-col-eng .news-body,
     .page-news .about-content-mobile .about-col-eng .news-body * {
@@ -2495,7 +2407,6 @@ body::before {
     }
 }
 
-/* CONTACT 모바일(768px 이하): About/News와 동일 프레임워크 — 1단, ENG/한국어 전환, 마스크·고정 크레딧 */
 @media (max-width: 768px) {
     .page-contact .site-content {
         position: relative;
@@ -2617,7 +2528,6 @@ body::before {
     .page-contact.contact-lang-kor .about-content-mobile .about-col-eng {
         display: none !important;
     }
-    /* Contact 모바일: 크레딧 없음 */
     .page-contact .about-credits-fixed {
         display: none !important;
     }
@@ -2733,12 +2643,9 @@ body::before {
     overflow-y: visible;
 }
 
-/* ABOUT: 영문·한글 텍스트 박스만 위로 이동 (크레딧 위치는 유지) */
 .page-about .about-content:not(.about-content-single) {
     margin-top: -24px;
 }
-
-/* About: 크레딧은 .about-text-wrap 밖으로 빼서 스크롤 영역 높이가 텍스트만 기준으로 잡히게 함. 데스크톱 패딩은 News/Contact와 동일(280/180) 사용. */
 
 .about-credits-block {
     display: none;
@@ -2747,7 +2654,7 @@ body::before {
 .page-about .about-col,
 .page-news .about-col,
 .page-contact .about-col {
-    overflow-y: auto;  /* 텍스트 컬럼 내부만 스크롤 */
+    overflow-y: auto;
     overflow-x: hidden;
     height: 100%;
     min-height: 0;
@@ -2775,7 +2682,6 @@ body::before {
     border-radius: 3px;
 }
 
-/* About / News / Contact: 페이지(메인) 스크롤바 검은색 */
 html:has(body.page-about),
 html:has(body.page-news),
 html:has(body.page-contact) {
@@ -2819,25 +2725,21 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
     margin-bottom: 0;
 }
 
-/* About 영문만 행간 (위 .about-col p 1.65보다 나중에 적용) */
 .page-about .about-col-eng p {
     line-height: 1.55;
 }
 
-/* About 페이지 본문만 글자 크기 통일 (16px) — 문단·span·일반 텍스트 전부 동일 */
 .page-about .about-col p,
 .page-about .about-col p *,
 .page-about .about-col .aom-medium-oblique,
 .page-about .about-col-kor .aom-semibold-kor {
     font-size: 16px !important;
 }
-/* 모바일 About 본문도 동일 크기 강제 */
 .page-about .about-content-mobile .about-col-single p,
 .page-about .about-content-mobile .about-col-single p * {
     font-size: 16px !important;
 }
 
-/* Contact 그리드: intro(이메일 포함) · 인스타 문단 간격 */
 .page-contact .about-content.contact-content-grid .about-col-eng .contact-intro,
 .page-contact .about-content.contact-content-grid .about-col-kor .contact-intro {
     margin-bottom: 0.6em !important;
@@ -2845,11 +2747,11 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
 }
 .page-contact .about-content.contact-content-grid .contact-intro .contact-link {
     display: inline-block;
-    margin-top: 2em;  /* 문장과 이메일 사이 두 줄 높이 띄움 */
+    margin-top: 2em;
 }
 .page-contact .about-content.contact-content-grid .contact-instagram-intro .contact-link {
     display: inline-block;
-    margin-top: 2em;  /* 문장과 인스타 주소 사이 두 줄 높이 띄움 */
+    margin-top: 2em;
 }
 .page-contact .about-content.contact-content-grid .about-col-eng .contact-instagram-intro,
 .page-contact .about-content.contact-content-grid .about-col-kor .contact-instagram-intro {
@@ -2857,7 +2759,6 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
     margin-bottom: 0 !important;
 }
 
-/* News 페이지: 항목 스타일 (About과 동일 폰트/행간) */
 .news-entry {
     margin-bottom: 3.2em;
 }
@@ -3027,7 +2928,6 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
     margin-right: 0.35em;
 }
 
-/* Contact 페이지: 한/영 같은 높이 정렬 (이메일·인스타는 각 intro와 같은 블록) */
 .page-contact .about-content.contact-content-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -3069,9 +2969,7 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
     width: 100%;
     max-width: 1300px;
     margin: 0 auto;
-    /* 텍스트 박스 높이 유지: 위쪽 여백 유지해서 about-content 영역 크기 그대로 */
     margin-top: clamp(64px, 7vw, 110px);
-    /* 크레딧만 아래로 이동 (레이아웃은 그대로, 시각적으로만 내림) */
     transform: translateY(48px);
     padding-top: 1.25em;
     padding-left: 0;
@@ -3132,7 +3030,6 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
     margin-left: 4em;
 }
 
-/* News 페이지: 마지막 업데이트 행 (about-credits와 동일 스타일) */
 .news-updated-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -3191,9 +3088,6 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
     opacity: 1;
 }
 
-/* about-sketch-layer는 기본 z-index:10000 값을 그대로 사용 (index의 matters_layer와 동일) */
-
-/* Matter popup (in progress) — About 본문과 동일 폰트 */
 .matter-popup-overlay {
     position: fixed;
     inset: 0;
@@ -3267,7 +3161,6 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
     margin-bottom: 0;
 }
 
-/* 팝업 뜨는 영역: 클릭 가능 커서 */
 .matter-image,
 .matter-title-eng,
 .matter-title-kor,

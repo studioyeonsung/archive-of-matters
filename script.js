@@ -56,7 +56,7 @@ function updateSectionColor(sectionIndex) {
     
     matterTitles.forEach(title => {
         if (title.tagName !== 'IMG') {
-            return; /* 텍스트 타이틀은 CSS color 사용, filter 미적용 */
+            return;
         }
         const imgSrc = title.getAttribute('src');
         if (imgSrc && imgSrc.endsWith('.png') && color !== '#000000') {
@@ -82,7 +82,6 @@ window.addEventListener('load', () => {
     initAboutLangSwitch();
 });
 
-// 모바일 브라우저 하단 탭/주소창이 보일 때 실제 보이는 높이를 --vh로 설정 (가려짐·레이아웃 튐 방지)
 function setVisualViewportHeight() {
     const setVh = () => {
         const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
@@ -96,7 +95,6 @@ function setVisualViewportHeight() {
     window.addEventListener('resize', setVh);
 }
 
-// 모바일: 고정 화살표를 영문 물질 텍스트(섹션 왼쪽) 라인과 세로 정렬
 function alignFixedArrowsWithKoreanTitle() {
     const fixedArrows = document.querySelector('.page-index .matter-move-arrows-fixed');
     if (!fixedArrows) return;
@@ -120,7 +118,7 @@ function alignFixedArrowsWithKoreanTitle() {
         });
         if (best) {
             const centerY = best.top + best.height / 2;
-            fixedArrows.style.top = `${centerY - 16}px`; /* 영문 물질 텍스트보다 16px 위 */
+            fixedArrows.style.top = `${centerY - 16}px`;
         }
     };
 
@@ -132,7 +130,6 @@ function alignFixedArrowsWithKoreanTitle() {
     }
 }
 
-// 모바일: 고정 화살표 클릭 시 이전/다음 섹션으로 스크롤 (순환), 호버 시 클릭 가능 표시
 function initMobileArrowNav() {
     const fixedArrowsWrap = document.querySelector('.page-index .matter-move-arrows-fixed');
     if (!fixedArrowsWrap) return;
@@ -148,13 +145,11 @@ function initMobileArrowNav() {
     function getCurrentSection() {
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         const progress = Math.min(1, Math.max(0, scrollTop / scrollDistance));
-        // 인디케이터와 동일: progress = index / (sections.length - 1)
         const index = Math.round(progress * (sections.length - 1));
         return Math.max(0, Math.min(index, sections.length - 1));
     }
 
     function scrollToSection(index) {
-        // 인디케이터 숫자 클릭과 동일한 계산: 섹션이 가운데 오도록
         const sectionProgress = index / (sections.length - 1);
         const clampedProgress = Math.max(0, Math.min(1, sectionProgress));
         const targetScroll = clampedProgress * scrollDistance;
@@ -190,7 +185,6 @@ function initMobileArrowNav() {
     arrowRight.setAttribute('aria-label', '다음 물질로');
 }
 
-// 모바일: 이미지 영역 좌우 스와이프로 이전/다음 섹션 부드럽게 이동
 function initMobileSwipeNav() {
     const scrollContainer = document.querySelector('.page-index .scroll-container');
     if (!scrollContainer) return;
@@ -273,7 +267,6 @@ function initMatterPopup() {
     if (closeBtn) closeBtn.addEventListener('click', closePopup);
 }
 
-// 모바일: 햄버거 메뉴 클릭 시 상단 네비 오버레이 열기/닫기, 인덱스에서 섹션 링크 시 스크롤
 function initNavOverlay() {
     const overlay = document.getElementById('nav-overlay');
     const backdrop = document.getElementById('nav-overlay-backdrop');
@@ -413,12 +406,10 @@ function initHorizontalScroll() {
     }
 
     // Calculate scroll distance per section
-    // 값을 줄수록 섹션 간 스크롤 거리가 짧아짐
-    // 체감 확실하게 나도록 섹션당 약 300px로 크게 축소
     const scrollDistancePerSection = 300;
     const scrollDistance = sections.length * scrollDistancePerSection;
 
-    // Set body height to ensure scrollable space (모바일: 실제 보이는 높이 사용)
+    // Set body height to ensure scrollable space
     const getViewHeight = () => (window.visualViewport && window.innerWidth <= 768 ? window.visualViewport.height : window.innerHeight);
     const updateBodyMinHeight = () => {
         document.body.style.minHeight = `${scrollDistance + getViewHeight()}px`;
@@ -486,7 +477,6 @@ function initHorizontalScroll() {
         }
     });
 
-    // Parallax: 전체 그레인 레이어 하나 (스크롤 구간 자연스럽게 연결)
     const grainLayer = document.querySelector('.grain-layer');
     if (grainLayer) {
         gsap.to(grainLayer, {
@@ -502,7 +492,7 @@ function initHorizontalScroll() {
         });
     }
 
-    // Parallax: matter-title-eng, matter-title-kor (002 방식)
+    // Parallax: matter-title-eng, matter-title-kor
     sections.forEach((section) => {
         const matterEng = section.querySelector('.matter-title-eng');
         const matterKor = section.querySelector('.matter-title-kor');
@@ -534,7 +524,6 @@ function initHorizontalScroll() {
         }
     });
 
-    // Parallax: 중앙 이미지 (002 방식 - 텍스트보다 빠르게)
     sections.forEach((section) => {
         const matterImage = section.querySelector('.matter-image');
         if (matterImage) {
@@ -652,7 +641,6 @@ function initHorizontalScroll() {
             }
         });
         
-        // 모바일: 인디케이터 원 홀드 후 드래그로 스크롤
         dragTarget.addEventListener('touchstart', (e) => {
             if (e.touches.length !== 1) return;
             isDragging = true;
