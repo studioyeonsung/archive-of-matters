@@ -889,12 +889,22 @@ body::before {
     justify-content: space-between;
     align-items: flex-start;
     padding: clamp(20px, 3vw, 40px) clamp(20px, 5vw, 80px);
-    padding-top: max(clamp(20px, 3vw, 40px), env(safe-area-inset-top));
-    padding-left: max(clamp(20px, 5vw, 80px), env(safe-area-inset-left));
-    padding-right: max(clamp(20px, 5vw, 80px), env(safe-area-inset-right));
     z-index: 1000;
     background-color: transparent;
     pointer-events: none;
+}
+
+@media (min-width: 769px) {
+    .fixed-header {
+        transform: translateX(40px);
+    }
+
+    /* Keep MATTER(S) arrow visually centered in viewport despite header shift */
+    .header-matter-arrow {
+        left: 50%;
+        right: auto;
+        transform: translateX(calc(-50% - 40px)) translateY(4px);
+    }
 }
 
 .header-left {
@@ -920,9 +930,11 @@ body::before {
     align-items: center;
     gap: clamp(28px, 5vw, 120px);
 }
+
 @media (min-width: 769px) {
     .header-left .header-top-line {
         margin-left: clamp(20px, 3vw, 50px);
+        gap: clamp(20px, 3.5vw, 100px);
     }
 }
 .header-right .header-top-line {
@@ -945,7 +957,7 @@ body::before {
 
 .header-right-icon-2 {
     margin-right: clamp(15px, 1.5vw, 30px);
-    margin-left: -50px;
+    margin-left: -100px;
 }
 
 .header-right-text-2 {
@@ -1142,38 +1154,45 @@ body::before {
 }
 
 .nav-eng-word-1 {
-    margin-right: clamp(8px, 1.2vw, 20px);
+    margin-right: clamp(8px, 1.2vw, 22px);
 }
 
 .header-left-icon-1 {
-    margin-right: clamp(10px, 1.8vw, 28px);
+    margin-right: clamp(10px, 1.8vw, 30px);
     transform: scale(1.5);
 }
 
 .nav-eng-word-2 {
-    margin-right: clamp(8px, 2.5vw, 20px);
+    margin-right: clamp(8px, 1.5vw, 22px);
 }
 
 .header-left-icon-2 {
-    margin-right: clamp(8px, 1.4vw, 18px);
+    margin-right: clamp(8px, 1.4vw, 20px);
     transform: scale(1.7);
 }
 
 .nav-eng-word-3 {
-    margin-left: clamp(-40px, -3vw, -60px);
+    margin-left: 4px;
 }
 
+/* Base position for MATTER(S) arrow */
 .header-matter-arrow {
     position: fixed;
-    left: 50%;
-    right: auto;
     top: clamp(20px, 3vw, 40px);
-    transform: translateX(-50%) translateY(4px);
     width: clamp(12px, 1.4vw, 18px) !important;
     height: clamp(12px, 1.4vw, 18px) !important;
     max-width: 22px !important;
     max-height: 22px !important;
     object-fit: contain;
+}
+
+/* Mobile/tablet: center arrow in viewport */
+@media (max-width: 768px) {
+    .header-matter-arrow {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%) translateY(4px);
+    }
 }
 
 .header-center-arrow {
