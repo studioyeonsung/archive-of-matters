@@ -2246,13 +2246,13 @@ body::before {
         display: block;
     }
     .page-about .about-credits-fixed .credit-line-1 {
-        margin-bottom: 0.25em;
+        margin-bottom: 0.12em;
     }
     .page-about .about-credits-fixed .about-credits-block-eng .about-credits {
         line-height: 1.35;
     }
     .page-about .about-credits-fixed .about-credits-block-eng .credit-line-1 {
-        margin-bottom: 0.15em;
+        margin-bottom: 0.08em;
     }
     .page-about.about-lang-eng .about-credits-fixed .about-credits-block-kor {
         display: none !important;
@@ -2583,13 +2583,13 @@ body::before {
         display: block;
     }
     .page-contact .about-credits-fixed .credit-line-1 {
-        margin-bottom: 0.25em;
+        margin-bottom: 0.12em;
     }
     .page-contact .about-credits-fixed .about-credits-block-eng .about-credits {
         line-height: 1.35;
     }
     .page-contact .about-credits-fixed .about-credits-block-eng .credit-line-1 {
-        margin-bottom: 0.15em;
+        margin-bottom: 0.08em;
     }
 }
 
@@ -3028,11 +3028,11 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
 
 .about-credits .credit-bold + span,
 .about-credits-kor .credit-bold-kor + span {
-    margin-left: 1.2em;
+    margin-left: 0.5em;
 }
 
 .about-credits .credit-bold:nth-of-type(3) {
-    margin-left: 4em;
+    margin-left: 2em;
 }
 
 .about-credits-kor {
@@ -3046,7 +3046,7 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
 }
 
 .about-credits-kor .credit-bold-kor:nth-of-type(3) {
-    margin-left: 4em;
+    margin-left: 2em;
 }
 
 .news-updated-wrap {
