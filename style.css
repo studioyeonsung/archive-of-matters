@@ -2847,7 +2847,7 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     margin-top: 0.9em;
 }
 
@@ -2856,7 +2856,7 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
     align-items: center;
     justify-content: center;
     padding: 0.35em 1em;
-    border-radius: 4px;
+    border-radius: 8px;
     font-family: "parabolica", sans-serif;
     font-size: clamp(13px, 1.05em, 15px);
     font-weight: 400;
@@ -2887,7 +2887,7 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
 }
 
 .news-tag--lime {
-    background-color: #84cc16;
+    background-color: #f97316;
 }
 
 .news-tag--grey {
@@ -2896,6 +2896,14 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
 
 .news-tag--pink {
     background-color: #ec4899;
+}
+
+.news-tag--sky {
+    background-color: #38bdf8;
+}
+
+.news-tag--xiren {
+    background-color: #84cc16;
 }
 
 .page-news .about-col .news-updated {
