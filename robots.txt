@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /copper/
+Disallow: /copper2/
 
 Sitemap: https://archiveofmatters.com/sitemap.xml

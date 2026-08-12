@@ -520,12 +520,16 @@ body::before {
         z-index: 1;
     }
     .page-index .scroll-container {
+        width: 100%;
+        max-width: 100%;
         height: var(--vh);
         min-height: var(--vh);
         max-height: var(--vh);
     }
     .page-index .horizontal-wrapper {
         height: var(--vh);
+        width: fit-content;
+        max-width: none;
     }
     .page-index .matter-section[data-section="01"],
     .page-index .matter-section[data-section="02"],
@@ -540,6 +544,9 @@ body::before {
     .page-index .matter-section[data-section="03"],
     .page-index .matter-section[data-section="04"] {
         margin-right: 0;
+        width: var(--site-vw, 100vw);
+        max-width: var(--site-vw, 100vw);
+        flex: 0 0 var(--site-vw, 100vw);
     }
 
     .page-index .matter-section[data-section="01"] .section-content,
@@ -1758,7 +1765,20 @@ body::before {
         flex-shrink: 0;
     }
     .timeline-number {
-        bottom: 22px;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        pointer-events: auto;
+        cursor: pointer;
+        padding: 8px 10px;
+        margin: 0;
+        z-index: 1002;
+        text-align: center;
+    }
+    .timeline-number::before {
+        content: '';
+        position: absolute;
+        inset: -6px -8px;
     }
     .timeline-indicator {
         bottom: 11px;
@@ -3193,4 +3213,194 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
 .matter-title-kor,
 .header-matter-icon {
     cursor: pointer;
+}
+
+/* Mobile viewport lock — fixed height, transform scroll (no native document scroll) */
+@media (max-width: 768px) {
+    html:has(body.site-mobile-locked),
+    body.site-mobile-locked {
+        position: fixed;
+        width: 100%;
+        height: var(--site-vh, 100vh);
+        min-height: 0;
+        max-height: var(--site-vh, 100vh);
+        overflow: hidden;
+        overscroll-behavior: none;
+    }
+
+    body.site-mobile-locked.page-index {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Keep about/news/contact body side padding so text stays centered in the white canvas */
+    body.site-mobile-locked.page-about,
+    body.site-mobile-locked.page-news,
+    body.site-mobile-locked.page-contact {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    html:has(body.site-mobile-locked.page-about),
+    html:has(body.site-mobile-locked.page-news),
+    html:has(body.site-mobile-locked.page-contact),
+    body.site-mobile-locked.page-about,
+    body.site-mobile-locked.page-news,
+    body.site-mobile-locked.page-contact {
+        overflow: hidden !important;
+        height: var(--site-vh, 100vh) !important;
+        min-height: 0 !important;
+    }
+
+    body.site-mobile-locked.page-about .site-content,
+    body.site-mobile-locked.page-news .site-content,
+    body.site-mobile-locked.page-contact .site-content {
+        height: var(--site-vh, 100vh);
+        min-height: 0;
+        overflow: hidden;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    body.site-mobile-locked.page-about .about-main,
+    body.site-mobile-locked.page-news .about-main,
+    body.site-mobile-locked.page-contact .about-main {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 16px;
+        right: 16px;
+        width: auto;
+        height: var(--site-vh, 100vh);
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        padding-top: 0;
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+        box-sizing: border-box;
+    }
+
+    body.site-mobile-locked.page-about .about-scroll,
+    body.site-mobile-locked.page-news .about-scroll,
+    body.site-mobile-locked.page-contact .about-scroll {
+        flex: 1 1 auto;
+        min-height: 0;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    body.site-mobile-locked.page-about .about-content-mobile,
+    body.site-mobile-locked.page-news .about-content-mobile,
+    body.site-mobile-locked.page-contact .about-content-mobile {
+        position: relative;
+        flex: 1 1 auto;
+        min-height: 0;
+        height: 100%;
+        overflow: hidden;
+        display: flex !important;
+        flex-direction: column;
+        padding-bottom: 0 !important;
+    }
+
+    /* Masks align with original inset (body 16px + content pad) */
+    body.site-mobile-locked.page-about .top-mask,
+    body.site-mobile-locked.page-news .top-mask,
+    body.site-mobile-locked.page-contact .top-mask {
+        left: calc(16px + clamp(23px, 8.64vw, 52px)) !important;
+        right: calc(16px + clamp(23px, 8.64vw, 52px)) !important;
+        height: calc(128px + 3.6em) !important;
+    }
+
+    body.site-mobile-locked.page-about .bottom-mask,
+    body.site-mobile-locked.page-news .bottom-mask,
+    body.site-mobile-locked.page-contact .bottom-mask {
+        left: calc(16px + clamp(23px, 8.64vw, 52px)) !important;
+        right: calc(16px + clamp(23px, 8.64vw, 52px)) !important;
+        height: calc(140px + env(safe-area-inset-bottom)) !important;
+    }
+
+    body.site-mobile-locked.page-news .bottom-mask {
+        height: calc(110px + env(safe-area-inset-bottom)) !important;
+    }
+
+    body.site-mobile-locked.page-about .about-lang-switch-fixed::after,
+    body.site-mobile-locked.page-news .about-lang-switch-fixed::after,
+    body.site-mobile-locked.page-contact .about-lang-switch-fixed::after {
+        pointer-events: none;
+        height: 1.8em;
+    }
+
+    /* Clip text to the band between header and footer; keep side padding so block is centered */
+    body.site-mobile-locked.page-about .about-content-mobile .about-text-wrap,
+    body.site-mobile-locked.page-news .about-content-mobile .about-text-wrap,
+    body.site-mobile-locked.page-contact .about-content-mobile .about-text-wrap {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        width: 100%;
+        max-height: none;
+        overflow: hidden !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        padding-left: clamp(23px, 8.64vw, 52px) !important;
+        padding-right: clamp(23px, 8.64vw, 52px) !important;
+        touch-action: none;
+        -webkit-overflow-scrolling: auto;
+        overscroll-behavior: none;
+        box-sizing: border-box;
+    }
+
+    body.site-mobile-locked.page-about .about-content-mobile .about-text-wrap,
+    body.site-mobile-locked.page-contact .about-content-mobile .about-text-wrap {
+        top: calc(128px + 4.2em);
+        bottom: calc(140px + env(safe-area-inset-bottom));
+        height: auto;
+    }
+
+    body.site-mobile-locked.page-news .about-content-mobile .about-text-wrap {
+        top: calc(128px + 4.2em);
+        bottom: calc(110px + env(safe-area-inset-bottom));
+        height: auto;
+    }
+
+    body.site-mobile-locked.page-about .about-text-track,
+    body.site-mobile-locked.page-news .about-text-track,
+    body.site-mobile-locked.page-contact .about-text-track {
+        will-change: transform;
+        padding-top: 0;
+        padding-bottom: 1.5em;
+        box-sizing: border-box;
+    }
+
+    body.site-mobile-locked.page-index .site-content {
+        height: var(--site-vh, 100vh);
+        overflow: hidden;
+    }
+
+    body.site-mobile-locked.page-index .index-white-canvas {
+        height: var(--site-vh, 100vh);
+        min-height: var(--site-vh, 100vh);
+    }
+
+    body.site-mobile-locked.page-index .scroll-container {
+        height: var(--site-vh, 100vh);
+        min-height: var(--site-vh, 100vh);
+        max-height: var(--site-vh, 100vh);
+        touch-action: none;
+    }
+
+    body.site-mobile-locked.page-index .horizontal-wrapper,
+    body.site-mobile-locked.page-index .matter-section[data-section="01"],
+    body.site-mobile-locked.page-index .matter-section[data-section="02"],
+    body.site-mobile-locked.page-index .matter-section[data-section="03"],
+    body.site-mobile-locked.page-index .matter-section[data-section="04"] {
+        height: var(--site-vh, 100vh);
+        max-height: var(--site-vh, 100vh);
+    }
 }
