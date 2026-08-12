@@ -1,11 +1,11 @@
 {
   "symbol": "HG=F",
-  "price": 6.608,
+  "price": 6.61,
   "currency": "USD",
   "unit": "lb",
   "exchange": "CMX",
   "instrumentType": "FUTURE",
   "delayed": true,
-  "marketTime": "2026-08-12T21:00:00.000Z",
-  "fetchedAt": "2026-08-12T21:55:44.214Z"
+  "marketTime": "2026-08-12T22:27:56.000Z",
+  "fetchedAt": "2026-08-12T22:38:31.327Z"
 }
