@@ -1,0 +1,459 @@
+/* Copper 2 — figure collage layout */
+
+body.page-copper2 {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: #000000;
+    --copper2-canvas-radius: 50px;
+}
+
+body.page-copper2::before {
+    border-radius: var(--copper2-canvas-radius);
+}
+
+.page-copper2 {
+    overflow: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: #000000;
+    color: #000000;
+    --section-color: #000000;
+
+    --copper2-header-pad-x: clamp(20px, 5vw, 80px);
+    --copper2-header-shift: 40px;
+    --copper2-header-left-nudge: -28px;
+    --copper2-header-left-line-inset: clamp(20px, 3vw, 50px);
+
+    --copper2-pad-top: 168px;
+    --copper2-pad-left: var(--copper2-header-pad-x);
+    --copper2-pad-right: var(--copper2-header-pad-x);
+    /* Match about / header content inset */
+    --copper2-header-content-pad: clamp(48px, 9vw, 132px);
+
+    /* Body copy — fluid type, ~6 lines visible */
+    --copper2-body-font-eng: clamp(14px, 1.18vw, 16px);
+    --copper2-body-font-kor: clamp(13px, 1.08vw, 14.5px);
+    --copper2-body-lh-eng: 1.45;
+    --copper2-body-lh-kor: 1.62;
+    --copper2-body-box-height: clamp(7rem, 20vh, 8.75rem);
+}
+
+.page-copper2 .mobile-placeholder {
+    display: none !important;
+}
+
+.page-copper2 .site-content {
+    display: block !important;
+    position: relative;
+    z-index: 2;
+    min-height: 100dvh;
+}
+
+.page-copper2 .fixed-header .nav-text,
+.page-copper2 .fixed-header a.nav-text,
+.page-copper2 .header-left-about a,
+.page-copper2 .header-right-text-1 a,
+.page-copper2 .header-right-text-2 a {
+    color: #000000;
+}
+
+.page-copper2 .header-icon {
+    filter: brightness(0) saturate(100%);
+}
+
+.page-copper2 .fixed-header .header-left-icon-1.header-matter-icon {
+    filter:
+        brightness(0) saturate(100%)
+        drop-shadow(0.5px 0 0 #fee11c)
+        drop-shadow(-0.5px 0 0 #fee11c)
+        drop-shadow(0 0.5px 0 #fee11c)
+        drop-shadow(0 -0.5px 0 #fee11c)
+        drop-shadow(0.5px 0.5px 0 #fee11c)
+        drop-shadow(-0.5px -0.5px 0 #fee11c)
+        drop-shadow(0.5px -0.5px 0 #fee11c)
+        drop-shadow(-0.5px 0.5px 0 #fee11c) !important;
+}
+
+.page-copper2 ::selection {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.page-copper2 ::-moz-selection {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.page-copper2 .grain-layer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background-image: url("/assets/matters-grain.png");
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: 0 0;
+    z-index: 10002;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.page-copper2 .copyright {
+    z-index: 10001;
+    visibility: visible;
+    opacity: 1;
+    color: #ffffff;
+    mix-blend-mode: difference;
+}
+
+.copper2-main {
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    padding:
+        var(--copper2-pad-top)
+        var(--copper2-pad-right)
+        max(28px, env(safe-area-inset-bottom))
+        var(--copper2-pad-left);
+}
+
+.copper2-visual {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    margin-top: clamp(-36px, -4.5vh, -20px);
+    display: flex;
+    flex-direction: column;
+}
+
+.copper2-title-block {
+    position: absolute;
+    top: clamp(28px, 3.5vh, 44px);
+    left: 0;
+    z-index: 2;
+    min-width: 0;
+    pointer-events: none;
+}
+
+.copper2-title {
+    margin: 0;
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(28px, 2.4vw, 32px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    color: #000000;
+}
+
+.copper2-title-kor {
+    margin: 0.35em 0 0;
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(28px, 2.4vw, 32px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    color: #000000;
+}
+
+.copper2-figures {
+    margin: 0;
+    padding: 0;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.copper2-figures img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top center;
+}
+
+.copper2-bottom {
+    box-sizing: border-box;
+    width: calc(100% + var(--copper2-pad-left) + var(--copper2-pad-right));
+    margin-left: calc(-1 * var(--copper2-pad-left));
+    margin-top: auto;
+    padding-left: var(--copper2-header-content-pad);
+    padding-right: var(--copper2-header-content-pad);
+}
+
+.copper2-body {
+    position: absolute;
+    left: calc(-1 * var(--copper2-pad-left));
+    bottom: clamp(16px, 2.5vh, 32px);
+    box-sizing: border-box;
+    width: calc(100% + var(--copper2-pad-left) + var(--copper2-pad-right));
+    padding-left: var(--copper2-header-content-pad);
+    padding-right: var(--copper2-header-content-pad);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(28px, 4vw, 56px);
+    align-items: end;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.copper2-body-col {
+    min-width: 0;
+    overflow-y: auto;
+    pointer-events: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #000000 transparent;
+    text-align: justify;
+    color: #000000;
+}
+
+.copper2-body-col::-webkit-scrollbar {
+    width: 4px;
+}
+
+.copper2-body-col::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 2px;
+}
+
+.copper2-body-col--eng,
+.copper2-body-col--kor {
+    max-height: var(--copper2-body-box-height);
+}
+
+.copper2-body-col--eng {
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: var(--copper2-body-font-eng);
+    line-height: var(--copper2-body-lh-eng);
+    letter-spacing: 0.02em;
+}
+
+.copper2-body-col--kor {
+    font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+    font-size: var(--copper2-body-font-kor);
+    line-height: var(--copper2-body-lh-kor);
+    letter-spacing: 0.02em;
+    word-break: keep-all;
+}
+
+.copper2-body-col p {
+    margin: 0 0 1.2em;
+    pointer-events: auto;
+}
+
+.copper2-body-col p:last-child {
+    margin-bottom: 0;
+}
+
+.copper2-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(16px, 2.5vh, 24px);
+}
+
+.copper2-footer-rule {
+    width: 100%;
+    height: 1.5px;
+    background-color: #000000;
+}
+
+.copper2-scroll-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.copper2-scroll-btn img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.copper2-next {
+    height: 1px;
+    scroll-margin-top: 0;
+}
+
+@media (min-width: 769px) {
+    html:has(body.page-copper2) {
+        overflow: hidden;
+        height: 100%;
+        background-color: #000000;
+    }
+
+    .page-copper2 {
+        --copper2-pad-left: calc(
+            var(--copper2-header-pad-x) + var(--copper2-header-shift) + var(--copper2-header-left-nudge) +
+                var(--copper2-header-left-line-inset)
+        );
+        --copper2-pad-right: calc(clamp(40px, 8vw, 120px) + clamp(40px, 5vw, 72px));
+    }
+
+    .copper2-main {
+        height: 100dvh;
+        min-height: 100dvh;
+        max-height: 100dvh;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 768px) {
+    html:has(body.page-copper2) {
+        height: var(--copper2-vh, 100svh);
+        max-height: var(--copper2-vh, 100svh);
+        overflow: hidden;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        background-color: #000000;
+    }
+
+    body.page-copper2 {
+        height: var(--copper2-vh, 100svh);
+        max-height: var(--copper2-vh, 100svh);
+        min-height: 0;
+        overflow: hidden;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        overscroll-behavior: none;
+        touch-action: manipulation;
+    }
+
+    .page-copper2 {
+        height: var(--copper2-vh, 100svh);
+        max-height: var(--copper2-vh, 100svh);
+        min-height: 0;
+        overflow: hidden;
+        --copper2-pad-top: 132px;
+        --copper2-header-shift: 0px;
+        --copper2-header-left-nudge: 0px;
+        --copper2-header-left-line-inset: 0px;
+        --copper2-pad-left: var(--copper2-header-pad-x);
+        --copper2-pad-right: clamp(32px, 8vw, 56px);
+        --copper2-header-content-pad: clamp(32px, 8vw, 56px);
+        --copper2-body-font-eng: clamp(13px, 3.4vw, 15px);
+        --copper2-body-font-kor: clamp(12.5px, 3.2vw, 14px);
+    }
+
+    .page-copper2 .site-content {
+        height: var(--copper2-vh, 100svh);
+        max-height: var(--copper2-vh, 100svh);
+        min-height: 0;
+        overflow: hidden;
+        overscroll-behavior: none;
+    }
+
+    .page-copper2 .grain-layer {
+        height: var(--copper2-vh, 100svh);
+    }
+
+    .copper2-main {
+        height: var(--copper2-vh, 100svh);
+        max-height: var(--copper2-vh, 100svh);
+        min-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: max(12px, env(safe-area-inset-bottom));
+    }
+
+    .copper2-visual {
+        margin-top: 0;
+        flex: 1 1 auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .copper2-figures {
+        flex: 0 1 auto;
+        min-height: 0;
+        max-height: 38%;
+        overflow: hidden;
+    }
+
+    .copper2-figures img {
+        height: 100%;
+        max-height: 100%;
+        width: 100%;
+        object-fit: contain;
+        object-position: top center;
+    }
+
+    .copper2-title-block {
+        flex: 0 0 auto;
+        position: relative;
+        top: auto;
+        left: auto;
+        margin-bottom: 0.5rem;
+    }
+
+    .copper2-body {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        flex: 1 1 auto;
+        min-height: 0;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0;
+        padding-left: var(--copper2-header-content-pad);
+        padding-right: var(--copper2-header-content-pad);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(0.75rem, 2.5vw, 1rem);
+        overflow: hidden;
+        pointer-events: auto;
+    }
+
+    .copper2-body-col--eng,
+    .copper2-body-col--kor {
+        flex: 1 1 0;
+        min-height: 0;
+        max-height: none;
+        overflow: hidden;
+        overscroll-behavior: none;
+        touch-action: none;
+        -webkit-overflow-scrolling: auto;
+    }
+
+    .copper2-body-col-track {
+        will-change: transform;
+    }
+
+    body.copper2-mobile-locked .copper2-body-col {
+        overflow: hidden !important;
+    }
+
+    body.copper2-mobile-locked .copper2-body-col-track {
+        pointer-events: auto;
+    }
+
+    .copper2-bottom {
+        flex: 0 0 auto;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0;
+        padding-left: var(--copper2-header-content-pad);
+        padding-right: var(--copper2-header-content-pad);
+    }
+}

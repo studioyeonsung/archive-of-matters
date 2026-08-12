@@ -72,8 +72,10 @@ function updateSectionColor(sectionIndex) {
 window.addEventListener('load', () => {
     setVisualViewportHeight();
     initHorizontalScroll();
-    // Set initial color for section 1
-    updateSectionColor(0);
+    // Index only — other pages set header/icon colors in their own CSS
+    if (document.body.classList.contains('page-index')) {
+        updateSectionColor(0);
+    }
     initMatterPopup();
     alignFixedArrowsWithKoreanTitle();
     initMobileArrowNav();
@@ -83,16 +85,19 @@ window.addEventListener('load', () => {
 });
 
 function setVisualViewportHeight() {
+    const lockedOnMobile =
+        window.innerWidth <= 768 &&
+        ['page-index', 'page-about', 'page-news', 'page-contact', 'page-copper2'].some((cls) =>
+            document.body.classList.contains(cls)
+        );
+    if (lockedOnMobile) return;
+
     const setVh = () => {
-        const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
     };
     setVh();
-    if (window.visualViewport) {
-        window.visualViewport.addEventListener('resize', setVh);
-        window.visualViewport.addEventListener('scroll', setVh);
-    }
     window.addEventListener('resize', setVh);
+    window.addEventListener('orientationchange', () => setTimeout(setVh, 250));
 }
 
 function alignFixedArrowsWithKoreanTitle() {
@@ -124,6 +129,7 @@ function alignFixedArrowsWithKoreanTitle() {
 
     update();
     window.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+    window.addEventListener('mobileindexsectionchange', () => requestAnimationFrame(update));
     window.addEventListener('resize', update);
     if (typeof ScrollTrigger !== 'undefined') {
         ScrollTrigger.addEventListener('refresh', update);
@@ -139,10 +145,11 @@ function initMobileArrowNav() {
     if (!arrowLeft || !arrowRight) return;
 
     const sections = document.querySelectorAll('.page-index .matter-section');
-    const scrollDistancePerSection = 300;
-    const scrollDistance = sections.length * scrollDistancePerSection;
 
     function getCurrentSection() {
+        if (window.mobileIndexNav) return window.mobileIndexNav.getCurrentSection();
+        const scrollDistancePerSection = 300;
+        const scrollDistance = sections.length * scrollDistancePerSection;
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         const progress = Math.min(1, Math.max(0, scrollTop / scrollDistance));
         const index = Math.round(progress * (sections.length - 1));
@@ -150,6 +157,12 @@ function initMobileArrowNav() {
     }
 
     function scrollToSection(index) {
+        if (window.mobileIndexNav) {
+            window.mobileIndexNav.goToSection(index);
+            return;
+        }
+        const scrollDistancePerSection = 300;
+        const scrollDistance = sections.length * scrollDistancePerSection;
         const sectionProgress = index / (sections.length - 1);
         const clampedProgress = Math.max(0, Math.min(1, sectionProgress));
         const targetScroll = clampedProgress * scrollDistance;
@@ -190,11 +203,12 @@ function initMobileSwipeNav() {
     if (!scrollContainer) return;
 
     const sections = document.querySelectorAll('.page-index .matter-section');
-    const scrollDistancePerSection = 300;
-    const scrollDistance = sections.length * scrollDistancePerSection;
     const minSwipeDistance = 50;
 
     function getCurrentSection() {
+        if (window.mobileIndexNav) return window.mobileIndexNav.getCurrentSection();
+        const scrollDistancePerSection = 300;
+        const scrollDistance = sections.length * scrollDistancePerSection;
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         const progress = Math.min(1, Math.max(0, scrollTop / scrollDistance));
         const index = Math.round(progress * (sections.length - 1));
@@ -202,6 +216,12 @@ function initMobileSwipeNav() {
     }
 
     function scrollToSection(index) {
+        if (window.mobileIndexNav) {
+            window.mobileIndexNav.goToSection(index);
+            return;
+        }
+        const scrollDistancePerSection = 300;
+        const scrollDistance = sections.length * scrollDistancePerSection;
         const sectionProgress = index / (sections.length - 1);
         const clampedProgress = Math.max(0, Math.min(1, sectionProgress));
         const targetScroll = clampedProgress * scrollDistance;
@@ -223,14 +243,30 @@ function initMobileSwipeNav() {
         const endY = e.changedTouches[0].clientY;
         const deltaX = endX - startX;
         const deltaY = endY - startY;
-        if (Math.abs(deltaX) < minSwipeDistance || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+        const absX = Math.abs(deltaX);
+        const absY = Math.abs(deltaY);
+        if (absX < minSwipeDistance && absY < minSwipeDistance) return;
+
         const current = getCurrentSection();
-        if (deltaX < 0) {
-            const next = (current + 1) % sections.length;
-            scrollToSection(next);
+        let goNext = false;
+        let goPrev = false;
+
+        if (absX >= absY) {
+            // Horizontal: left = next, right = prev
+            if (absX < minSwipeDistance) return;
+            if (deltaX < 0) goNext = true;
+            else goPrev = true;
         } else {
-            const prev = (current - 1 + sections.length) % sections.length;
-            scrollToSection(prev);
+            // Vertical: up = next, down = prev
+            if (absY < minSwipeDistance) return;
+            if (deltaY < 0) goNext = true;
+            else goPrev = true;
+        }
+
+        if (goNext) {
+            scrollToSection((current + 1) % sections.length);
+        } else if (goPrev) {
+            scrollToSection((current - 1 + sections.length) % sections.length);
         }
     }, { passive: true });
 }
@@ -388,8 +424,93 @@ function initAboutLangSwitch() {
             allBtns.forEach((b) => {
                 if (b.getAttribute('data-lang') === lang) b.classList.add('is-active');
             });
-            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            if (window.__aboutTextScrollReset) {
+                window.__aboutTextScrollReset();
+            } else {
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            }
         });
+    });
+}
+
+function initMobileHorizontalScroll(horizontalWrapper, sections, timelinePoints) {
+    document.body.style.minHeight = '';
+
+    const setSiteVw = () => {
+        document.documentElement.style.setProperty('--site-vw', `${window.innerWidth}px`);
+    };
+    setSiteVw();
+
+    let currentSection = 0;
+    const grainLayer = document.querySelector('.grain-layer');
+    const timelineIndicator = document.querySelector('.timeline-indicator');
+
+    function getSectionX(index) {
+        const section = sections[index];
+        if (!section) return 0;
+        // Use layout offset so each panel sits exactly in the viewport
+        return -section.offsetLeft;
+    }
+
+    function updateTimelineUI(sectionIndex) {
+        const progress = sections.length > 1 ? sectionIndex / (sections.length - 1) : 0;
+        if (timelineIndicator) {
+            const timelineWidth = window.innerWidth * 0.7;
+            const timelineStart = window.innerWidth * 0.15;
+            timelineIndicator.style.left = `${timelineStart + timelineWidth * progress}px`;
+        }
+        timelinePoints.forEach((point, index) => {
+            const number = point.querySelector('.timeline-number');
+            if (number) number.classList.toggle('active', index === sectionIndex);
+        });
+        updateSectionColor(sectionIndex);
+    }
+
+    function goToSection(index, animate = true) {
+        currentSection = Math.max(0, Math.min(index, sections.length - 1));
+        const x = getSectionX(currentSection);
+        const progress = sections.length > 1 ? currentSection / (sections.length - 1) : 0;
+        const grainTravel = Math.max(0, horizontalWrapper.scrollWidth - window.innerWidth) * 0.2;
+        const grainX = grainTravel * progress;
+
+        if (animate) {
+            gsap.to(horizontalWrapper, { x, duration: 0.45, ease: 'power2.out' });
+            if (grainLayer) gsap.to(grainLayer, { x: grainX, duration: 0.45, ease: 'power2.out' });
+        } else {
+            gsap.set(horizontalWrapper, { x });
+            if (grainLayer) gsap.set(grainLayer, { x: grainX });
+        }
+        updateTimelineUI(currentSection);
+        window.dispatchEvent(
+            new CustomEvent('mobileindexsectionchange', { detail: { section: currentSection } })
+        );
+    }
+
+    window.mobileIndexNav = {
+        getCurrentSection: () => currentSection,
+        goToSection: (index) => goToSection(index, true),
+    };
+
+    timelinePoints.forEach((point, index) => {
+        const number = point.querySelector('.timeline-number');
+        if (!number) return;
+        number.style.cursor = 'pointer';
+        number.style.pointerEvents = 'auto';
+        number.setAttribute('role', 'button');
+        number.setAttribute('aria-label', `${index + 1}번 물질로 이동`);
+        number.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            goToSection(index, true);
+        });
+    });
+
+    goToSection(0, false);
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) return;
+        setSiteVw();
+        goToSection(currentSection, false);
     });
 }
 
@@ -402,6 +523,11 @@ function initHorizontalScroll() {
 
     if (!horizontalWrapper || !scrollContainer) {
         console.error('Required elements not found');
+        return;
+    }
+
+    if (window.innerWidth <= 768) {
+        initMobileHorizontalScroll(horizontalWrapper, sections, timelinePoints);
         return;
     }
 

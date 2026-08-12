@@ -1,0 +1,511 @@
+/* Copper — margins & grid from sketch (not about layout) */
+
+body.page-copper {
+    padding-left: 0;
+    padding-right: 0;
+    --copper-canvas-radius: 50px;
+}
+
+body.page-copper::before {
+    border-radius: var(--copper-canvas-radius) var(--copper-canvas-radius) 0 0;
+}
+
+.page-copper {
+    overflow: hidden;
+    height: 100vh;
+    height: 100dvh;
+    background-color: #1a120c;
+    color: #000000;
+    --section-color: #000000;
+
+    /* Match .fixed-header horizontal inset (style.css) */
+    --copper-header-pad-x: clamp(20px, 5vw, 80px);
+    --copper-header-shift: 40px;
+    --copper-header-left-nudge: -28px;
+    --copper-header-left-line-inset: clamp(20px, 3vw, 50px);
+
+    --copper-pad-top: 188px;
+    --copper-pad-left: var(--copper-header-pad-x);
+    --copper-pad-right: var(--copper-header-pad-x);
+    --copper-intro-width: clamp(320px, 28vw, 380px);
+    --copper-col-gap: clamp(88px, 10vw, 152px);
+    --copper-chart-block-h: clamp(152px, 20vh, 220px);
+    --copper-chart-label-h: 14px;
+}
+
+.page-copper .mobile-placeholder {
+    display: none !important;
+}
+
+.page-copper .site-content {
+    display: block !important;
+    position: relative;
+    z-index: 2;
+}
+
+/* Hover backgrounds — clipped to white canvas, not outer #1a120c corners */
+.copper-hover-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    border-radius: var(--copper-canvas-radius) var(--copper-canvas-radius) 0 0;
+    overflow: hidden;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.copper-hover-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.page-copper.is-hover-bg .copper-hover-bg,
+.page-copper.is-hover-bg .copper-hover-bg::after {
+    opacity: 1;
+}
+
+/* Hover background: header + main content → white @ 70% */
+.page-copper.is-hover-bg {
+    --copper-hover-fg: rgba(255, 255, 255, 0.7);
+    --section-color: var(--copper-hover-fg);
+}
+
+.page-copper.is-hover-bg .fixed-header .nav-text,
+.page-copper.is-hover-bg .fixed-header a.nav-text,
+.page-copper.is-hover-bg .header-left-about a,
+.page-copper.is-hover-bg .header-right-text-1 a,
+.page-copper.is-hover-bg .header-right-text-2 a,
+.page-copper.is-hover-bg .copper-title,
+.page-copper.is-hover-bg .copper-price,
+.page-copper.is-hover-bg .copper-lead,
+.page-copper.is-hover-bg .copper-read-more,
+.page-copper.is-hover-bg .copper-table,
+.page-copper.is-hover-bg .copper-table-cell {
+    color: var(--copper-hover-fg);
+}
+
+.page-copper.is-hover-bg .copper-table-row {
+    border-bottom-color: var(--copper-hover-fg);
+}
+
+.page-copper.is-hover-bg .fixed-header .header-icon,
+.page-copper.is-hover-bg .fixed-header .header-matter-arrow,
+.page-copper.is-hover-bg .fixed-header img[class*="header-icon"],
+.page-copper.is-hover-bg .fixed-header img[class*="icon"] {
+    filter: brightness(0) invert(1) !important;
+    opacity: 0.7;
+}
+
+.page-copper.is-hover-bg .copper-chart-area {
+    fill: rgba(255, 255, 255, 0.2);
+}
+
+.page-copper.is-hover-bg .copper-chart-month-label {
+    color: rgba(0, 0, 0, 0.95);
+}
+
+.page-copper.is-hover-bg .copyright {
+    mix-blend-mode: difference;
+    color: #ffffff;
+    opacity: 0.95;
+}
+
+.page-copper .copper-chart,
+.page-copper .grain-layer {
+    z-index: 6;
+}
+
+.page-copper .copper-table-row--hover {
+    cursor: pointer;
+}
+
+.page-copper .fixed-header .nav-text,
+.page-copper .fixed-header a.nav-text,
+.page-copper .header-left-about a,
+.page-copper .header-right-text-1 a,
+.page-copper .header-right-text-2 a {
+    color: #000000;
+    transition: none;
+}
+
+.page-copper .fixed-header .nav-kor-word-1,
+.page-copper .fixed-header .nav-kor-word-2,
+.page-copper .fixed-header .nav-kor-word-3,
+.page-copper .fixed-header .header-icon,
+.page-copper .fixed-header .header-matter-arrow {
+    transition: none;
+}
+
+.page-copper .copyright {
+    transition: none;
+}
+
+.page-copper .header-icon {
+    filter: brightness(0) saturate(100%);
+}
+
+.page-copper ::selection {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.page-copper ::-moz-selection {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.copper-main {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--copper-pad-top);
+    padding-bottom: var(--copper-chart-block-h);
+    overflow: hidden;
+}
+
+.copper-layout {
+    box-sizing: border-box;
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0 var(--copper-pad-right) 0 var(--copper-pad-left);
+    display: grid;
+    grid-template-columns: var(--copper-intro-width) minmax(0, 1fr);
+    column-gap: var(--copper-col-gap);
+    row-gap: 0;
+    align-items: start;
+    overflow: hidden;
+}
+
+.copper-intro {
+    min-width: 0;
+}
+
+.copper-title {
+    margin: 0 0 1.2em;
+    padding-bottom: 0;
+    border-bottom: none;
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.12;
+    color: #000000;
+}
+
+.copper-price {
+    margin: 0 0 1.3em;
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    letter-spacing: 0.03em;
+    color: #000000;
+}
+
+.copper-price-value {
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+}
+
+.copper-lead {
+    margin: 0 0 2.1em;
+    max-width: 26em;
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    letter-spacing: 0.03em;
+    color: #000000;
+}
+
+.copper-read-more {
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    letter-spacing: 0.03em;
+    color: #000000;
+    text-decoration: none;
+}
+
+.copper-read-more:hover {
+    font-family: "Rubik-Italic", "parabolica", sans-serif;
+    font-style: italic;
+}
+
+.copper-archive {
+    min-width: 0;
+    padding-top: 0.05em;
+}
+
+/*
+ * Ledger table (full-page sketch):
+ * — thick line under header
+ * — thin line under every data row
+ * — 7 blank ruled rows below
+ * All rows share one grid; lines = border-bottom on each row (full width).
+ */
+.copper-table {
+    --copper-table-cols: 1.1fr 2.35fr 2fr 0.62fr;
+    --copper-row-pad-y: 0.62em;
+    --copper-row-min-h: 2.35em;
+    width: 100%;
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.45;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.copper-table-row {
+    display: grid;
+    grid-template-columns: var(--copper-table-cols);
+    column-gap: 0;
+    align-items: center;
+    width: 100%;
+    min-height: var(--copper-row-min-h);
+    padding: var(--copper-row-pad-y) 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #000000;
+}
+
+.copper-table-row--head {
+    align-items: end;
+    padding-top: 0;
+    padding-bottom: 0.55em;
+    border-bottom-width: 2px;
+}
+
+.copper-table-row--blank {
+    padding: 0;
+    min-height: var(--copper-row-min-h);
+}
+
+.copper-table-cell {
+    display: block;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+    text-align: left;
+}
+
+.copper-table-cell--date {
+    text-align: right;
+}
+
+.page-copper .grain-layer {
+    opacity: 0.35;
+}
+
+.copper-chart {
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    max-width: 100vw;
+    bottom: 0;
+    z-index: 6;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+}
+
+.copper-chart-figure,
+.copper-chart-svg {
+    pointer-events: auto;
+}
+
+.copper-chart-figure {
+    position: relative;
+    margin: 0;
+    width: 100%;
+}
+
+.copper-chart-labels {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--copper-chart-label-h);
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.copper-chart-month-label {
+    position: absolute;
+    bottom: 5px;
+    margin: 0;
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 10px;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.copper-chart-month-label--mid {
+    transform: translateX(-50%);
+}
+
+.copper-chart-month-label--start {
+    transform: translateX(0);
+}
+
+.copper-chart-month-label--end {
+    transform: translateX(-100%);
+}
+
+.copper-chart-svg {
+    display: block;
+    width: 100%;
+    height: var(--copper-chart-block-h);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.copper-chart-area {
+    fill: #000000;
+    stroke: none;
+}
+
+.copper-chart-fallback {
+    margin: 0.5rem 0 0;
+    font-family: "parabolica", sans-serif;
+    font-size: 13px;
+    color: #000000;
+}
+
+.copper-chart-fallback:empty {
+    display: none;
+}
+
+.page-copper .copyright {
+    z-index: 10001;
+    visibility: visible;
+    opacity: 1;
+    color: #ffffff;
+    mix-blend-mode: difference;
+}
+
+@media (min-width: 769px) {
+    html:has(body.page-copper) {
+        overflow: hidden;
+        height: 100%;
+    }
+
+    .page-copper {
+        /* ARCHIVE line: pad-x + header translate + header-left nudge + top-line margin */
+        --copper-pad-left: calc(
+            var(--copper-header-pad-x) + var(--copper-header-shift) + var(--copper-header-left-nudge) +
+                var(--copper-header-left-line-inset)
+        );
+        /* Table ends before copyright strip — wider than header pad alone */
+        --copper-pad-right: calc(clamp(40px, 8vw, 120px) + clamp(40px, 5vw, 72px));
+    }
+
+    .copper-table {
+        --copper-row-pad-y: 0.48em;
+        --copper-row-min-h: 1.9em;
+    }
+
+    /* Fit viewport: fewer ruled blank rows (sketch has 7; 3 fit above chart) */
+    .copper-table-row--blank:nth-child(n + 11) {
+        display: none;
+    }
+
+    .copper-title {
+        margin-bottom: 0.85em;
+    }
+
+    .copper-price {
+        margin-bottom: 1em;
+    }
+
+    .copper-lead {
+        margin-bottom: 1.35em;
+    }
+
+}
+
+@media (max-width: 768px) {
+    html:has(body.page-copper) {
+        min-height: 100%;
+        height: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .page-copper {
+        overflow-y: auto;
+        height: auto;
+        min-height: 100dvh;
+        --copper-pad-top: 132px;
+        --copper-header-shift: 0px;
+        --copper-header-left-nudge: 0px;
+        --copper-header-left-line-inset: 0px;
+        --copper-pad-left: var(--copper-header-pad-x);
+        --copper-pad-right: clamp(32px, 8vw, 56px);
+        --copper-intro-width: 100%;
+        --copper-col-gap: 0;
+    }
+
+    .copper-main {
+        position: relative;
+        height: auto;
+        min-height: 100dvh;
+        overflow: visible;
+        padding-bottom: max(52px, calc(env(safe-area-inset-bottom) + 40px));
+    }
+
+    .copper-layout {
+        flex: none;
+        overflow: visible;
+        padding-bottom: 2rem;
+        grid-template-columns: 1fr;
+        row-gap: 2.75rem;
+    }
+
+    .copper-chart {
+        position: relative;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        width: 100%;
+        max-width: 100%;
+        margin: 2rem 0 0;
+        z-index: 5;
+    }
+
+    .copper-chart-svg {
+        height: clamp(140px, 40vw, 200px);
+    }
+
+    .copper-title {
+        font-size: clamp(26px, 7vw, 32px);
+    }
+
+    .copper-table {
+        font-size: 14px;
+    }
+}
