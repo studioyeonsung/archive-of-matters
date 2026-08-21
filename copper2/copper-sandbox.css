@@ -181,6 +181,8 @@ body.page-copper2::before {
 
 .copper2-bottom {
     box-sizing: border-box;
+    position: relative;
+    z-index: 3;
     width: calc(100% + var(--copper2-pad-left) + var(--copper2-pad-right));
     margin-left: calc(-1 * var(--copper2-pad-left));
     margin-top: auto;
@@ -256,14 +258,257 @@ body.page-copper2::before {
 .copper2-footer {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+}
+
+.copper2-archive {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: clamp(16px, 2.5vh, 24px);
+    width: 100%;
+}
+
+/* Rule stays in flow; table overlays upward without pushing body copy */
+.copper2-archive-anchor {
+    position: relative;
+    width: 100%;
+    z-index: 4;
+}
+
+.copper2-archive-clip {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    display: grid;
+    grid-template-rows: 0fr;
+    width: 100%;
+    transition: grid-template-rows 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+}
+
+.copper2-archive.is-open .copper2-archive-clip {
+    grid-template-rows: 1fr;
+    pointer-events: auto;
+}
+
+.copper2-archive-panel {
+    min-height: 0;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.4);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.copper2-table {
+    --copper2-table-cols: minmax(0, 1.35fr) minmax(0, 1.5fr) minmax(0, 0.95fr) 22px;
+    --copper2-table-divider-h: 1.36rem;
+    --copper2-table-col-inset: 2.85em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.copper2-table-row {
+    display: grid;
+    grid-template-columns: var(--copper2-table-cols);
+    align-items: stretch;
+    border-bottom: none;
+    min-height: 2.6rem;
+}
+
+.copper2-table-row--head {
+    min-height: 2.5rem;
+    border-top: 2.1px solid #000000;
+    border-bottom: 2.1px solid #000000;
+}
+
+.copper2-table-cell {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    align-content: center;
+    gap: 0.35em 0.55em;
+    padding: 0.55em 0.85em;
+    min-width: 0;
+}
+
+.copper2-table-row--head .copper2-table-cell {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Data-row rules: default 1px bottom (except last — footer rule), hover 2.1px */
+.copper2-table-row:not(.copper2-table-row--head):not(:last-child) {
+    box-shadow: inset 0 -1px 0 #000000;
+}
+
+.copper2-table-row:not(.copper2-table-row--head) {
+    transition: box-shadow 0.15s ease;
+    cursor: pointer;
+}
+
+.copper2-table-row:not(.copper2-table-row--head):not(:last-child):hover {
+    box-shadow: inset 0 -2.1px 0 #000000;
+}
+
+.copper2-table-row:not(.copper2-table-row--head):hover .copper2-table-eng {
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 500;
+}
+
+.copper2-table-row:not(.copper2-table-row--head):hover .copper2-table-kor {
+    font-weight: 500;
+}
+
+.copper2-table-row:not(.copper2-table-row--head):hover .copper2-table-date {
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 500;
+}
+
+.copper2-table-row:not(.copper2-table-row--head):hover .copper2-table-badge {
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 500;
+}
+
+/* Equal-height column rules — 20% shorter than full row; none beside arrow */
+.copper2-table-cell:nth-child(1)::after,
+.copper2-table-cell:nth-child(2)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 1px;
+    height: var(--copper2-table-divider-h);
+    background-color: #000000;
+    pointer-events: none;
+}
+
+.copper2-table-cell--arrow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-left: 0;
+    transform: translateX(-10px);
+}
+
+.copper2-table-sort-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: inherit;
+}
+
+.copper2-table-head-arrow {
+    display: block;
+    width: 14px;
+    height: 14px;
+    transition: transform 0.25s ease;
+}
+
+.copper2-table-sort-btn.is-asc .copper2-table-head-arrow {
+    transform: rotate(180deg);
+}
+
+.copper2-table-eng {
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15.6px;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+    color: #000000;
+}
+
+.copper2-table-kor {
+    font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+    color: #000000;
+    word-break: keep-all;
+}
+
+.copper2-table-row--head .copper2-table-eng {
+    font-family: "parabolica-medium", "parabolica", sans-serif;
+    font-size: 14.4px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    transform: translateY(1px);
+}
+
+.copper2-table-row--head .copper2-table-kor {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.2;
+    transform: translateY(1px);
+}
+
+.copper2-table-cell:nth-child(2),
+.copper2-table-cell--date {
+    padding-left: var(--copper2-table-col-inset);
+}
+
+.copper2-table-row:not(.copper2-table-row--head) .copper2-table-cell--date {
+    flex-wrap: nowrap;
+    align-items: baseline;
+    align-content: center;
+    justify-content: flex-start;
+    gap: 0.75em;
+}
+
+.copper2-table-date {
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15.6px;
+    line-height: 1.3;
+    white-space: nowrap;
+    color: #000000;
+    flex: 0 0 5.2em;
+    width: 5.2em;
+}
+
+.copper2-table-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 0;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    background: #d8d8d8;
+    color: #111111;
+    font-family: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 13.2px;
+    line-height: 1.2;
+    white-space: nowrap;
 }
 
 .copper2-footer-rule {
+    position: relative;
+    z-index: 1;
     width: 100%;
     height: 1.5px;
     background-color: #000000;
+    flex-shrink: 0;
+    transition: height 0.15s ease;
+}
+
+/* Last row has no own bottom line — thicken the shared footer rule on hover instead */
+.copper2-archive-clip:has(
+    .copper2-table-row:not(.copper2-table-row--head):last-child:hover
+) ~ .copper2-footer-rule {
+    height: 2.1px;
 }
 
 .copper2-scroll-btn {
@@ -272,18 +517,65 @@ body.page-copper2::before {
     justify-content: center;
     width: 24px;
     height: 24px;
+    margin-top: clamp(16px, 2.5vh, 24px);
     padding: 0;
     border: none;
     background: transparent;
     cursor: pointer;
     text-decoration: none;
     color: inherit;
+    animation: copper2-scroll-nudge 1.6s ease-in-out infinite;
+    transition: transform 0.35s ease;
 }
 
 .copper2-scroll-btn img {
     display: block;
     width: 100%;
     height: 100%;
+    transition: transform 0.35s ease;
+}
+
+.copper2-archive.is-open .copper2-scroll-btn {
+    animation: none;
+}
+
+.copper2-archive.is-open .copper2-scroll-btn img {
+    transform: rotate(180deg);
+}
+
+@keyframes copper2-scroll-nudge {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    45% {
+        transform: translateY(6px);
+    }
+    70% {
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .copper2-scroll-btn {
+        animation: none;
+    }
+
+    .copper2-archive-clip {
+        transition: none;
+    }
+
+    .copper2-scroll-btn img {
+        transition: none;
+    }
+
+    .copper2-table-row:not(.copper2-table-row--head) {
+        transition: none;
+    }
+
+    .copper2-table-head-arrow {
+        transition: none;
+    }
 }
 
 .copper2-next {
@@ -311,6 +603,18 @@ body.page-copper2::before {
         min-height: 100dvh;
         max-height: 100dvh;
         overflow: hidden;
+    }
+}
+
+/* ~24" and larger desktops only (leave 16" laptops at default size) */
+@media (min-width: 1800px) {
+    .copper2-figures img {
+        width: auto;
+        max-width: 88%;
+        height: auto;
+        max-height: 64vh;
+        object-fit: contain;
+        object-position: top center;
     }
 }
 
@@ -455,5 +759,51 @@ body.page-copper2::before {
         margin-top: 0;
         padding-left: var(--copper2-header-content-pad);
         padding-right: var(--copper2-header-content-pad);
+    }
+
+    .copper2-table {
+        --copper2-table-cols: minmax(0, 1.25fr) minmax(0, 1.45fr) minmax(0, 0.95fr) 18px;
+        --copper2-table-divider-h: 1.08rem;
+        --copper2-table-col-inset: 2em;
+    }
+
+    .copper2-table-cell {
+        padding: 0.5em 0.45em;
+        gap: 0.25em 0.35em;
+    }
+
+    .copper2-table-cell:nth-child(2),
+    .copper2-table-cell--date {
+        padding-left: var(--copper2-table-col-inset);
+    }
+
+    .copper2-table-cell--arrow {
+        transform: translateX(-6px);
+    }
+
+    .copper2-table-eng {
+        font-size: 13.2px;
+    }
+
+    .copper2-table-kor {
+        font-size: 10px;
+    }
+
+    .copper2-table-row--head .copper2-table-eng {
+        font-size: 12px;
+    }
+
+    .copper2-table-date {
+        font-size: 13.2px;
+    }
+
+    .copper2-table-badge {
+        font-size: 10.8px;
+        padding: 0.15em 0.4em;
+    }
+
+    .copper2-table-head-arrow {
+        width: 11px;
+        height: 11px;
     }
 }
