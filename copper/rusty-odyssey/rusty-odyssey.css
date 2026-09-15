@@ -1,0 +1,1595 @@
+/* Rusty Odyssey — project detail */
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('/fonts/PretendardVariable.ttf') format('truetype');
+    font-weight: 45 920;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+AC00-D7A3, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF, U+3000-303F, U+FF00-FFEF;
+}
+
+/* Rusty Odyssey — project detail */
+
+html:has(body.page-rusty-odyssey) {
+    background-color: #000000;
+}
+
+body.page-rusty-odyssey {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: #000000;
+    --ro-canvas-radius: 50px;
+    --ro-pad-x: clamp(48px, 9vw, 132px);
+    --ro-pad-top: 168px;
+    --ro-footer-outer-h: 35px;
+    --ro-footer-h: 28px;
+    --ro-font: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --ro-font-medium: "parabolica-medium", "parabolica", sans-serif;
+    --ro-copy-width: 30.096em;
+    --ro-hero-gap: clamp(28px, 4vw, 56px);
+    --ro-stack-gap: clamp(20px, 3vh, 36px);
+    --ro-hero-media-basis: 57.38em;
+    --ro-content-width: min(
+        calc(var(--ro-hero-media-basis) + var(--ro-hero-gap) + var(--ro-copy-width)),
+        100%
+    );
+    --ro-hero-media-width: calc(var(--ro-content-width) - var(--ro-copy-width) - var(--ro-hero-gap));
+}
+
+/* Same rounded white canvas as copper — black R shows in the corners */
+body.page-rusty-odyssey::before {
+    display: block;
+    content: "";
+    position: fixed;
+    inset: 0;
+    width: auto;
+    height: auto;
+    background-color: #ffffff;
+    /* Bottom R matches footer height so L/R edges stay flush */
+    border-radius: var(--ro-canvas-radius) var(--ro-canvas-radius) var(--ro-footer-outer-h) var(--ro-footer-outer-h);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.page-rusty-odyssey {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: transparent;
+    color: #000000;
+    --section-color: #000000;
+    font-family: var(--ro-font);
+}
+
+/* Copper project details: Hangul → Pretendard, Latin → Parabolica */
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) {
+    --ro-font: "Pretendard", "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --ro-font-medium: "Pretendard", "parabolica-medium", "parabolica", sans-serif;
+}
+
+body.page-rusty-odyssey.page-rusty-odyssey--ko:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) {
+    word-break: keep-all;
+}
+
+/* Header / overlay Korean stays Neutronic on every page */
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .nav-kor,
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .nav-overlay-title-kor,
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .nav-overlay-kor,
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .nav-overlay-kor-matter-trigger {
+    font-family: "neutronic-hangeul", sans-serif;
+}
+
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .fixed-header .nav-text:not(.nav-kor),
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .fixed-header .header-left-about a,
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .fixed-header .header-right-text-1 a,
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .fixed-header .header-right-text-2 a,
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .nav-overlay-title-eng,
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .nav-overlay-eng {
+    font-family: "parabolica", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .fixed-header .nav-text:hover:not(.nav-kor):not(.nav-kor *),
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .fixed-header .header-left-about a:hover,
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .fixed-header .header-right-text-1 a:hover,
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .fixed-header .header-right-text-2 a:hover {
+    font-family: "parabolica", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-style: italic;
+}
+
+.page-rusty-odyssey .mobile-placeholder {
+    display: none !important;
+}
+
+.page-rusty-odyssey .site-content {
+    display: block !important;
+    position: relative;
+    z-index: 2;
+    min-height: 100dvh;
+    background-color: transparent;
+}
+
+/* Desktop only — do not let these header metrics leak into mobile */
+@media (min-width: 769px) {
+    .page-rusty-odyssey .fixed-header {
+        z-index: 1100;
+        background-color: transparent;
+        /* Match /copper/ header metrics (style.css defaults) */
+        min-height: 120px;
+        padding-top: clamp(20px, 3vw, 40px);
+        padding-bottom: clamp(20px, 3vw, 40px);
+    }
+
+    .page-rusty-odyssey .fixed-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: auto;
+        height: 80%;
+        background-color: #ffffff;
+        border-radius: var(--ro-canvas-radius) var(--ro-canvas-radius) 0 0;
+        z-index: -1;
+        pointer-events: none;
+    }
+}
+
+.page-rusty-odyssey .fixed-header .nav-text,
+.page-rusty-odyssey .fixed-header a.nav-text,
+.page-rusty-odyssey .header-left-about a,
+.page-rusty-odyssey .header-right-text-1 a,
+.page-rusty-odyssey .header-right-text-2 a {
+    color: #000000;
+}
+
+.page-rusty-odyssey .header-icon {
+    filter: brightness(0) saturate(100%);
+}
+
+.page-rusty-odyssey .header-matter-slot {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.page-rusty-odyssey .header-matter-slot.is-current::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(10%, calc(-100% + 3px));
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: #ffff00;
+    border: 1.5px solid #000000;
+    box-sizing: border-box;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.page-rusty-odyssey ::selection {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.page-rusty-odyssey ::-moz-selection {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.page-rusty-odyssey .grain-layer {
+    position: fixed;
+    inset: 0;
+    width: auto;
+    height: auto;
+    background-image: url("/assets/matters-grain.png");
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: 0 0;
+    z-index: 10002;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.page-rusty-odyssey .copyright {
+    z-index: 10001;
+    visibility: visible;
+    opacity: 1;
+    color: #ffffff;
+    mix-blend-mode: difference;
+}
+
+/* —— Main —— */
+.ro-main {
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    padding:
+        var(--ro-pad-top)
+        var(--ro-pad-x)
+        calc(var(--ro-footer-outer-h) + 48px)
+        var(--ro-pad-x);
+}
+
+/* —— Hero —— */
+.ro-hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    gap: var(--ro-hero-gap);
+    width: var(--ro-content-width);
+    max-width: 100%;
+    margin-inline: auto;
+    margin-bottom: calc(var(--ro-stack-gap) * 2.6 * 1.4);
+    box-sizing: border-box;
+}
+
+.ro-hero-left {
+    flex: 0 1 var(--ro-hero-media-width);
+    width: var(--ro-hero-media-width);
+    max-width: var(--ro-hero-media-width);
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--ro-stack-gap);
+}
+
+.ro-hero-media {
+    margin: 0;
+    width: 100%;
+    background: #000000;
+    overflow: hidden;
+}
+
+.ro-hero-media--bordered {
+    box-sizing: border-box;
+    border: 1px solid #000000;
+}
+
+.ro-hero-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: min(96.72vh, 1123px);
+    object-fit: cover;
+    object-position: center;
+}
+
+.ro-hero-media--portrait img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: min(96.72vh, 1123px);
+    object-fit: cover;
+    object-position: center;
+}
+
+.ro-hero-media--nudge-down img {
+    /* Bias crop upward so more black above the tank shows; subject sits lower */
+    object-position: center 34%;
+    transform: none;
+}
+
+/* Text column — natural height, no inner scroll */
+.ro-hero-meta {
+    position: relative;
+    flex: 0 0 var(--ro-copy-width);
+    width: var(--ro-copy-width);
+    max-width: var(--ro-copy-width);
+    min-width: 0;
+}
+
+.ro-hero-meta-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.ro-title {
+    margin: 0;
+    padding: 0;
+    flex: 0 0 auto;
+    font-family: var(--ro-font);
+    font-size: clamp(22.4px, 2.08vw, 28.8px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    color: #000000;
+}
+
+.ro-meta-line {
+    margin: 1.85rem 0 0;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+    font-family: var(--ro-font);
+    font-size: clamp(14px, 1.15vw, 16px);
+    line-height: 1.35;
+    color: #000000;
+}
+
+.ro-year,
+.ro-type,
+.ro-collab,
+.ro-spec {
+    display: block;
+}
+
+.ro-collab,
+.ro-spec {
+    margin-top: 0.55rem;
+    font-size: 84%;
+    line-height: 1.15;
+}
+
+body.page-rusty-odyssey:not(.page-rusty-odyssey--ko) .ro-spec {
+    line-height: 1.38;
+}
+
+.ro-collab + .ro-spec {
+    margin-top: 0;
+}
+
+.ro-tags {
+    list-style: none;
+    margin: 1.85rem 0 0;
+    padding: 0;
+    flex: 0 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.44rem;
+}
+
+.ro-tags li {
+    display: flex;
+}
+
+.ro-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 2em;
+    min-height: 2em;
+    /* Extra bottom padding nudges glyph optically upward in the box */
+    padding: 0 1em 2px;
+    border: 1.7px solid #000000;
+    border-radius: 10px;
+    font-family: var(--ro-font);
+    font-size: clamp(12px, 1vw, 14px);
+    line-height: 1;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.ro-status {
+    flex: 0 0 auto;
+    margin-top: 0.55rem;
+}
+
+.ro-status .ro-tag {
+    background-color: #000000;
+    border-color: #000000;
+    color: #ffffff;
+}
+
+.ro-status .ro-tag--series {
+    background-color: #ffffff;
+    border-color: #000000;
+    color: #000000;
+}
+
+/* Tabs + panels — full text flow, no scroll box */
+.ro-copy {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: none;
+    margin-top: 3.15rem;
+    overflow: visible;
+}
+
+/* —— Tabs —— */
+.ro-tabs {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.935rem 1.485rem;
+    width: 100%;
+    margin-top: 0;
+    padding: 0 0 1.25rem;
+    border: none;
+    background-color: transparent;
+}
+
+.ro-tab {
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0 0 0.35em;
+    margin: 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: var(--ro-font);
+    font-size: clamp(10.8px, 0.9vw, 12.6px);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #000000;
+    cursor: pointer;
+    line-height: 1.2;
+    border-bottom: 2px solid transparent;
+    box-shadow: none;
+    flex: 0 0 auto;
+}
+
+/* Reserve medium-width so active font swap doesn't shift layout */
+.ro-tab::after {
+    content: attr(data-text);
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    user-select: none;
+    pointer-events: none;
+    font-family: var(--ro-font-medium);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    speak: never;
+}
+
+.ro-tab.is-active {
+    font-family: var(--ro-font-medium);
+    border-bottom-color: #000000;
+}
+
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .ro-tabs {
+    gap: 0.935rem 2.9rem;
+}
+
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .ro-tab {
+    border-bottom-width: 1.5px;
+    padding-bottom: 0.18em;
+}
+
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .ro-tab.is-active {
+    font-weight: 700;
+}
+
+body.page-rusty-odyssey.page-rusty-odyssey--ko .ro-tab {
+    font-size: clamp(11.88px, 0.99vw, 13.86px);
+}
+
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .ro-tab::after {
+    font-weight: 700;
+}
+
+.ro-tab.is-disabled,
+.ro-tab:disabled {
+    display: none;
+}
+
+.ro-tab:focus-visible {
+    outline: 2px solid #000000;
+    outline-offset: 3px;
+}
+
+.ro-tab:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.ro-panels {
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    width: 100%;
+    max-width: none;
+    padding-top: 0.35rem;
+    padding-bottom: 0.25rem;
+}
+
+.ro-panel {
+    display: none;
+}
+
+.ro-panel.is-active {
+    display: block;
+}
+
+.ro-panel p {
+    margin: 0 0 0.95em;
+    font-family: var(--ro-font);
+    font-size: clamp(15.6px, 1.26vw, 18px);
+    line-height: 1.562;
+    color: #000000;
+    max-width: none;
+}
+
+.ro-panel p:last-child {
+    margin-bottom: 0;
+}
+
+.ro-panel-placeholder {
+    opacity: 0.55;
+}
+
+.ro-credit-role {
+    font-size: 79.2%;
+}
+
+.ro-credit-list .ro-credit {
+    margin: 0 0 0.85em;
+    line-height: 1.32;
+}
+
+.ro-credit-list .ro-credit:last-child {
+    margin-bottom: 0;
+}
+
+.ro-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.ro-link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1.2px;
+    text-underline-offset: 0.22em;
+}
+
+/* —— Media stack —— */
+.ro-media {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ro-stack-gap);
+    width: var(--ro-content-width);
+    max-width: 100%;
+    margin-inline: auto;
+    box-sizing: border-box;
+}
+
+.ro-video {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    padding: 0;
+    background: #e8e8e8;
+    overflow: hidden;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.ro-video--autoplay {
+    cursor: default;
+    background: #000000;
+}
+
+.ro-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    pointer-events: none;
+}
+
+.ro-video--autoplay iframe {
+    /* Bleed 1–2px past edges so Vimeo letterbox/seam lines don’t show */
+    pointer-events: auto;
+    top: -1px;
+    left: -1px;
+    width: calc(100% + 3px);
+    height: calc(100% + 3px);
+}
+
+.ro-video--youtube {
+    overflow: hidden;
+    background: #000000;
+    cursor: pointer;
+}
+
+.ro-video--youtube iframe {
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+}
+
+.ro-video--youtube:not(.is-ready) .ro-video-play {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ro-video-cover {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: #000000;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.ro-video--youtube.is-ready .ro-video-cover {
+    opacity: 0;
+}
+
+.ro-hero-link {
+    margin: 0;
+    font-family: var(--ro-font);
+    font-size: clamp(14px, 1.15vw, 16px);
+    line-height: 1.35;
+}
+
+.ro-video-play {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    appearance: none;
+}
+
+.ro-video.is-playing .ro-video-play {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ro-video-play-icon {
+    display: block;
+    width: 0;
+    height: 0;
+    margin-left: 6px;
+    border-style: solid;
+    border-width: 18px 0 18px 30px;
+    border-color: transparent transparent transparent #ffffff;
+    filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.35));
+}
+
+.ro-video-play:focus-visible .ro-video-play-icon {
+    outline: 2px solid #000000;
+    outline-offset: 10px;
+}
+
+.ro-still {
+    margin: 0;
+    width: 100%;
+    background: #000000;
+    opacity: 0;
+    transform: translate3d(0, 56px, 0);
+    transition:
+        opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.ro-still.is-revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.ro-still img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.ro-still-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--ro-stack-gap);
+    width: 100%;
+}
+
+.ro-still-grid--3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.ro-still-grid .ro-still {
+    width: 100%;
+}
+
+.ro-still-grid .ro-still img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.ro-still-grid .ro-video {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ro-still {
+        opacity: 1;
+        transform: none;
+        transition: none;
+        will-change: auto;
+    }
+}
+
+/* —— Fixed footer: same L/R bounds + bottom R as white canvas —— */
+.ro-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    z-index: 1100;
+    box-sizing: border-box;
+    height: calc(var(--ro-footer-outer-h) + env(safe-area-inset-bottom, 0px));
+    min-height: var(--ro-footer-outer-h);
+    padding:
+        0
+        var(--ro-pad-x)
+        env(safe-area-inset-bottom, 0px);
+    display: flex;
+    align-items: center;
+    margin: 0;
+    background: #ffffff;
+    border: none;
+    border-radius: 0 0 var(--ro-footer-outer-h) var(--ro-footer-outer-h);
+    box-shadow: none;
+    pointer-events: auto;
+    overflow: hidden;
+}
+
+.ro-footer-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    column-gap: clamp(1.25rem, 3vw, 2.5rem);
+    width: 100%;
+    height: var(--ro-footer-h);
+}
+
+.ro-footer-left {
+    grid-column: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-shrink: 0;
+}
+
+.ro-lang-switch {
+    /* Align left edge with hero image (content column) */
+    position: absolute;
+    left: max(
+        calc(22px + 0.85rem),
+        calc((100% - min(100%, var(--ro-content-width))) / 2)
+    );
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    flex-shrink: 0;
+    margin-left: 0;
+    width: 6.298em;
+    border: 1.22px solid #000000;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #ffffff;
+    line-height: 1;
+    padding: 0;
+    box-sizing: border-box;
+    column-gap: 0;
+}
+
+.ro-lang-btn {
+    appearance: none;
+    margin: 0;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: #000000;
+    padding: 0.308em 0.495em;
+    font-family: "Pretendard", "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(9.72px, 0.81vw, 10.94px);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+}
+
+.ro-lang-btn + .ro-lang-btn {
+    border-left: none;
+}
+
+.ro-lang-btn.is-active {
+    background: #000000;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.ro-lang-btn:focus-visible {
+    outline: 2px solid #000000;
+    outline-offset: 2px;
+}
+
+.ro-lang-btn:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.ro-footer-trail {
+    /* Right edge aligns with full-width stills (.ro-media) */
+    grid-column: 1 / -1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: max(
+        calc(22px + clamp(1.25rem, 3vw, 2.5rem)),
+        calc((100% - min(100%, var(--ro-content-width))) / 2)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: 0;
+    min-width: 0;
+    width: max-content;
+    max-width: calc(100% - 4rem);
+    margin-inline: 0;
+    line-height: 1;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ro-footer-trail > * {
+    pointer-events: auto;
+}
+
+.ro-footer-item {
+    font-family: var(--ro-font);
+    font-size: clamp(12.1px, 1.045vw, 14.3px);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #000000;
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1;
+    text-decoration: none;
+}
+
+a.ro-footer-item {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Reserve medium width so hover weight swap doesn't shift layout */
+a.ro-footer-item::after {
+    content: attr(data-text);
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    user-select: none;
+    pointer-events: none;
+    font-family: var(--ro-font-medium);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    speak: never;
+}
+
+a.ro-footer-item:hover {
+    font-family: var(--ro-font-medium);
+    text-decoration: none;
+}
+
+/* Copper KO footer trail Hangul only. Latin items stay Parabolica. Lang switch stays Pretendard. */
+body.page-rusty-odyssey.page-rusty-odyssey--ko:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .ro-footer-item--ko {
+    font-family: "neutronic-hangeul", "parabolica", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+}
+
+body.page-rusty-odyssey.page-rusty-odyssey--ko:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) a.ro-footer-item--ko::after,
+body.page-rusty-odyssey.page-rusty-odyssey--ko:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) a.ro-footer-item--ko:hover {
+    font-family: "neutronic-hangeul", "parabolica-medium", "parabolica", sans-serif;
+}
+
+body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .ro-lang-btn {
+    font-family: "Pretendard", "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.ro-footer-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 3.042rem;
+    margin-right: 3.042rem;
+    border-radius: 50%;
+    background: #000000;
+    flex-shrink: 0;
+}
+
+.ro-footer-arrow {
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 22px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.ro-footer-arrow--next {
+    grid-column: 3;
+    justify-self: end;
+}
+
+.ro-footer-arrow img {
+    display: block;
+    width: 18px;
+    height: auto;
+}
+
+.ro-footer-arrow--prev img {
+    transform: scaleX(-1);
+}
+
+.ro-footer-arrow:focus-visible {
+    outline: 2px solid #000000;
+    outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+    .ro-hero {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: var(--ro-content-width);
+    }
+
+    .ro-hero-left {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: none;
+    }
+
+    .ro-hero-media {
+        width: 100%;
+        max-width: none;
+    }
+
+    .ro-hero-media img {
+        max-height: min(74.88vh, 749px);
+    }
+
+    .ro-hero-meta {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: none;
+    }
+
+    .ro-media {
+        width: 100%;
+        max-width: var(--ro-content-width);
+    }
+}
+
+/* Hidden on desktop — same pattern as /copper/. Do not show this switch on web. */
+.page-rusty-odyssey .about-lang-switch-fixed {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .page-rusty-odyssey a,
+    .page-rusty-odyssey button,
+    .page-rusty-odyssey [role="button"],
+    .page-rusty-odyssey [role="tab"],
+    .page-rusty-odyssey .menu-icon,
+    .page-rusty-odyssey .header-icon {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    html:has(body.page-rusty-odyssey) {
+        height: 100svh;
+        max-height: 100svh;
+        overflow: hidden;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        background-color: #000000;
+    }
+
+    body.page-rusty-odyssey {
+        height: 100svh;
+        max-height: 100svh;
+        min-height: 0;
+        overflow: hidden;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        overscroll-behavior: none;
+        touch-action: manipulation;
+    }
+
+    .page-rusty-odyssey .mobile-placeholder {
+        display: none !important;
+    }
+
+    .page-rusty-odyssey .site-content {
+        display: block !important;
+        height: 100svh;
+        max-height: 100svh;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    /* Same white canvas as /copper/ — 50px R, full viewport, black corners */
+    body.page-rusty-odyssey {
+        --ro-mobile-radius: 50px;
+        --ro-mobile-pad-x: clamp(20px, 5vw, 80px);
+        --ro-mobile-footer-h: 45px;
+        --ro-mobile-lang-top: 116px;
+        --ro-mobile-content-top: calc(var(--ro-mobile-lang-top) + 2.7em);
+        --ro-mobile-footer-total: calc(var(--ro-mobile-footer-h) + env(safe-area-inset-bottom, 0px));
+    }
+
+    body.page-rusty-odyssey::before {
+        inset: auto;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--ro-mobile-radius);
+    }
+
+    /* White cap lives inside site-content so it cannot cover header / lang */
+    .page-rusty-odyssey .site-content::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--ro-mobile-content-top);
+        background: #ffffff;
+        border-radius: var(--ro-mobile-radius) var(--ro-mobile-radius) 0 0;
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    .page-rusty-odyssey .fixed-header {
+        z-index: 20;
+    }
+
+    .page-rusty-odyssey .header-left .menu-icon {
+        z-index: 22;
+        pointer-events: auto;
+    }
+
+    .page-rusty-odyssey .nav-overlay,
+    .page-rusty-odyssey .nav-overlay-backdrop {
+        z-index: 10003;
+    }
+
+    .page-rusty-odyssey .about-lang-switch-fixed {
+        z-index: 12;
+        transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Opaque header band so the lang bar can slide underneath it */
+    .page-rusty-odyssey .site-content::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--ro-mobile-lang-top);
+        background: #ffffff;
+        border-radius: var(--ro-mobile-radius) var(--ro-mobile-radius) 0 0;
+        z-index: 19;
+        pointer-events: none;
+    }
+
+    .page-rusty-odyssey .site-content::before {
+        transition: height 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    body.page-rusty-odyssey.is-lang-hidden .about-lang-switch-fixed {
+        transform: translateY(-100%);
+        pointer-events: none;
+    }
+
+    body.page-rusty-odyssey.is-lang-hidden .site-content::before {
+        height: var(--ro-mobile-lang-top);
+    }
+
+    body.page-rusty-odyssey.is-lang-hidden .ro-main {
+        top: var(--ro-mobile-lang-top);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .page-rusty-odyssey .about-lang-switch-fixed,
+        .page-rusty-odyssey .site-content::before,
+        .page-rusty-odyssey .ro-main {
+            transition: none;
+        }
+    }
+
+    .page-rusty-odyssey .ro-main {
+        display: block !important;
+        position: fixed;
+        left: var(--ro-mobile-pad-x);
+        right: var(--ro-mobile-pad-x);
+        top: var(--ro-mobile-content-top);
+        bottom: var(--ro-mobile-footer-total);
+        z-index: 1;
+        width: auto;
+        max-width: none;
+        height: auto;
+        padding: 8px 0 28px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        touch-action: pan-y;
+        transition: top 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .ro-hero,
+    .ro-hero-left,
+    .ro-hero-media,
+    .ro-hero-meta,
+    .ro-media {
+        width: 100%;
+        max-width: none;
+        flex: 0 0 auto;
+    }
+
+    .ro-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.15rem;
+        margin: 0 0 1.35rem;
+    }
+
+    .ro-hero-left {
+        display: contents;
+    }
+
+    .ro-hero-left > .ro-hero-media:first-of-type {
+        order: 1;
+    }
+
+    .ro-hero-meta {
+        order: 2;
+        position: static;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .ro-hero-link {
+        order: 3;
+        margin: 0;
+    }
+
+    .ro-video {
+        order: 4;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .ro-hero-left > .ro-hero-media:not(:first-of-type) {
+        order: 5;
+    }
+
+    .ro-hero-media img {
+        max-height: none;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .ro-hero-media--portrait img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .ro-hero-meta-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+        justify-content: start;
+        column-gap: 0.75rem;
+        align-items: start;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .ro-title {
+        grid-column: 1;
+        grid-row: 1;
+        font-size: clamp(22px, 5.8vw, 26px);
+        min-width: 0;
+    }
+
+    .ro-meta-line {
+        display: contents;
+        margin: 0;
+    }
+
+    .ro-year {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: start;
+        align-self: start;
+        text-align: left;
+        font-size: clamp(14px, 3.6vw, 16px);
+        line-height: 1.15;
+    }
+
+    .ro-type {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: start;
+        align-self: start;
+        text-align: left;
+        font-size: clamp(13px, 3.4vw, 15px);
+        line-height: 1.15;
+        margin-top: 1.15em;
+    }
+
+    .ro-collab,
+    .ro-spec {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        margin-top: 1.35rem;
+        font-size: clamp(12px, 3.2vw, 13.5px);
+        min-width: 0;
+        max-width: 66.67%;
+    }
+
+    body.page-rusty-odyssey:not(.page-rusty-odyssey--ko) .ro-spec {
+        line-height: 1.2;
+    }
+
+    body.page-rusty-odyssey.page-rusty-odyssey--ko .ro-spec {
+        line-height: 1.5;
+    }
+
+    .ro-collab + .ro-spec {
+        grid-row: 3;
+        margin-top: 0.12rem;
+    }
+
+    .ro-tags {
+        grid-column: 1 / -1;
+        margin-top: calc(1rem - 3px);
+        min-width: 0;
+        max-width: 100%;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 0.1rem;
+        padding: 3px 2px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        scrollbar-width: none;
+    }
+
+    .ro-tags::-webkit-scrollbar {
+        display: none;
+    }
+
+    .ro-tags li {
+        flex: 0 0 auto;
+    }
+
+    .ro-tags .ro-tag,
+    .ro-status .ro-tag {
+        border-width: 1px;
+        align-items: center;
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .ro-status {
+        grid-column: 1 / -1;
+        margin-top: 0.22rem;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .ro-copy {
+        grid-column: 1 / -1;
+        margin-top: 2.3rem;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .ro-tabs {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 0.85rem 1.6rem;
+        width: auto;
+        max-width: 100%;
+        padding-bottom: 0.85rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        box-sizing: border-box;
+    }
+
+    body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .ro-tabs {
+        gap: 0.85rem 2.4rem;
+    }
+
+    .ro-tab {
+        font-size: 11px;
+    }
+
+    body.page-rusty-odyssey.page-rusty-odyssey--ko .ro-tab {
+        font-size: 12.1px;
+    }
+
+    .ro-tab.is-active {
+        font-family: var(--ro-font-medium);
+        font-weight: 700;
+    }
+
+    .ro-panel,
+    .ro-panel p,
+    .ro-credit,
+    .ro-links {
+        font-size: clamp(13px, 3.4vw, 14.5px);
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+
+    .ro-media {
+        display: flex;
+        flex-direction: column;
+        gap: 1.15rem;
+        margin: 0;
+    }
+
+    .ro-still-grid,
+    .ro-still-grid--3 {
+        grid-template-columns: 1fr;
+        gap: 1.15rem;
+    }
+
+    .ro-still {
+        opacity: 1;
+        transform: none;
+        transition: none;
+        will-change: auto;
+    }
+
+    /* Footer sits on the same canvas edge — 50px bottom R, no extra white box */
+    .page-rusty-odyssey .ro-footer {
+        display: flex !important;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 12;
+        width: auto;
+        height: var(--ro-mobile-footer-total);
+        min-height: var(--ro-mobile-footer-h);
+        padding: 0 var(--ro-mobile-pad-x) env(safe-area-inset-bottom, 0px);
+        background: #ffffff;
+        border-radius: 0 0 var(--ro-mobile-radius) var(--ro-mobile-radius);
+        overflow: hidden;
+        box-shadow: none;
+    }
+
+    .ro-footer-inner {
+        display: flex;
+        grid-template-columns: none;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 0;
+        width: 100%;
+        height: var(--ro-mobile-footer-h);
+        position: relative;
+    }
+
+    .ro-footer-left {
+        position: static;
+        gap: 0;
+        z-index: 2;
+    }
+
+    .ro-lang-switch {
+        display: none;
+    }
+
+    .ro-footer-trail {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        right: auto;
+        transform: translate(-50%, -50%);
+        flex: 0 0 auto;
+        justify-content: center;
+        width: auto;
+        max-width: none;
+        pointer-events: auto;
+        z-index: 1;
+    }
+
+    .ro-footer-trail > :nth-child(n+4) {
+        display: none;
+    }
+
+    .ro-footer-item {
+        font-size: 12.65px;
+        letter-spacing: 0.05em;
+    }
+
+    .ro-footer-dot {
+        width: 6px;
+        height: 6px;
+        margin-left: 0.65rem;
+        margin-right: 0.65rem;
+    }
+
+    .ro-footer-arrow {
+        width: 22px;
+        height: 22px;
+        flex: 0 0 auto;
+    }
+
+    .ro-footer-arrow--next {
+        grid-column: auto;
+        justify-self: auto;
+        margin-left: auto;
+        z-index: 2;
+    }
+
+    .ro-footer-arrow img {
+        width: 16px;
+    }
+
+    .page-rusty-odyssey .nav-overlay-close:active img,
+    .page-rusty-odyssey .nav-overlay-close.is-pressing img,
+    .ro-footer-arrow:active img,
+    .ro-footer-arrow.is-pressing img {
+        filter: brightness(0) saturate(100%) invert(88%) sepia(100%) saturate(1000%) hue-rotate(0deg) brightness(100%) contrast(100%) !important;
+    }
+
+    .page-rusty-odyssey .header-left .menu-icon:hover,
+    .page-rusty-odyssey .header-left .menu-icon:active,
+    .page-rusty-odyssey .header-left .menu-icon:focus,
+    .page-rusty-odyssey .header-left .menu-icon.is-pressing,
+    .page-rusty-odyssey .header-left .menu-icon.is-open,
+    .page-rusty-odyssey .header-left .menu-icon[aria-expanded="true"],
+    .page-rusty-odyssey:has(.nav-overlay.is-open) .header-left .menu-icon {
+        filter: brightness(0) saturate(100%) !important;
+    }
+
+    .page-rusty-odyssey .nav-overlay-item:active .nav-overlay-arrow,
+    .page-rusty-odyssey .nav-overlay-item.is-pressing .nav-overlay-arrow {
+        filter: brightness(0) saturate(100%) !important;
+    }
+
+    .page-rusty-odyssey .fixed-header::before {
+        display: none;
+    }
+
+    .page-rusty-odyssey .header-matter-slot.is-current::before {
+        display: none;
+    }
+
+    .page-rusty-odyssey .about-lang-switch-fixed {
+        display: flex !important;
+        position: fixed;
+        top: 116px;
+        left: 0;
+        right: 0;
+        z-index: 11;
+        background: transparent;
+        flex-shrink: 0;
+        padding: 0.5em 0;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        gap: 0.35em;
+        pointer-events: auto;
+        font-size: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        will-change: transform;
+    }
+
+    .page-rusty-odyssey .about-lang-switch-fixed::after {
+        content: none;
+    }
+
+    .page-rusty-odyssey .about-lang-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: clamp(14px, 1.1vw, 16px);
+        font-family: "parabolica", "neutronic-hangeul", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #000000;
+        cursor: pointer;
+        text-decoration: none;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .about-lang-btn {
+        font-family: "parabolica", "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    }
+
+    .page-rusty-odyssey .about-lang-btn:hover,
+    .page-rusty-odyssey .about-lang-btn.is-active {
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
+    }
+
+    .page-rusty-odyssey .about-lang-btn.is-active {
+        font-weight: 500;
+    }
+
+    .page-rusty-odyssey .about-lang-sep {
+        color: #000000;
+        font-size: inherit;
+        font-family: inherit;
+        font-weight: 400;
+        line-height: normal;
+        pointer-events: none;
+    }
+
+    /* Same overlay stack as /copper/ — above header, canvas, and lang */
+    .page-rusty-odyssey .grain-layer {
+        position: fixed;
+        inset: 0;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        height: 100svh;
+        z-index: 10002;
+    }
+}

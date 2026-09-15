@@ -1,5 +1,7 @@
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
+// Register ScrollTrigger plugin when GSAP is present (index / copper / about).
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 // Section colors (all black for text + icons)
 const sectionColors = [
@@ -68,10 +70,13 @@ function updateSectionColor(sectionIndex) {
     });
 }
 
-// Wait for window load to ensure all assets are loaded
-window.addEventListener('load', () => {
+function bootSite() {
     setVisualViewportHeight();
-    initHorizontalScroll();
+    try {
+        initHorizontalScroll();
+    } catch (err) {
+        console.warn('Horizontal scroll init skipped', err);
+    }
     // Index only — other pages set header/icon colors in their own CSS
     if (document.body.classList.contains('page-index')) {
         updateSectionColor(0);
@@ -82,12 +87,19 @@ window.addEventListener('load', () => {
     initMobileSwipeNav();
     initNavOverlay();
     initAboutLangSwitch();
-});
+    initMobileIconPressFeedback();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootSite);
+} else {
+    bootSite();
+}
 
 function setVisualViewportHeight() {
     const lockedOnMobile =
         window.innerWidth <= 768 &&
-        ['page-index', 'page-about', 'page-news', 'page-contact', 'page-copper2'].some((cls) =>
+        ['page-index', 'page-about', 'page-news', 'page-contact', 'page-copper', 'page-finedust', 'page-saharandust', 'page-weather'].some((cls) =>
             document.body.classList.contains(cls)
         );
     if (lockedOnMobile) return;
@@ -271,9 +283,84 @@ function initMobileSwipeNav() {
     }, { passive: true });
 }
 
-// Matter popup: open on matter image/title/header matter icon click; close on overlay or X
+// Matter gate: Fine Dust / Weather / Saharan Dust (and any other non-copper
+// matter) show the “archiving in progress” popup. Copper is enterable.
+function isCopperPath(pathname) {
+    return /^\/copper(?:\/|$)/i.test(pathname || '');
+}
+
+function lockedMatterRoot(pathname) {
+    const match = (pathname || '').match(/^\/(finedust|weather|saharandust)(?:\/|$)/i);
+    return match ? match[1].toLowerCase() : '';
+}
+
+function isLockedMatterPath(pathname) {
+    return !isCopperPath(pathname) && !!lockedMatterRoot(pathname);
+}
+
+function pathFromHref(href) {
+    try {
+        return new URL(href, location.href).pathname;
+    } catch (err) {
+        return '';
+    }
+}
+
+function isMatterEntryLink(link) {
+    return !!link.closest(
+        '.header-matter-link, .header-matter-slot, .matter-title-link, .matter-image-link, .nav-overlay-item--sub'
+    );
+}
+
+function shouldGateMatterHref(link, pathname) {
+    if (isCopperPath(pathname)) return false;
+    if (isLockedMatterPath(pathname)) {
+        return lockedMatterRoot(pathname) !== lockedMatterRoot(location.pathname);
+    }
+    // Header / home / overlay matter links that are not copper stay gated
+    // even if a new matter path is added later.
+    if (!isMatterEntryLink(link)) return false;
+    if (!pathname || pathname === '/') return false;
+    if (/^\/(about|news|contact)(?:\/|$)/i.test(pathname)) return false;
+    return true;
+}
+
+function ensureMatterPopup() {
+    let popup = document.getElementById('matter-popup');
+    if (popup) return popup;
+
+    popup = document.createElement('div');
+    popup.className = 'matter-popup-overlay';
+    popup.id = 'matter-popup';
+    popup.setAttribute('aria-hidden', 'true');
+    popup.innerHTML =
+        '<div class="matter-popup-box" role="dialog" aria-modal="true">' +
+        '<button type="button" class="matter-popup-close" aria-label="닫기"><img src="/assets/popup-icon-close.svg" alt=""></button>' +
+        '<p class="matter-popup-eng">Archiving of this matter is in progress.</p>' +
+        '<p class="matter-popup-eng">Opening soon.</p>' +
+        '<p class="matter-popup-kor">이 물질에 대한 아카이빙이 진행 중입니다.</p>' +
+        '<p class="matter-popup-kor">곧 오픈할 예정입니다.</p>' +
+        '</div>';
+    document.body.appendChild(popup);
+    return popup;
+}
+
+function closeNavOverlayIfOpen() {
+    const overlay = document.getElementById('nav-overlay');
+    const backdrop = document.getElementById('nav-overlay-backdrop');
+    if (!overlay || !overlay.classList.contains('is-open')) return;
+    overlay.classList.remove('is-open');
+    overlay.style.maxHeight = '';
+    overlay.setAttribute('aria-hidden', 'true');
+    if (backdrop) {
+        backdrop.classList.remove('is-open');
+        backdrop.setAttribute('aria-hidden', 'true');
+    }
+    document.body.style.overflow = '';
+}
+
 function initMatterPopup() {
-    const popup = document.getElementById('matter-popup');
+    const popup = ensureMatterPopup();
     if (!popup) return;
 
     const openPopup = () => {
@@ -286,14 +373,33 @@ function initMatterPopup() {
         popup.setAttribute('aria-hidden', 'true');
     };
 
-    const triggers = document.querySelectorAll('.matter-image, .matter-title-eng, .matter-title-kor, .header-matter-icon');
-    triggers.forEach((el) => {
-        el.addEventListener('click', (e) => {
-            if (document.body.dataset.navCloseClick === '1') return;
+    document.addEventListener('click', (e) => {
+        if (document.body.dataset.navCloseClick === '1') return;
+        const node = e.target && e.target.nodeType === 1 ? e.target : (e.target && e.target.parentElement);
+        if (!node || !node.closest) return;
+
+        const link = node.closest('a[href]');
+        if (link) {
+            const pathname = pathFromHref(link.getAttribute('href') || link.href);
+            if (!shouldGateMatterHref(link, pathname)) return;
             e.preventDefault();
+            e.stopPropagation();
+            closeNavOverlayIfOpen();
             openPopup();
-        });
-    });
+            return;
+        }
+
+        const trigger = node.closest('.matter-image, .matter-title-eng, .matter-title-kor, .header-matter-icon');
+        if (!trigger) return;
+        const parentLink = trigger.closest('a[href]');
+        if (parentLink && !shouldGateMatterHref(parentLink, pathFromHref(parentLink.getAttribute('href') || parentLink.href))) {
+            return;
+        }
+        if (!parentLink && isCopperPath(location.pathname)) return;
+        e.preventDefault();
+        e.stopPropagation();
+        openPopup();
+    }, true);
 
     popup.addEventListener('click', (e) => {
         if (e.target === popup) closePopup();
@@ -301,6 +407,97 @@ function initMatterPopup() {
 
     const closeBtn = popup.querySelector('.matter-popup-close');
     if (closeBtn) closeBtn.addEventListener('click', closePopup);
+
+    if (isLockedMatterPath(location.pathname) || document.body.classList.contains('page-finedust') || document.body.classList.contains('page-weather') || document.body.classList.contains('page-saharandust') || document.body.classList.contains('page-finedust-detail') || document.body.classList.contains('page-weather-detail') || document.body.classList.contains('page-saharandust-detail')) {
+        openPopup();
+    }
+}
+
+function initMobileIconPressFeedback() {
+    const selector = [
+        '.menu-icon',
+        '.nav-overlay-close',
+        '.nav-overlay-item',
+        '.ro-footer-arrow',
+        '.matter-move-arrow-fixed',
+        '.copper-scroll-btn',
+        '.finedust-scroll-btn',
+        '.weather-scroll-btn',
+        '.saharandust-scroll-btn',
+        '.copper-table-sort-btn',
+        '.finedust-table-sort-btn',
+        '.weather-table-sort-btn',
+        '.saharandust-table-sort-btn'
+    ].join(',');
+    const yellowFilter =
+        'brightness(0) saturate(100%) invert(88%) sepia(100%) saturate(1000%) hue-rotate(0deg) brightness(100%) contrast(100%)';
+    let clearTimer = 0;
+
+    const skipYellowFilter = (node) => (
+        node.classList.contains('menu-icon')
+        || node.classList.contains('nav-overlay-arrow')
+        || !!node.closest('.menu-icon')
+    );
+
+    const filterTargets = (el) => {
+        if (el.matches('img')) return skipYellowFilter(el) ? [] : [el];
+        return Array.from(el.querySelectorAll('img')).filter((node) => !skipYellowFilter(node));
+    };
+
+    const restorePress = (el) => {
+        filterTargets(el).forEach((node) => {
+            if (!node.dataset.tapFilterSaved) return;
+            const prev = node.dataset.tapPrevFilter || '';
+            const priority = node.dataset.tapPrevFilterPriority || '';
+            if (prev) {
+                node.style.setProperty('filter', prev, priority);
+            } else {
+                node.style.removeProperty('filter');
+            }
+            delete node.dataset.tapFilterSaved;
+            delete node.dataset.tapPrevFilter;
+            delete node.dataset.tapPrevFilterPriority;
+        });
+        el.classList.remove('is-pressing');
+    };
+
+    const applyPress = (el) => {
+        document.querySelectorAll('.is-pressing').forEach(restorePress);
+        el.classList.add('is-pressing');
+        filterTargets(el).forEach((node) => {
+            if (!node.dataset.tapFilterSaved) {
+                node.dataset.tapPrevFilter = node.style.getPropertyValue('filter');
+                node.dataset.tapPrevFilterPriority = node.style.getPropertyPriority('filter');
+                node.dataset.tapFilterSaved = '1';
+            }
+            node.style.transition = 'none';
+            node.style.setProperty('filter', yellowFilter, 'important');
+        });
+    };
+
+    const clearPress = () => {
+        window.clearTimeout(clearTimer);
+        clearTimer = window.setTimeout(() => {
+            document.querySelectorAll('.is-pressing').forEach(restorePress);
+        }, 160);
+    };
+
+    document.addEventListener('touchstart', (e) => {
+        if (window.innerWidth > 768) return;
+        const el = e.target.closest(selector);
+        if (!el) return;
+        window.clearTimeout(clearTimer);
+        applyPress(el);
+    }, { passive: true });
+
+    document.addEventListener('touchend', clearPress, { passive: true });
+    document.addEventListener('touchcancel', clearPress, { passive: true });
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            window.clearTimeout(clearTimer);
+            document.querySelectorAll('.is-pressing').forEach(restorePress);
+        }
+    });
 }
 
 function initNavOverlay() {
@@ -406,26 +603,32 @@ function initNavOverlay() {
 
 function initAboutLangSwitch() {
     const body = document.body;
-    const isAbout = body.classList.contains('page-about');
-    const isNews = body.classList.contains('page-news');
-    const isContact = body.classList.contains('page-contact');
-    if (!isAbout && !isNews && !isContact) return;
-    const scope = isAbout ? '.page-about' : isNews ? '.page-news' : '.page-contact';
-    const allBtns = document.querySelectorAll(`${scope} .about-lang-btn[data-lang]`);
+    const page = [
+        { cls: 'page-about', scope: '.page-about', prefix: 'about-lang' },
+        { cls: 'page-news', scope: '.page-news', prefix: 'news-lang' },
+        { cls: 'page-contact', scope: '.page-contact', prefix: 'contact-lang' },
+        { cls: 'page-copper', scope: '.page-copper', prefix: 'copper-lang' },
+        { cls: 'page-finedust', scope: '.page-finedust', prefix: 'finedust-lang' },
+    ].find((item) => body.classList.contains(item.cls));
+    if (!page) return;
+    const allBtns = document.querySelectorAll(`${page.scope} .about-lang-btn[data-lang]`);
     if (!allBtns.length) return;
-    const langClassPrefix = isAbout ? 'about-lang' : isNews ? 'news-lang' : 'contact-lang';
     allBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
             const lang = btn.getAttribute('data-lang');
             if (!lang) return;
-            body.classList.remove(`${langClassPrefix}-eng`, `${langClassPrefix}-kor`);
-            body.classList.add(lang === 'kor' ? `${langClassPrefix}-kor` : `${langClassPrefix}-eng`);
+            body.classList.remove(`${page.prefix}-eng`, `${page.prefix}-kor`);
+            body.classList.add(lang === 'kor' ? `${page.prefix}-kor` : `${page.prefix}-eng`);
             allBtns.forEach((b) => b.classList.remove('is-active'));
             allBtns.forEach((b) => {
                 if (b.getAttribute('data-lang') === lang) b.classList.add('is-active');
             });
             if (window.__aboutTextScrollReset) {
                 window.__aboutTextScrollReset();
+            } else if (window.__copperTextScrollReset) {
+                window.__copperTextScrollReset();
+            } else if (window.__finedustTextScrollReset) {
+                window.__finedustTextScrollReset();
             } else {
                 window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
             }
