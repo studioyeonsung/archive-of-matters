@@ -12,17 +12,9 @@
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://archiveofmatters.com/news/">
     <link rel="icon" type="image/svg+xml" href="/assets/home-icon-copper.svg">
-    <link rel="stylesheet" href="https://use.typekit.net/xzq8inj.css">
-    <link rel="stylesheet" href="/style.css?v=20260812h">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTR5N20XFG"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <script src="/boot.js?v=3"></script>
+    <link rel="stylesheet" href="/style.css?v=20260916g">
 
-      gtag('config', 'G-PTR5N20XFG');
-    </script>
 </head>
 <body class="page-news news-lang-eng">
     <!-- Mobile placeholder: shown only on small screens -->
@@ -44,9 +36,9 @@
             <img src="/assets/home-icon-menu.svg" alt="Menu" class="header-icon menu-icon">
             <div class="header-top-line">
                 <a href="/" class="nav-text nav-eng-word-1">ARCHIVE</a>
-                <img src="/assets/home-icon-copper.svg" alt="" class="header-icon nav-icon header-left-icon-1 header-matter-icon">
+                <a href="/copper/" class="header-matter-link" aria-label="Copper"><img src="/assets/home-icon-copper.svg" alt="" class="header-icon nav-icon header-left-icon-1 header-matter-icon"></a>
                 <a href="/" class="nav-text nav-eng-word-2">OF</a>
-                <img src="/assets/home-icon-finedust.svg" alt="" class="header-icon nav-icon header-left-icon-2 header-matter-icon">
+                <a href="/finedust/" class="header-matter-link" aria-label="Fine Dust"><img src="/assets/home-icon-finedust.svg" alt="" class="header-icon nav-icon header-left-icon-2 header-matter-icon"></a>
                 <a href="/" class="nav-text nav-eng-word-3">MATTER(S)</a>
             </div>
             <div class="dotted-line-left"></div>
@@ -59,14 +51,14 @@
         </div>
         <div class="header-right">
             <div class="header-top-line">
-                <img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-matter-icon">
+                <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-1">아카이브</a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-2">오브</a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-3">매터(즈)</a>
             </div>
             <div class="dotted-line-right"></div>
             <div class="header-bottom-line">
-                <img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon">
+                <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
                 <span class="nav-text header-right-text-1"><a href="/news/">NEWS</a></span>
                 <img src="/assets/home-icon-arrow.svg" alt="" class="header-icon nav-icon header-right-icon-2">
                 <span class="nav-text header-right-text-2"><a href="/contact/">CONTACT</a></span>
@@ -95,22 +87,22 @@
                     <button type="button" class="nav-overlay-kor nav-overlay-kor-matter-trigger">물질(들)</button>
                 </div>
                 <div class="nav-overlay-sep"></div>
-                <a href="/" class="nav-overlay-item nav-overlay-item--sub" data-section="01">
+                <a href="/copper/" class="nav-overlay-item nav-overlay-item--sub">
                     <span class="nav-overlay-eng">COPPER</span>
                     <span class="nav-overlay-kor">구리</span>
                 </a>
                 <div class="nav-overlay-sep"></div>
-                <a href="/" class="nav-overlay-item nav-overlay-item--sub" data-section="02">
+                <a href="/finedust/" class="nav-overlay-item nav-overlay-item--sub">
                     <span class="nav-overlay-eng">FINE DUST</span>
                     <span class="nav-overlay-kor">미세먼지</span>
                 </a>
                 <div class="nav-overlay-sep"></div>
-                <a href="/" class="nav-overlay-item nav-overlay-item--sub" data-section="03">
+                <a href="/saharandust/" class="nav-overlay-item nav-overlay-item--sub">
                     <span class="nav-overlay-eng">SAHARAN DUST</span>
                     <span class="nav-overlay-kor">사하라 먼지</span>
                 </a>
                 <div class="nav-overlay-sep"></div>
-                <a href="/" class="nav-overlay-item nav-overlay-item--sub" data-section="04">
+                <a href="/weather/" class="nav-overlay-item nav-overlay-item--sub">
                     <span class="nav-overlay-eng">WEATHER</span>
                     <span class="nav-overlay-kor">날씨</span>
                 </a>
@@ -306,17 +298,6 @@
     <!-- Copyright -->
     <div class="copyright">© 2026 STUDIO YEON SUNG</div>
 
-    <!-- Adobe Typekit -->
-    <script>
-      (function(d) {
-        var config = {
-          kitId: 'xzq8inj',
-          scriptTimeout: 3000,
-          async: true
-        },
-        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-      })(document);
-    </script>
     <!-- Matter popup (in progress) -->
     <div class="matter-popup-overlay" id="matter-popup" aria-hidden="true">
         <div class="matter-popup-box" role="dialog" aria-modal="true">
@@ -327,9 +308,9 @@
             <p class="matter-popup-kor">곧 오픈할 예정입니다.</p>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="/vendor/gsap.min.js"></script>
+    <script src="/vendor/ScrollTrigger.min.js"></script>
     <script src="/mobile-viewport-lock.js?v=20260812c"></script>
-    <script src="/script.js?v=20260812c"></script>
+    <script src="/script.js?v=20260907m"></script>
 </body>
 </html>

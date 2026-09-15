@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /copper/
-Disallow: /copper2/
+Disallow: /finedust/
+Disallow: /saharandust/
+Disallow: /weather/
 
 Sitemap: https://archiveofmatters.com/sitemap.xml

@@ -4,7 +4,19 @@
  */
 (function () {
     const MOBILE_MAX = 768;
-    const LOCKED_PAGES = ['page-index', 'page-about', 'page-news', 'page-contact', 'page-copper2'];
+    const LOCKED_PAGES = [
+        'page-index',
+        'page-about',
+        'page-news',
+        'page-contact',
+        'page-copper',
+        'page-finedust',
+        'page-saharandust',
+        'page-weather',
+    ];
+    const MATTER_BODY_COL =
+        '.copper-body-col, .finedust-body-col, .saharandust-body-col, .weather-body-col';
+    const MATTER_VH_VARS = ['--copper-vh', '--finedust-vh', '--saharandust-vh', '--weather-vh'];
 
     /** @type {{viewport: HTMLElement, track: HTMLElement, offsetY: number, startY: number, startOffset: number}[]} */
     const areas = [];
@@ -28,7 +40,7 @@
         if (!isMobile() || !isLockedPage()) {
             document.body.classList.remove('site-mobile-locked');
             document.documentElement.style.removeProperty('--site-vh');
-            document.documentElement.style.removeProperty('--copper2-vh');
+            MATTER_VH_VARS.forEach((name) => document.documentElement.style.removeProperty(name));
             document.documentElement.style.removeProperty('--vh');
             return false;
         }
@@ -36,7 +48,9 @@
         const height = window.innerHeight;
         document.body.classList.add('site-mobile-locked');
         document.documentElement.style.setProperty('--site-vh', `${height}px`);
-        document.documentElement.style.setProperty('--copper2-vh', `${height}px`);
+        MATTER_VH_VARS.forEach((name) =>
+            document.documentElement.style.setProperty(name, `${height}px`)
+        );
         document.documentElement.style.setProperty('--vh', `${height}px`);
         document.documentElement.style.setProperty('--site-vw', `${window.innerWidth}px`);
         window.scrollTo(0, 0);
@@ -93,9 +107,14 @@
             registerArea(viewport, track);
         });
 
-        if (document.body.classList.contains('page-copper2')) {
-            document.querySelectorAll('.copper2-body-col').forEach((viewport) => {
-                const track = viewport.querySelector('.copper2-body-col-track');
+        if (
+            document.body.classList.contains('page-copper') ||
+            document.body.classList.contains('page-finedust') ||
+            document.body.classList.contains('page-saharandust') ||
+            document.body.classList.contains('page-weather')
+        ) {
+            document.querySelectorAll(MATTER_BODY_COL).forEach((viewport) => {
+                const track = viewport.querySelector('[class$="-body-col-track"]');
                 registerArea(viewport, track);
             });
         }
@@ -103,7 +122,7 @@
 
     function findArea(node) {
         if (!node || !node.closest) return null;
-        const viewport = node.closest('.about-text-wrap, .copper2-body-col');
+        const viewport = node.closest(`.about-text-wrap, ${MATTER_BODY_COL}`);
         if (!viewport) return null;
         for (let i = 0; i < areas.length; i++) {
             if (areas[i].viewport === viewport) return areas[i];

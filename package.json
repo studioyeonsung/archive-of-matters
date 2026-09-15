@@ -3,7 +3,6 @@
   "private": true,
   "scripts": {
     "dev": "npx serve . -p 3000",
-    "start": "npx serve . -p 3000",
-    "update-copper-price": "node scripts/fetch-copper-price.js"
+    "start": "npx serve . -p 3000"
   }
 }
