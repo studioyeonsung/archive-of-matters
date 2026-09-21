@@ -564,10 +564,47 @@ a.copper-table-row--link {
     font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
     font-size: 12px;
     font-weight: 400;
-    line-height: 1.35;
+    line-height: calc(1.35 * var(--kor-line-height-scale));
     letter-spacing: 0.02em;
     color: #000000;
     word-break: keep-all;
+}
+
+/* Truncate overflowing list cell text (desktop + mobile) */
+.copper-table-cell:first-child,
+.copper-table-cell:nth-child(2),
+.copper-table-cell--status,
+.copper-table-cell--date {
+    overflow: hidden;
+    min-width: 0;
+}
+
+/* Keep eng+kor on one line — wrap made long titles thicken the row */
+.copper-table-row:not(.copper-table-row--head) .copper-table-cell:first-child,
+.copper-table-row:not(.copper-table-row--head) .copper-table-cell:nth-child(2) {
+    flex-wrap: nowrap;
+    align-items: baseline;
+    align-content: center;
+}
+
+.copper-table-row:not(.copper-table-row--head)
+    .copper-table-cell:first-child .copper-table-eng,
+.copper-table-row:not(.copper-table-row--head)
+    .copper-table-cell:first-child .copper-table-kor,
+.copper-table-row:not(.copper-table-row--head)
+    .copper-table-cell:nth-child(2) .copper-table-eng,
+.copper-table-row:not(.copper-table-row--head)
+    .copper-table-cell:nth-child(2) .copper-table-kor,
+.copper-table-row:not(.copper-table-row--head)
+    .copper-table-cell--status .copper-table-eng,
+.copper-table-row:not(.copper-table-row--head)
+    .copper-table-cell--status .copper-table-kor,
+.copper-table-row:not(.copper-table-row--head) .copper-table-date {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    flex: 0 1 auto;
 }
 
 .copper-table-row--head .copper-table-eng {
@@ -582,7 +619,7 @@ a.copper-table-row--link {
 .copper-table-row--head .copper-table-kor {
     font-size: 11px;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: calc(1.2 * var(--kor-line-height-scale));
     transform: translateY(1px);
 }
 
@@ -628,8 +665,9 @@ a.copper-table-row--link {
     line-height: 1.3;
     white-space: nowrap;
     color: #000000;
-    flex: 0 0 5.2em;
+    flex: 0 1 5.2em;
     width: 5.2em;
+    min-width: 0;
 }
 
 .copper-table-badge {
@@ -1152,10 +1190,31 @@ a.copper-table-row--link {
         display: block !important;
     }
 
+    .page-copper.copper-lang-kor .copper-table-row:not(.copper-table-row--head)
+        .copper-table-cell:first-child:has(.copper-table-kor) .copper-table-eng {
+        display: none !important;
+    }
+
+    .page-copper.copper-lang-kor .copper-table-row:not(.copper-table-row--head)
+        .copper-table-cell:first-child .copper-table-kor {
+        display: block !important;
+    }
+
     .copper-table-cell {
         padding: 0.475em 0.45em;
         gap: 0;
         flex-wrap: nowrap;
+        align-items: center;
+        align-content: center;
+    }
+
+    .copper-table-row {
+        align-items: center;
+    }
+
+    .copper-table-row:not(.copper-table-row--head) .copper-table-cell:first-child,
+    .copper-table-row:not(.copper-table-row--head) .copper-table-cell:nth-child(2),
+    .copper-table-row:not(.copper-table-row--head) .copper-table-cell--date {
         align-items: center;
         align-content: center;
     }
@@ -1187,17 +1246,12 @@ a.copper-table-row--link {
     .copper-table-kor,
     .copper-table-date {
         line-height: 1;
+        transform: none;
     }
 
     .copper-table-cell:nth-child(2),
     .copper-table-cell--date {
         padding-left: var(--copper-table-col-inset);
-    }
-
-    .copper-table-cell:first-child,
-    .copper-table-cell:nth-child(2) {
-        overflow: hidden;
-        min-width: 0;
     }
 
     .copper-table-row:not(.copper-table-row--head)
@@ -1209,11 +1263,6 @@ a.copper-table-row--link {
     .copper-table-row:not(.copper-table-row--head)
         .copper-table-cell:nth-child(2) .copper-table-kor {
         display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        min-width: 0;
-        max-width: 100%;
     }
 
     .copper-table-cell--arrow {

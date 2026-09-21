@@ -14,6 +14,10 @@ img, video {
     --section-color: #000000; /* Text and icons: black */
     --vh: 100vh; /* fallback */
     --vh: 100dvh;
+    /* Korean reading rhythm — multiply existing kor line-heights */
+    --kor-line-height-scale: 1.15;
+    /* Description/body copy only: 5% tighter than general kor scale (1.15 × 0.95) */
+    --kor-desc-line-height-scale: 1.0925;
 }
 
 html {
@@ -73,25 +77,22 @@ body::before {
     }
 
     /* SVG icons turn yellow on tap so the press is obvious.
-       Menu hamburger and overlay arrows stay black to match menu text. */
+       Menu hamburger and overlay arrows stay black to match menu text.
+       Fine Dust uses #d4c0b0 (see finedust.css / rusty-odyssey page-finedust-detail). */
     .nav-overlay-close:active img,
     .nav-overlay-close.is-pressing img,
-    .ro-footer-arrow:active img,
-    .ro-footer-arrow.is-pressing img,
+    body:not(.page-finedust-detail) .ro-footer-arrow:active img,
+    body:not(.page-finedust-detail) .ro-footer-arrow.is-pressing img,
     .matter-move-arrow-fixed:active,
     .matter-move-arrow-fixed.is-pressing,
     .copper-scroll-btn:active img,
     .copper-scroll-btn.is-pressing img,
-    .finedust-scroll-btn:active img,
-    .finedust-scroll-btn.is-pressing img,
     .weather-scroll-btn:active img,
     .weather-scroll-btn.is-pressing img,
     .saharandust-scroll-btn:active img,
     .saharandust-scroll-btn.is-pressing img,
     .copper-table-sort-btn:active .copper-table-head-arrow,
     .copper-table-sort-btn.is-pressing .copper-table-head-arrow,
-    .finedust-table-sort-btn:active .finedust-table-head-arrow,
-    .finedust-table-sort-btn.is-pressing .finedust-table-head-arrow,
     .weather-table-sort-btn:active .weather-table-head-arrow,
     .weather-table-sort-btn.is-pressing .weather-table-head-arrow,
     .saharandust-table-sort-btn:active .saharandust-table-head-arrow,
@@ -119,10 +120,11 @@ body::before {
         display: block !important;
     }
 
+    /* Home hit only over the title text — keep clear of the menu tap zone on the left */
     .mobile-title-link {
         display: block;
         position: absolute;
-        left: 72px;
+        left: var(--header-title-x, 130px);
         right: 20px;
         z-index: 1001;
         cursor: pointer;
@@ -180,7 +182,10 @@ body::before {
         display: flex;
         align-items: flex-start;
         order: 1;
-        z-index: 2;
+        /* Above title-home overlays; none so only .menu-icon receives taps.
+           !important: base .header-left { pointer-events: auto } comes later in the file. */
+        z-index: 1002;
+        pointer-events: none !important;
         padding: 0 20px;
         padding-left: 0;
         padding-right: max(20px, env(safe-area-inset-right));
@@ -192,15 +197,22 @@ body::before {
         visibility: visible !important;
         opacity: 1 !important;
         position: absolute;
-        left: 36px;
+        /* Visual glyph ~24px centered in a ~44px touch target */
+        left: 26px;
         top: 38px;
         transform: translateY(-50%);
-        width: 24px !important;
-        height: 24px !important;
-        min-width: 24px;
-        min-height: 24px;
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px;
+        min-height: 44px;
+        max-width: 44px;
+        max-height: 44px;
+        padding: 10px;
+        box-sizing: border-box;
+        object-fit: contain;
         flex-shrink: 0;
-        z-index: 3;
+        z-index: 1;
+        pointer-events: auto;
         cursor: pointer;
         transition: opacity 0.2s ease;
     }
@@ -596,13 +608,19 @@ body::before {
         flex-shrink: 0;
         margin-left: -50px;
     }
-    /* Copper overlay: compact N badge beside 구리 (not the header SVG badge). */
-    .nav-overlay-item--sub[href="/copper/"] .nav-overlay-kor {
+    /* Matter overlay: compact N badge beside Korean labels */
+    .nav-overlay-item--sub[href="/copper/"] .nav-overlay-kor,
+    .nav-overlay-item--sub[href="/finedust/"] .nav-overlay-kor,
+    .nav-overlay-item--sub[href="/weather/"] .nav-overlay-kor,
+    .nav-overlay-item--sub[href="/saharandust/"] .nav-overlay-kor {
         display: inline-flex;
         align-items: center;
         gap: 5px;
     }
-    .nav-overlay-item--sub[href="/copper/"] .nav-overlay-kor::after {
+    .nav-overlay-item--sub[href="/copper/"] .nav-overlay-kor::after,
+    .nav-overlay-item--sub[href="/finedust/"] .nav-overlay-kor::after,
+    .nav-overlay-item--sub[href="/weather/"] .nav-overlay-kor::after,
+    .nav-overlay-item--sub[href="/saharandust/"] .nav-overlay-kor::after {
         content: "N";
         flex: 0 0 auto;
         width: 12px;
@@ -627,7 +645,13 @@ body::before {
         pointer-events: none;
     }
     .nav-overlay-item--sub[href="/copper/"]:active .nav-overlay-kor::after,
-    .nav-overlay-item--sub[href="/copper/"].is-pressing .nav-overlay-kor::after {
+    .nav-overlay-item--sub[href="/copper/"].is-pressing .nav-overlay-kor::after,
+    .nav-overlay-item--sub[href="/finedust/"]:active .nav-overlay-kor::after,
+    .nav-overlay-item--sub[href="/finedust/"].is-pressing .nav-overlay-kor::after,
+    .nav-overlay-item--sub[href="/weather/"]:active .nav-overlay-kor::after,
+    .nav-overlay-item--sub[href="/weather/"].is-pressing .nav-overlay-kor::after,
+    .nav-overlay-item--sub[href="/saharandust/"]:active .nav-overlay-kor::after,
+    .nav-overlay-item--sub[href="/saharandust/"].is-pressing .nav-overlay-kor::after {
         background-color: #000000;
         color: #ffffff;
     }
@@ -849,7 +873,7 @@ body::before {
 
 @media (max-width: 400px) {
     .mobile-title-link {
-        left: clamp(56px, 16vw, 72px);
+        left: var(--header-title-x, 112px);
         right: clamp(12px, 4vw, 20px);
     }
     .fixed-header {
@@ -874,12 +898,16 @@ body::before {
         padding-right: max(12px, env(safe-area-inset-right));
     }
     .header-left .menu-icon {
-        left: clamp(24px, 8vw, 36px);
+        /* Keep ~44px hit target; slightly smaller glyph via padding */
+        left: clamp(14px, 5vw, 26px);
         top: 34px;
-        width: 20px !important;
-        height: 20px !important;
-        min-width: 20px;
-        min-height: 20px;
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px;
+        min-height: 44px;
+        max-width: 44px;
+        max-height: 44px;
+        padding: 12px;
         transform: translateY(-50%) translateX(20px);
     }
     .header-left .header-top-line {
@@ -1065,6 +1093,13 @@ body::before {
         position: absolute;
         transform: none;
         top: var(--header-stack-top);
+        /* Must come after base .header-left { pointer-events: auto } */
+        z-index: 1002;
+        pointer-events: none !important;
+    }
+
+    .header-left .menu-icon {
+        pointer-events: auto;
     }
 
     .header-right {
@@ -2380,7 +2415,7 @@ body::before {
         font-size: 14.4px !important;
     }
     .page-about .about-content-mobile .about-col-kor.about-col-single p {
-        line-height: 1.8;
+        line-height: calc(1.8 * var(--kor-desc-line-height-scale));
     }
     .page-about.about-lang-eng .about-content-mobile .about-col-kor,
     .page-about.about-lang-eng .about-credits-fixed .about-credits-block-kor {
@@ -2563,7 +2598,7 @@ body::before {
         font-size: 0.85em !important;
     }
     .page-news .about-content-mobile .about-col-kor .news-body {
-        line-height: 1.8;
+        line-height: calc(1.8 * var(--kor-desc-line-height-scale));
     }
     .page-news.news-lang-eng .about-content-mobile .about-col-kor,
     .page-news.news-lang-eng .news-updated-fixed .about-credits-block-kor {
@@ -2709,6 +2744,10 @@ body::before {
     .page-contact .about-content-mobile .about-col-kor .contact-intro *,
     .page-contact .about-content-mobile .about-col-kor .contact-instagram-intro * {
         font-size: 14.4px !important;
+    }
+    .page-contact .about-content-mobile .about-col-kor .contact-intro,
+    .page-contact .about-content-mobile .about-col-kor .contact-instagram-intro {
+        line-height: calc(1.65 * var(--kor-desc-line-height-scale));
     }
     .page-contact .about-content-mobile .contact-instagram-intro {
         margin-top: 4em;
@@ -2985,7 +3024,7 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
 .page-news .about-col-kor .news-date {
     font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
     font-weight: 400;
-    line-height: 1.65;
+    line-height: calc(1.65 * var(--kor-line-height-scale));
     color: #000000;
 }
 
@@ -3006,7 +3045,7 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
 .page-news .about-col-kor .news-body {
     font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
     font-weight: 400;
-    line-height: 1.65;
+    line-height: calc(1.65 * var(--kor-desc-line-height-scale));
 }
 
 .news-body-link {
@@ -3119,7 +3158,11 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
 }
 
 .page-about .about-col-kor p {
-    line-height: 1.85;
+    line-height: calc(1.85 * var(--kor-desc-line-height-scale));
+}
+
+.page-contact .about-col-kor p {
+    line-height: calc(1.65 * var(--kor-desc-line-height-scale));
 }
 
 .contact-link {
@@ -3364,7 +3407,7 @@ html:has(body.page-contact)::-webkit-scrollbar-thumb {
 .matter-popup-kor {
     font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
     font-size: clamp(15px, 1.2vw, 17px);
-    line-height: 1.35;
+    line-height: calc(1.35 * var(--kor-desc-line-height-scale));
     color: #ffffff;
     margin: 0 0 0.2em 0;
     text-align: center;
@@ -3393,13 +3436,22 @@ a.matter-image-link {
     cursor: pointer;
 }
 
-/* Copper header: new-content badge (black circle + white N) */
+/* Header matter: new-content badge (black circle + white N) */
 a.header-matter-link:has(> .header-left-icon-1),
-a.header-matter-slot:has(> .header-left-icon-1) {
+a.header-matter-slot:has(> .header-left-icon-1),
+a.header-matter-link:has(> .header-left-icon-2),
+a.header-matter-slot:has(> .header-left-icon-2),
+a.header-matter-link[href="/weather/"],
+a.header-matter-slot[href="/weather/"],
+a.header-matter-link:has(> .header-right-icon-1),
+a.header-matter-slot:has(> .header-right-icon-1) {
     position: relative;
 }
 
-a.header-matter-link:has(> .header-left-icon-1)::after {
+a.header-matter-link:has(> .header-left-icon-1)::after,
+a.header-matter-link:has(> .header-left-icon-2)::after,
+a.header-matter-link[href="/weather/"]::after,
+a.header-matter-link:has(> .header-right-icon-1)::after {
     content: "N";
     position: absolute;
     left: 50%;
@@ -3427,8 +3479,41 @@ a.header-matter-link:has(> .header-left-icon-1)::after {
     animation: header-new-badge-bob 2.15s ease-in-out infinite;
 }
 
-a.header-matter-link:has(> .header-left-icon-1):hover::after {
+/* Fine Dust SVG is scaled slightly larger — nudge badge to match Copper spacing */
+a.header-matter-link:has(> .header-left-icon-2)::after {
+    transform: translate(14%, calc(-100% + 2px));
+    animation-name: header-new-badge-bob-finedust;
+}
+
+/* Weather: slightly further right of the icon (not left of previous) */
+a.header-matter-link[href="/weather/"]::after {
+    transform: translate(8px, calc(-100% + 3px));
+    animation-name: header-new-badge-bob-weather;
+}
+
+/* Saharan Dust: bottom-right diagonal, further left toward the icon */
+a.header-matter-link:has(> .header-right-icon-1)::after {
+    top: 100%;
+    transform: translate(-15px, -3px);
+    animation-name: header-new-badge-bob-sahara;
+}
+
+a.header-matter-link:has(> .header-left-icon-1):hover::after,
+a.header-matter-link:has(> .header-left-icon-2):hover::after,
+a.header-matter-link[href="/weather/"]:hover::after,
+a.header-matter-link:has(> .header-right-icon-1):hover::after {
     animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+    a.header-matter-link:has(> .header-left-icon-1)::after,
+    a.header-matter-link:has(> .header-left-icon-2)::after,
+    a.header-matter-link[href="/weather/"]::after,
+    a.header-matter-link:has(> .header-right-icon-1)::after,
+    a.header-matter-slot.is-current::before {
+        content: none !important;
+        display: none !important;
+    }
 }
 
 @keyframes header-new-badge-bob {
@@ -3441,15 +3526,76 @@ a.header-matter-link:has(> .header-left-icon-1):hover::after {
     }
 }
 
+@keyframes header-new-badge-bob-finedust {
+    0%,
+    100% {
+        transform: translate(14%, calc(-100% + 4px));
+    }
+    50% {
+        transform: translate(14%, calc(-100% + 0px));
+    }
+}
+
+@keyframes header-new-badge-bob-weather {
+    0%,
+    100% {
+        transform: translate(8px, calc(-100% + 5px));
+    }
+    50% {
+        transform: translate(8px, calc(-100% + 1px));
+    }
+}
+
+@keyframes header-new-badge-bob-sahara {
+    0%,
+    100% {
+        transform: translate(-15px, -1px);
+    }
+    50% {
+        transform: translate(-15px, -5px);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     a.header-matter-link:has(> .header-left-icon-1)::after {
         animation: none;
         transform: translate(10%, calc(-100% + 3px));
     }
+
+    a.header-matter-link[href="/weather/"]::after {
+        animation: none;
+        transform: translate(8px, calc(-100% + 3px));
+    }
+
+    a.header-matter-link:has(> .header-left-icon-2)::after {
+        animation: none;
+        transform: translate(14%, calc(-100% + 2px));
+    }
+
+    a.header-matter-link:has(> .header-right-icon-1)::after {
+        animation: none;
+        top: 100%;
+        transform: translate(-15px, -3px);
+    }
 }
 
 .page-copper a.header-matter-link:has(> .header-left-icon-1)::after,
-.page-rusty-odyssey a.header-matter-link:has(> .header-left-icon-1)::after {
+.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) a.header-matter-link:has(> .header-left-icon-1)::after {
+    content: none;
+}
+
+.page-finedust a.header-matter-link:has(> .header-left-icon-2)::after,
+.page-finedust-detail a.header-matter-link:has(> .header-left-icon-2)::after {
+    content: none;
+}
+
+.page-weather a.header-matter-link[href="/weather/"]::after,
+.page-weather-detail a.header-matter-link[href="/weather/"]::after {
+    content: none;
+}
+
+.page-saharandust a.header-matter-link:has(> .header-right-icon-1)::after,
+.page-saharandust-detail a.header-matter-link:has(> .header-right-icon-1)::after {
     content: none;
 }
 
@@ -3649,5 +3795,127 @@ a.matter-image-link .matter-image {
     body.site-mobile-locked.page-index .matter-section[data-section="04"] {
         height: var(--site-vh, 100vh);
         max-height: var(--site-vh, 100vh);
+    }
+}
+
+/* Laptop / ~16″ desktop band (matches matter CSS 769–1799): Korean type −10%.
+   English selectors are intentionally omitted. Mobile (≤768) is unchanged. */
+@media (min-width: 769px) and (max-width: 1799px) {
+    :root {
+        --kor-type-scale: 0.9;
+    }
+
+    /* Header Korean title */
+    .nav-text.nav-kor {
+        font-size: calc(clamp(12px, 1.45vw, 20px) * var(--kor-type-scale));
+    }
+
+    /* Index matter Korean titles */
+    .matter-title-kor.matter-title-text {
+        font-size: calc(45px * var(--kor-type-scale));
+    }
+
+    /* Matter coming-soon popup (Korean lines only) */
+    .matter-popup-kor {
+        font-size: calc(clamp(15px, 1.2vw, 17px) * var(--kor-type-scale));
+    }
+
+    /* About / news / contact — Korean columns & credits */
+    .page-about .about-col-kor p,
+    .page-about .about-col-kor p *,
+    .page-about .about-col-kor .aom-semibold-kor {
+        font-size: calc(16px * var(--kor-type-scale)) !important;
+    }
+
+    .page-news .about-col-kor .news-date {
+        font-size: calc(clamp(12px, 0.9em, 14px) * var(--kor-type-scale));
+    }
+
+    .page-news .about-col-kor .news-body,
+    .page-news .about-col-kor .news-body * {
+        font-size: calc(clamp(15px, 1.1em, 18px) * var(--kor-type-scale));
+    }
+
+    .page-news .about-col-kor .news-tag {
+        font-size: calc(clamp(13px, 1.05em, 15px) * var(--kor-type-scale));
+    }
+
+    .page-contact .about-col-kor p,
+    .page-contact .about-col-kor .contact-intro,
+    .page-contact .about-col-kor .contact-instagram-intro,
+    .page-contact .about-col-kor .contact-intro *,
+    .page-contact .about-col-kor .contact-instagram-intro * {
+        font-size: calc(clamp(15px, 1.2vw, 17px) * var(--kor-type-scale));
+    }
+
+    .about-credits-kor,
+    .about-credits-block-kor .about-credits,
+    .news-updated-kor,
+    .about-credits-block-kor .news-updated {
+        font-size: calc(12px * var(--kor-type-scale));
+    }
+
+    /* Matter hub pages — Korean titles, body cols, table cells */
+    .copper-title-kor,
+    .finedust-title-kor,
+    .weather-title-kor,
+    .saharandust-title-kor {
+        font-size: calc(clamp(20.2px, 1.73vw, 23px) * var(--kor-type-scale)) !important;
+    }
+
+    .copper-body-col--kor {
+        font-size: calc(var(--copper-body-font-kor) * var(--kor-type-scale)) !important;
+    }
+
+    .finedust-body-col--kor {
+        font-size: calc(var(--finedust-body-font-kor) * var(--kor-type-scale)) !important;
+    }
+
+    .weather-body-col--kor {
+        font-size: calc(var(--weather-body-font-kor) * var(--kor-type-scale)) !important;
+    }
+
+    .saharandust-body-col--kor {
+        font-size: calc(var(--saharandust-body-font-kor) * var(--kor-type-scale)) !important;
+    }
+
+    .copper-table-kor,
+    .finedust-table-kor,
+    .weather-table-kor,
+    .saharandust-table-kor {
+        font-size: calc(12px * var(--kor-type-scale)) !important;
+    }
+
+    .copper-table-row--head .copper-table-kor,
+    .finedust-table-row--head .finedust-table-kor,
+    .weather-table-row--head .weather-table-kor,
+    .saharandust-table-row--head .saharandust-table-kor {
+        font-size: calc(11px * var(--kor-type-scale)) !important;
+    }
+
+    /* Project detail pages (KO) — body copy / chrome; Latin footer items stay unscaled */
+    body.page-rusty-odyssey--ko .ro-title {
+        font-size: calc(clamp(22.4px, 2.08vw, 28.8px) * var(--kor-type-scale)) !important;
+    }
+
+    body.page-rusty-odyssey--ko .ro-meta-line,
+    body.page-rusty-odyssey--ko .ro-hero-link {
+        font-size: calc(clamp(14px, 1.15vw, 16px) * var(--kor-type-scale)) !important;
+    }
+
+    body.page-rusty-odyssey--ko .ro-tag {
+        font-size: calc(clamp(12px, 1vw, 14px) * var(--kor-type-scale)) !important;
+    }
+
+    body.page-rusty-odyssey--ko .ro-tab {
+        font-size: calc(clamp(11.88px, 0.99vw, 13.86px) * var(--kor-type-scale)) !important;
+    }
+
+    body.page-rusty-odyssey--ko .ro-panel p {
+        font-size: calc(clamp(15.6px, 1.26vw, 18px) * var(--kor-type-scale)) !important;
+    }
+
+    body.page-rusty-odyssey--ko .ro-footer-item--ko {
+        font-size: calc(clamp(12.1px, 1.045vw, 14.3px) * var(--kor-type-scale)) !important;
     }
 }

@@ -283,19 +283,36 @@ function initMobileSwipeNav() {
     }, { passive: true });
 }
 
-// Matter gate: Fine Dust / Weather / Saharan Dust (and any other non-copper
-// matter) show the “archiving in progress” popup. Copper is enterable.
+// Matter gate: Copper and Fine Dust are enterable.
+// Weather and Saharan Dust show the “archiving in progress” popup.
 function isCopperPath(pathname) {
     return /^\/copper(?:\/|$)/i.test(pathname || '');
 }
 
+function isFineDustPath(pathname) {
+    return /^\/finedust(?:\/|$)/i.test(pathname || '');
+}
+
+function isWeatherPath(pathname) {
+    return /^\/weather(?:\/|$)/i.test(pathname || '');
+}
+
+function isSaharanDustPath(pathname) {
+    return /^\/saharandust(?:\/|$)/i.test(pathname || '');
+}
+
+function isOpenMatterPath(pathname) {
+    return isCopperPath(pathname) || isFineDustPath(pathname);
+}
+
 function lockedMatterRoot(pathname) {
-    const match = (pathname || '').match(/^\/(finedust|weather|saharandust)(?:\/|$)/i);
-    return match ? match[1].toLowerCase() : '';
+    if (isWeatherPath(pathname)) return 'weather';
+    if (isSaharanDustPath(pathname)) return 'saharandust';
+    return '';
 }
 
 function isLockedMatterPath(pathname) {
-    return !isCopperPath(pathname) && !!lockedMatterRoot(pathname);
+    return !isOpenMatterPath(pathname) && !!lockedMatterRoot(pathname);
 }
 
 function pathFromHref(href) {
@@ -313,16 +330,53 @@ function isMatterEntryLink(link) {
 }
 
 function shouldGateMatterHref(link, pathname) {
-    if (isCopperPath(pathname)) return false;
+    if (isOpenMatterPath(pathname)) return false;
     if (isLockedMatterPath(pathname)) {
         return lockedMatterRoot(pathname) !== lockedMatterRoot(location.pathname);
     }
-    // Header / home / overlay matter links that are not copper stay gated
+    // Header / home / overlay matter links that are not open stay gated
     // even if a new matter path is added later.
     if (!isMatterEntryLink(link)) return false;
     if (!pathname || pathname === '/') return false;
     if (/^\/(about|news|contact)(?:\/|$)/i.test(pathname)) return false;
     return true;
+}
+
+function isLockedMatterLink(link) {
+    if (!link) return false;
+    const pathname = pathFromHref(link.getAttribute('href') || link.href || '');
+    if (isOpenMatterPath(pathname)) return false;
+    if (link.closest('[data-matter-locked]')) return true;
+    if (isWeatherPath(pathname) || isSaharanDustPath(pathname)) return true;
+    return shouldGateMatterHref(link, pathname);
+}
+
+function eventElement(e) {
+    const target = e && e.target;
+    if (!target) return null;
+    if (target.nodeType === 1) return target;
+    return target.parentElement || null;
+}
+
+function lockedMatterLinkFromEvent(e) {
+    const node = eventElement(e);
+    if (!node || !node.closest) return null;
+    const link = node.closest('a[href]');
+    return isLockedMatterLink(link) ? link : null;
+}
+
+function openMatterPopup() {
+    const popup = ensureMatterPopup();
+    if (!popup) return;
+    popup.classList.add('is-open');
+    popup.setAttribute('aria-hidden', 'false');
+}
+
+function blockLockedMatterNavigation(e) {
+    if (typeof e.preventDefault === 'function') e.preventDefault();
+    if (typeof e.stopPropagation === 'function') e.stopPropagation();
+    if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+    e.returnValue = false;
 }
 
 function ensureMatterPopup() {
@@ -363,43 +417,76 @@ function initMatterPopup() {
     const popup = ensureMatterPopup();
     if (!popup) return;
 
-    const openPopup = () => {
-        popup.classList.add('is-open');
-        popup.setAttribute('aria-hidden', 'false');
-    };
-
     const closePopup = () => {
         popup.classList.remove('is-open');
         popup.setAttribute('aria-hidden', 'true');
     };
 
-    document.addEventListener('click', (e) => {
-        if (document.body.dataset.navCloseClick === '1') return;
-        const node = e.target && e.target.nodeType === 1 ? e.target : (e.target && e.target.parentElement);
-        if (!node || !node.closest) return;
-
-        const link = node.closest('a[href]');
+    const activateLockedMatter = (e) => {
+        if (document.body.dataset.navCloseClick === '1') return false;
+        const link = lockedMatterLinkFromEvent(e);
         if (link) {
-            const pathname = pathFromHref(link.getAttribute('href') || link.href);
-            if (!shouldGateMatterHref(link, pathname)) return;
-            e.preventDefault();
-            e.stopPropagation();
+            blockLockedMatterNavigation(e);
             closeNavOverlayIfOpen();
-            openPopup();
-            return;
+            openMatterPopup();
+            return true;
         }
 
+        const node = eventElement(e);
+        if (!node || !node.closest) return false;
         const trigger = node.closest('.matter-image, .matter-title-eng, .matter-title-kor, .header-matter-icon');
-        if (!trigger) return;
+        if (!trigger) return false;
         const parentLink = trigger.closest('a[href]');
-        if (parentLink && !shouldGateMatterHref(parentLink, pathFromHref(parentLink.getAttribute('href') || parentLink.href))) {
-            return;
-        }
-        if (!parentLink && isCopperPath(location.pathname)) return;
+        if (parentLink && !isLockedMatterLink(parentLink)) return false;
+        if (!parentLink && isOpenMatterPath(location.pathname)) return false;
+        blockLockedMatterNavigation(e);
+        closeNavOverlayIfOpen();
+        openMatterPopup();
+        return true;
+    };
+
+    document.addEventListener('click', activateLockedMatter, true);
+    document.addEventListener('auxclick', activateLockedMatter, true);
+
+    // Mobile Safari / Chrome often commit <a> navigation on touchend, before
+    // a click listener can cancel it. Intercept taps on locked matters here.
+    const TAP_SLOP = 12;
+    let lockTouch = null;
+    document.addEventListener('touchstart', (e) => {
+        const t = e.changedTouches && e.changedTouches[0];
+        const link = lockedMatterLinkFromEvent(e);
+        lockTouch = t && link ? { x: t.clientX, y: t.clientY, link } : null;
+    }, { capture: true, passive: true });
+
+    document.addEventListener('touchend', (e) => {
+        const start = lockTouch;
+        lockTouch = null;
+        if (!start) return;
+        const t = e.changedTouches && e.changedTouches[0];
+        if (!t) return;
+        if (Math.abs(t.clientX - start.x) > TAP_SLOP || Math.abs(t.clientY - start.y) > TAP_SLOP) return;
+        const link = lockedMatterLinkFromEvent(e);
+        if (!link || link !== start.link) return;
+        // preventDefault only: cancel the <a> navigation and the synthetic
+        // click without blocking other document touch handlers (press feedback).
         e.preventDefault();
-        e.stopPropagation();
-        openPopup();
-    }, true);
+        e.returnValue = false;
+        closeNavOverlayIfOpen();
+        openMatterPopup();
+    }, { capture: true, passive: false });
+
+    document.querySelectorAll('a[href]').forEach((link) => {
+        if (!isLockedMatterLink(link) || link.dataset.matterGateBound === '1') return;
+        link.dataset.matterGateBound = '1';
+        const block = (e) => {
+            blockLockedMatterNavigation(e);
+            closeNavOverlayIfOpen();
+            openMatterPopup();
+            return false;
+        };
+        link.addEventListener('click', block, true);
+        link.onclick = () => false;
+    });
 
     popup.addEventListener('click', (e) => {
         if (e.target === popup) closePopup();
@@ -408,8 +495,8 @@ function initMatterPopup() {
     const closeBtn = popup.querySelector('.matter-popup-close');
     if (closeBtn) closeBtn.addEventListener('click', closePopup);
 
-    if (isLockedMatterPath(location.pathname) || document.body.classList.contains('page-finedust') || document.body.classList.contains('page-weather') || document.body.classList.contains('page-saharandust') || document.body.classList.contains('page-finedust-detail') || document.body.classList.contains('page-weather-detail') || document.body.classList.contains('page-saharandust-detail')) {
-        openPopup();
+    if (isLockedMatterPath(location.pathname)) {
+        openMatterPopup();
     }
 }
 
@@ -431,12 +518,25 @@ function initMobileIconPressFeedback() {
     ].join(',');
     const yellowFilter =
         'brightness(0) saturate(100%) invert(88%) sepia(100%) saturate(1000%) hue-rotate(0deg) brightness(100%) contrast(100%)';
+    /* Fine Dust #d4c0b0 — same as list hover / selection / header circle */
+    const fineDustTapFilter =
+        'brightness(0) saturate(100%) invert(76%) sepia(14%) saturate(330%) hue-rotate(-16deg) brightness(101%) contrast(91%)';
     let clearTimer = 0;
 
     const skipYellowFilter = (node) => (
         node.classList.contains('menu-icon')
         || node.classList.contains('nav-overlay-arrow')
         || !!node.closest('.menu-icon')
+    );
+
+    const isFineDustTapTarget = (el) => (
+        el.matches('.finedust-scroll-btn, .finedust-table-sort-btn')
+        || (el.matches('.ro-footer-arrow')
+            && document.body.classList.contains('page-finedust-detail'))
+    );
+
+    const pressFilterFor = (el) => (
+        isFineDustTapTarget(el) ? fineDustTapFilter : yellowFilter
     );
 
     const filterTargets = (el) => {
@@ -464,6 +564,7 @@ function initMobileIconPressFeedback() {
     const applyPress = (el) => {
         document.querySelectorAll('.is-pressing').forEach(restorePress);
         el.classList.add('is-pressing');
+        const tapFilter = pressFilterFor(el);
         filterTargets(el).forEach((node) => {
             if (!node.dataset.tapFilterSaved) {
                 node.dataset.tapPrevFilter = node.style.getPropertyValue('filter');
@@ -471,7 +572,7 @@ function initMobileIconPressFeedback() {
                 node.dataset.tapFilterSaved = '1';
             }
             node.style.transition = 'none';
-            node.style.setProperty('filter', yellowFilter, 'important');
+            node.style.setProperty('filter', tapFilter, 'important');
         });
     };
 
@@ -543,6 +644,25 @@ function initNavOverlay() {
 
     if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
 
+    overlay.querySelectorAll('a.nav-overlay-item[href]').forEach((link) => {
+        const gateOverlayMatter = (e) => {
+            if (!isLockedMatterLink(link)) return;
+            blockLockedMatterNavigation(e);
+            closeOverlay();
+            openMatterPopup();
+        };
+        link.addEventListener('click', gateOverlayMatter, true);
+        link.addEventListener(
+            'touchend',
+            (e) => {
+                if (!isLockedMatterLink(link)) return;
+                if (e.touches && e.touches.length > 0) return;
+                gateOverlayMatter(e);
+            },
+            { capture: true, passive: false }
+        );
+    });
+
     const headerLink = overlay.querySelector('.nav-overlay-header-link');
     if (headerLink) {
         headerLink.addEventListener('click', () => {
@@ -578,6 +698,12 @@ function initNavOverlay() {
 
     overlay.querySelectorAll('.nav-overlay-item[data-section]').forEach((link) => {
         link.addEventListener('click', (e) => {
+            if (isLockedMatterLink(link)) {
+                blockLockedMatterNavigation(e);
+                closeOverlay();
+                openMatterPopup();
+                return;
+            }
             if (window.innerWidth > 768) return;
             const section = link.getAttribute('data-section');
             if (!section || !document.body.classList.contains('page-index')) return;

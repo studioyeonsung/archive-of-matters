@@ -170,6 +170,15 @@ body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail)
     z-index: 1;
 }
 
+.page-saharandust-detail .header-matter-slot.is-current::before {
+    top: 100%;
+    transform: translate(-15px, -3px);
+}
+
+.page-finedust-detail .header-matter-slot.is-current::before {
+    background-color: #d4c0b0;
+}
+
 .page-rusty-odyssey ::selection {
     background-color: #ffff00;
     color: #000000;
@@ -177,6 +186,16 @@ body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail)
 
 .page-rusty-odyssey ::-moz-selection {
     background-color: #ffff00;
+    color: #000000;
+}
+
+.page-finedust-detail ::selection {
+    background-color: #d4c0b0;
+    color: #000000;
+}
+
+.page-finedust-detail ::-moz-selection {
+    background-color: #d4c0b0;
     color: #000000;
 }
 
@@ -331,6 +350,33 @@ body.page-rusty-odyssey:not(.page-rusty-odyssey--ko) .ro-spec {
     line-height: 1.38;
 }
 
+/* Korean reading rhythm (+15% line-height); English selectors unchanged */
+body.page-rusty-odyssey--ko .ro-title {
+    line-height: calc(1.2 * var(--kor-line-height-scale));
+}
+
+body.page-rusty-odyssey--ko .ro-meta-line,
+body.page-rusty-odyssey--ko .ro-hero-link {
+    line-height: calc(1.35 * var(--kor-line-height-scale));
+}
+
+body.page-rusty-odyssey--ko .ro-collab,
+body.page-rusty-odyssey--ko .ro-spec {
+    line-height: calc(1.15 * var(--kor-line-height-scale));
+}
+
+body.page-rusty-odyssey--ko .ro-tab {
+    line-height: calc(1.2 * var(--kor-line-height-scale));
+}
+
+body.page-rusty-odyssey--ko .ro-panel p {
+    line-height: calc(1.562 * var(--kor-desc-line-height-scale));
+}
+
+body.page-rusty-odyssey--ko .ro-credit-list .ro-credit {
+    line-height: calc(1.32 * var(--kor-line-height-scale));
+}
+
 .ro-collab + .ro-spec {
     margin-top: 0;
 }
@@ -452,7 +498,17 @@ body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail)
     gap: 0.935rem 2.9rem;
 }
 
+/* Fine Dust detail: match Copper tab gap, underline, and active weight */
+body.page-rusty-odyssey.page-finedust-detail .ro-tabs {
+    gap: 0.935rem 2.9rem;
+}
+
 body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .ro-tab {
+    border-bottom-width: 1.5px;
+    padding-bottom: 0.18em;
+}
+
+body.page-rusty-odyssey.page-finedust-detail .ro-tab {
     border-bottom-width: 1.5px;
     padding-bottom: 0.18em;
 }
@@ -461,11 +517,19 @@ body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail)
     font-weight: 700;
 }
 
+body.page-rusty-odyssey.page-finedust-detail .ro-tab.is-active {
+    font-weight: 700;
+}
+
 body.page-rusty-odyssey.page-rusty-odyssey--ko .ro-tab {
     font-size: clamp(11.88px, 0.99vw, 13.86px);
 }
 
 body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .ro-tab::after {
+    font-weight: 700;
+}
+
+body.page-rusty-odyssey.page-finedust-detail .ro-tab::after {
     font-weight: 700;
 }
 
@@ -553,6 +617,35 @@ body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail)
     box-sizing: border-box;
 }
 
+/* In-gallery body copy — same width as associated still / grid column */
+.ro-media-copy {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.ro-media-copy p {
+    margin: 0;
+    font-family: var(--ro-font);
+    font-size: clamp(15.6px, 1.26vw, 18px);
+    line-height: 1.562;
+    color: #000000;
+}
+
+body.page-rusty-odyssey--ko .ro-media-copy p {
+    line-height: calc(1.562 * var(--kor-desc-line-height-scale));
+}
+
+/* One grid cell (same column width as a still), not full row span */
+.ro-still-grid > .ro-media-copy {
+    grid-column: auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
 .ro-video {
     position: relative;
     width: 100%;
@@ -603,6 +696,16 @@ body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail)
     width: 100%;
     height: 100%;
     transform: none;
+}
+
+/* In-gallery YouTube: native controls, no autoplay chrome */
+.ro-video--embed {
+    cursor: default;
+    background: #000000;
+}
+
+.ro-video--embed iframe {
+    pointer-events: auto;
 }
 
 .ro-video--youtube:not(.is-ready) .ro-video-play {
@@ -907,13 +1010,16 @@ a.ro-footer-item:hover {
     text-decoration: none;
 }
 
-/* Copper KO footer trail Hangul only. Latin items stay Parabolica. Lang switch stays Pretendard. */
-body.page-rusty-odyssey.page-rusty-odyssey--ko:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .ro-footer-item--ko {
+/* Copper / Fine Dust KO footer trail Hangul only. Latin items stay Parabolica. Lang switch stays Pretendard. */
+body.page-rusty-odyssey.page-rusty-odyssey--ko:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) .ro-footer-item--ko,
+body.page-rusty-odyssey.page-rusty-odyssey--ko.page-finedust-detail .ro-footer-item--ko {
     font-family: "neutronic-hangeul", "parabolica", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
 }
 
 body.page-rusty-odyssey.page-rusty-odyssey--ko:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) a.ro-footer-item--ko::after,
-body.page-rusty-odyssey.page-rusty-odyssey--ko:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) a.ro-footer-item--ko:hover {
+body.page-rusty-odyssey.page-rusty-odyssey--ko:not(.page-finedust-detail):not(.page-saharandust-detail):not(.page-weather-detail) a.ro-footer-item--ko:hover,
+body.page-rusty-odyssey.page-rusty-odyssey--ko.page-finedust-detail a.ro-footer-item--ko::after,
+body.page-rusty-odyssey.page-rusty-odyssey--ko.page-finedust-detail a.ro-footer-item--ko:hover {
     font-family: "neutronic-hangeul", "parabolica-medium", "parabolica", sans-serif;
 }
 
@@ -930,6 +1036,27 @@ body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail)
     border-radius: 50%;
     background: #000000;
     flex-shrink: 0;
+}
+
+/*
+ * Fine Dust desktop: match Copper item flex (shrink 0) except the project title
+ * (3rd trail child). Ellipsis only when that title overflows available width —
+ * short labels like "작전명 D" stay fully visible.
+ */
+.page-finedust-detail .ro-footer-trail {
+    overflow: hidden;
+}
+
+.page-finedust-detail .ro-footer-trail > .ro-footer-item:nth-child(3) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    flex-shrink: 1;
+}
+
+.page-finedust-detail .ro-footer-trail > a.ro-footer-item:nth-child(3) {
+    /* block so text-overflow applies; ::after still reserves hover width */
+    display: block;
 }
 
 .ro-footer-arrow {
@@ -1274,6 +1401,11 @@ body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail)
         margin-top: 1.15em;
     }
 
+    body.page-rusty-odyssey--ko .ro-year,
+    body.page-rusty-odyssey--ko .ro-type {
+        line-height: calc(1.15 * var(--kor-line-height-scale));
+    }
+
     .ro-collab,
     .ro-spec {
         grid-column: 1 / -1;
@@ -1289,7 +1421,7 @@ body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail)
     }
 
     body.page-rusty-odyssey.page-rusty-odyssey--ko .ro-spec {
-        line-height: 1.5;
+        line-height: calc(1.5 * var(--kor-line-height-scale));
     }
 
     .ro-collab + .ro-spec {
@@ -1359,6 +1491,10 @@ body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail)
         gap: 0.85rem 2.4rem;
     }
 
+    body.page-rusty-odyssey.page-finedust-detail .ro-tabs {
+        gap: 0.85rem 2.4rem;
+    }
+
     .ro-tab {
         font-size: 11px;
     }
@@ -1374,6 +1510,8 @@ body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail)
 
     .ro-panel,
     .ro-panel p,
+    .ro-media-copy,
+    .ro-media-copy p,
     .ro-credit,
     .ro-links {
         font-size: clamp(13px, 3.4vw, 14.5px);
@@ -1455,6 +1593,22 @@ body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail)
         z-index: 1;
     }
 
+    /* Fine Dust mobile: same trail as Copper (no extra max-width / forced shrink) */
+    .page-finedust-detail .ro-footer-trail {
+        overflow: visible;
+    }
+
+    .page-finedust-detail .ro-footer-trail > .ro-footer-item:nth-child(3) {
+        flex-shrink: 0;
+        min-width: auto;
+        overflow: visible;
+        text-overflow: clip;
+    }
+
+    .page-finedust-detail .ro-footer-trail > a.ro-footer-item:nth-child(3) {
+        display: inline-flex;
+    }
+
     .ro-footer-trail > :nth-child(n+4) {
         display: none;
     }
@@ -1490,9 +1644,15 @@ body.page-rusty-odyssey:not(.page-finedust-detail):not(.page-saharandust-detail)
 
     .page-rusty-odyssey .nav-overlay-close:active img,
     .page-rusty-odyssey .nav-overlay-close.is-pressing img,
-    .ro-footer-arrow:active img,
-    .ro-footer-arrow.is-pressing img {
+    body.page-rusty-odyssey:not(.page-finedust-detail) .ro-footer-arrow:active img,
+    body.page-rusty-odyssey:not(.page-finedust-detail) .ro-footer-arrow.is-pressing img {
         filter: brightness(0) saturate(100%) invert(88%) sepia(100%) saturate(1000%) hue-rotate(0deg) brightness(100%) contrast(100%) !important;
+    }
+
+    /* Fine Dust detail: footer arrows tap to #d4c0b0 (list hover / selection) */
+    body.page-rusty-odyssey.page-finedust-detail .ro-footer-arrow:active img,
+    body.page-rusty-odyssey.page-finedust-detail .ro-footer-arrow.is-pressing img {
+        filter: brightness(0) saturate(100%) invert(76%) sepia(14%) saturate(330%) hue-rotate(-16deg) brightness(101%) contrast(91%) !important;
     }
 
     .page-rusty-odyssey .header-left .menu-icon:hover,

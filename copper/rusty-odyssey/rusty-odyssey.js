@@ -144,7 +144,18 @@
                 }
             }
         } else if (path.indexOf('/finedust/') === 0 && path !== '/finedust/') {
-            const PROJECT_SLUGS = ['operation-d/02-changwon', 'operation-d/01-seoul', 'd-d-d-d/lecture-performance', 'd-d-d-d/exhibition', 'd-d-d-d/activism-performance', 'd-scape/2', 'd-scape/1', 'd-beacon'];
+            // Chronological (oldest → newest): left/prev = earlier, right/next = later
+            const PROJECT_SLUGS = [
+                'd-beacon',
+                'd-scape/1',
+                'd-scape/2',
+                'fine-dust-specimen',
+                'd-d-d-d/activism-performance',
+                'd-d-d-d/exhibition',
+                'd-d-d-d/lecture-performance',
+                'operation-d/01-seoul',
+                'operation-d/02-changwon',
+            ];
             const slug = path
                 .replace(/^\/finedust\//, '')
                 .replace(/\/ko\/$/, '/')

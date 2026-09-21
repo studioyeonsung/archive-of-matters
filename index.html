@@ -16,7 +16,7 @@
     {"@context":"https://schema.org","@type":"WebSite","name":"ARCHIVE OF MATTER(S)","url":"https://archiveofmatters.com/","publisher":{"@type":"Organization","name":"Studio Yeon Sung","alternateName":["Yeon Sung","yeon sung","연성"]}}
     </script>
     <script src="/boot.js?v=3"></script>
-    <link rel="stylesheet" href="style.css?v=20260916g">
+    <link rel="stylesheet" href="style.css?v=20260920e">
 
 </head>
 <body class="page-index">
@@ -54,14 +54,14 @@
         </div>
         <div class="header-right">
             <div class="header-top-line">
-                <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
+                <a href="/weather/" class="header-matter-link" data-matter-locked="weather" aria-label="Weather"><img src="assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-1">아카이브</a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-2">오브</a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-3">매터(즈)</a>
             </div>
             <div class="dotted-line-right"></div>
             <div class="header-bottom-line">
-                <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
+                <a href="/saharandust/" class="header-matter-link" data-matter-locked="saharandust" aria-label="Saharan Dust"><img src="assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
                 <span class="nav-text header-right-text-1"><a href="/news/">NEWS</a></span>
                 <img src="assets/home-icon-arrow.svg" alt="" class="header-icon nav-icon header-right-icon-2">
                 <span class="nav-text header-right-text-2"><a href="/contact/">CONTACT</a></span>
@@ -113,14 +113,14 @@
             <section class="matter-section" data-section="03">
                 <div class="section-content">
                     <div class="section-left">
-                        <a href="/saharandust/" class="matter-title-link"><span class="matter-title-eng matter-title-text">Saharan Dust</span></a>
+                        <a href="/saharandust/" class="matter-title-link" data-matter-locked="saharandust"><span class="matter-title-eng matter-title-text">Saharan Dust</span></a>
                     </div>
                     <div class="section-center">
-                        <a href="/saharandust/" class="matter-image-link"><img src="assets/matters-saharandust-img.png" alt="Saharan Dust" class="matter-image"></a>
+                        <a href="/saharandust/" class="matter-image-link" data-matter-locked="saharandust"><img src="assets/matters-saharandust-img.png" alt="Saharan Dust" class="matter-image"></a>
                     </div>
                     <div class="section-right">
                         <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow matter-move-arrow-left" aria-hidden="true">
-                        <a href="/saharandust/" class="matter-title-link"><span class="matter-title-kor matter-title-text">사하라 먼지</span></a>
+                        <a href="/saharandust/" class="matter-title-link" data-matter-locked="saharandust"><span class="matter-title-kor matter-title-text">사하라 먼지</span></a>
                         <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow matter-move-arrow-right" aria-hidden="true">
                     </div>
                 </div>
@@ -130,14 +130,14 @@
             <section class="matter-section" data-section="04">
                 <div class="section-content">
                     <div class="section-left">
-                        <a href="/weather/" class="matter-title-link"><span class="matter-title-eng matter-title-text">Weather</span></a>
+                        <a href="/weather/" class="matter-title-link" data-matter-locked="weather"><span class="matter-title-eng matter-title-text">Weather</span></a>
                     </div>
                     <div class="section-center">
-                        <a href="/weather/" class="matter-image-link"><img src="assets/matters-weather-img.png" alt="Weather" class="matter-image"></a>
+                        <a href="/weather/" class="matter-image-link" data-matter-locked="weather"><img src="assets/matters-weather-img.png" alt="Weather" class="matter-image"></a>
                     </div>
                     <div class="section-right">
                         <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow matter-move-arrow-left" aria-hidden="true">
-                        <a href="/weather/" class="matter-title-link"><span class="matter-title-kor matter-title-text">날씨</span></a>
+                        <a href="/weather/" class="matter-title-link" data-matter-locked="weather"><span class="matter-title-kor matter-title-text">날씨</span></a>
                         <img src="assets/move-icon-arrow.svg" alt="" class="matter-move-arrow matter-move-arrow-right" aria-hidden="true">
                     </div>
                 </div>
@@ -183,12 +183,12 @@
                     <span class="nav-overlay-kor">미세먼지</span>
                 </a>
                 <div class="nav-overlay-sep"></div>
-                <a href="/saharandust/" class="nav-overlay-item nav-overlay-item--sub">
+                <a href="/saharandust/" class="nav-overlay-item nav-overlay-item--sub" data-matter-locked="saharandust">
                     <span class="nav-overlay-eng">SAHARAN DUST</span>
                     <span class="nav-overlay-kor">사하라 먼지</span>
                 </a>
                 <div class="nav-overlay-sep"></div>
-                <a href="/weather/" class="nav-overlay-item nav-overlay-item--sub">
+                <a href="/weather/" class="nav-overlay-item nav-overlay-item--sub" data-matter-locked="weather">
                     <span class="nav-overlay-eng">WEATHER</span>
                     <span class="nav-overlay-kor">날씨</span>
                 </a>
@@ -254,7 +254,7 @@
     <script src="/vendor/gsap.min.js"></script>
     <script src="/vendor/ScrollTrigger.min.js"></script>
     <script src="mobile-viewport-lock.js?v=20260812k"></script>
-    <script src="script.js?v=20260907m"></script>
+    <script src="script.js?v=20260921d"></script>
 </body>
 </html>
 

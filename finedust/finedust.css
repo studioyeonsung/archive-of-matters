@@ -34,7 +34,7 @@ body.page-finedust::before {
     --finedust-body-font-eng: clamp(14px, 1.18vw, 16px);
     --finedust-body-font-kor: clamp(13px, 1.08vw, 14.5px);
     --finedust-body-lh-eng: 1.45;
-    --finedust-body-lh-kor: 1.62;
+    --finedust-body-lh-kor: calc(1.62 * var(--kor-desc-line-height-scale));
     --finedust-body-box-height: clamp(7rem, 20vh, 8.75rem);
 }
 
@@ -74,22 +74,24 @@ body.page-finedust::before {
     position: absolute;
     left: 50%;
     top: 0;
-    transform: translate(-50%, calc(-100% - 3px));
-    width: 7px;
-    height: 7px;
+    transform: translate(14%, calc(-100% + 2px));
+    width: 13px;
+    height: 13px;
     border-radius: 50%;
-    background-color: #000000;
+    background-color: #d4c0b0;
+    border: 1.5px solid #000000;
+    box-sizing: border-box;
     pointer-events: none;
     z-index: 1;
 }
 
 .page-finedust ::selection {
-    background-color: #ffff00;
+    background-color: #d4c0b0;
     color: #000000;
 }
 
 .page-finedust ::-moz-selection {
-    background-color: #ffff00;
+    background-color: #d4c0b0;
     color: #000000;
 }
 
@@ -165,7 +167,7 @@ body.page-finedust::before {
     font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
     font-size: clamp(20.2px, 1.73vw, 23px);
     font-weight: 400;
-    line-height: 1.1;
+    line-height: calc(1.1 * var(--kor-line-height-scale));
     letter-spacing: 0.01em;
     color: #000000;
 }
@@ -273,6 +275,14 @@ body.page-finedust::before {
     pointer-events: auto;
 }
 
+.finedust-name--en {
+    font-style: italic;
+}
+
+.finedust-name--ko {
+    font-weight: 500;
+}
+
 .finedust-body-col p:last-child,
 .finedust-body-col .finedust-copy-desktop:has(+ .finedust-copy-mobile) {
     margin-bottom: 0;
@@ -365,7 +375,14 @@ body.page-finedust::before {
     grid-template-columns: var(--finedust-table-cols);
     align-items: stretch;
     border-bottom: none;
-    min-height: 2.6rem;
+    /*
+      Integer CSS px — content+padding had been 41.875px, so some row bottoms
+      landed on *.25/*.75 and the hover ::after rasterized 5 device-px (2.5css)
+      while others painted 4 (2.0css). Lock height so every underline matches.
+    */
+    box-sizing: border-box;
+    min-height: 42px;
+    height: 42px;
 }
 
 a.finedust-table-row--link {
@@ -374,9 +391,10 @@ a.finedust-table-row--link {
 }
 
 .finedust-table-row--head {
-    min-height: 2.5rem;
-    border-top: 2.1px solid #000000;
-    border-bottom: 2.1px solid #000000;
+    min-height: 38px;
+    height: 38px;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
 }
 
 .finedust-table-cell {
@@ -396,19 +414,63 @@ a.finedust-table-row--link {
     padding-bottom: 0;
 }
 
-/* Data-row rules: default 1px bottom (except last — footer rule), hover 2.1px */
+/* Data-row rules: default 1px bottom (except last — footer rule). Hover underline is always row ::after. */
 .finedust-table-row:not(.finedust-table-row--head):not(:last-child) {
     box-shadow: inset 0 -1px 0 #000000;
 }
 
 .finedust-table-row--link {
+    position: relative;
+    isolation: isolate;
     transition: box-shadow 0.15s ease;
     cursor: pointer;
 }
 
+.finedust-table-row--link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: #d4c0b0;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.finedust-table-row--link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Integer 2px — matches head borders; crisp 4 device-px at DPR 2 when row bottoms are integer */
+    height: 2px;
+    background: #000000;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.finedust-table-row--link > .finedust-table-cell {
+    z-index: 1;
+}
+
 @media (hover: hover) and (pointer: fine) {
-    .finedust-table-row--link:not(:last-child):hover {
-        box-shadow: inset 0 -2.1px 0 #000000;
+    .finedust-table-row--link:hover::before,
+    .finedust-table-row--link:focus-visible::before {
+        opacity: 1;
+    }
+
+    /* Every link row — including :last-child — uses the same 2px ::after underline */
+    .finedust-table-row--link:hover::after,
+    .finedust-table-row--link:focus-visible::after {
+        opacity: 1;
+    }
+
+    .finedust-table-row--link:not(:last-child):hover,
+    .finedust-table-row--link:not(:last-child):focus-visible {
+        box-shadow: none;
     }
 
     .finedust-table-row--link:hover .finedust-table-eng {
@@ -491,10 +553,47 @@ a.finedust-table-row--link {
     font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
     font-size: 12px;
     font-weight: 400;
-    line-height: 1.35;
+    line-height: calc(1.35 * var(--kor-line-height-scale));
     letter-spacing: 0.02em;
     color: #000000;
     word-break: keep-all;
+}
+
+/* Truncate overflowing list cell text (desktop + mobile) */
+.finedust-table-cell:first-child,
+.finedust-table-cell:nth-child(2),
+.finedust-table-cell--status,
+.finedust-table-cell--date {
+    overflow: hidden;
+    min-width: 0;
+}
+
+/* Keep eng+kor on one line — wrap made long titles thicken the row */
+.finedust-table-row:not(.finedust-table-row--head) .finedust-table-cell:first-child,
+.finedust-table-row:not(.finedust-table-row--head) .finedust-table-cell:nth-child(2) {
+    flex-wrap: nowrap;
+    align-items: baseline;
+    align-content: center;
+}
+
+.finedust-table-row:not(.finedust-table-row--head)
+    .finedust-table-cell:first-child .finedust-table-eng,
+.finedust-table-row:not(.finedust-table-row--head)
+    .finedust-table-cell:first-child .finedust-table-kor,
+.finedust-table-row:not(.finedust-table-row--head)
+    .finedust-table-cell:nth-child(2) .finedust-table-eng,
+.finedust-table-row:not(.finedust-table-row--head)
+    .finedust-table-cell:nth-child(2) .finedust-table-kor,
+.finedust-table-row:not(.finedust-table-row--head)
+    .finedust-table-cell--status .finedust-table-eng,
+.finedust-table-row:not(.finedust-table-row--head)
+    .finedust-table-cell--status .finedust-table-kor,
+.finedust-table-row:not(.finedust-table-row--head) .finedust-table-date {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    flex: 0 1 auto;
 }
 
 .finedust-table-short {
@@ -513,7 +612,7 @@ a.finedust-table-row--link {
 .finedust-table-row--head .finedust-table-kor {
     font-size: 11px;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: calc(1.2 * var(--kor-line-height-scale));
     transform: translateY(1px);
 }
 
@@ -527,6 +626,12 @@ a.finedust-table-row--link {
     padding-right: 0.85em;
     justify-content: flex-start;
     text-align: left;
+}
+
+.finedust-table-row--head .finedust-table-cell--date {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.3em;
 }
 
 .finedust-table-row--head .finedust-table-cell--status {
@@ -553,8 +658,9 @@ a.finedust-table-row--link {
     line-height: 1.3;
     white-space: nowrap;
     color: #000000;
-    flex: 0 0 5.2em;
+    flex: 0 1 5.2em;
     width: 5.2em;
+    min-width: 0;
 }
 
 .finedust-table-badge {
@@ -579,7 +685,7 @@ a.finedust-table-row--link {
 }
 
 .finedust-table-badge--series {
-    background: transparent;
+    background: #ffffff;
     color: #000000;
     border: 1.7px solid #000000;
     padding: calc(0.32em - 1.7px) calc(0.95em - 1.7px);
@@ -608,17 +714,27 @@ a.finedust-table-row--link {
     position: relative;
     z-index: 1;
     width: 100%;
-    height: 1.5px;
+    /* Match resting data-row dividers (1px). Was 1.5px — looked heavier under last row. */
+    height: 1px;
     background-color: #000000;
     flex-shrink: 0;
-    transition: height 0.15s ease;
+    transition: background-color 0.15s ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
+    /*
+      Last-child hover: keep footer height (no layout jump) but hide its paint so the
+      row's ::after is the only underline — same path as every other row.
+      Prior approach thickened footer to match ::after while ::after was hidden; footer
+      paint outside the row still read heavier than in-row ::after under yellow.
+    */
     .finedust-archive-clip:has(
         .finedust-table-row--link:last-child:hover
+    ) ~ .finedust-footer-rule,
+    .finedust-archive-clip:has(
+        .finedust-table-row--link:last-child:focus-visible
     ) ~ .finedust-footer-rule {
-        height: 2.1px;
+        background-color: transparent;
     }
 }
 
@@ -1053,11 +1169,13 @@ a.finedust-table-row--link {
     }
 
     .finedust-table-row {
-        min-height: calc(2.6rem * 0.95);
+        min-height: 42px;
+        height: 42px;
     }
 
     .finedust-table-row--head {
-        min-height: calc(2.5rem * 0.95);
+        min-height: 38px;
+        height: 38px;
     }
 
     .finedust-table-row--head .finedust-table-cell:nth-child(1)::after,
@@ -1069,9 +1187,28 @@ a.finedust-table-row--link {
         -webkit-tap-highlight-color: transparent;
     }
 
-    .finedust-table-row--link:active,
-    .finedust-table-row--link.is-pressing {
-        background-color: #ffff00;
+    .finedust-table-row--link:active::before,
+    .finedust-table-row--link.is-pressing::before {
+        opacity: 1;
+    }
+
+    .finedust-table-row--link:active::after,
+    .finedust-table-row--link.is-pressing::after {
+        opacity: 1;
+    }
+
+    .finedust-table-row--link:not(:last-child):active,
+    .finedust-table-row--link:not(:last-child).is-pressing {
+        box-shadow: none;
+    }
+
+    .finedust-archive-clip:has(
+        .finedust-table-row--link:last-child:active
+    ) ~ .finedust-footer-rule,
+    .finedust-archive-clip:has(
+        .finedust-table-row--link:last-child.is-pressing
+    ) ~ .finedust-footer-rule {
+        background-color: transparent;
     }
 
     .finedust-table-cell--status,
@@ -1128,10 +1265,29 @@ a.finedust-table-row--link {
         align-content: center;
     }
 
+    .finedust-table-row {
+        align-items: center;
+    }
+
+    .finedust-table-row:not(.finedust-table-row--head) .finedust-table-cell:first-child,
+    .finedust-table-row:not(.finedust-table-row--head) .finedust-table-cell:nth-child(2),
+    .finedust-table-row:not(.finedust-table-row--head) .finedust-table-cell--date {
+        align-items: center;
+        align-content: center;
+    }
+
     .finedust-table-sort-btn {
         flex-shrink: 0;
         width: 22px;
         height: 22px;
+    }
+
+    /* Mobile tap: #d4c0b0 (not global yellow) */
+    .finedust-scroll-btn:active img,
+    .finedust-scroll-btn.is-pressing img,
+    .finedust-table-sort-btn:active .finedust-table-head-arrow,
+    .finedust-table-sort-btn.is-pressing .finedust-table-head-arrow {
+        filter: brightness(0) saturate(100%) invert(76%) sepia(14%) saturate(330%) hue-rotate(-16deg) brightness(101%) contrast(91%) !important;
     }
 
     .finedust-table-row--head .finedust-table-cell {
@@ -1155,17 +1311,12 @@ a.finedust-table-row--link {
     .finedust-table-kor,
     .finedust-table-date {
         line-height: 1;
+        transform: none;
     }
 
     .finedust-table-cell:nth-child(2),
     .finedust-table-cell--date {
         padding-left: var(--finedust-table-col-inset);
-    }
-
-    .finedust-table-cell:first-child,
-    .finedust-table-cell:nth-child(2) {
-        overflow: hidden;
-        min-width: 0;
     }
 
     .finedust-table-row:not(.finedust-table-row--head)
@@ -1177,10 +1328,6 @@ a.finedust-table-row--link {
     .finedust-table-row:not(.finedust-table-row--head)
         .finedust-table-cell:nth-child(2) .finedust-table-kor {
         display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        min-width: 0;
         max-width: 100%;
     }
 
