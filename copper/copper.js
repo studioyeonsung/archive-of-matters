@@ -572,6 +572,13 @@
             descending = !descending;
             applySort();
         });
+
+        const dateHead = table.querySelector('.copper-table-row--head .copper-table-cell--date');
+        if (dateHead) {
+            dateHead.addEventListener('click', () => {
+                sortBtn.click();
+            });
+        }
     }
 
     function initRowPreview() {

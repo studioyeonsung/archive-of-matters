@@ -8,12 +8,12 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://archiveofmatters.com/weather/">
     <link rel="icon" type="image/svg+xml" href="/assets/home-icon-weather.svg">
-    <script src="/boot.js?v=3"></script>
-    <link rel="stylesheet" href="/style.css?v=20260920e">
-    <link rel="stylesheet" href="/weather/weather.css?v=87">
+    <script src="/boot.js?v=6"></script>
+    <link rel="stylesheet" href="/style.css?v=20260926j">
+    <link rel="stylesheet" href="/weather/weather.css?v=130">
 
 </head>
-<body class="page-weather">
+<body class="page-weather weather-lang-eng">
     <div class="mobile-placeholder" aria-live="polite">
         <div class="mobile-placeholder-eng-block">
             <p class="mobile-placeholder-eng">Mobile version is on its way.</p>
@@ -47,14 +47,14 @@
             </div>
             <div class="header-right">
                 <div class="header-top-line">
-                    <a href="/weather/" class="header-matter-slot is-current" aria-current="page" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
+                    <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-1">아카이브</a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-2">오브</a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-3">매터(즈)</a>
                 </div>
                 <div class="dotted-line-right"></div>
                 <div class="header-bottom-line">
-                    <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
+                    <a href="/weather/" class="header-matter-slot is-current" aria-current="page" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
                     <span class="nav-text header-right-text-1"><a href="/news/">NEWS</a></span>
                     <img src="/assets/home-icon-arrow.svg" alt="" class="header-icon nav-icon header-right-icon-2">
                     <span class="nav-text header-right-text-2"><a href="/contact/">CONTACT</a></span>
@@ -121,16 +121,28 @@
             </div>
         </div>
 
+        <div class="about-lang-switch about-lang-switch-fixed" role="group" aria-label="언어 선택">
+            <button type="button" class="about-lang-btn is-active" data-lang="eng">ENG</button>
+            <span class="about-lang-sep">/</span>
+            <button type="button" class="about-lang-btn" data-lang="kor">한국어</button>
+        </div>
+
         <main class="weather-main">
             <div class="weather-visual">
                 <figure class="weather-figures">
-                    <img
-                        src="/weather/assets/weather_figures.png"
-                        alt="Illustrations of copper ore, bullets, bronze atlas, VOC duit coin, and copper scrap"
-                        width="1136"
-                        height="495"
-                        decoding="async"
-                    >
+                    <picture>
+                        <source
+                            media="(max-width: 768px)"
+                            srcset="/weather/assets/weather_figures_mobile.png?v=2"
+                        >
+                        <img
+                            src="/weather/assets/weather_figures.png"
+                            alt="Illustrations of windsock, weathervane, stack plume, and performance bike"
+                            width="1136"
+                            height="495"
+                            decoding="async"
+                        >
+                    </picture>
                 </figure>
                 <div class="weather-title-block">
                     <h1 class="weather-title">Weather</h1>
@@ -139,12 +151,26 @@
                 <div class="weather-body">
                     <div class="weather-body-col weather-body-col--eng" lang="en">
                         <div class="weather-body-col-track">
-                        <p>I dance, bike, and broadcast on the street, port, and rooftop. Beneath the dust-shrouded skies of Seoul and amidst the CO2 emissions of Rotterdam’s Maasvlakte, I deeply inhaled and exhaled unseen substances. What significance do the millions of data points generated hourly from over 600 air quality monitoring stations in Seoul hold for us? Is the process of collecting and processing data to quantify pollution sufficient as a tool to perceive today’s pollution phenomena? How should we act to resonate with the complex interactions between our bodies and the Earth? Under the concept of ‘Weathering’ proposed by feminist scholars Astrida Neimanis and Jennifer Mae Hamilton, weather transcends mere meteorological phenomena. Here, polluted weather becomes a realm where the human body, pollution, culture, and socio-political aspects intersect as embodied phenomena. Becoming weather-bodies myself, I allow matter to traverse through my being. I sense its endless penetration, like waves washing over us. Countless unseen substances—either journey inward or extend outward. Nitrogen, oxygen, carbon dioxide, water vapor, ozone, methane, bacteria, mold spores, pollen, sulfur dioxide, carbon monoxide, ammonia, fine particulate matter—they pass through our airways, brushing against the cilia within our lungs, while sound waves reverberate in our eardrums. Capital, politics, society, strata, infringements, prejudices, discrimination, oppression—they penetrate us in endless waves. Our bodies continuously react to, change with, and record the traces of time passed by the things that surround us. Take a deep breath in, and exhale profoundly. Breathe in slowly and exhale gently. We exist in a world of traversing matter. This place becomes where matter crosses through my body. Together, we sense, perform, and become the acting bodies.</p>
+                        <p class="weather-copy-desktop">Weather has no form of its own. It shows itself only through what it meets: the wind that stirs a flag, the rain falling on an industrial zone, the friction of a body it strikes. In hair blown across a face, in the breath drawn in, in skin darkening as it endures a season, weather briefly takes on a body.</p>
+                        <p class="weather-copy-desktop">Astrida Neimanis and Jennifer Mae Hamilton propose reading weather not as a noun but as a verb. In English, to weather is to be worn down slowly through long exposure. To treat weather as matter, then, is not only to sense it from a distance but to embody it directly.</p>
+                        <p class="weather-copy-desktop">For a long time, weather has been observed from a distance. Just as John Constable noted the date and the wind on the back of his cloud sketches, today's weather stations repeat the same gesture. But at Maasvlakte, an artificial port, there is no such distance. Wind thickened with pollutants seeps straight into those who work and breathe there. Weather may seem to fall equally on everyone, yet how much of it each body is exposed to has long been decided by the choices of capital and power. What Neimanis and Hamilton call weathering names this unevenness: the way the same weather wears different bodies down at different speeds. Why are some bodies worn away faster than others?</p>
+                        <p class="weather-copy-desktop">Weather cannot be collected, but the bodies it passes through keep a record. Lungs, skin, and a quickening heart each inscribe, at their own pace, what the air has carried. To record weather is to follow those bodies into the weather itself: cycling against the headwind of an industrial zone, turning breath and air-quality readings into sound, taking the wind with the whole body. Here the body becomes more than an instrument of sensing. It becomes a site where unevenness is inscribed, a trace of the bodies that have endured. How much weather can a body withstand before it becomes part of the weather?</p>
+                        <p class="weather-copy-mobile">Weather has no form of its own. It shows itself only through what it meets: the wind that stirs a flag, the rain falling on an industrial zone, the friction of a body it strikes. In hair blown across a face, in the breath drawn in, in skin darkening as it endures a season, weather briefly takes on a body.</p>
+                        <p class="weather-copy-mobile">Astrida Neimanis and Jennifer Mae Hamilton propose reading weather not as a noun but as a verb. In English, to weather is to be worn down slowly through long exposure. To treat weather as matter, then, is not only to sense it from a distance but to embody it directly.</p>
+                        <p class="weather-copy-mobile">For a long time, weather has been observed from a distance. Just as John Constable noted the date and the wind on the back of his cloud sketches, today's weather stations repeat the same gesture. But at Maasvlakte, an artificial port, there is no such distance. Wind thickened with pollutants seeps straight into those who work and breathe there. Weather may seem to fall equally on everyone, yet how much of it each body is exposed to has long been decided by the choices of capital and power. What Neimanis and Hamilton call weathering names this unevenness: the way the same weather wears different bodies down at different speeds. Why are some bodies worn away faster than others?</p>
+                        <p class="weather-copy-mobile">Weather cannot be collected, but the bodies it passes through keep a record. Lungs, skin, and a quickening heart each inscribe, at their own pace, what the air has carried. To record weather is to follow those bodies into the weather itself: cycling against the headwind of an industrial zone, turning breath and air-quality readings into sound, taking the wind with the whole body. Here the body becomes more than an instrument of sensing. It becomes a site where unevenness is inscribed, a trace of the bodies that have endured. How much weather can a body withstand before it becomes part of the weather?</p>
                         </div>
                     </div>
                     <div class="weather-body-col weather-body-col--kor" lang="ko">
                         <div class="weather-body-col-track">
-                        <p>거리, 항구, 그리고 옥상에서, 춤을 추고, 자전거를 탔으며, 무수한 대화를 전파로 송출했다. 먼지로 뒤덮인 서울의 하늘 아래에서, 이산화탄소를 내뿜는 로테르담 Maasvlakte 항구에서 보이지 않는 물질들을 깊숙이 들이마시고 또 내쉬었다. 600여개가 넘는 서울의 대기측정소에서 생성되는 수백만 개의 데이터는 우리에게 어떤 의미인가? 오염을 정량화 하기 위한 데이터의 수집과 처리 과정은 오늘날 오염 현상을 인식할 위한 도구로 충분한가? 우리의 몸과 지구 사이의 복잡한 상호작용을 공명하게 할 실천은 어떻게 행해져야 하는가? 페미니스트 학자 Astrida Neimanis and Jennifer Mae Hamilton이 제안한 ‘웨더링(Weathering)’ 개념 아래 날씨는 단지 기상 현상을 넘어서는 것이 된다. 여기서 오염된 날씨는 인간의 몸, 오염, 문화, 사회 정치가 교차하는 장이자 실재이다. 나는 날씨의 몸이 되기로 결심한다. 보이지 않는 물질들이 나의 몸을 가로지른다. 파도가 우리를 덮치듯, 수많은 물질들이 안으로 향하거나 또 바깥으로 뻗어 나간다. 질소, 산소, 이산화탄소, 수증기, 오존, 메탄, 박테리아, 곰팡이 포자, 꽃가루, 이산화황, 일산화탄소, 암모니아, 미세먼지—코와 입을 통과한 무수한 입자들이 폐포의 돌기들에 닿는다. 소리의 파장이 고막을 울리고, 달팽이관의 세포에 닿는다. 자본, 정치, 사회, 계층, 침해, 편견, 차별, 억압—그것들은 끝이 없는 파동으로 우리를 관통한다. 몸은 계속해서 우리를 둘러 싼 것들에 반응하고, 변화하며, 지나간 시간의 흔적을 기록한다. 숨을 깊이 들이쉬고, 크게 내쉬어본다. 천천히 들이쉬고 부드럽게 내쉰다. 우리는 횡단하는 물질의 세계에 존재다. 여기 이곳은 물질이 나의 몸을 횡단하는 장소가 된다. 그렇게 우리는 함께 감각하고, 수행하며, 행동하는 예술가의 몸이 되어간다.</p>
+                        <p class="weather-copy-desktop">날씨는 스스로 형태를 갖지 않는다. 깃발을 흔드는 바람, 공장 지대에 떨어지는 빗방울, 누군가의 몸에 부딪히는 마찰을 통해서만 비로소 존재를 드러낸다. 얼굴에 흩날리는 머리카락, 들이쉬는 숨, 계절을 견디며 그을려 가는 피부 속에서 날씨는 잠시 몸을 얻는다.</p>
+                        <p class="weather-copy-desktop">아스트리다 네이마니스와 제니퍼 메이 해밀턴은 날씨를 명사가 아닌 동사로 읽자고 제안한다. 영어에서 'weather'는 오랜 노출로 서서히 닳아 가는 풍화 작용을 뜻한다. 날씨를 물질로 다루는 일은 멀리서 감각하는 데 그치지 않고, 몸으로 직접 체화하는 일이다.</p>
+                        <p class="weather-copy-desktop">오랜 시간 날씨는 거리를 두고 관찰되어 왔다. 존 컨스터블이 구름 스케치 뒤에 날짜와 바람을 기록했듯, 오늘날 기상관측소도 그 행위를 되풀이한다. 하지만 인공 항구 마스블락테에는 그런 거리가 없다. 오염물질로 짙어진 바람은 그곳에서 일하고 숨 쉬는 이들에게 그대로 스며든다. 날씨는 모두에게 평등한 것 같다가도, 날씨에 노출되는 정도를 결정하는 것은 오랜 자본과 권력의 선택이다. 네이마니스와 해밀턴이 말한 '풍화(weathering)'는 이 불균등함, 즉 같은 날씨가 서로 다른 몸을 다른 속도로 닳게 하는 방식을 가리킨다. 왜 어떤 몸은 더 빨리 마모되는가.</p>
+                        <p class="weather-copy-desktop">날씨는 수집할 수 없지만, 지나간 몸에는 기록이 남는다. 폐와 피부, 가빠지는 심장은 공기가 실어 온 것들을 저마다의 속도로 새긴다. 날씨를 기록한다는 건 그 몸들을 따라 날씨 속으로 들어가는 일이다. 산업지대의 맞바람을 뚫고 자전거를 타고, 호흡과 대기 수치를 소리로 바꾸며 온몸으로 바람을 맞는다. 이때의 몸은 감각 도구를 넘어 불균등함이 새겨지는 현장이자 버텨낸 몸들의 흔적이 된다.  몸은 날씨의 일부가 되기까지 얼마나 많은 날씨를 견뎌낼 수 있는가.</p>
+                        <p class="weather-copy-mobile">날씨는 스스로 형태를 갖지 않는다. 깃발을 흔드는 바람, 공장 지대에 떨어지는 빗방울, 누군가의 몸에 부딪히는 마찰을 통해서만 비로소 존재를 드러낸다. 얼굴에 흩날리는 머리카락, 들이쉬는 숨, 계절을 견디며 그을려 가는 피부 속에서 날씨는 잠시 몸을 얻는다.</p>
+                        <p class="weather-copy-mobile">아스트리다 네이마니스와 제니퍼 메이 해밀턴은 날씨를 명사가 아닌 동사로 읽자고 제안한다. 영어에서 'weather'는 오랜 노출로 서서히 닳아 가는 풍화 작용을 뜻한다. 날씨를 물질로 다루는 일은 멀리서 감각하는 데 그치지 않고, 몸으로 직접 체화하는 일이다.</p>
+                        <p class="weather-copy-mobile">오랜 시간 날씨는 거리를 두고 관찰되어 왔다. 존 컨스터블이 구름 스케치 뒤에 날짜와 바람을 기록했듯, 오늘날 기상관측소도 그 행위를 되풀이한다. 하지만 인공 항구 마스블락테에는 그런 거리가 없다. 오염물질로 짙어진 바람은 그곳에서 일하고 숨 쉬는 이들에게 그대로 스며든다. 날씨는 모두에게 평등한 것 같다가도, 날씨에 노출되는 정도를 결정하는 것은 오랜 자본과 권력의 선택이다. 네이마니스와 해밀턴이 말한 '풍화(weathering)'는 이 불균등함, 즉 같은 날씨가 서로 다른 몸을 다른 속도로 닳게 하는 방식을 가리킨다. 왜 어떤 몸은 더 빨리 마모되는가.</p>
+                        <p class="weather-copy-mobile">날씨는 수집할 수 없지만, 지나간 몸에는 기록이 남는다. 폐와 피부, 가빠지는 심장은 공기가 실어 온 것들을 저마다의 속도로 새긴다. 날씨를 기록한다는 건 그 몸들을 따라 날씨 속으로 들어가는 일이다. 산업지대의 맞바람을 뚫고 자전거를 타고, 호흡과 대기 수치를 소리로 바꾸며 온몸으로 바람을 맞는다. 이때의 몸은 감각 도구를 넘어 불균등함이 새겨지는 현장이자 버텨낸 몸들의 흔적이 된다.  몸은 날씨의 일부가 되기까지 얼마나 많은 날씨를 견뎌낼 수 있는가.</p>
                         </div>
                     </div>
                 </div>
@@ -155,6 +181,9 @@
                     <div class="weather-archive" id="weather-archive">
                         <div class="weather-archive-anchor">
                             <div class="weather-archive-clip">
+                                <div class="weather-row-preview" id="weather-row-preview" aria-hidden="true">
+                                    <img src="" alt="" width="640" height="480" decoding="async">
+                                </div>
                                 <div class="weather-archive-panel" id="weather-archive-panel">
                                     <div class="weather-table" role="table" aria-label="Weather archive">
                                         <div class="weather-table-row weather-table-row--head" role="row">
@@ -192,10 +221,14 @@
                                             class="weather-table-row weather-table-row--link"
                                             role="row"
                                             data-date="2025-10"
+                                            data-preview="/weather/bring-your-own-bike/05-taehwa-river-ulsan/image/byob-taehwa-01.jpg"
+                                            data-preview-alt="Bring Your Own Bike #05 Taehwa River, Ulsan"
                                         >
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">Bring Your Own Bike #05 Taehwa River, Ulsan</span>
-                                                <span class="weather-table-eng weather-table-short">BYOB #05 Taehwa River, Ulsan</span>
+                                                <span class="weather-table-eng weather-table-short weather-table-eng-mobile">BYOB #05 Taehwa River, Ulsan</span>
+                                                <span class="weather-table-kor">태화강, 울산</span>
+                                                <span class="weather-table-kor weather-table-kor-mobile">BYOB #05 태화강, 울산</span>
                                             </div>
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">Participatory Performance</span>
@@ -207,8 +240,8 @@
                                                 <span class="weather-table-badge weather-table-badge--series">Series Ongoing</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--date" role="cell">
-                                                <span class="weather-table-date">2025. 10</span>
-                                                <span class="weather-table-badge">To be updated</span>
+                                                <span class="weather-table-date">2025<span class="weather-table-date-md">. 10</span></span>
+                                                <span class="weather-table-badge weather-table-badge--solid">Updated</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--arrow" role="presentation" aria-hidden="true"></div>
                                         </a>
@@ -218,10 +251,14 @@
                                             class="weather-table-row weather-table-row--link"
                                             role="row"
                                             data-date="2025-07"
+                                            data-preview="/weather/bring-your-own-bike/04-botlek-rotterdam/image/byob-botlek-01.jpg"
+                                            data-preview-alt="Bring Your Own Bike #04 Botlek, Rotterdam"
                                         >
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">Bring Your Own Bike #04 Botlek, Rotterdam</span>
-                                                <span class="weather-table-eng weather-table-short">BYOB #04 Botlek, Rotterdam</span>
+                                                <span class="weather-table-eng weather-table-short weather-table-eng-mobile">BYOB #04 Botlek, Rotterdam</span>
+                                                <span class="weather-table-kor">보트렉, 로테르담</span>
+                                                <span class="weather-table-kor weather-table-kor-mobile">BYOB #04 보트렉, 로테르담</span>
                                             </div>
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">Participatory Performance</span>
@@ -233,8 +270,8 @@
                                                 <span class="weather-table-badge weather-table-badge--series">Series Ongoing</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--date" role="cell">
-                                                <span class="weather-table-date">2025. 07</span>
-                                                <span class="weather-table-badge">To be updated</span>
+                                                <span class="weather-table-date">2025<span class="weather-table-date-md">. 07</span></span>
+                                                <span class="weather-table-badge weather-table-badge--solid">Updated</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--arrow" role="presentation" aria-hidden="true"></div>
                                         </a>
@@ -244,10 +281,14 @@
                                             class="weather-table-row weather-table-row--link"
                                             role="row"
                                             data-date="2024-09"
+                                            data-preview="/weather/bring-your-own-bike/03-westhafen-berlin/image/byob-westhafen-01.jpg"
+                                            data-preview-alt="Bring Your Own Bike #03 Westhafen, Berlin"
                                         >
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">Bring Your Own Bike #03 Westhafen, Berlin</span>
-                                                <span class="weather-table-eng weather-table-short">BYOB #03 Westhafen, Berlin</span>
+                                                <span class="weather-table-eng weather-table-short weather-table-eng-mobile">BYOB #03 Westhafen, Berlin</span>
+                                                <span class="weather-table-kor">베스트하펜, 베를린</span>
+                                                <span class="weather-table-kor weather-table-kor-mobile">BYOB #03 베스트하펜, 베를린</span>
                                             </div>
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">Participatory Performance</span>
@@ -259,8 +300,8 @@
                                                 <span class="weather-table-badge weather-table-badge--series">Series Ongoing</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--date" role="cell">
-                                                <span class="weather-table-date">2024. 09</span>
-                                                <span class="weather-table-badge">To be updated</span>
+                                                <span class="weather-table-date">2024<span class="weather-table-date-md">. 09</span></span>
+                                                <span class="weather-table-badge weather-table-badge--solid">Updated</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--arrow" role="presentation" aria-hidden="true"></div>
                                         </a>
@@ -270,9 +311,12 @@
                                             class="weather-table-row weather-table-row--link"
                                             role="row"
                                             data-date="2024-09"
+                                            data-preview="/weather/cynthesizer/image/cynthesizer-01.jpg"
+                                            data-preview-alt="(C)ynthesizer"
                                         >
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">(C)ynthesizer</span>
+                                                <span class="weather-table-kor weather-table-kor-mobile">(C)ynthesizer</span>
                                             </div>
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">Making Workshop</span>
@@ -282,8 +326,37 @@
                                                 <span class="weather-table-badge weather-table-badge--series">Series Ongoing</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--date" role="cell">
-                                                <span class="weather-table-date">2024</span>
-                                                <span class="weather-table-badge">To be updated</span>
+                                                <span class="weather-table-date">2024<span class="weather-table-date-md">. 09</span></span>
+                                                <span class="weather-table-badge weather-table-badge--solid">Updated</span>
+                                            </div>
+                                            <div class="weather-table-cell weather-table-cell--arrow" role="presentation" aria-hidden="true"></div>
+                                        </a>
+
+                                        <a
+                                            href="/weather/field-research-westhafen/"
+                                            class="weather-table-row weather-table-row--link"
+                                            role="row"
+                                            data-date="2024-08"
+                                            data-preview="/weather/field-research-westhafen/image/field-research-westhafen-01.jpg"
+                                            data-preview-alt="Field-research: Westhafen"
+                                        >
+                                            <div class="weather-table-cell" role="cell">
+                                                <span class="weather-table-eng">Field-research: Westhafen</span>
+                                                <span class="weather-table-eng weather-table-short">Field-research: Westhafen</span>
+                                                <span class="weather-table-kor">필드 리서치: 베스트하펜</span>
+                                            </div>
+                                            <div class="weather-table-cell" role="cell">
+                                                <span class="weather-table-eng">Field Research</span>
+                                                <span class="weather-table-eng weather-table-short">Field Research</span>
+                                                <span class="weather-table-kor">필드 리서치</span>
+                                                <span class="weather-table-kor weather-table-short">필드 리서치</span>
+                                            </div>
+                                            <div class="weather-table-cell weather-table-cell--status" role="cell">
+                                                <span class="weather-table-badge weather-table-badge--solid">Completed</span>
+                                            </div>
+                                            <div class="weather-table-cell weather-table-cell--date" role="cell">
+                                                <span class="weather-table-date">2024<span class="weather-table-date-md">. 08</span></span>
+                                                <span class="weather-table-badge weather-table-badge--updating">Updating</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--arrow" role="presentation" aria-hidden="true"></div>
                                         </a>
@@ -293,10 +366,14 @@
                                             class="weather-table-row weather-table-row--link"
                                             role="row"
                                             data-date="2024-06"
+                                            data-preview="/weather/bring-your-own-bike/02-waalhaven-rotterdam/image/byob-waalhaven-01.jpg"
+                                            data-preview-alt="Bring Your Own Bike #02 Waalhaven, Rotterdam"
                                         >
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">Bring Your Own Bike #02 Waalhaven, Rotterdam</span>
-                                                <span class="weather-table-eng weather-table-short">BYOB #02 Waalhaven, Rotterdam</span>
+                                                <span class="weather-table-eng weather-table-short weather-table-eng-mobile">BYOB #02 Waalhaven, Rotterdam</span>
+                                                <span class="weather-table-kor">발하펜, 로테르담</span>
+                                                <span class="weather-table-kor weather-table-kor-mobile">BYOB #02 발하펜, 로테르담</span>
                                             </div>
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">Participatory Performance</span>
@@ -308,8 +385,8 @@
                                                 <span class="weather-table-badge weather-table-badge--series">Series Ongoing</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--date" role="cell">
-                                                <span class="weather-table-date">2024. 06</span>
-                                                <span class="weather-table-badge">To be updated</span>
+                                                <span class="weather-table-date">2024<span class="weather-table-date-md">. 06</span></span>
+                                                <span class="weather-table-badge weather-table-badge--solid">Updated</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--arrow" role="presentation" aria-hidden="true"></div>
                                         </a>
@@ -319,10 +396,14 @@
                                             class="weather-table-row weather-table-row--link"
                                             role="row"
                                             data-date="2024-03"
+                                            data-preview="/weather/bring-your-own-bike/01-westpoort-amsterdam/image/byob-westpoort-01.jpg"
+                                            data-preview-alt="Bring Your Own Bike #01 Westpoort, Amsterdam"
                                         >
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">Bring Your Own Bike #01 Westpoort, Amsterdam</span>
-                                                <span class="weather-table-eng weather-table-short">BYOB #01 Westpoort, Amsterdam</span>
+                                                <span class="weather-table-eng weather-table-short weather-table-eng-mobile">BYOB #01 Westpoort, Amsterdam</span>
+                                                <span class="weather-table-kor">베스트포르트, 암스테르담</span>
+                                                <span class="weather-table-kor weather-table-kor-mobile">BYOB #01 베스트포르트, 암스테르담</span>
                                             </div>
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">Participatory Performance</span>
@@ -334,8 +415,37 @@
                                                 <span class="weather-table-badge weather-table-badge--series">Series Ongoing</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--date" role="cell">
-                                                <span class="weather-table-date">2024. 03</span>
-                                                <span class="weather-table-badge">To be updated</span>
+                                                <span class="weather-table-date">2024<span class="weather-table-date-md">. 03</span></span>
+                                                <span class="weather-table-badge weather-table-badge--solid">Updated</span>
+                                            </div>
+                                            <div class="weather-table-cell weather-table-cell--arrow" role="presentation" aria-hidden="true"></div>
+                                        </a>
+
+                                        <a
+                                            href="/weather/weather-station-receiving-body/"
+                                            class="weather-table-row weather-table-row--link"
+                                            role="row"
+                                            data-date="2023-10"
+                                            data-preview="/weather/weather-station-receiving-body/image/weather-station-receiving-body-01.jpg"
+                                            data-preview-alt="Weather Station: Receiving Body"
+                                        >
+                                            <div class="weather-table-cell" role="cell">
+                                                <span class="weather-table-eng">Weather Station: Receiving Body</span>
+                                                <span class="weather-table-eng weather-table-short">Weather Station</span>
+                                                <span class="weather-table-kor">기상관측소: 수신하는 몸</span>
+                                            </div>
+                                            <div class="weather-table-cell" role="cell">
+                                                <span class="weather-table-eng">Participatory Performance</span>
+                                                <span class="weather-table-eng weather-table-short">Performance</span>
+                                                <span class="weather-table-kor">참여형 퍼포먼스</span>
+                                                <span class="weather-table-kor weather-table-short">퍼포먼스</span>
+                                            </div>
+                                            <div class="weather-table-cell weather-table-cell--status" role="cell">
+                                                <span class="weather-table-badge weather-table-badge--solid">Completed</span>
+                                            </div>
+                                            <div class="weather-table-cell weather-table-cell--date" role="cell">
+                                                <span class="weather-table-date">2023<span class="weather-table-date-md">. 10</span></span>
+                                                <span class="weather-table-badge weather-table-badge--solid">Updated</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--arrow" role="presentation" aria-hidden="true"></div>
                                         </a>
@@ -345,6 +455,8 @@
                                             class="weather-table-row weather-table-row--link"
                                             role="row"
                                             data-date="2023-10"
+                                            data-preview="/weather/rooftop-radio/image/weathering-station-01.jpg"
+                                            data-preview-alt="Rooftop-Radio: Weathering Station"
                                         >
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">Rooftop-Radio: Weathering Station</span>
@@ -359,7 +471,63 @@
                                                 <span class="weather-table-badge weather-table-badge--series">Series Ongoing</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--date" role="cell">
-                                                <span class="weather-table-date">2023. 10</span>
+                                                <span class="weather-table-date">2023<span class="weather-table-date-md">. 10</span></span>
+                                                <span class="weather-table-badge weather-table-badge--solid">Updated</span>
+                                            </div>
+                                            <div class="weather-table-cell weather-table-cell--arrow" role="presentation" aria-hidden="true"></div>
+                                        </a>
+
+                                        <a
+                                            href="/weather/weathering-ports/"
+                                            class="weather-table-row weather-table-row--link"
+                                            role="row"
+                                            data-date="2023-09"
+                                            data-preview="/weather/weathering-ports/image/weathering-ports-01.jpg"
+                                            data-preview-alt="Weathering Ports: Sensing, Performing, and Acting Bodies"
+                                        >
+                                            <div class="weather-table-cell" role="cell">
+                                                <span class="weather-table-eng">Weathering Ports: Sensing, Performing, and Acting Bodies</span>
+                                                <span class="weather-table-eng weather-table-short">Weathering Ports</span>
+                                                <span class="weather-table-kor">웨더링: 감각하고, 수행하며, 행동하는 몸</span>
+                                            </div>
+                                            <div class="weather-table-cell" role="cell">
+                                                <span class="weather-table-eng">Performance</span>
+                                                <span class="weather-table-kor">퍼포먼스</span>
+                                            </div>
+                                            <div class="weather-table-cell weather-table-cell--status" role="cell">
+                                                <span class="weather-table-badge weather-table-badge--solid">Completed</span>
+                                            </div>
+                                            <div class="weather-table-cell weather-table-cell--date" role="cell">
+                                                <span class="weather-table-date">2023<span class="weather-table-date-md">. 09</span></span>
+                                                <span class="weather-table-badge weather-table-badge--solid">Updated</span>
+                                            </div>
+                                            <div class="weather-table-cell weather-table-cell--arrow" role="presentation" aria-hidden="true"></div>
+                                        </a>
+
+                                        <a
+                                            href="/weather/lecture-performance-weathering-ports/"
+                                            class="weather-table-row weather-table-row--link"
+                                            role="row"
+                                            data-date="2023-08"
+                                            data-preview="/weather/lecture-performance-weathering-ports/image/investigating-weathering-ports-01.jpg"
+                                            data-preview-alt="Investigating: Weathering Ports"
+                                        >
+                                            <div class="weather-table-cell" role="cell">
+                                                <span class="weather-table-eng">Investigating: Weathering Ports</span>
+                                                <span class="weather-table-eng weather-table-short">Investigating: Weathering Ports</span>
+                                                <span class="weather-table-kor">탐사하는 몸: 풍화하는 항구</span>
+                                            </div>
+                                            <div class="weather-table-cell" role="cell">
+                                                <span class="weather-table-eng">Lecture Performance</span>
+                                                <span class="weather-table-eng weather-table-short">Lecture Performance</span>
+                                                <span class="weather-table-kor">렉처 퍼포먼스</span>
+                                                <span class="weather-table-kor weather-table-short">렉처 퍼포먼스</span>
+                                            </div>
+                                            <div class="weather-table-cell weather-table-cell--status" role="cell">
+                                                <span class="weather-table-badge weather-table-badge--solid">Completed</span>
+                                            </div>
+                                            <div class="weather-table-cell weather-table-cell--date" role="cell">
+                                                <span class="weather-table-date">2023<span class="weather-table-date-md">. 08</span></span>
                                                 <span class="weather-table-badge weather-table-badge--solid">Updated</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--arrow" role="presentation" aria-hidden="true"></div>
@@ -370,6 +538,8 @@
                                             class="weather-table-row weather-table-row--link"
                                             role="row"
                                             data-date="2023-07"
+                                            data-preview="/weather/field-research-maasvlakte/image/field-research-maasvlakte-01.jpg?v=3"
+                                            data-preview-alt="Field-research: Maasvlakte"
                                         >
                                             <div class="weather-table-cell" role="cell">
                                                 <span class="weather-table-eng">Field-research: Maasvlakte</span>
@@ -386,32 +556,7 @@
                                                 <span class="weather-table-badge weather-table-badge--solid">Completed</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--date" role="cell">
-                                                <span class="weather-table-date">2023. 07</span>
-                                                <span class="weather-table-badge">To be updated</span>
-                                            </div>
-                                            <div class="weather-table-cell weather-table-cell--arrow" role="presentation" aria-hidden="true"></div>
-                                        </a>
-
-                                        <a
-                                            href="/weather/weathering-ports/"
-                                            class="weather-table-row weather-table-row--link"
-                                            role="row"
-                                            data-date="2023-01"
-                                        >
-                                            <div class="weather-table-cell" role="cell">
-                                                <span class="weather-table-eng">Weathering Ports: Sensing, Performing, and Acting Bodies</span>
-                                                <span class="weather-table-eng weather-table-short">Weathering Ports</span>
-                                                <span class="weather-table-kor">Weathering Ports</span>
-                                            </div>
-                                            <div class="weather-table-cell" role="cell">
-                                                <span class="weather-table-eng">Performance</span>
-                                                <span class="weather-table-kor">퍼포먼스</span>
-                                            </div>
-                                            <div class="weather-table-cell weather-table-cell--status" role="cell">
-                                                <span class="weather-table-badge weather-table-badge--solid">Completed</span>
-                                            </div>
-                                            <div class="weather-table-cell weather-table-cell--date" role="cell">
-                                                <span class="weather-table-date">2023</span>
+                                                <span class="weather-table-date">2023<span class="weather-table-date-md">. 07</span></span>
                                                 <span class="weather-table-badge weather-table-badge--solid">Updated</span>
                                             </div>
                                             <div class="weather-table-cell weather-table-cell--arrow" role="presentation" aria-hidden="true"></div>
@@ -445,7 +590,7 @@
 
     <script src="/vendor/gsap.min.js"></script>
     <script src="/vendor/ScrollTrigger.min.js"></script>
-    <script src="/script.js?v=20260921d"></script>
-    <script src="/weather/weather.js?v=15"></script>
+    <script src="/script.js?v=20260926d"></script>
+    <script src="/weather/weather.js?v=19"></script>
 </body>
 </html>

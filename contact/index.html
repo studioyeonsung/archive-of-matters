@@ -12,11 +12,25 @@
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://archiveofmatters.com/contact/">
     <link rel="icon" type="image/svg+xml" href="/assets/home-icon-copper.svg">
-    <script src="/boot.js?v=3"></script>
-    <link rel="stylesheet" href="/style.css?v=20260920e">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <script src="/boot.js?v=6"></script>
+    <link rel="stylesheet" href="/style.css?v=20260926j">
 
 </head>
 <body class="page-contact contact-lang-eng">
+    <script>
+    (function () {
+        try {
+            var lang = localStorage.getItem('aom-lang') || sessionStorage.getItem('aom-lang');
+            if (lang !== 'kor' && lang !== 'eng') return;
+            document.body.classList.remove('contact-lang-eng', 'contact-lang-kor');
+            document.body.classList.add('contact-lang-' + lang);
+            document.documentElement.classList.remove('aom-lang-eng', 'aom-lang-kor');
+            document.documentElement.classList.add('aom-lang-' + lang);
+            document.documentElement.setAttribute('data-aom-lang', lang);
+        } catch (err) {}
+    })();
+    </script>
     <!-- Mobile placeholder: shown only on small screens -->
     <div class="mobile-placeholder" aria-live="polite">
         <div class="mobile-placeholder-eng-block">
@@ -49,14 +63,14 @@
         </div>
         <div class="header-right">
             <div class="header-top-line">
-                <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
+                <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-1">아카이브</a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-2">오브</a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-3">매터(즈)</a>
             </div>
             <div class="dotted-line-right"></div>
             <div class="header-bottom-line">
-                <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
+                <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
                 <span class="nav-text header-right-text-1"><a href="/news/">NEWS</a></span>
                 <img src="/assets/home-icon-arrow.svg" alt="" class="header-icon nav-icon header-right-icon-2">
                 <span class="nav-text header-right-text-2"><a href="/contact/">CONTACT</a></span>
@@ -230,6 +244,6 @@
     <script src="/vendor/gsap.min.js"></script>
     <script src="/vendor/ScrollTrigger.min.js"></script>
     <script src="/mobile-viewport-lock.js?v=20260812c"></script>
-    <script src="/script.js?v=20260921d"></script>
+    <script src="/script.js?v=20260926d"></script>
 </body>
 </html>

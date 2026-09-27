@@ -8,9 +8,9 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://archiveofmatters.com/saharandust/x-scene/ko/">
     <link rel="icon" type="image/svg+xml" href="/assets/home-icon-saharandust.svg">
-    <script src="/boot.js?v=3"></script>
-    <link rel="stylesheet" href="/style.css?v=20260920e">
-    <link rel="stylesheet" href="/copper/rusty-odyssey/rusty-odyssey.css?v=183">
+    <script src="/boot.js?v=6"></script>
+    <link rel="stylesheet" href="/style.css?v=20260926j">
+    <link rel="stylesheet" href="/copper/rusty-odyssey/rusty-odyssey.css?v=257">
 
 </head>
 <body class="page-rusty-odyssey page-rusty-odyssey--ko page-saharandust-detail">
@@ -47,14 +47,14 @@
             </div>
             <div class="header-right">
                 <div class="header-top-line">
-                    <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
+                    <a href="/saharandust/" class="header-matter-slot is-current" aria-current="page" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-1">아카이브</a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-2">오브</a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-3">매터(즈)</a>
                 </div>
                 <div class="dotted-line-right"></div>
                 <div class="header-bottom-line">
-                    <a href="/saharandust/" class="header-matter-slot is-current" aria-current="page" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
+                    <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
                     <span class="nav-text header-right-text-1"><a href="/news/">NEWS</a></span>
                     <img src="/assets/home-icon-arrow.svg" alt="" class="header-icon nav-icon header-right-icon-2">
                     <span class="nav-text header-right-text-2"><a href="/contact/">CONTACT</a></span>
@@ -129,6 +129,26 @@
 
         <main class="ro-main">
             <section class="ro-hero">
+                <div class="ro-hero-left">
+                    <div class="ro-hero-media">
+                        <img
+                            src="/saharandust/x-scene/image/x-scene-01.jpg"
+                            alt="X-Scene 1.0"
+                            width="1600"
+                            height="900"
+                            decoding="async"
+                        >
+                    </div>
+                    <div class="ro-hero-media">
+                        <img
+                            src="/saharandust/x-scene/image/x-scene-02.jpg"
+                            alt="X-Scene 1.0"
+                            width="1600"
+                            height="1068"
+                            decoding="async"
+                        >
+                    </div>
+                </div>
                 <div class="ro-hero-meta">
                     <div class="ro-hero-meta-inner">
                         <h1 class="ro-title">X-Scene 1.0</h1>
@@ -138,12 +158,12 @@
                             <span class="ro-spec">PM2.5 센서, 방사능 센서, 북해 해변 모래, 서브우퍼, 앰프, 3D 프린트 오브제, mixed media</span>
                         </div>
                         <ul class="ro-tags" aria-label="태그">
-                            <li><span class="ro-tag">Saharan Dust</span></li>
-                            <li><span class="ro-tag">Scenography</span></li>
+                            <li><span class="ro-tag">사하라 먼지</span></li>
+                            <li><span class="ro-tag">시노그라피</span></li>
                             <li><span class="ro-tag">X-Scene</span></li>
                         </ul>
                         <div class="ro-status">
-                            <span class="ro-tag">Completed</span>
+                            <span class="ro-tag">완료</span>
                         </div>
 
                         <div class="ro-copy">
@@ -176,7 +196,7 @@
                                     <div class="ro-credit-list">
                                         <p class="ro-credit">
                                             <span class="ro-credit-role">2022</span><br>
-                                            X-Scene 1.0, Stroom Den Haag, The Hague, NL
+                                            From the Sea to the Clouds to the Soil, Stroom Den Haag, 헤이그, 네덜란드
                                         </p>
                                     </div>
                                 </div>
@@ -190,6 +210,44 @@
             </section>
 
             <section class="ro-media" aria-label="프로젝트 이미지">
+                <div class="ro-video ro-video--autoplay ro-video--youtube" id="ro-youtube" aria-label="X-Scene 1.0 영상">
+                    <iframe
+                        id="ro-youtube-iframe"
+                        src="https://www.youtube.com/embed/XutT6TsU8Vc?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&controls=0&showinfo=0&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&enablejsapi=1&vq=hd1080&loop=1&playlist=XutT6TsU8Vc"
+                        title="X-Scene 1.0"
+                        allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    ></iframe>
+                    <div class="ro-video-cover" aria-hidden="true">
+                        <img src="/saharandust/x-scene/image/x-scene-01.jpg" alt="" width="1600" height="900" decoding="async">
+                    </div>
+                    <button type="button" class="ro-video-play" id="ro-youtube-play" aria-label="영상 일시정지">
+                        <span class="ro-video-play-icon" aria-hidden="true"></span>
+                    </button>
+                    <div
+                        class="ro-video-progress"
+                        role="slider"
+                        aria-label="영상 재생 위치"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        aria-valuenow="0"
+                    >
+                        <span class="ro-video-progress-fill" id="ro-youtube-progress"></span>
+                    </div>
+                </div>
+                <figure class="ro-still">
+                    <img src="/saharandust/x-scene/image/x-scene-03.jpg" alt="X-Scene 1.0" width="1600" height="900" loading="lazy" decoding="async">
+                </figure>
+                <figure class="ro-still">
+                    <img src="/saharandust/x-scene/image/x-scene-04.jpg" alt="X-Scene 1.0" width="1600" height="1067" loading="lazy" decoding="async">
+                </figure>
+                <figure class="ro-still">
+                    <img src="/saharandust/x-scene/image/x-scene-05.jpg" alt="X-Scene 1.0" width="1600" height="900" loading="lazy" decoding="async">
+                </figure>
+                <figure class="ro-still">
+                    <img src="/saharandust/x-scene/image/x-scene-06.jpg" alt="X-Scene 1.0" width="1600" height="899" loading="lazy" decoding="async">
+                </figure>
             </section>
         </main>
     </div>
@@ -206,11 +264,11 @@
                 </div>
             </div>
             <div class="ro-footer-trail">
-                <a class="ro-footer-item" href="/saharandust/" data-text="SAHARAN DUST">SAHARAN DUST</a>
+                <a class="ro-footer-item ro-footer-item--ko" href="/saharandust/" data-text="사하라 먼지">사하라 먼지</a>
                 <span class="ro-footer-dot" aria-hidden="true"></span>
                 <a class="ro-footer-item" href="/saharandust/x-scene/ko/" data-text="X-SCENE 1.0">X-SCENE 1.0</a>
                 <span class="ro-footer-dot" aria-hidden="true"></span>
-                <span class="ro-footer-item">SCENOGRAPHY</span>
+                <span class="ro-footer-item ro-footer-item--ko">시노그라피</span>
                 <span class="ro-footer-dot" aria-hidden="true"></span>
                 <span class="ro-footer-item">2022</span>
             </div>
@@ -223,7 +281,7 @@
     <div class="grain-layer" aria-hidden="true"></div>
     <div class="copyright">© 2026 STUDIO YEON SUNG</div>
 
-    <script src="/script.js?v=20260921d"></script>
-    <script src="/copper/rusty-odyssey/rusty-odyssey.js?v=34"></script>
+    <script src="/script.js?v=20260926d"></script>
+    <script src="/copper/rusty-odyssey/rusty-odyssey.js?v=54"></script>
 </body>
 </html>

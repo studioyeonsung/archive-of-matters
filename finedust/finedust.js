@@ -176,6 +176,8 @@
             archive.classList.toggle('is-open', next);
             if (next) {
                 openLockUntil = Date.now() + 500;
+            } else {
+                panel.scrollTop = 0;
             }
             btn.setAttribute('aria-expanded', next ? 'true' : 'false');
             btn.setAttribute('aria-label', next ? 'Close archive table' : 'Open archive table');
@@ -227,6 +229,8 @@
                     el.closest('#finedust-archive-panel, .finedust-archive-clip, .finedust-table')
             );
         };
+
+        const listAtTop = () => panel.scrollTop <= 1;
 
         const isIgnoredScrollTarget = (target) => {
             const el = eventEl(target);
@@ -293,7 +297,8 @@
                 if (Date.now() < openLockUntil) return;
                 if (isUiChrome(e.target)) return;
                 if (isOverList(e.target)) {
-                    if (e.deltaY >= 0) return;
+                    if (e.deltaY > 0) return;
+                    if (e.deltaY < 0 && !listAtTop()) return;
                 } else if (e.deltaY === 0) {
                     return;
                 }
@@ -309,7 +314,8 @@
             (e) => {
                 if (!archive.classList.contains('is-open')) return;
                 if (Date.now() < openLockUntil) return;
-                if (e.deltaY >= 0) return;
+                if (e.deltaY > 0) return;
+                if (e.deltaY < 0 && !listAtTop()) return;
                 setOpen(false);
                 e.preventDefault();
                 e.stopPropagation();
@@ -393,9 +399,16 @@
 
                 if (archive.classList.contains('is-open') && touchActive) {
                     const dy = touchStartY - e.touches[0].clientY;
-                    const shouldClose = touchFromAbove
-                        ? dy >= TOUCH_THRESHOLD
-                        : Math.abs(dy) >= TOUCH_THRESHOLD;
+                    if (isOverList(e.target) || touchFromAbove) {
+                        if (listAtTop() && dy <= -TOUCH_THRESHOLD) {
+                            setOpen(false);
+                            touchActive = false;
+                            touchFromAbove = false;
+                            touchStartY = null;
+                        }
+                        return;
+                    }
+                    const shouldClose = Math.abs(dy) >= TOUCH_THRESHOLD;
                     if (shouldClose) {
                         setOpen(false);
                         touchActive = false;
@@ -572,6 +585,13 @@
             descending = !descending;
             applySort();
         });
+
+        const dateHead = table.querySelector('.finedust-table-row--head .finedust-table-cell--date');
+        if (dateHead) {
+            dateHead.addEventListener('click', () => {
+                sortBtn.click();
+            });
+        }
     }
 
     function initRowPreview() {

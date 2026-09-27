@@ -8,9 +8,9 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://archiveofmatters.com/copper/rusty-odyssey/essay/">
     <link rel="icon" type="image/svg+xml" href="/assets/home-icon-copper.svg">
-    <script src="/boot.js?v=3"></script>
-    <link rel="stylesheet" href="/style.css?v=20260920e">
-    <link rel="stylesheet" href="/copper/rusty-odyssey/rusty-odyssey.css?v=183">
+    <script src="/boot.js?v=6"></script>
+    <link rel="stylesheet" href="/style.css?v=20260926j">
+    <link rel="stylesheet" href="/copper/rusty-odyssey/rusty-odyssey.css?v=257">
 
 </head>
 <body class="page-rusty-odyssey">
@@ -47,14 +47,14 @@
             </div>
             <div class="header-right">
                 <div class="header-top-line">
-                    <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
+                    <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-1">아카이브</a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-2">오브</a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-3">매터(즈)</a>
                 </div>
                 <div class="dotted-line-right"></div>
                 <div class="header-bottom-line">
-                    <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
+                    <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
                     <span class="nav-text header-right-text-1"><a href="/news/">NEWS</a></span>
                     <img src="/assets/home-icon-arrow.svg" alt="" class="header-icon nav-icon header-right-icon-2">
                     <span class="nav-text header-right-text-2"><a href="/contact/">CONTACT</a></span>
@@ -139,15 +139,19 @@
                             decoding="async"
                         >
                     </div>
-                    <div class="ro-video ro-video--autoplay" aria-label="Rusty Odyssey essay video">
+                    <div class="ro-video ro-video--autoplay" id="ro-video" aria-label="Rusty Odyssey essay video">
                         <iframe
-                            src="https://player.vimeo.com/video/391191058?autoplay=1&amp;muted=1&amp;loop=1&amp;autopause=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;controls=0&amp;background=1"
+                            id="ro-vimeo"
+                            src="https://player.vimeo.com/video/391191058?autoplay=1&amp;muted=1&amp;loop=1&amp;autopause=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;controls=0"
                             frameborder="0"
                             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                             referrerpolicy="strict-origin-when-cross-origin"
                             title="Rusty Odyssey essay video"
                             allowfullscreen
                         ></iframe>
+                        <button type="button" class="ro-video-play" id="ro-video-play" aria-label="Pause video">
+                            <span class="ro-video-play-icon" aria-hidden="true"></span>
+                        </button>
                     </div>
                     <p class="ro-hero-link">
                         <a class="ro-link" href="https://kabk.github.io/go-theses-19-Yeon-Sung/" target="_blank" rel="noopener noreferrer">↳ View the web version of the essay</a>
@@ -184,7 +188,7 @@
                                 <div class="ro-panel is-active" role="tabpanel" id="ro-panel-abstract" aria-labelledby="ro-tab-abstract">
                                     <p>Copper, the first metal processed by Neolithic humans has accompanied the history of humankind for approximately 10,000 years, disguised in various forms of tools, ornaments, sculptures, currency, weapons, and conductors of electricity. In the idea of New Materialism, the atomic number 29 assigned material has been an animate object for a transversal human agency that has conveyed the propagation of colonial ideologies between two formal imperialists, the Netherlands and Japan.</p>
                                     <p>Former imperialists on the opposite coast of the Pacific enriched their territories which led the rise of colonialism, exchanging commodities and progressive ideas through the trade of copper. The mined raw copper was smelted in different forms that embodied the physical and spiritual desire of the imperialists, exploiting their colonies. The colonial era declined, but the post-colonial specters made of copper have been bequeathed as historical heritages and imperial hegemonies, leaving wounds in the contemporary age.</p>
-                                    <p>Along with the transformation of copper on the colonial trajectory, Rusty Odyssey takes multidisciplinary roles of a researcher and an artist, provoking historian-disciplined statements interpreted in the artistic voice to the ignorance of colonialism inherited over centuries and regions. This article also examines conflicts in the contemporary era over copper to lay the foundation of the experimental documentary <em>Rusty Odyssey</em> through the perspective of a Korean artist residing in the Netherlands.</p>
+                                    <p>Along with the transformation of copper on the colonial trajectory, <em>Rusty Odyssey</em> takes multidisciplinary roles of a researcher and an artist, provoking historian-disciplined statements interpreted in the artistic voice to the ignorance of colonialism inherited over centuries and regions. This article also examines conflicts in the contemporary era over copper to lay the foundation of the experimental documentary <em>Rusty Odyssey</em> through the perspective of a Korean artist residing in the Netherlands.</p>
                                 </div>
                                 <div class="ro-panel" role="tabpanel" id="ro-panel-credit" aria-labelledby="ro-tab-credit" hidden>
                                     <div class="ro-credit-list">
@@ -358,7 +362,8 @@
     <div class="grain-layer" aria-hidden="true"></div>
     <div class="copyright">© 2026 STUDIO YEON SUNG</div>
 
-    <script src="/script.js?v=20260921d"></script>
-    <script src="/copper/rusty-odyssey/rusty-odyssey.js?v=26"></script>
+    <script src="/script.js?v=20260926d"></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="/copper/rusty-odyssey/rusty-odyssey.js?v=54"></script>
 </body>
 </html>

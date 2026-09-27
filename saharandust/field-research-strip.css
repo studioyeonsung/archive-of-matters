@@ -1,0 +1,298 @@
+/* Saharan Dust field-research — Westhafen-style full-bleed horizontal strip */
+
+@font-face {
+    font-family: "Victor Mono";
+    src:
+        url("/fonts/victor-mono/VictorMono-Medium.woff2") format("woff2"),
+        url("/fonts/victor-mono/VictorMono-Medium.woff") format("woff"),
+        url("/fonts/victor-mono/VictorMono-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Victor Mono";
+    src:
+        url("/fonts/victor-mono/VictorMono-Bold.woff2") format("woff2"),
+        url("/fonts/victor-mono/VictorMono-Bold.woff") format("woff"),
+        url("/fonts/victor-mono/VictorMono-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+body.page-fr-strip {
+    overflow: hidden;
+    height: 100dvh;
+    overscroll-behavior: none;
+    --fr-font-title: "Victor Mono", "Pretendard", sans-serif;
+}
+
+body.page-fr-strip .copyright {
+    color: #ffffff;
+    mix-blend-mode: normal;
+}
+
+body.page-fr-strip .ro-main {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    width: auto;
+    max-width: none;
+    height: auto;
+    padding: 0;
+    overflow: hidden;
+}
+
+.wh-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--ro-pad-top);
+    bottom: var(--ro-footer-outer-h);
+    overflow: hidden;
+    background: #ffffff;
+    touch-action: none;
+    overscroll-behavior: none;
+    cursor: grab;
+}
+
+.wh-stage.is-dragging {
+    cursor: grabbing;
+}
+
+.wh-track {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    width: max-content;
+    will-change: transform;
+    user-select: none;
+}
+
+.wh-shot {
+    flex: 0 0 auto;
+    margin: 0;
+    height: calc(var(--wh-h, 1) * 100%);
+    width: auto;
+    overflow: hidden;
+}
+
+.wh-shot img {
+    display: block;
+    height: 100%;
+    width: auto;
+    max-width: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+.wh-shot--crop-y {
+    height: calc(var(--wh-h, 1) * 100%);
+    aspect-ratio: 3 / 4;
+    width: auto;
+}
+
+.wh-shot--crop-y img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--wh-pos, center center);
+}
+
+.wh-overlay {
+    position: absolute;
+    top: clamp(2.75rem, 6vh, 4.25rem);
+    left: var(--ro-pad-x);
+    z-index: 3;
+    width: min(38rem, calc(100% - (var(--ro-pad-x) * 2)));
+    max-width: calc(100% - (var(--ro-pad-x) * 2));
+    color: #000000;
+    pointer-events: none;
+}
+
+body.page-fr-strip .wh-overlay .ro-title,
+body.page-fr-strip .wh-overlay .ro-year,
+body.page-fr-strip .wh-overlay .ro-type,
+body.page-fr-strip .wh-overlay .wh-note,
+body.page-fr-strip .wh-overlay .ro-tag {
+    color: #000000;
+}
+
+.wh-overlay--cut {
+    z-index: 4;
+    color: #ffffff;
+    pointer-events: none;
+    clip-path: inset(100%);
+}
+
+body.page-fr-strip .wh-overlay--cut .ro-title,
+body.page-fr-strip .wh-overlay--cut .ro-year,
+body.page-fr-strip .wh-overlay--cut .ro-type,
+body.page-fr-strip .wh-overlay--cut .wh-note,
+body.page-fr-strip .wh-overlay--cut .ro-tag {
+    color: #ffffff;
+}
+
+body.page-fr-strip .wh-overlay--cut .ro-tag {
+    border-color: #ffffff;
+}
+
+body.page-fr-strip .wh-overlay--cut .ro-tags {
+    pointer-events: none;
+}
+
+.wh-overlay .ro-title {
+    margin: 0;
+    color: #000000;
+    font-family: var(--fr-font-title);
+    font-size: clamp(22.4px, 2.08vw, 28.8px);
+    font-weight: 500;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+}
+
+body.page-fr-strip.page-rusty-odyssey--ko .wh-overlay .ro-title {
+    font-family: "parabolica", "neutronic-hangeul", "Victor Mono", "Pretendard", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: calc(1.2 * var(--kor-line-height-scale));
+}
+
+.wh-overlay .ro-meta-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.85rem;
+    margin: 0.85rem 0 0;
+    color: #000000;
+}
+
+.wh-overlay .ro-year,
+.wh-overlay .ro-type {
+    color: #000000;
+    font-size: clamp(13px, 1vw, 15px);
+    line-height: 1.3;
+}
+
+.wh-overlay .wh-note {
+    margin: 0.7rem 0 0;
+    max-width: 22em;
+    color: #000000;
+    font-family: var(--ro-font);
+    font-size: clamp(13px, 1.05vw, 15.5px);
+    line-height: 1.45;
+}
+
+body.page-fr-strip.page-rusty-odyssey--ko .wh-overlay .wh-note {
+    font-family: "parabolica", "neutronic-hangeul", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+    word-break: keep-all;
+}
+
+.wh-overlay .ro-tags {
+    margin: 1.15rem 0 0;
+    gap: 0.44rem;
+    pointer-events: auto;
+}
+
+.wh-overlay .ro-tag {
+    border-color: #000000;
+    border-width: 1.7px;
+    border-radius: 10px;
+    color: #000000;
+    background: transparent;
+    text-shadow: none;
+    font-size: clamp(12px, 1vw, 14px);
+}
+
+@media (max-width: 768px) {
+    body.page-fr-strip .ro-main {
+        left: 0;
+        right: 0;
+        top: var(--ro-mobile-content-top);
+        bottom: var(--ro-mobile-footer-total);
+        padding: 0;
+        overflow: hidden;
+        touch-action: none;
+    }
+
+    body.page-fr-strip .wh-stage {
+        inset: 0;
+        border-radius: 0;
+    }
+
+    body.page-fr-strip .wh-shot,
+    body.page-fr-strip .wh-shot--crop-y {
+        height: calc(var(--wh-h, 1) * 80%);
+    }
+
+    body.page-fr-strip .wh-overlay {
+        top: 1.5rem;
+        left: var(--ro-mobile-pad-x);
+        width: calc(100% - (var(--ro-mobile-pad-x) * 2));
+        max-width: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    body.page-fr-strip .wh-overlay .ro-title {
+        font-size: calc(clamp(22px, 5.8vw, 26px) * 0.72);
+        font-weight: 500;
+        text-align: center;
+    }
+
+    body.page-fr-strip .wh-overlay .ro-title .ro-title-hangul {
+        font-family: "neutronic-hangeul", sans-serif;
+        font-size: 81%;
+    }
+
+    body.page-fr-strip .wh-overlay .ro-meta-line {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.096rem;
+        margin: 0.56rem 0 0;
+    }
+
+    body.page-fr-strip .wh-overlay .ro-year,
+    body.page-fr-strip .wh-overlay .ro-type {
+        grid-column: auto;
+        grid-row: auto;
+        justify-self: center;
+        align-self: center;
+        margin-top: 0;
+        text-align: center;
+        font-size: clamp(10.4px, 2.88vw, 12.8px);
+    }
+
+    body.page-fr-strip .wh-overlay .wh-note {
+        margin-top: 0.56rem;
+        font-size: clamp(10.4px, 2.72vw, 11.6px);
+        max-width: 18em;
+        text-align: center;
+    }
+
+    body.page-fr-strip .wh-overlay .ro-tags {
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow: visible;
+        max-width: 100%;
+        margin-top: 0.68rem;
+        gap: 0.352rem;
+    }
+
+    body.page-fr-strip .wh-overlay .ro-tag {
+        border-width: 1px;
+        border-radius: 8px;
+        font-size: clamp(9.6px, 2.4vw, 11.2px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wh-track {
+        will-change: auto;
+    }
+}

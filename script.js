@@ -283,138 +283,8 @@ function initMobileSwipeNav() {
     }, { passive: true });
 }
 
-// Matter gate: Copper and Fine Dust are enterable.
-// Weather and Saharan Dust show the “archiving in progress” popup.
-function isCopperPath(pathname) {
-    return /^\/copper(?:\/|$)/i.test(pathname || '');
-}
-
-function isFineDustPath(pathname) {
-    return /^\/finedust(?:\/|$)/i.test(pathname || '');
-}
-
-function isWeatherPath(pathname) {
-    return /^\/weather(?:\/|$)/i.test(pathname || '');
-}
-
-function isSaharanDustPath(pathname) {
-    return /^\/saharandust(?:\/|$)/i.test(pathname || '');
-}
-
-function isOpenMatterPath(pathname) {
-    return isCopperPath(pathname) || isFineDustPath(pathname);
-}
-
-function lockedMatterRoot(pathname) {
-    if (isWeatherPath(pathname)) return 'weather';
-    if (isSaharanDustPath(pathname)) return 'saharandust';
-    return '';
-}
-
-function isLockedMatterPath(pathname) {
-    return !isOpenMatterPath(pathname) && !!lockedMatterRoot(pathname);
-}
-
-function pathFromHref(href) {
-    try {
-        return new URL(href, location.href).pathname;
-    } catch (err) {
-        return '';
-    }
-}
-
-function isMatterEntryLink(link) {
-    return !!link.closest(
-        '.header-matter-link, .header-matter-slot, .matter-title-link, .matter-image-link, .nav-overlay-item--sub'
-    );
-}
-
-function shouldGateMatterHref(link, pathname) {
-    if (isOpenMatterPath(pathname)) return false;
-    if (isLockedMatterPath(pathname)) {
-        return lockedMatterRoot(pathname) !== lockedMatterRoot(location.pathname);
-    }
-    // Header / home / overlay matter links that are not open stay gated
-    // even if a new matter path is added later.
-    if (!isMatterEntryLink(link)) return false;
-    if (!pathname || pathname === '/') return false;
-    if (/^\/(about|news|contact)(?:\/|$)/i.test(pathname)) return false;
-    return true;
-}
-
-function isLockedMatterLink(link) {
-    if (!link) return false;
-    const pathname = pathFromHref(link.getAttribute('href') || link.href || '');
-    if (isOpenMatterPath(pathname)) return false;
-    if (link.closest('[data-matter-locked]')) return true;
-    if (isWeatherPath(pathname) || isSaharanDustPath(pathname)) return true;
-    return shouldGateMatterHref(link, pathname);
-}
-
-function eventElement(e) {
-    const target = e && e.target;
-    if (!target) return null;
-    if (target.nodeType === 1) return target;
-    return target.parentElement || null;
-}
-
-function lockedMatterLinkFromEvent(e) {
-    const node = eventElement(e);
-    if (!node || !node.closest) return null;
-    const link = node.closest('a[href]');
-    return isLockedMatterLink(link) ? link : null;
-}
-
-function openMatterPopup() {
-    const popup = ensureMatterPopup();
-    if (!popup) return;
-    popup.classList.add('is-open');
-    popup.setAttribute('aria-hidden', 'false');
-}
-
-function blockLockedMatterNavigation(e) {
-    if (typeof e.preventDefault === 'function') e.preventDefault();
-    if (typeof e.stopPropagation === 'function') e.stopPropagation();
-    if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
-    e.returnValue = false;
-}
-
-function ensureMatterPopup() {
-    let popup = document.getElementById('matter-popup');
-    if (popup) return popup;
-
-    popup = document.createElement('div');
-    popup.className = 'matter-popup-overlay';
-    popup.id = 'matter-popup';
-    popup.setAttribute('aria-hidden', 'true');
-    popup.innerHTML =
-        '<div class="matter-popup-box" role="dialog" aria-modal="true">' +
-        '<button type="button" class="matter-popup-close" aria-label="닫기"><img src="/assets/popup-icon-close.svg" alt=""></button>' +
-        '<p class="matter-popup-eng">Archiving of this matter is in progress.</p>' +
-        '<p class="matter-popup-eng">Opening soon.</p>' +
-        '<p class="matter-popup-kor">이 물질에 대한 아카이빙이 진행 중입니다.</p>' +
-        '<p class="matter-popup-kor">곧 오픈할 예정입니다.</p>' +
-        '</div>';
-    document.body.appendChild(popup);
-    return popup;
-}
-
-function closeNavOverlayIfOpen() {
-    const overlay = document.getElementById('nav-overlay');
-    const backdrop = document.getElementById('nav-overlay-backdrop');
-    if (!overlay || !overlay.classList.contains('is-open')) return;
-    overlay.classList.remove('is-open');
-    overlay.style.maxHeight = '';
-    overlay.setAttribute('aria-hidden', 'true');
-    if (backdrop) {
-        backdrop.classList.remove('is-open');
-        backdrop.setAttribute('aria-hidden', 'true');
-    }
-    document.body.style.overflow = '';
-}
-
 function initMatterPopup() {
-    const popup = ensureMatterPopup();
+    const popup = document.getElementById('matter-popup');
     if (!popup) return;
 
     const closePopup = () => {
@@ -422,82 +292,12 @@ function initMatterPopup() {
         popup.setAttribute('aria-hidden', 'true');
     };
 
-    const activateLockedMatter = (e) => {
-        if (document.body.dataset.navCloseClick === '1') return false;
-        const link = lockedMatterLinkFromEvent(e);
-        if (link) {
-            blockLockedMatterNavigation(e);
-            closeNavOverlayIfOpen();
-            openMatterPopup();
-            return true;
-        }
-
-        const node = eventElement(e);
-        if (!node || !node.closest) return false;
-        const trigger = node.closest('.matter-image, .matter-title-eng, .matter-title-kor, .header-matter-icon');
-        if (!trigger) return false;
-        const parentLink = trigger.closest('a[href]');
-        if (parentLink && !isLockedMatterLink(parentLink)) return false;
-        if (!parentLink && isOpenMatterPath(location.pathname)) return false;
-        blockLockedMatterNavigation(e);
-        closeNavOverlayIfOpen();
-        openMatterPopup();
-        return true;
-    };
-
-    document.addEventListener('click', activateLockedMatter, true);
-    document.addEventListener('auxclick', activateLockedMatter, true);
-
-    // Mobile Safari / Chrome often commit <a> navigation on touchend, before
-    // a click listener can cancel it. Intercept taps on locked matters here.
-    const TAP_SLOP = 12;
-    let lockTouch = null;
-    document.addEventListener('touchstart', (e) => {
-        const t = e.changedTouches && e.changedTouches[0];
-        const link = lockedMatterLinkFromEvent(e);
-        lockTouch = t && link ? { x: t.clientX, y: t.clientY, link } : null;
-    }, { capture: true, passive: true });
-
-    document.addEventListener('touchend', (e) => {
-        const start = lockTouch;
-        lockTouch = null;
-        if (!start) return;
-        const t = e.changedTouches && e.changedTouches[0];
-        if (!t) return;
-        if (Math.abs(t.clientX - start.x) > TAP_SLOP || Math.abs(t.clientY - start.y) > TAP_SLOP) return;
-        const link = lockedMatterLinkFromEvent(e);
-        if (!link || link !== start.link) return;
-        // preventDefault only: cancel the <a> navigation and the synthetic
-        // click without blocking other document touch handlers (press feedback).
-        e.preventDefault();
-        e.returnValue = false;
-        closeNavOverlayIfOpen();
-        openMatterPopup();
-    }, { capture: true, passive: false });
-
-    document.querySelectorAll('a[href]').forEach((link) => {
-        if (!isLockedMatterLink(link) || link.dataset.matterGateBound === '1') return;
-        link.dataset.matterGateBound = '1';
-        const block = (e) => {
-            blockLockedMatterNavigation(e);
-            closeNavOverlayIfOpen();
-            openMatterPopup();
-            return false;
-        };
-        link.addEventListener('click', block, true);
-        link.onclick = () => false;
-    });
-
     popup.addEventListener('click', (e) => {
         if (e.target === popup) closePopup();
     });
 
     const closeBtn = popup.querySelector('.matter-popup-close');
     if (closeBtn) closeBtn.addEventListener('click', closePopup);
-
-    if (isLockedMatterPath(location.pathname)) {
-        openMatterPopup();
-    }
 }
 
 function initMobileIconPressFeedback() {
@@ -518,9 +318,15 @@ function initMobileIconPressFeedback() {
     ].join(',');
     const yellowFilter =
         'brightness(0) saturate(100%) invert(88%) sepia(100%) saturate(1000%) hue-rotate(0deg) brightness(100%) contrast(100%)';
-    /* Fine Dust #d4c0b0 — same as list hover / selection / header circle */
+    /* Fine Dust #f8b716 — same as list hover / selection / header circle */
     const fineDustTapFilter =
-        'brightness(0) saturate(100%) invert(76%) sepia(14%) saturate(330%) hue-rotate(-16deg) brightness(101%) contrast(91%)';
+        'brightness(0) saturate(100%) invert(72%) sepia(95%) saturate(1650%) hue-rotate(1deg) brightness(104%) contrast(101%)';
+    /* Weather #4bbdf8 — same as list hover / selection / header circle */
+    const weatherTapFilter =
+        'brightness(0) saturate(100%) invert(67%) sepia(48%) saturate(1800%) hue-rotate(164deg) brightness(103%) contrast(96%)';
+    /* Saharan Dust #00f723 — same as list hover / selection / header circle */
+    const saharanDustTapFilter =
+        'brightness(0) saturate(100%) invert(62%) sepia(98%) saturate(1400%) hue-rotate(79deg) brightness(118%) contrast(119%)';
     let clearTimer = 0;
 
     const skipYellowFilter = (node) => (
@@ -535,8 +341,26 @@ function initMobileIconPressFeedback() {
             && document.body.classList.contains('page-finedust-detail'))
     );
 
+    const isWeatherTapTarget = (el) => (
+        el.matches('.weather-scroll-btn, .weather-table-sort-btn')
+        || (el.matches('.ro-footer-arrow')
+            && document.body.classList.contains('page-weather-detail'))
+    );
+
+    const isSaharanDustTapTarget = (el) => (
+        el.matches('.saharandust-scroll-btn, .saharandust-table-sort-btn')
+        || (el.matches('.ro-footer-arrow')
+            && document.body.classList.contains('page-saharandust-detail'))
+    );
+
     const pressFilterFor = (el) => (
-        isFineDustTapTarget(el) ? fineDustTapFilter : yellowFilter
+        isFineDustTapTarget(el)
+            ? fineDustTapFilter
+            : isWeatherTapTarget(el)
+              ? weatherTapFilter
+              : isSaharanDustTapTarget(el)
+                ? saharanDustTapFilter
+                : yellowFilter
     );
 
     const filterTargets = (el) => {
@@ -644,25 +468,6 @@ function initNavOverlay() {
 
     if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
 
-    overlay.querySelectorAll('a.nav-overlay-item[href]').forEach((link) => {
-        const gateOverlayMatter = (e) => {
-            if (!isLockedMatterLink(link)) return;
-            blockLockedMatterNavigation(e);
-            closeOverlay();
-            openMatterPopup();
-        };
-        link.addEventListener('click', gateOverlayMatter, true);
-        link.addEventListener(
-            'touchend',
-            (e) => {
-                if (!isLockedMatterLink(link)) return;
-                if (e.touches && e.touches.length > 0) return;
-                gateOverlayMatter(e);
-            },
-            { capture: true, passive: false }
-        );
-    });
-
     const headerLink = overlay.querySelector('.nav-overlay-header-link');
     if (headerLink) {
         headerLink.addEventListener('click', () => {
@@ -672,17 +477,12 @@ function initNavOverlay() {
 
     overlay.addEventListener('click', (e) => {
         const el = e.target && e.target.nodeType === 1 ? e.target : (e.target && e.target.parentElement);
-        if (!el || !el.closest('.nav-overlay-kor-matter-trigger')) return;
+        if (!el || !el.closest('.nav-overlay-item--matters')) return;
         e.preventDefault();
         e.stopPropagation();
         closeOverlay();
-        const popup = document.getElementById('matter-popup');
-        if (popup) {
-            setTimeout(() => {
-                popup.classList.add('is-open');
-                popup.setAttribute('aria-hidden', 'false');
-            }, 400);
-        }
+        if (document.body.classList.contains('page-index')) return;
+        window.location.href = '/';
     });
 
     document.addEventListener('click', (e) => {
@@ -698,12 +498,6 @@ function initNavOverlay() {
 
     overlay.querySelectorAll('.nav-overlay-item[data-section]').forEach((link) => {
         link.addEventListener('click', (e) => {
-            if (isLockedMatterLink(link)) {
-                blockLockedMatterNavigation(e);
-                closeOverlay();
-                openMatterPopup();
-                return;
-            }
             if (window.innerWidth > 768) return;
             const section = link.getAttribute('data-section');
             if (!section || !document.body.classList.contains('page-index')) return;
@@ -735,12 +529,29 @@ function initAboutLangSwitch() {
         { cls: 'page-contact', scope: '.page-contact', prefix: 'contact-lang' },
         { cls: 'page-copper', scope: '.page-copper', prefix: 'copper-lang' },
         { cls: 'page-finedust', scope: '.page-finedust', prefix: 'finedust-lang' },
+        { cls: 'page-weather', scope: '.page-weather', prefix: 'weather-lang' },
+        { cls: 'page-saharandust', scope: '.page-saharandust', prefix: 'saharandust-lang' },
     ].find((item) => body.classList.contains(item.cls));
     if (!page) return;
     const allBtns = document.querySelectorAll(`${page.scope} .about-lang-btn[data-lang]`);
     if (!allBtns.length) return;
+    const stored = window.__AOM_LANG && window.__AOM_LANG.get();
+    if (stored === 'kor' || stored === 'eng') {
+        body.classList.remove(`${page.prefix}-eng`, `${page.prefix}-kor`);
+        body.classList.add(`${page.prefix}-${stored}`);
+        allBtns.forEach((b) => {
+            b.classList.toggle('is-active', b.getAttribute('data-lang') === stored);
+        });
+        window.__AOM_LANG.apply(stored);
+        window.__AOM_LANG.rewrite(stored);
+    }
     allBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+            if (!document.documentElement.classList.contains('aom-lang-ready')) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                return;
+            }
             const lang = btn.getAttribute('data-lang');
             if (!lang) return;
             body.classList.remove(`${page.prefix}-eng`, `${page.prefix}-kor`);
@@ -749,12 +560,21 @@ function initAboutLangSwitch() {
             allBtns.forEach((b) => {
                 if (b.getAttribute('data-lang') === lang) b.classList.add('is-active');
             });
+            if (window.__AOM_LANG) {
+                window.__AOM_LANG.set(lang);
+                window.__AOM_LANG.apply(lang);
+                window.__AOM_LANG.rewrite(lang);
+            }
             if (window.__aboutTextScrollReset) {
                 window.__aboutTextScrollReset();
             } else if (window.__copperTextScrollReset) {
                 window.__copperTextScrollReset();
             } else if (window.__finedustTextScrollReset) {
                 window.__finedustTextScrollReset();
+            } else if (window.__weatherTextScrollReset) {
+                window.__weatherTextScrollReset();
+            } else if (window.__saharandustTextScrollReset) {
+                window.__saharandustTextScrollReset();
             } else {
                 window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
             }

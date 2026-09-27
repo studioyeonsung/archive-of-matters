@@ -23,6 +23,7 @@
     /** @type {typeof areas[number] | null} */
     let active = null;
     let bound = false;
+    let lastLangY = 0;
 
     function isMobile() {
         return window.innerWidth <= MOBILE_MAX;
@@ -38,7 +39,8 @@
 
     function lockViewportHeight() {
         if (!isMobile() || !isLockedPage()) {
-            document.body.classList.remove('site-mobile-locked');
+            document.body.classList.remove('site-mobile-locked', 'is-lang-hidden');
+            lastLangY = 0;
             document.documentElement.style.removeProperty('--site-vh');
             MATTER_VH_VARS.forEach((name) => document.documentElement.style.removeProperty(name));
             document.documentElement.style.removeProperty('--vh');
@@ -68,10 +70,40 @@
         return Math.max(0, area.track.scrollHeight - area.viewport.clientHeight);
     }
 
+    function updateLangHide(y) {
+        const body = document.body;
+        if (!body.classList.contains('page-about') && !body.classList.contains('page-news')) {
+            return;
+        }
+        if (!isMobile()) {
+            body.classList.remove('is-lang-hidden');
+            lastLangY = 0;
+            return;
+        }
+
+        const HIDE_AFTER = 24;
+        const DELTA = 6;
+        const dy = y - lastLangY;
+        lastLangY = y;
+
+        if (y <= HIDE_AFTER) {
+            body.classList.remove('is-lang-hidden');
+            return;
+        }
+        if (dy > DELTA) {
+            body.classList.add('is-lang-hidden');
+        } else if (dy < -DELTA) {
+            body.classList.remove('is-lang-hidden');
+        }
+    }
+
     function applyOffset(area, next) {
         const max = getMax(area);
         area.offsetY = Math.min(max, Math.max(0, next));
         area.track.style.transform = 'translate3d(0,' + -area.offsetY + 'px,0)';
+        if (area.viewport.classList.contains('about-text-wrap')) {
+            updateLangHide(area.offsetY);
+        }
     }
 
     function ensureTrack(viewport, trackSelector, trackClass) {

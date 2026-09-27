@@ -73,12 +73,12 @@ body.page-saharandust::before {
     content: "";
     position: absolute;
     left: 50%;
-    top: 100%;
-    transform: translate(-15px, -3px);
+    top: 0;
+    transform: translate(11px, calc(-100% + 3px));
     width: 13px;
     height: 13px;
     border-radius: 50%;
-    background-color: #ffff00;
+    background-color: #00f723;
     border: 1.5px solid #000000;
     box-sizing: border-box;
     pointer-events: none;
@@ -86,12 +86,12 @@ body.page-saharandust::before {
 }
 
 .page-saharandust ::selection {
-    background-color: #ffff00;
+    background-color: #00f723;
     color: #000000;
 }
 
 .page-saharandust ::-moz-selection {
-    background-color: #ffff00;
+    background-color: #00f723;
     color: #000000;
 }
 
@@ -182,6 +182,17 @@ body.page-saharandust::before {
     justify-content: center;
 }
 
+.saharandust-figures picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+
+.saharandust-copy-mobile {
+    display: none;
+}
+
 .saharandust-figures img {
     display: block;
     width: 100%;
@@ -264,7 +275,8 @@ body.page-saharandust::before {
     pointer-events: auto;
 }
 
-.saharandust-body-col p:last-child {
+.saharandust-body-col p:last-child,
+.saharandust-body-col .saharandust-copy-desktop:has(+ .saharandust-copy-mobile) {
     margin-bottom: 0;
 }
 
@@ -315,6 +327,33 @@ body.page-saharandust::before {
     backdrop-filter: blur(8px);
 }
 
+/* Hover preview — sits just above the list, no overlap */
+.saharandust-row-preview {
+    position: absolute;
+    right: clamp(12px, 3vw, 40px);
+    bottom: 100%;
+    margin-bottom: 0.85rem;
+    z-index: 30;
+    width: clamp(150px, 16.5vw, 220px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    background: #000000;
+}
+
+.saharandust-row-preview.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.saharandust-row-preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
 .saharandust-table {
     --saharandust-table-cols: minmax(0, 1.55fr) minmax(0, 1.05fr) minmax(0, 0.72fr) minmax(0, 0.78fr) 22px;
     --saharandust-table-divider-h: 1.36rem;
@@ -328,7 +367,14 @@ body.page-saharandust::before {
     grid-template-columns: var(--saharandust-table-cols);
     align-items: stretch;
     border-bottom: none;
-    min-height: calc(2.6rem * 0.95);
+    /*
+      Integer CSS px — fractional min-height (2.6rem * 0.95) landed some row
+      bottoms on half-pixels, so the 2px hover ::after sometimes vanished
+      into the fill. Lock height so every underline paints the same.
+    */
+    box-sizing: border-box;
+    min-height: 42px;
+    height: 42px;
 }
 
 a.saharandust-table-row--link {
@@ -337,9 +383,10 @@ a.saharandust-table-row--link {
 }
 
 .saharandust-table-row--head {
-    min-height: calc(2.5rem * 0.95);
-    border-top: 2.1px solid #000000;
-    border-bottom: 2.1px solid #000000;
+    min-height: 38px;
+    height: 38px;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
 }
 
 .saharandust-table-cell {
@@ -359,19 +406,62 @@ a.saharandust-table-row--link {
     padding-bottom: 0;
 }
 
-/* Data-row rules: default 1px bottom (except last — footer rule), hover 2.1px */
+/* Data-row rules: default 1px bottom (except last — footer rule). Hover underline is always row ::after. */
 .saharandust-table-row:not(.saharandust-table-row--head):not(:last-child) {
     box-shadow: inset 0 -1px 0 #000000;
 }
 
 .saharandust-table-row--link {
+    position: relative;
+    isolation: isolate;
     transition: box-shadow 0.15s ease;
     cursor: pointer;
 }
 
+.saharandust-table-row--link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: #00f723;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.saharandust-table-row--link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Integer 2px — matches head borders; stays above the hover fill */
+    height: 2px;
+    background: #000000;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.saharandust-table-row--link > .saharandust-table-cell {
+    z-index: 1;
+}
+
 @media (hover: hover) and (pointer: fine) {
-    .saharandust-table-row--link:not(:last-child):hover {
-        box-shadow: inset 0 -2.1px 0 #000000;
+    .saharandust-table-row--link:hover::before,
+    .saharandust-table-row--link:focus-visible::before {
+        opacity: 1;
+    }
+
+    .saharandust-table-row--link:hover::after,
+    .saharandust-table-row--link:focus-visible::after {
+        opacity: 1;
+    }
+
+    .saharandust-table-row--link:not(:last-child):hover,
+    .saharandust-table-row--link:not(:last-child):focus-visible {
+        box-shadow: none;
     }
 
     .saharandust-table-row--link:hover .saharandust-table-eng {
@@ -585,47 +675,54 @@ a.saharandust-table-row--link {
     color: #ffffff;
 }
 
+/* In Progress: 진행 중 (Updated 보다 연한 회색, 행을 흐리게 하지 않음) */
+.saharandust-table-badge--progress {
+    background: #a6a6a6;
+    color: #ffffff;
+}
+
+.saharandust-table-badge--updating {
+    background: #7a7a7a;
+    color: #ffffff;
+}
+
 .saharandust-table-badge--series {
-    background: transparent;
+    background: #ffffff;
     color: #000000;
     border: 1.7px solid #000000;
     padding: calc(0.32em - 1.7px) calc(0.95em - 1.7px);
 }
 
 .saharandust-table-row:not(.saharandust-table-row--head):has(
-    .saharandust-table-cell--date > .saharandust-table-badge:not(.saharandust-table-badge--solid)
+    .saharandust-table-cell--date > .saharandust-table-badge:not(.saharandust-table-badge--solid):not(.saharandust-table-badge--updating):not(.saharandust-table-badge--progress):not(.saharandust-table-badge--series)
 ) .saharandust-table-eng,
 .saharandust-table-row:not(.saharandust-table-row--head):has(
-    .saharandust-table-cell--date > .saharandust-table-badge:not(.saharandust-table-badge--solid)
+    .saharandust-table-cell--date > .saharandust-table-badge:not(.saharandust-table-badge--solid):not(.saharandust-table-badge--updating):not(.saharandust-table-badge--progress):not(.saharandust-table-badge--series)
 ) .saharandust-table-kor,
 .saharandust-table-row:not(.saharandust-table-row--head):has(
-    .saharandust-table-cell--date > .saharandust-table-badge:not(.saharandust-table-badge--solid)
+    .saharandust-table-cell--date > .saharandust-table-badge:not(.saharandust-table-badge--solid):not(.saharandust-table-badge--updating):not(.saharandust-table-badge--progress):not(.saharandust-table-badge--series)
 ) .saharandust-table-date {
     color: rgba(0, 0, 0, 0.7);
-}
-
-.saharandust-table-row:not(.saharandust-table-row--head):has(
-    .saharandust-table-cell--date > .saharandust-table-badge:not(.saharandust-table-badge--solid)
-) .saharandust-table-badge--series {
-    color: rgba(0, 0, 0, 0.7);
-    border-color: rgba(0, 0, 0, 0.7);
 }
 
 .saharandust-footer-rule {
     position: relative;
     z-index: 1;
     width: 100%;
-    height: 1.5px;
+    height: 1px;
     background-color: #000000;
     flex-shrink: 0;
-    transition: height 0.15s ease;
+    transition: background-color 0.15s ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
     .saharandust-archive-clip:has(
         .saharandust-table-row--link:last-child:hover
+    ) ~ .saharandust-footer-rule,
+    .saharandust-archive-clip:has(
+        .saharandust-table-row--link:last-child:focus-visible
     ) ~ .saharandust-footer-rule {
-        height: 2.1px;
+        background-color: transparent;
     }
 }
 
@@ -695,6 +792,10 @@ a.saharandust-table-row--link {
 .saharandust-next {
     height: 1px;
     scroll-margin-top: 0;
+}
+
+.page-saharandust .about-lang-switch-fixed {
+    display: none;
 }
 
 @media (min-width: 769px) {
@@ -774,11 +875,73 @@ a.saharandust-table-row--link {
         --saharandust-header-shift: 0px;
         --saharandust-header-left-nudge: 0px;
         --saharandust-header-left-line-inset: 0px;
+        --saharandust-header-pad-x: clamp(32px, 8vw, 96px);
         --saharandust-pad-left: var(--saharandust-header-pad-x);
-        --saharandust-pad-right: clamp(32px, 8vw, 56px);
-        --saharandust-header-content-pad: clamp(32px, 8vw, 56px);
+        --saharandust-pad-right: var(--saharandust-header-pad-x);
+        --saharandust-header-content-pad: var(--saharandust-header-pad-x);
         --saharandust-body-font-eng: clamp(13px, 3.4vw, 15px);
         --saharandust-body-font-kor: clamp(12.5px, 3.2vw, 14px);
+        --saharandust-arrow-zone: 58px;
+    }
+
+    .page-saharandust .about-lang-switch-fixed {
+        display: flex !important;
+        position: fixed;
+        top: 116px;
+        left: 0;
+        right: 0;
+        z-index: 11;
+        background: transparent;
+        flex-shrink: 0;
+        padding: 0.5em 0;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        gap: 0.35em;
+        pointer-events: auto;
+    }
+
+    .page-saharandust .about-lang-switch {
+        align-items: center;
+        justify-content: center;
+        gap: 0.35em;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .page-saharandust .about-lang-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: clamp(14px, 3.6vw, 16px);
+        font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+        color: #000000;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .page-saharandust .about-lang-btn.is-active {
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
+        font-weight: 500;
+    }
+
+    .page-saharandust .about-lang-sep {
+        color: #000000;
+        font-size: inherit;
+        pointer-events: none;
+    }
+
+    .page-saharandust .about-lang-switch-fixed::after {
+        content: none;
+    }
+
+    .page-saharandust.saharandust-lang-eng .saharandust-body-col--kor {
+        display: none !important;
+    }
+
+    .page-saharandust.saharandust-lang-kor .saharandust-body-col--eng {
+        display: none !important;
     }
 
     .page-saharandust .site-content {
@@ -800,7 +963,7 @@ a.saharandust-table-row--link {
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        padding-bottom: max(12px, env(safe-area-inset-bottom));
+        padding-bottom: 0;
     }
 
     .saharandust-visual {
@@ -809,30 +972,25 @@ a.saharandust-table-row--link {
         min-height: 0;
         display: flex;
         flex-direction: column;
-        overflow: hidden;
+        overflow: visible;
     }
 
-    .saharandust-figures {
-        flex: 0 1 auto;
-        min-height: 0;
-        max-height: 38%;
-        overflow: hidden;
+    .saharandust-copy-desktop {
+        display: none;
     }
 
-    .saharandust-figures img {
-        height: 100%;
-        max-height: 100%;
-        width: 100%;
-        object-fit: contain;
-        object-position: top center;
+    .saharandust-copy-mobile {
+        display: block;
     }
 
     .saharandust-title-block {
-        flex: 0 0 auto;
-        position: relative;
-        top: auto;
-        left: auto;
-        margin-bottom: 0.5rem;
+        order: 1;
+        position: absolute;
+        top: 26px;
+        left: 0;
+        z-index: 3;
+        margin: 0;
+        pointer-events: none;
     }
 
     .saharandust-title {
@@ -844,27 +1002,65 @@ a.saharandust-table-row--link {
         font-size: clamp(18.2px, 1.56vw, 20.7px);
     }
 
+    .saharandust-figures {
+        order: 2;
+        flex: 0 0 auto;
+        min-height: 0;
+        max-height: none;
+        overflow: visible;
+        align-items: flex-start;
+        width: calc(100% + var(--saharandust-pad-left) + var(--saharandust-pad-right));
+        margin-top: -62px;
+        margin-left: calc(-1 * var(--saharandust-pad-left));
+        margin-right: calc(-1 * var(--saharandust-pad-right));
+        padding-top: 0;
+    }
+
+    .saharandust-figures picture {
+        display: block;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+    }
+
+    .saharandust-figures img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+        object-position: center top;
+        transform: none;
+    }
+
     .saharandust-body {
+        order: 3;
         position: relative;
         left: auto;
         bottom: auto;
         flex: 1 1 auto;
         min-height: 0;
+        max-height: none;
         width: 100%;
-        margin-left: 0;
-        margin-top: 0;
-        padding-left: var(--saharandust-header-content-pad);
-        padding-right: var(--saharandust-header-content-pad);
+        margin: -4px 0 0;
+        padding-left: 0;
+        padding-right: 0;
         display: flex;
         flex-direction: column;
-        gap: clamp(0.75rem, 2.5vw, 1rem);
+        gap: 0;
         overflow: hidden;
         pointer-events: auto;
     }
 
+    .saharandust-body-col {
+        text-align: left;
+        hyphens: none;
+        -webkit-hyphens: none;
+    }
+
     .saharandust-body-col--eng,
     .saharandust-body-col--kor {
-        flex: 1 1 0;
+        flex: 1 1 auto;
         min-height: 0;
         max-height: none;
         overflow: hidden;
@@ -875,6 +1071,7 @@ a.saharandust-table-row--link {
 
     .saharandust-body-col-track {
         will-change: transform;
+        padding-bottom: calc((22px + 2.4em) / 2);
     }
 
     body.saharandust-mobile-locked .saharandust-body-col {
@@ -890,22 +1087,100 @@ a.saharandust-table-row--link {
         width: 100%;
         margin-left: 0;
         margin-top: 0;
-        padding-left: var(--saharandust-header-content-pad);
-        padding-right: var(--saharandust-header-content-pad);
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .saharandust-footer-rule {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .saharandust-footer-rule::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 100%;
+        height: 22px;
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0) 0%,
+            #ffffff 45%,
+            #ffffff 100%
+        );
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .saharandust-archive.is-open .saharandust-footer-rule::before {
+        opacity: 0;
+    }
+
+    .saharandust-footer-rule::after {
+        content: "";
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: var(--saharandust-arrow-zone, 58px);
+        background: #ffffff;
+        border-radius: 0 0 var(--saharandust-canvas-radius) var(--saharandust-canvas-radius);
+        pointer-events: none;
+        z-index: 5;
+    }
+
+    .saharandust-scroll-btn {
+        position: relative;
+        z-index: 6;
+        margin-top: 0;
+        width: 24px;
+        height: 24px;
+        box-sizing: content-box;
+        padding-top: calc((var(--saharandust-arrow-zone, 58px) - 24px) / 2);
+        padding-bottom: calc((var(--saharandust-arrow-zone, 58px) - 24px) / 2);
+    }
+
+    .saharandust-archive-panel {
+        background: rgba(255, 255, 255, 0.78);
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+        max-height: min(
+            calc(38px + 8 * 42px + 21px),
+            calc(var(--saharandust-vh, 100svh) - 168px - var(--saharandust-arrow-zone, 58px))
+        );
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+    }
+
+    .saharandust-table-row--head {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        background: rgba(255, 255, 255, 0.94);
+    }
+
+    .saharandust-row-preview {
+        display: none;
     }
 
     .saharandust-table {
-        --saharandust-table-cols: minmax(0, 1.35fr) minmax(0, 1.32fr) minmax(0, 0.72fr) 16px;
+        --saharandust-table-cols: minmax(0, 1.96fr) minmax(0, 1.32fr) 2.4em 22px;
         --saharandust-table-divider-h: 1.02rem;
         --saharandust-table-col-inset: 0.7em;
     }
 
     .saharandust-table-row {
-        min-height: calc(2.6rem * 0.95);
+        min-height: 42px;
+        height: 42px;
     }
 
     .saharandust-table-row--head {
-        min-height: calc(2.5rem * 0.95);
+        min-height: 38px;
+        height: 38px;
     }
 
     .saharandust-table-row--head .saharandust-table-cell:nth-child(1)::after,
@@ -913,8 +1188,71 @@ a.saharandust-table-row--link {
         width: 1.5px;
     }
 
+    .saharandust-table-row--link {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .saharandust-table-row--link:active::before,
+    .saharandust-table-row--link.is-pressing::before {
+        opacity: 1;
+    }
+
+    .saharandust-table-row--link:active::after,
+    .saharandust-table-row--link.is-pressing::after {
+        opacity: 1;
+    }
+
+    .saharandust-table-row--link:not(:last-child):active,
+    .saharandust-table-row--link:not(:last-child).is-pressing {
+        box-shadow: none;
+    }
+
+    .saharandust-archive-clip:has(
+        .saharandust-table-row--link:last-child:active
+    ) ~ .saharandust-footer-rule,
+    .saharandust-archive-clip:has(
+        .saharandust-table-row--link:last-child.is-pressing
+    ) ~ .saharandust-footer-rule {
+        background-color: transparent;
+    }
+
     .saharandust-table-cell--status,
     .saharandust-table-badge {
+        display: none !important;
+    }
+
+    .page-saharandust.saharandust-lang-eng .saharandust-table-kor {
+        display: none !important;
+    }
+
+    .page-saharandust.saharandust-lang-kor .saharandust-table-eng {
+        display: none !important;
+    }
+
+    .page-saharandust.saharandust-lang-kor .nav-kor,
+    .page-saharandust.saharandust-lang-kor .nav-overlay-title-kor,
+    .page-saharandust.saharandust-lang-kor .nav-overlay-kor {
+        font-family: "neutronic-hangeul", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+    }
+
+    .page-saharandust.saharandust-lang-kor .saharandust-table-row:not(.saharandust-table-row--head)
+        .saharandust-table-cell:first-child .saharandust-table-eng {
+        display: block !important;
+    }
+
+    .page-saharandust.saharandust-lang-kor .saharandust-table-row:not(.saharandust-table-row--head)
+        .saharandust-table-cell:first-child:has(.saharandust-table-kor) .saharandust-table-eng {
+        display: none !important;
+    }
+
+    .page-saharandust.saharandust-lang-kor .saharandust-table-row:not(.saharandust-table-row--head)
+        .saharandust-table-cell:first-child .saharandust-table-kor {
+        display: block !important;
+    }
+
+    .page-saharandust.saharandust-lang-kor .saharandust-table-row:not(.saharandust-table-row--head)
+        .saharandust-table-cell:first-child:has(.saharandust-table-short)
+        .saharandust-table-kor:not(.saharandust-table-short) {
         display: none !important;
     }
 
@@ -923,9 +1261,23 @@ a.saharandust-table-row--link {
         display: none !important;
     }
 
-    .saharandust-table-eng.saharandust-table-short,
-    .saharandust-table-kor.saharandust-table-short {
+    .page-saharandust.saharandust-lang-eng .saharandust-table-eng.saharandust-table-short {
         display: block !important;
+    }
+
+    .page-saharandust.saharandust-lang-kor .saharandust-table-kor.saharandust-table-short {
+        display: block !important;
+    }
+
+    .page-saharandust.saharandust-lang-kor .saharandust-table-row:not(.saharandust-table-row--head)
+        .saharandust-table-cell:first-child:has(.saharandust-table-short)
+        .saharandust-table-eng:not(.saharandust-table-short) {
+        display: none !important;
+    }
+
+    .page-saharandust.saharandust-lang-kor .saharandust-table-row:not(.saharandust-table-row--head)
+        .saharandust-table-cell:first-child .saharandust-table-eng.saharandust-table-short {
+        display: none !important;
     }
 
     .saharandust-table-cell {
@@ -936,10 +1288,29 @@ a.saharandust-table-row--link {
         align-content: center;
     }
 
+    .saharandust-table-row {
+        align-items: center;
+    }
+
+    .saharandust-table-row:not(.saharandust-table-row--head) .saharandust-table-cell:first-child,
+    .saharandust-table-row:not(.saharandust-table-row--head) .saharandust-table-cell:nth-child(2),
+    .saharandust-table-row:not(.saharandust-table-row--head) .saharandust-table-cell--date {
+        align-items: center;
+        align-content: center;
+    }
+
     .saharandust-table-sort-btn {
         flex-shrink: 0;
         width: 22px;
         height: 22px;
+    }
+
+    /* Mobile tap: #00f723 (not global yellow) */
+    .saharandust-scroll-btn:active img,
+    .saharandust-scroll-btn.is-pressing img,
+    .saharandust-table-sort-btn:active .saharandust-table-head-arrow,
+    .saharandust-table-sort-btn.is-pressing .saharandust-table-head-arrow {
+        filter: brightness(0) saturate(100%) invert(62%) sepia(98%) saturate(1400%) hue-rotate(79deg) brightness(118%) contrast(119%) !important;
     }
 
     .saharandust-table-row--head .saharandust-table-cell {
@@ -962,12 +1333,35 @@ a.saharandust-table-row--link {
     .saharandust-table-eng,
     .saharandust-table-kor,
     .saharandust-table-date {
-        line-height: 1;
+        line-height: 1.3;
+        transform: none;
+    }
+
+    .saharandust-table-date-md {
+        display: none;
     }
 
     .saharandust-table-cell:nth-child(2),
     .saharandust-table-cell--date {
         padding-left: var(--saharandust-table-col-inset);
+    }
+
+    .saharandust-table-cell--date {
+        justify-content: flex-end;
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0;
+        overflow: visible;
+        transform: translateX(4px);
+    }
+
+    .saharandust-table-row:not(.saharandust-table-row--head) .saharandust-table-cell--date {
+        justify-content: flex-end;
+    }
+
+    .saharandust-table-row--head .saharandust-table-cell--date {
+        justify-content: flex-end;
+        cursor: pointer;
     }
 
     .saharandust-table-row:not(.saharandust-table-row--head)
@@ -979,10 +1373,21 @@ a.saharandust-table-row--link {
     .saharandust-table-row:not(.saharandust-table-row--head)
         .saharandust-table-cell:nth-child(2) .saharandust-table-kor {
         display: block;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 0;
+        flex: 1 1 auto;
+        width: 100%;
     }
 
     .saharandust-table-cell--arrow {
-        transform: translateX(-6px);
+        transform: translateX(2px);
+        padding-left: 0;
+        padding-right: 0;
+        overflow: visible;
+        justify-content: flex-end;
     }
 
     .saharandust-table-eng {
@@ -998,19 +1403,27 @@ a.saharandust-table-row--link {
         font-size: 12px;
     }
 
-    .saharandust-table-date {
+    .saharandust-table-row:not(.saharandust-table-row--head) .saharandust-table-date,
+    .saharandust-table-date,
+    .saharandust-table-row--head .saharandust-table-cell--date .saharandust-table-eng,
+    .saharandust-table-row--head .saharandust-table-cell--date .saharandust-table-kor {
         font-size: 13.2px;
-        flex: 0 0 auto;
-        width: auto;
+        flex: 0 0 33px;
+        width: 33px;
+        min-width: 33px;
+        text-align: left;
+        overflow: visible;
+        text-overflow: clip;
+        max-width: none;
     }
 
-    .saharandust-table-badge {
-        font-size: 10.8px;
-        padding: 0.15em 0.4em;
+    .saharandust-table-row--head .saharandust-table-cell--date .saharandust-table-eng,
+    .saharandust-table-row--head .saharandust-table-cell--date .saharandust-table-kor {
+        font-size: 12px;
     }
 
     .saharandust-table-head-arrow {
-        width: 11px;
-        height: 11px;
+        width: 10px;
+        height: 10px;
     }
 }

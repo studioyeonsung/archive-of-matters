@@ -37,6 +37,10 @@
         });
     }
 
+    window.__weatherTextScrollReset = function () {
+        resetColumns();
+    };
+
     function getMaxOffset(col) {
         return Math.max(0, col.track.offsetHeight - col.viewport.clientHeight);
     }
@@ -172,9 +176,18 @@
             archive.classList.toggle('is-open', next);
             if (next) {
                 openLockUntil = Date.now() + 500;
+            } else {
+                panel.scrollTop = 0;
             }
             btn.setAttribute('aria-expanded', next ? 'true' : 'false');
             btn.setAttribute('aria-label', next ? 'Close archive table' : 'Open archive table');
+            if (!next) {
+                const preview = document.getElementById('weather-row-preview');
+                if (preview) {
+                    preview.classList.remove('is-visible');
+                    preview.setAttribute('aria-hidden', 'true');
+                }
+            }
         };
 
         archiveSetOpen = setOpen;
@@ -216,6 +229,8 @@
                     el.closest('#weather-archive-panel, .weather-archive-clip, .weather-table')
             );
         };
+
+        const listAtTop = () => panel.scrollTop <= 1;
 
         const isIgnoredScrollTarget = (target) => {
             const el = eventEl(target);
@@ -282,7 +297,8 @@
                 if (Date.now() < openLockUntil) return;
                 if (isUiChrome(e.target)) return;
                 if (isOverList(e.target)) {
-                    if (e.deltaY >= 0) return;
+                    if (e.deltaY > 0) return;
+                    if (e.deltaY < 0 && !listAtTop()) return;
                 } else if (e.deltaY === 0) {
                     return;
                 }
@@ -298,7 +314,8 @@
             (e) => {
                 if (!archive.classList.contains('is-open')) return;
                 if (Date.now() < openLockUntil) return;
-                if (e.deltaY >= 0) return;
+                if (e.deltaY > 0) return;
+                if (e.deltaY < 0 && !listAtTop()) return;
                 setOpen(false);
                 e.preventDefault();
                 e.stopPropagation();
@@ -382,9 +399,16 @@
 
                 if (archive.classList.contains('is-open') && touchActive) {
                     const dy = touchStartY - e.touches[0].clientY;
-                    const shouldClose = touchFromAbove
-                        ? dy >= TOUCH_THRESHOLD
-                        : Math.abs(dy) >= TOUCH_THRESHOLD;
+                    if (isOverList(e.target) || touchFromAbove) {
+                        if (listAtTop() && dy <= -TOUCH_THRESHOLD) {
+                            setOpen(false);
+                            touchActive = false;
+                            touchFromAbove = false;
+                            touchStartY = null;
+                        }
+                        return;
+                    }
+                    const shouldClose = Math.abs(dy) >= TOUCH_THRESHOLD;
                     if (shouldClose) {
                         setOpen(false);
                         touchActive = false;
@@ -560,6 +584,54 @@
             descending = !descending;
             applySort();
         });
+
+        const dateHead = table.querySelector('.weather-table-row--head .weather-table-cell--date');
+        if (dateHead) {
+            dateHead.addEventListener('click', () => {
+                sortBtn.click();
+            });
+        }
+    }
+
+    function initRowPreview() {
+        const preview = document.getElementById('weather-row-preview');
+        const img = preview && preview.querySelector('img');
+        const archive = document.getElementById('weather-archive');
+        if (!preview || !img || !archive) return;
+
+        const hide = () => {
+            preview.classList.remove('is-visible');
+            preview.setAttribute('aria-hidden', 'true');
+        };
+
+        const show = (row) => {
+            const src = row.getAttribute('data-preview');
+            if (!src || !archive.classList.contains('is-open')) {
+                hide();
+                return;
+            }
+            if (img.getAttribute('src') !== src) {
+                img.setAttribute('src', src);
+            }
+            img.setAttribute('alt', row.getAttribute('data-preview-alt') || '');
+            preview.classList.add('is-visible');
+            preview.setAttribute('aria-hidden', 'false');
+        };
+
+        document.querySelectorAll('.weather-table-row[data-preview]').forEach((row) => {
+            row.addEventListener('mouseenter', () => {
+                if (isMobile()) return;
+                show(row);
+            });
+            row.addEventListener('mouseleave', hide);
+            row.addEventListener('focusin', () => {
+                if (isMobile()) return;
+                show(row);
+            });
+            row.addEventListener('focusout', (e) => {
+                if (!row.contains(e.relatedTarget)) hide();
+            });
+        });
     }
 
     document.addEventListener('touchmove', blockDocumentTouch, { passive: false });
@@ -614,6 +686,7 @@
 
     initArchiveToggle();
     initDateSort();
+    initRowPreview();
     initMobileRowNavigate();
     lockViewportHeight();
     window.addEventListener('orientationchange', () => {

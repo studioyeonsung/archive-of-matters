@@ -12,11 +12,25 @@
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://archiveofmatters.com/about/">
     <link rel="icon" type="image/svg+xml" href="/assets/home-icon-copper.svg">
-    <script src="/boot.js?v=3"></script>
-    <link rel="stylesheet" href="/style.css?v=20260920e">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <script src="/boot.js?v=6"></script>
+    <link rel="stylesheet" href="/style.css?v=20260926j">
 
 </head>
 <body class="page-about about-lang-eng">
+    <script>
+    (function () {
+        try {
+            var lang = localStorage.getItem('aom-lang') || sessionStorage.getItem('aom-lang');
+            if (lang !== 'kor' && lang !== 'eng') return;
+            document.body.classList.remove('about-lang-eng', 'about-lang-kor');
+            document.body.classList.add('about-lang-' + lang);
+            document.documentElement.classList.remove('aom-lang-eng', 'aom-lang-kor');
+            document.documentElement.classList.add('aom-lang-' + lang);
+            document.documentElement.setAttribute('data-aom-lang', lang);
+        } catch (err) {}
+    })();
+    </script>
     <!-- Mobile placeholder: shown only on small screens -->
     <div class="mobile-placeholder" aria-live="polite">
         <div class="mobile-placeholder-eng-block">
@@ -51,14 +65,14 @@
         </div>
         <div class="header-right">
             <div class="header-top-line">
-                <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
+                <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-1">아카이브</a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-2">오브</a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-3">매터(즈)</a>
             </div>
             <div class="dotted-line-right"></div>
             <div class="header-bottom-line">
-                <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
+                <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
                 <span class="nav-text header-right-text-1"><a href="/news/">NEWS</a></span>
                 <img src="/assets/home-icon-arrow.svg" alt="" class="header-icon nav-icon header-right-icon-2">
                 <span class="nav-text header-right-text-2"><a href="/contact/">CONTACT</a></span>
@@ -175,7 +189,7 @@
                         <span class="aom-semibold-kor">아카이브 오브 매터(즈)</span>는 <span class="aom-semibold-kor">물질(들)</span>을 연구하고, <span class="aom-semibold-kor">물질(들)</span>과 함께, <span class="aom-semibold-kor">물질(들)</span>을 통해 실천하는 아티스틱 리서치 플랫폼이다.
                     </p>
                     <p>
-                        구리, 미세먼지, 사하라의 모래, 날씨.<br>
+                        구리, 미세먼지, 사하라 사막 먼지, 날씨.<br>
                         이 <span class="aom-semibold-kor">물질(들)</span>은 단순한 연구 대상에 머물지 않는다. 각각의 물질은 식민주의의 역사와 생태적 위기, 정치적 얽힘의 흔적을 간직한 채, 우리가 숨 쉬고 만지는 일상의 환경 속에 존재하고 있다. <span class="aom-semibold-kor">아카이브 오브 매터(즈)</span>는 승자가 기록해 온 역사에 기대기보다, 물질 스스로가 만들어가는 대안의 서사와 장을 구축하고자 한다.
                     </p>
                     <p>
@@ -231,7 +245,7 @@
                         <span class="aom-semibold-kor">아카이브 오브 매터(즈)</span>는 <span class="aom-semibold-kor">물질(들)</span>을 연구하고, <span class="aom-semibold-kor">물질(들)</span>과 함께, <span class="aom-semibold-kor">물질(들)</span>을 통해 실천하는 아티스틱 리서치 플랫폼이다.
                     </p>
                     <p>
-                        구리, 미세먼지, 사하라의 모래, 날씨.<br>
+                        구리, 미세먼지, 사하라 사막 먼지, 날씨.<br>
                         이 <span class="aom-semibold-kor">물질(들)</span>은 단순한 연구 대상에 머물지 않는다. 각각의 물질은 식민주의의 역사와 생태적 위기, 정치적 얽힘의 흔적을 간직한 채, 우리가 숨 쉬고 만지는 일상의 환경 속에 존재하고 있다. <span class="aom-semibold-kor">아카이브 오브 매터(즈)</span>는 승자가 기록해 온 역사에 기대기보다, 물질 스스로가 만들어가는 대안의 서사와 장을 구축하고자 한다.
                     </p>
                     <p>
@@ -272,7 +286,7 @@
 
     <script src="/vendor/gsap.min.js"></script>
     <script src="/vendor/ScrollTrigger.min.js"></script>
-    <script src="/mobile-viewport-lock.js?v=20260812c"></script>
-    <script src="/script.js?v=20260921d"></script>
+    <script src="/mobile-viewport-lock.js?v=20260925a"></script>
+    <script src="/script.js?v=20260926d"></script>
 </body>
 </html>

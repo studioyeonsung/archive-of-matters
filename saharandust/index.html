@@ -8,12 +8,12 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://archiveofmatters.com/saharandust/">
     <link rel="icon" type="image/svg+xml" href="/assets/home-icon-saharandust.svg">
-    <script src="/boot.js?v=3"></script>
-    <link rel="stylesheet" href="/style.css?v=20260920e">
-    <link rel="stylesheet" href="/saharandust/saharandust.css?v=87">
+    <script src="/boot.js?v=6"></script>
+    <link rel="stylesheet" href="/style.css?v=20260926j">
+    <link rel="stylesheet" href="/saharandust/saharandust.css?v=117">
 
 </head>
-<body class="page-saharandust">
+<body class="page-saharandust saharandust-lang-eng">
     <div class="mobile-placeholder" aria-live="polite">
         <div class="mobile-placeholder-eng-block">
             <p class="mobile-placeholder-eng">Mobile version is on its way.</p>
@@ -47,14 +47,14 @@
             </div>
             <div class="header-right">
                 <div class="header-top-line">
-                    <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
+                    <a href="/saharandust/" class="header-matter-slot is-current" aria-current="page" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-1">아카이브</a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-2">오브</a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-3">매터(즈)</a>
                 </div>
                 <div class="dotted-line-right"></div>
                 <div class="header-bottom-line">
-                    <a href="/saharandust/" class="header-matter-slot is-current" aria-current="page" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
+                    <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
                     <span class="nav-text header-right-text-1"><a href="/news/">NEWS</a></span>
                     <img src="/assets/home-icon-arrow.svg" alt="" class="header-icon nav-icon header-right-icon-2">
                     <span class="nav-text header-right-text-2"><a href="/contact/">CONTACT</a></span>
@@ -121,16 +121,28 @@
             </div>
         </div>
 
+        <div class="about-lang-switch about-lang-switch-fixed" role="group" aria-label="언어 선택">
+            <button type="button" class="about-lang-btn is-active" data-lang="eng">ENG</button>
+            <span class="about-lang-sep">/</span>
+            <button type="button" class="about-lang-btn" data-lang="kor">한국어</button>
+        </div>
+
         <main class="saharandust-main">
             <div class="saharandust-visual">
                 <figure class="saharandust-figures">
-                    <img
-                        src="/saharandust/assets/saharandust_figures.png"
-                        alt="Illustrations of copper ore, bullets, bronze atlas, VOC duit coin, and copper scrap"
-                        width="1136"
-                        height="495"
-                        decoding="async"
-                    >
+                    <picture>
+                        <source
+                            media="(max-width: 768px)"
+                            srcset="/saharandust/assets/saharandust_figures_mobile.png"
+                        >
+                        <img
+                            src="/saharandust/assets/saharandust_figures.png"
+                            alt="Illustrations of a Saharan sand storm, a mechanical siren, and a mushroom cloud"
+                            width="1136"
+                            height="495"
+                            decoding="async"
+                        >
+                    </picture>
                 </figure>
                 <div class="saharandust-title-block">
                     <h1 class="saharandust-title">Saharan Dust</h1>
@@ -139,19 +151,22 @@
                 <div class="saharandust-body">
                     <div class="saharandust-body-col saharandust-body-col--eng" lang="en">
                         <div class="saharandust-body-col-track">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</p>
-                        <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                        <p class="saharandust-copy-desktop">In European skies, Saharan Dust arrives in the guise of weather. Every spring it returns in the same forms: an orange sky, a film of dust on the windscreen, reports of an uncanny landscape. Yet Saharan Dust holds vast stretches of time. Grains of rock worn down by wind over thousands of years, the shells of diatoms from a lakebed that dried out five thousand years ago, the iron and phosphorus within them: hundreds of millions of tonnes ride the atmosphere across the sea each year. In 2021, ACRO, an independent French radioactivity monitoring association, detected caesium-137, an artificial isotope, in Saharan Dust that had settled in the Jura in eastern France, and pointed to the nuclear tests carried out in the Algerian Sahara in the 1960s as its source. The following year, researchers analysing plutonium in Saharan Dust gathered across Europe concluded that its fingerprint was closer to the fallout American and Soviet tests had scattered across the planet. Saharan Dust carries not the trace of a single nation, but the residue of the entire atomic age.</p>
+                        <p class="saharandust-copy-desktop">Between 1960 and 1966, seventeen nuclear tests could be carried out at Reggane and In Ekker because the desert was taken to be empty land. But the desert has never been empty. People had long made their lives there, around its oases. Decades after the tests, ground zero can still be found in satellite images, and the waste was buried in the belief that the sand would keep it covered. Yet the wind lifts those traces again and carries them north, where they are now and then measured, reported, and forgotten once more. Rob Nixon calls this slow violence: harm dispersed across time and space, its destruction arriving late. Caesium-137 has a half-life of thirty years; plutonium-239, one of twenty-four thousand. When the wind has passed, who is left to bear the risk?</p>
+                        <p class="saharandust-copy-desktop">From the reprocessing plant at La Hague on the Normandy coast to the repository planned five hundred metres down in the clay beneath Bure, in the Meuse, nuclear material is endlessly being sent somewhere. Saharan Dust travels that distance in reverse. Retracing a path that runs from sky to sand, and from sand back into the ground, it moves back through time, toward us.</p>
+                        <p class="saharandust-copy-mobile">In European skies, Saharan Dust arrives in the guise of weather. Every spring it returns in the same forms: an orange sky, a film of dust on the windscreen, reports of an uncanny landscape. Yet Saharan Dust holds vast stretches of time. Grains of rock worn down by wind over thousands of years, the shells of diatoms from a lakebed that dried out five thousand years ago, the iron and phosphorus within them: hundreds of millions of tonnes ride the atmosphere across the sea each year. In 2021, ACRO, an independent French radioactivity monitoring association, detected caesium-137, an artificial isotope, in Saharan Dust that had settled in the Jura in eastern France, and pointed to the nuclear tests carried out in the Algerian Sahara in the 1960s as its source. The following year, researchers analysing plutonium in Saharan Dust gathered across Europe concluded that its fingerprint was closer to the fallout American and Soviet tests had scattered across the planet. Saharan Dust carries not the trace of a single nation, but the residue of the entire atomic age.</p>
+                        <p class="saharandust-copy-mobile">Between 1960 and 1966, seventeen nuclear tests could be carried out at Reggane and In Ekker because the desert was taken to be empty land. But the desert has never been empty. People had long made their lives there, around its oases. Decades after the tests, ground zero can still be found in satellite images, and the waste was buried in the belief that the sand would keep it covered. Yet the wind lifts those traces again and carries them north, where they are now and then measured, reported, and forgotten once more. Rob Nixon calls this slow violence: harm dispersed across time and space, its destruction arriving late. Caesium-137 has a half-life of thirty years; plutonium-239, one of twenty-four thousand. When the wind has passed, who is left to bear the risk?</p>
+                        <p class="saharandust-copy-mobile">From the reprocessing plant at La Hague on the Normandy coast to the repository planned five hundred metres down in the clay beneath Bure, in the Meuse, nuclear material is endlessly being sent somewhere. Saharan Dust travels that distance in reverse. Retracing a path that runs from sky to sand, and from sand back into the ground, it moves back through time, toward us.</p>
                         </div>
                     </div>
                     <div class="saharandust-body-col saharandust-body-col--kor" lang="ko">
                         <div class="saharandust-body-col-track">
-                        <p>23시 최초로 점검하여, 지역의 같듯 레이디는 많이 하게 그녀의 육두구를 드러내나. 수 놓다 제시하곤 본격적이 문자에 비는 돕다. 밤하늘의 연고의 수 고기가 섶의, 앉다 주문하는 물론 필요하다. 사람의 관심만 검증에 가던, 그것이 크다. 있은 동그라미는 때문 수, 바람이 둥지는 마다하는 밤이 또 욕심의 있다. 사용하다면 기점을, 자세의, 있다가 한다면 나에 대로 따르다. 자꾸만 못하던 들어선다, 경우로 오늘 된, 선진국은 벌리고 다양하다. 학교보다 수 자연주의는 왼발으로, 설령 할까.</p>
-                        <p>제조업을 놓치고 포장을 이행한 이 중 그렇어 연장되다. 몸을 6일 생체가 장딴지요 보이다. 죽은 아이디어가 자리에서 생애를 동력이 생명이 나이는 마련 경쟁력에서, 늦다. 그 커다랗자 진실을 더 성의를, 에너지가 다니다. 적극적 애인과 때를 이, 특기한다. 탐구보다 완성한 보고 저로 그런 보이다.</p>
-                        <p>수치 손쉽게 해외에서 울창하세요 밀물이 한, 뿐 마치다. 하나가 데 아마 때가 밟은 산 계승에 보호한 입는 나는 결별하여요. 보내다 반항적 채점이나 쪽 있다. 너무 말은 열심히 행복은 있을 환경도 제약으로 확고하다. 이렇듯이 의원인데 예술처럼 맞닥뜨릴 광합성이면 어느, 사랑을 이날의 숙제가 되살리다. 그거가 친자매를 갸우뚱거린 노인에, 들어가아 무난하다. 나다 문제되고 가는 하라 별도를 술자리와 ㅅ이 씨 꼭, 끊어. 수 지배의 차단하시다 만나고 4편 내 대회는 조리하는 부득이 억울하다.</p>
-                        <p>후반이게 전망을 모습을 데 하고 전화로 통하라. 초반을 까닭을 세계에 급의 의하오. 하던 전부를 지게, 사용은 먹는 직접적이는 있은 맛있다. 주게 범주의 납니까 퍽, 같던 성취의 아이를 장애를 만들어지라. 앞이 공안으로 없고 산이요 보에요. 경쟁이라 이런 각각, 것 한꺼번에, 힘들어 도교다 들려오다. 되어 이 오늘이, 걸리고 관계하다 있는 어떻는 미안해하여 운항이 준비하에요 맛있다. 나란다 있어 살아갈 오른쪽이 받게 겹의 우리에 있다.</p>
-                        <p>매년 자포자기의 방송국을, 낭비벽과 그때에 모처럼, 때문 탈구는 하여 얼굴을 갑니다. 여러 아직 아니어 이 카드를 무용도 있어 건성이 보아 태우라 척하다. 의식하다 확장하다 지방만 보이는지 시인을, 여자를, 같고 요청의 과목에 엄마도 흐리다. 2026년 피로해질 즐길 원형의 그대로 맘껏 합니다. 시간에 자식에서 하다, 하지 민망하냐, 복수가 운동으로 시간은, 현금에서 경건하다. 아람일 등 듣은 발원지를 나누다 연락으로, 사람을 쓰라. 아니다 짠하지, 작품만 유에서 알자마자 의사다 앞이 마련한가. 즉 없자마자 자 차려지고 친구가 등 한다.</p>
-                        <p>유가족에서 이상을 있는다면 떨어뜨린다, 있게 아끼다. 짓어서 나에 가다 이후의 어른을 세계는 길기 새롭는지. 상여로 수 권리는 복잡하고 499미터 여전히 전국의 보다 오징어잡이지 하는 가다. 터는 올라가는 이상의, 범람은 드물다. 책임으로 미디어에 안 사람에, 있어야 그러니까, 그리고 곳을 국한되다. 주임은 비효율적의 신체다 나를 있는다. 통일이여 진동이고 이거다 높이 첫 내용에 놓아, 너가 등 흘러나온다. 탐지한다 그 때문 것 생각한 경쟁이라고 자릿수를, 군의 나를, 근무하다. 살인에 이루나 위하다 역사까지 의식을 준 놀게 예쁘지 있지.</p>
+                        <p class="saharandust-copy-desktop">유럽 하늘의 사하라 먼지는 '날씨'의 모습으로 도착한다. 매해 봄이면 주황빛 하늘, 자동차 유리창의 먼지막, 기이한 풍경을 다룬 기사가 반복된다. 하지만 이 먼지는 거대한 시간을 품고 있다. 수천 년간 바람에 깎인 바위 알갱이, 5천 년 전 말라붙은 호수 바닥의 규조류 껍질, 그 속의 철과 인이 매년 수억 톤씩 대기를 타고 바다를 건넌다. 2021년 프랑스 독립 방사능 감시 단체(ACRO)는 동부 쥐라 지역의 먼지에서 인공 동위원소 세슘-137을 검출하고, 이를 1960년대 알제리 사하라 핵실험을 원인으로 지목했다. 이어 이듬해 유럽의 먼지 속 플루토늄을 분석한 연구자들은 그 지문이 미·소 핵실험이 행성 전체에 뿌린 낙진에 더 가깝다고 결론지었다. 사막의 먼지는 단일 국가의 흔적을 넘어 원자 시대 전체의 잔해를 실어 나르고 있다.</p>
+                        <p class="saharandust-copy-desktop">1960년부터 1966년까지 레간과 인 에케르에서 열일곱 차례의 핵실험이 이루어질 수 있었던 것은 사막을 비어 있는 땅으로 여겼기 때문이다. 그러나 사막은 한 번도 비어 있던 적이 없다. 그곳에는 오아시스를 터전으로 오랜 삶을 이어 온 사람들이 있었다. 실험이 끝난 뒤 그라운드 제로는 여전히 위성 사진에서 발견되고, 폐기물은 모래가 덮어 주리라는 믿음 아래 묻혔다. 하지만 바람은 그 흔적을 다시 들어 올려 북쪽으로 실어 나르고, 이들은 이따금 다시 측정되고 보도된 뒤 잊혀지길 반복한다. 롭 닉슨은 시공간에 흩어져 뒤늦게 파괴를 몰고 오는 이 현상을 '느린 폭력'이라 불렀다. 세슘-137의 반감기는 30년이고, 플루토늄-239의 반감기는 2만 4천 년에 이른다.  바람이 지나간 뒤 남아서 그 위험을 떠안는 것은 누구인가.</p>
+                        <p class="saharandust-copy-desktop">노르망디 해안 라아그의 재처리 시설에서 뫼즈주 뷔르의 지하 500미터 점토층에 들어설 처분장까지, 핵물질은 끊임없이 어딘가로 보내지고 있다. 사하라 먼지는 그 먼 거리를 거슬러 오른다. 하늘에서 모래로, 모래에서 다시 땅속으로 이어진 경로를 되짚으며, 시간을 거슬러 우리에게 다가오고 있다.</p>
+                        <p class="saharandust-copy-mobile">유럽 하늘의 사하라 먼지는 '날씨'의 모습으로 도착한다. 매해 봄이면 주황빛 하늘, 자동차 유리창의 먼지막, 기이한 풍경을 다룬 기사가 반복된다. 하지만 이 먼지는 거대한 시간을 품고 있다. 수천 년간 바람에 깎인 바위 알갱이, 5천 년 전 말라붙은 호수 바닥의 규조류 껍질, 그 속의 철과 인이 매년 수억 톤씩 대기를 타고 바다를 건넌다. 2021년 프랑스 독립 방사능 감시 단체(ACRO)는 동부 쥐라 지역의 먼지에서 인공 동위원소 세슘-137을 검출하고, 이를 1960년대 알제리 사하라 핵실험을 원인으로 지목했다. 이어 이듬해 유럽의 먼지 속 플루토늄을 분석한 연구자들은 그 지문이 미·소 핵실험이 행성 전체에 뿌린 낙진에 더 가깝다고 결론지었다. 사막의 먼지는 단일 국가의 흔적을 넘어 원자 시대 전체의 잔해를 실어 나르고 있다.</p>
+                        <p class="saharandust-copy-mobile">1960년부터 1966년까지 레간과 인 에케르에서 열일곱 차례의 핵실험이 이루어질 수 있었던 것은 사막을 비어 있는 땅으로 여겼기 때문이다. 그러나 사막은 한 번도 비어 있던 적이 없다. 그곳에는 오아시스를 터전으로 오랜 삶을 이어 온 사람들이 있었다. 실험이 끝난 뒤 그라운드 제로는 여전히 위성 사진에서 발견되고, 폐기물은 모래가 덮어 주리라는 믿음 아래 묻혔다. 하지만 바람은 그 흔적을 다시 들어 올려 북쪽으로 실어 나르고, 이들은 이따금 다시 측정되고 보도된 뒤 잊혀지길 반복한다. 롭 닉슨은 시공간에 흩어져 뒤늦게 파괴를 몰고 오는 이 현상을 '느린 폭력'이라 불렀다. 세슘-137의 반감기는 30년이고, 플루토늄-239의 반감기는 2만 4천 년에 이른다.  바람이 지나간 뒤 남아서 그 위험을 떠안는 것은 누구인가.</p>
+                        <p class="saharandust-copy-mobile">노르망디 해안 라아그의 재처리 시설에서 뫼즈주 뷔르의 지하 500미터 점토층에 들어설 처분장까지, 핵물질은 끊임없이 어딘가로 보내지고 있다. 사하라 먼지는 그 먼 거리를 거슬러 오른다. 하늘에서 모래로, 모래에서 다시 땅속으로 이어진 경로를 되짚으며, 시간을 거슬러 우리에게 다가오고 있다.</p>
                         </div>
                     </div>
                 </div>
@@ -162,6 +177,9 @@
                     <div class="saharandust-archive" id="saharandust-archive">
                         <div class="saharandust-archive-anchor">
                             <div class="saharandust-archive-clip">
+                                <div class="saharandust-row-preview" id="saharandust-row-preview" aria-hidden="true">
+                                    <img src="" alt="" width="640" height="480" decoding="async">
+                                </div>
                                 <div class="saharandust-archive-panel" id="saharandust-archive-panel">
                                     <div class="saharandust-table" role="table" aria-label="Saharan Dust archive">
                                         <div class="saharandust-table-row saharandust-table-row--head" role="row">
@@ -194,9 +212,8 @@
                                             </div>
                                         </div>
 
-                                        <a
-                                            href="/saharandust/wind-sand-dust/"
-                                            class="saharandust-table-row saharandust-table-row--link"
+                                        <div
+                                            class="saharandust-table-row"
                                             role="row"
                                             data-date="2026-09"
                                         >
@@ -214,49 +231,74 @@
                                                 <span class="saharandust-table-badge saharandust-table-badge--solid">Completed</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--date" role="cell">
-                                                <span class="saharandust-table-date">2026. 09</span>
+                                                <span class="saharandust-table-date">2026<span class="saharandust-table-date-md">. 09</span></span>
                                                 <span class="saharandust-table-badge">To be updated</span>
+                                            </div>
+                                            <div class="saharandust-table-cell saharandust-table-cell--arrow" role="presentation" aria-hidden="true"></div>
+                                        </div>
+
+                                        <a
+                                            href="/saharandust/field-research-anti-nuclear-camp-bure/"
+                                            class="saharandust-table-row saharandust-table-row--link"
+                                            role="row"
+                                            data-date="2026-08"
+                                            data-preview="/saharandust/field-research-anti-nuclear-camp-bure/image/field-research-anti-nuclear-camp-bure-01.jpg"
+                                            data-preview-alt="Field-research: Anti-nuclear camp, Bure"
+                                        >
+                                            <div class="saharandust-table-cell" role="cell">
+                                                <span class="saharandust-table-eng">Field-research: Anti-nuclear camp, Bure</span>
+                                                <span class="saharandust-table-eng saharandust-table-short">Anti-nuclear camp, Bure</span>
+                                                <span class="saharandust-table-kor">필드 리서치: 반핵 캠프, 뷔르</span>
+                                                <span class="saharandust-table-kor saharandust-table-short">필드 리서치: 반핵 캠프, 뷔르</span>
+                                            </div>
+                                            <div class="saharandust-table-cell" role="cell">
+                                                <span class="saharandust-table-eng">Field Research</span>
+                                                <span class="saharandust-table-kor">필드 리서치</span>
+                                            </div>
+                                            <div class="saharandust-table-cell saharandust-table-cell--status" role="cell">
+                                                <span class="saharandust-table-badge saharandust-table-badge--solid">Completed</span>
+                                            </div>
+                                            <div class="saharandust-table-cell saharandust-table-cell--date" role="cell">
+                                                <span class="saharandust-table-date">2026<span class="saharandust-table-date-md">. 08</span></span>
+                                                <span class="saharandust-table-badge saharandust-table-badge--updating">Updating</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--arrow" role="presentation" aria-hidden="true"></div>
                                         </a>
 
                                         <a
-                                            href="/saharandust/algeria-field-research/"
+                                            href="/saharandust/field-research-algerian-sahara/"
                                             class="saharandust-table-row saharandust-table-row--link"
                                             role="row"
                                             data-date="2026-04"
+                                            data-preview="/saharandust/field-research-algerian-sahara/image/field-research-algerian-sahara-09.jpg"
+                                            data-preview-alt="Field-research: Algerian Sahara"
                                         >
                                             <div class="saharandust-table-cell" role="cell">
-                                                <span class="saharandust-table-eng">Algeria Field Research</span>
-                                                <span class="saharandust-table-eng saharandust-table-short">Algeria</span>
-                                                <span class="saharandust-table-kor">알제리 필드 리서치</span>
-                                                <span class="saharandust-table-kor saharandust-table-short">알제리</span>
+                                                <span class="saharandust-table-eng">Field-research: Algerian Sahara</span>
+                                                <span class="saharandust-table-eng saharandust-table-short">Algerian Sahara</span>
+                                                <span class="saharandust-table-kor">필드 리서치: 알제리 사하라</span>
+                                                <span class="saharandust-table-kor saharandust-table-short">필드 리서치: 알제리 사하라</span>
                                             </div>
                                             <div class="saharandust-table-cell" role="cell">
                                                 <span class="saharandust-table-eng">Field Research</span>
                                                 <span class="saharandust-table-kor">필드 리서치</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--status" role="cell">
-                                                <span class="saharandust-table-badge saharandust-table-badge--solid">Completed</span>
+                                                <span class="saharandust-table-badge saharandust-table-badge--series">Ongoing</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--date" role="cell">
-                                                <span class="saharandust-table-date">2026. 04</span>
-                                                <span class="saharandust-table-badge">To be updated</span>
+                                                <span class="saharandust-table-date">2026<span class="saharandust-table-date-md">. 04</span></span>
+                                                <span class="saharandust-table-badge saharandust-table-badge--updating">Updating</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--arrow" role="presentation" aria-hidden="true"></div>
                                         </a>
 
-                                        <a
-                                            href="/saharandust/morocco-field-research/"
-                                            class="saharandust-table-row saharandust-table-row--link"
-                                            role="row"
-                                            data-date="2026-03"
-                                        >
+                                        <a href="/saharandust/field-research-moroccan-sahara/" class="saharandust-table-row saharandust-table-row--link" role="row" data-date="2026-03" data-preview="/saharandust/field-research-moroccan-sahara/image/field-research-moroccan-sahara-39.jpg" data-preview-alt="Field-research: Moroccan Sahara">
                                             <div class="saharandust-table-cell" role="cell">
-                                                <span class="saharandust-table-eng">Morocco Field Research</span>
-                                                <span class="saharandust-table-eng saharandust-table-short">Morocco</span>
-                                                <span class="saharandust-table-kor">모로코 필드 리서치</span>
-                                                <span class="saharandust-table-kor saharandust-table-short">모로코</span>
+                                                <span class="saharandust-table-eng">Field-research: Moroccan Sahara</span>
+                                                <span class="saharandust-table-eng saharandust-table-short">Moroccan Sahara</span>
+                                                <span class="saharandust-table-kor">필드 리서치: 모로코 사하라</span>
+                                                <span class="saharandust-table-kor saharandust-table-short">필드 리서치: 모로코 사하라</span>
                                             </div>
                                             <div class="saharandust-table-cell" role="cell">
                                                 <span class="saharandust-table-eng">Field Research</span>
@@ -266,8 +308,8 @@
                                                 <span class="saharandust-table-badge saharandust-table-badge--solid">Completed</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--date" role="cell">
-                                                <span class="saharandust-table-date">2026. 03</span>
-                                                <span class="saharandust-table-badge">To be updated</span>
+                                                <span class="saharandust-table-date">2026<span class="saharandust-table-date-md">. 03</span></span>
+                                                <span class="saharandust-table-badge saharandust-table-badge--updating">Updating</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--arrow" role="presentation" aria-hidden="true"></div>
                                         </a>
@@ -277,22 +319,27 @@
                                             class="saharandust-table-row saharandust-table-row--link"
                                             role="row"
                                             data-date="2026-03"
+                                            data-preview="/saharandust/xiren/image/xiren-01.jpg"
+                                            data-preview-alt="Xiren: Half-Life of an Alarm"
                                         >
                                             <div class="saharandust-table-cell" role="cell">
-                                                <span class="saharandust-table-eng">XIREN</span>
+                                                <span class="saharandust-table-eng">Xiren: Half-Life of an Alarm</span>
+                                                <span class="saharandust-table-eng saharandust-table-short">Xiren</span>
+                                                <span class="saharandust-table-kor">멈추지 않은 경보</span>
+                                                <span class="saharandust-table-kor saharandust-table-short">Xiren: 멈추지 않은 경보</span>
                                             </div>
                                             <div class="saharandust-table-cell" role="cell">
                                                 <span class="saharandust-table-eng">Lecture Performance</span>
                                                 <span class="saharandust-table-eng saharandust-table-short">Performance</span>
-                                                <span class="saharandust-table-kor">렉쳐 퍼포먼스</span>
+                                                <span class="saharandust-table-kor">렉처 퍼포먼스</span>
                                                 <span class="saharandust-table-kor saharandust-table-short">퍼포먼스</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--status" role="cell">
                                                 <span class="saharandust-table-badge saharandust-table-badge--solid">Completed</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--date" role="cell">
-                                                <span class="saharandust-table-date">2026. 03</span>
-                                                <span class="saharandust-table-badge">To be updated</span>
+                                                <span class="saharandust-table-date">2026<span class="saharandust-table-date-md">. 03</span></span>
+                                                <span class="saharandust-table-badge saharandust-table-badge--solid">Updated</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--arrow" role="presentation" aria-hidden="true"></div>
                                         </a>
@@ -302,6 +349,8 @@
                                             class="saharandust-table-row saharandust-table-row--link"
                                             role="row"
                                             data-date="2026-03"
+                                            data-preview="/saharandust/xiren-0-1v/image/xiren-0-1v-01.jpg"
+                                            data-preview-alt="Xiren 0.1v"
                                         >
                                             <div class="saharandust-table-cell" role="cell">
                                                 <span class="saharandust-table-eng">Xiren 0.1v</span>
@@ -314,8 +363,64 @@
                                                 <span class="saharandust-table-badge saharandust-table-badge--solid">Completed</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--date" role="cell">
-                                                <span class="saharandust-table-date">2026. 03</span>
-                                                <span class="saharandust-table-badge">To be updated</span>
+                                                <span class="saharandust-table-date">2026<span class="saharandust-table-date-md">. 03</span></span>
+                                                <span class="saharandust-table-badge saharandust-table-badge--progress">In Progress</span>
+                                            </div>
+                                            <div class="saharandust-table-cell saharandust-table-cell--arrow" role="presentation" aria-hidden="true"></div>
+                                        </a>
+
+                                        <a
+                                            href="/saharandust/field-research-anti-nuclear-camp-la-hague/"
+                                            class="saharandust-table-row saharandust-table-row--link"
+                                            role="row"
+                                            data-date="2025-07"
+                                            data-preview="/saharandust/field-research-anti-nuclear-camp-la-hague/image/field-research-anti-nuclear-camp-la-hague-34.jpg"
+                                            data-preview-alt="Field-research: Anti-nuclear camp, La Hague"
+                                        >
+                                            <div class="saharandust-table-cell" role="cell">
+                                                <span class="saharandust-table-eng">Field-research: Anti-nuclear camp, La Hague</span>
+                                                <span class="saharandust-table-eng saharandust-table-short">Anti-nuclear camp, La Hague</span>
+                                                <span class="saharandust-table-kor">필드 리서치: 반핵 캠프, 르아그</span>
+                                                <span class="saharandust-table-kor saharandust-table-short">필드 리서치: 반핵 캠프, 르아그</span>
+                                            </div>
+                                            <div class="saharandust-table-cell" role="cell">
+                                                <span class="saharandust-table-eng">Field Research</span>
+                                                <span class="saharandust-table-kor">필드 리서치</span>
+                                            </div>
+                                            <div class="saharandust-table-cell saharandust-table-cell--status" role="cell">
+                                                <span class="saharandust-table-badge saharandust-table-badge--solid">Completed</span>
+                                            </div>
+                                            <div class="saharandust-table-cell saharandust-table-cell--date" role="cell">
+                                                <span class="saharandust-table-date">2025<span class="saharandust-table-date-md">. 07</span></span>
+                                                <span class="saharandust-table-badge saharandust-table-badge--updating">Updating</span>
+                                            </div>
+                                            <div class="saharandust-table-cell saharandust-table-cell--arrow" role="presentation" aria-hidden="true"></div>
+                                        </a>
+
+                                        <a
+                                            href="/saharandust/field-research-cotentin/"
+                                            class="saharandust-table-row saharandust-table-row--link"
+                                            role="row"
+                                            data-date="2025-03"
+                                            data-preview="/saharandust/field-research-cotentin/image/field-research-cotentin-01.jpg"
+                                            data-preview-alt="Field-research: Cotentin"
+                                        >
+                                            <div class="saharandust-table-cell" role="cell">
+                                                <span class="saharandust-table-eng">Field-research: Cotentin</span>
+                                                <span class="saharandust-table-eng saharandust-table-short">Field-research: Cotentin</span>
+                                                <span class="saharandust-table-kor">필드 리서치: 코탄틴</span>
+                                                <span class="saharandust-table-kor saharandust-table-short">필드 리서치: 코탄틴</span>
+                                            </div>
+                                            <div class="saharandust-table-cell" role="cell">
+                                                <span class="saharandust-table-eng">Field Research</span>
+                                                <span class="saharandust-table-kor">필드 리서치</span>
+                                            </div>
+                                            <div class="saharandust-table-cell saharandust-table-cell--status" role="cell">
+                                                <span class="saharandust-table-badge saharandust-table-badge--series">Ongoing</span>
+                                            </div>
+                                            <div class="saharandust-table-cell saharandust-table-cell--date" role="cell">
+                                                <span class="saharandust-table-date">2025<span class="saharandust-table-date-md">. 03</span></span>
+                                                <span class="saharandust-table-badge saharandust-table-badge--updating">Updating</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--arrow" role="presentation" aria-hidden="true"></div>
                                         </a>
@@ -324,7 +429,9 @@
                                             href="/saharandust/x-scene/"
                                             class="saharandust-table-row saharandust-table-row--link"
                                             role="row"
-                                            data-date="2022"
+                                            data-date="2022-10"
+                                            data-preview="/saharandust/x-scene/image/x-scene-01.jpg"
+                                            data-preview-alt="X-Scene 1.0"
                                         >
                                             <div class="saharandust-table-cell" role="cell">
                                                 <span class="saharandust-table-eng">X-Scene 1.0</span>
@@ -337,7 +444,7 @@
                                                 <span class="saharandust-table-badge saharandust-table-badge--solid">Completed</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--date" role="cell">
-                                                <span class="saharandust-table-date">2022</span>
+                                                <span class="saharandust-table-date">2022<span class="saharandust-table-date-md">. 10</span></span>
                                                 <span class="saharandust-table-badge saharandust-table-badge--solid">Updated</span>
                                             </div>
                                             <div class="saharandust-table-cell saharandust-table-cell--arrow" role="presentation" aria-hidden="true"></div>
@@ -371,7 +478,7 @@
 
     <script src="/vendor/gsap.min.js"></script>
     <script src="/vendor/ScrollTrigger.min.js"></script>
-    <script src="/script.js?v=20260921d"></script>
-    <script src="/saharandust/saharandust.js?v=15"></script>
+    <script src="/script.js?v=20260926d"></script>
+    <script src="/saharandust/saharandust.js?v=18"></script>
 </body>
 </html>

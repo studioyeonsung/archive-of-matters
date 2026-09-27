@@ -12,11 +12,25 @@
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://archiveofmatters.com/news/">
     <link rel="icon" type="image/svg+xml" href="/assets/home-icon-copper.svg">
-    <script src="/boot.js?v=3"></script>
-    <link rel="stylesheet" href="/style.css?v=20260920e">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <script src="/boot.js?v=6"></script>
+    <link rel="stylesheet" href="/style.css?v=20260926k">
 
 </head>
 <body class="page-news news-lang-eng">
+    <script>
+    (function () {
+        try {
+            var lang = localStorage.getItem('aom-lang') || sessionStorage.getItem('aom-lang');
+            if (lang !== 'kor' && lang !== 'eng') return;
+            document.body.classList.remove('news-lang-eng', 'news-lang-kor');
+            document.body.classList.add('news-lang-' + lang);
+            document.documentElement.classList.remove('aom-lang-eng', 'aom-lang-kor');
+            document.documentElement.classList.add('aom-lang-' + lang);
+            document.documentElement.setAttribute('data-aom-lang', lang);
+        } catch (err) {}
+    })();
+    </script>
     <!-- Mobile placeholder: shown only on small screens -->
     <div class="mobile-placeholder" aria-live="polite">
         <div class="mobile-placeholder-eng-block">
@@ -51,14 +65,14 @@
         </div>
         <div class="header-right">
             <div class="header-top-line">
-                <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
+                <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-1">아카이브</a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-2">오브</a>
                 <a href="/" class="nav-text nav-kor nav-kor-word-3">매터(즈)</a>
             </div>
             <div class="dotted-line-right"></div>
             <div class="header-bottom-line">
-                <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
+                <a href="/weather/" class="header-matter-link" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
                 <span class="nav-text header-right-text-1"><a href="/news/">NEWS</a></span>
                 <img src="/assets/home-icon-arrow.svg" alt="" class="header-icon nav-icon header-right-icon-2">
                 <span class="nav-text header-right-text-2"><a href="/contact/">CONTACT</a></span>
@@ -149,61 +163,61 @@
             <div class="about-content about-content-desktop">
                 <div class="about-col about-col-eng">
                     <article class="news-entry">
-                        <p class="news-date">01 Mar 2026</p>
-                        <p class="news-body"><em>Archive of Matter(s)</em> landing page temporarily open at archiveofmatters.com</p>
+                        <p class="news-date">27 Mar–10 April 2026, Morocco</p>
+                        <p class="news-body">Yeon Sung participates in The Ansible Institute, Moroccan Sahara — as part of <em>Xiren</em> field research and recipient of the Brian Shinewald Memorial Fellowship</p>
                         <div class="news-tags">
-                            <span class="news-tag news-tag--black">Archive of Matter(s)</span>
+                            <span class="news-tag">Yeon Sung</span>
+                            <span class="news-tag">Saharan Dust</span>
+                            <span class="news-tag">Xiren</span>
+                            <span class="news-tag">Residency</span>
+                            <span class="news-tag">Field Research</span>
                         </div>
                     </article>
                     <article class="news-entry">
                         <p class="news-date">15 Mar 2026, Framer Framed, The Netherlands</p>
                         <p class="news-body">Yeon Sung presents Lecture Performance: <em>Xiren</em> at Framer Framed, Amsterdam — as part of <em>Roundtable: Nuclear Histories and Protest Movements</em>, in collaboration with Sonic Acts <a href="https://sonicacts.com/biennial/biennial-2026/programme/nuclear-histories-and-protest-movements" target="_blank" rel="noopener noreferrer" class="news-body-link" aria-label="Sonic Acts (external link)"><img src="/assets/icon-link.svg" alt="" class="news-link-icon" aria-hidden="true"></a></p>
                         <div class="news-tags">
-                            <span class="news-tag news-tag--purple">Yeon Sung</span>
-                            <span class="news-tag news-tag--lime">Saharan Dust</span>
-                            <span class="news-tag news-tag--xiren">Xiren</span>
-                            <span class="news-tag news-tag--grey">Performance</span>
+                            <span class="news-tag">Yeon Sung</span>
+                            <span class="news-tag">Saharan Dust</span>
+                            <span class="news-tag">Xiren</span>
+                            <span class="news-tag">Performance</span>
                         </div>
                     </article>
                     <article class="news-entry">
-                        <p class="news-date">27 Mar–10 April 2026, Morocco</p>
-                        <p class="news-body">Yeon Sung participates in The Ansible Institute, Moroccan Sahara — as part of <em>Xiren</em> field research and recipient of the Brian Shinewald Memorial Fellowship</p>
+                        <p class="news-date">01 Mar 2026</p>
+                        <p class="news-body"><em>Archive of Matter(s)</em> landing page temporarily open at archiveofmatters.com</p>
                         <div class="news-tags">
-                            <span class="news-tag news-tag--purple">Yeon Sung</span>
-                            <span class="news-tag news-tag--lime">Saharan Dust</span>
-                            <span class="news-tag news-tag--xiren">Xiren</span>
-                            <span class="news-tag news-tag--pink">Residency</span>
-                            <span class="news-tag news-tag--sky">Field Research</span>
+                            <span class="news-tag">Archive of Matter(s)</span>
                         </div>
                     </article>
                 </div>
                 <div class="about-col about-col-kor">
                     <article class="news-entry">
-                        <p class="news-date">2026년 3월 1일</p>
-                        <p class="news-body">아카이브 오브 매터(즈) archiveofmatters.com 랜딩 페이지 임시 오픈</p>
+                        <p class="news-date">2026년 3월 27일–4월 10일, 모로코</p>
+                        <p class="news-body">연성, 모로코 사하라 사막, <em>Xiren</em> 필드 리서치 위해 The Ansible Institute 레지던시 참여 — Brian Shinewald Memorial Fellowship 선정</p>
                         <div class="news-tags">
-                            <span class="news-tag news-tag--black">아카이브 오브 매터(즈)</span>
+                            <span class="news-tag">연성</span>
+                            <span class="news-tag">사하라 먼지</span>
+                            <span class="news-tag">Xiren</span>
+                            <span class="news-tag">레지던시</span>
+                            <span class="news-tag">필드 리서치</span>
                         </div>
                     </article>
                     <article class="news-entry">
                         <p class="news-date">2026년 3월 15일, Framer Framed, 네덜란드</p>
-                        <p class="news-body">연성, 암스테르담 Framer Framed에서 렉처 퍼포먼스 <em>Xiren</em> 발표 — Sonic Acts와 협력, <em>Roundtable: Nuclear Histories and Protest Movements</em> 퍼블릭 프로그램 <a href="https://sonicacts.com/biennial/biennial-2026/programme/nuclear-histories-and-protest-movements" target="_blank" rel="noopener noreferrer" class="news-body-link" aria-label="Sonic Acts (외부 링크)"><img src="/assets/icon-link.svg" alt="" class="news-link-icon" aria-hidden="true"></a></p>
+                        <p class="news-body">연성, 암스테르담 Framer Framed에서 렉처 퍼포먼스 《Xiren》 발표 — Sonic Acts와 협력, <em>Roundtable: Nuclear Histories and Protest Movements</em> 퍼블릭 프로그램 <a href="https://sonicacts.com/biennial/biennial-2026/programme/nuclear-histories-and-protest-movements" target="_blank" rel="noopener noreferrer" class="news-body-link" aria-label="Sonic Acts (외부 링크)"><img src="/assets/icon-link.svg" alt="" class="news-link-icon" aria-hidden="true"></a></p>
                         <div class="news-tags">
-                            <span class="news-tag news-tag--purple">연성</span>
-                            <span class="news-tag news-tag--lime">사하라 먼지</span>
-                            <span class="news-tag news-tag--xiren">Xiren</span>
-                            <span class="news-tag news-tag--grey">퍼포먼스</span>
+                            <span class="news-tag">연성</span>
+                            <span class="news-tag">사하라 먼지</span>
+                            <span class="news-tag">Xiren</span>
+                            <span class="news-tag">퍼포먼스</span>
                         </div>
                     </article>
                     <article class="news-entry">
-                        <p class="news-date">2026년 3월 27일–4월 10일, 모로코</p>
-                        <p class="news-body">연성, 모로코 사하라 사막, <em>Xiren</em> 필드 리서치 위해 The Ansible Institute 레지던시 참여 — Brian Shinewald Memorial Fellowship 선정</p>
+                        <p class="news-date">2026년 3월 1일</p>
+                        <p class="news-body">아카이브 오브 매터(즈) archiveofmatters.com 랜딩 페이지 임시 오픈</p>
                         <div class="news-tags">
-                            <span class="news-tag news-tag--purple">연성</span>
-                            <span class="news-tag news-tag--lime">사하라 먼지</span>
-                            <span class="news-tag news-tag--xiren">Xiren</span>
-                            <span class="news-tag news-tag--pink">레지던시</span>
-                            <span class="news-tag news-tag--sky">필드 리서치</span>
+                            <span class="news-tag">아카이브 오브 매터(즈)</span>
                         </div>
                     </article>
                 </div>
@@ -226,61 +240,61 @@
                     <div class="about-text-track">
                     <div class="about-col about-col-eng about-col-single">
                         <article class="news-entry">
-                            <p class="news-date">01 Mar 2026</p>
-                            <p class="news-body"><em>Archive of Matter(s)</em> landing page temporarily open at archiveofmatters.com</p>
+                            <p class="news-date">27 Mar–10 April 2026, Morocco</p>
+                            <p class="news-body">Yeon Sung participates in The Ansible Institute, Moroccan Sahara — as part of <em>Xiren</em> field research and recipient of the Brian Shinewald Memorial Fellowship</p>
                             <div class="news-tags">
-                                <span class="news-tag news-tag--black">Archive of Matter(s)</span>
+                                <span class="news-tag">Yeon Sung</span>
+                                <span class="news-tag">Saharan Dust</span>
+                                <span class="news-tag">Xiren</span>
+                                <span class="news-tag">Residency</span>
+                                <span class="news-tag">Field Research</span>
                             </div>
                         </article>
                         <article class="news-entry">
                             <p class="news-date">15 Mar 2026, Framer Framed, The Netherlands</p>
                             <p class="news-body">Yeon Sung presents Lecture Performance: <em>Xiren</em> at Framer Framed, Amsterdam — as part of <em>Roundtable: Nuclear Histories and Protest Movements</em>, in collaboration with Sonic Acts <a href="https://sonicacts.com/biennial/biennial-2026/programme/nuclear-histories-and-protest-movements" target="_blank" rel="noopener noreferrer" class="news-body-link" aria-label="Sonic Acts (external link)"><img src="/assets/icon-link.svg" alt="" class="news-link-icon" aria-hidden="true"></a></p>
                             <div class="news-tags">
-                                <span class="news-tag news-tag--purple">Yeon Sung</span>
-                                <span class="news-tag news-tag--lime">Saharan Dust</span>
-                                <span class="news-tag news-tag--xiren">Xiren</span>
-                                <span class="news-tag news-tag--grey">Performance</span>
+                                <span class="news-tag">Yeon Sung</span>
+                                <span class="news-tag">Saharan Dust</span>
+                                <span class="news-tag">Xiren</span>
+                                <span class="news-tag">Performance</span>
                             </div>
                         </article>
                         <article class="news-entry">
-                            <p class="news-date">27 Mar–10 April 2026, Morocco</p>
-                            <p class="news-body">Yeon Sung participates in The Ansible Institute, Moroccan Sahara — as part of <em>Xiren</em> field research and recipient of the Brian Shinewald Memorial Fellowship</p>
+                            <p class="news-date">01 Mar 2026</p>
+                            <p class="news-body"><em>Archive of Matter(s)</em> landing page temporarily open at archiveofmatters.com</p>
                             <div class="news-tags">
-                                <span class="news-tag news-tag--purple">Yeon Sung</span>
-                                <span class="news-tag news-tag--lime">Saharan Dust</span>
-                                <span class="news-tag news-tag--xiren">Xiren</span>
-                                <span class="news-tag news-tag--pink">Residency</span>
-                                <span class="news-tag news-tag--sky">Field Research</span>
+                                <span class="news-tag">Archive of Matter(s)</span>
                             </div>
                         </article>
                     </div>
                     <div class="about-col about-col-kor about-col-single">
                         <article class="news-entry">
-                            <p class="news-date">2026년 3월 1일</p>
-                            <p class="news-body">아카이브 오브 매터(즈) archiveofmatters.com 랜딩 페이지 임시 오픈</p>
+                            <p class="news-date">2026년 3월 27일–4월 10일, 모로코</p>
+                            <p class="news-body">연성, 모로코 사하라 사막, <em>Xiren</em> 필드 리서치 위해 The Ansible Institute 레지던시 참여 — Brian Shinewald Memorial Fellowship 선정</p>
                             <div class="news-tags">
-                                <span class="news-tag news-tag--black">아카이브 오브 매터(즈)</span>
+                                <span class="news-tag">연성</span>
+                                <span class="news-tag">사하라 먼지</span>
+                                <span class="news-tag">Xiren</span>
+                                <span class="news-tag">레지던시</span>
+                                <span class="news-tag">필드 리서치</span>
                             </div>
                         </article>
                         <article class="news-entry">
                             <p class="news-date">2026년 3월 15일, Framer Framed, 네덜란드</p>
-                            <p class="news-body">연성, 암스테르담 Framer Framed에서 렉처 퍼포먼스 <em>Xiren</em> 발표 — Sonic Acts와 협력, <em>Roundtable: Nuclear Histories and Protest Movements</em> 퍼블릭 프로그램 <a href="https://sonicacts.com/biennial/biennial-2026/programme/nuclear-histories-and-protest-movements" target="_blank" rel="noopener noreferrer" class="news-body-link" aria-label="Sonic Acts (외부 링크)"><img src="/assets/icon-link.svg" alt="" class="news-link-icon" aria-hidden="true"></a></p>
+                            <p class="news-body">연성, 암스테르담 Framer Framed에서 렉처 퍼포먼스 《Xiren》 발표 — Sonic Acts와 협력, <em>Roundtable: Nuclear Histories and Protest Movements</em> 퍼블릭 프로그램 <a href="https://sonicacts.com/biennial/biennial-2026/programme/nuclear-histories-and-protest-movements" target="_blank" rel="noopener noreferrer" class="news-body-link" aria-label="Sonic Acts (외부 링크)"><img src="/assets/icon-link.svg" alt="" class="news-link-icon" aria-hidden="true"></a></p>
                             <div class="news-tags">
-                                <span class="news-tag news-tag--purple">연성</span>
-                                <span class="news-tag news-tag--lime">사하라 먼지</span>
-                                <span class="news-tag news-tag--xiren">Xiren</span>
-                                <span class="news-tag news-tag--grey">퍼포먼스</span>
+                                <span class="news-tag">연성</span>
+                                <span class="news-tag">사하라 먼지</span>
+                                <span class="news-tag">Xiren</span>
+                                <span class="news-tag">퍼포먼스</span>
                             </div>
                         </article>
                         <article class="news-entry">
-                            <p class="news-date">2026년 3월 27일–4월 10일, 모로코</p>
-                            <p class="news-body">연성, 모로코 사하라 사막, <em>Xiren</em> 필드 리서치 위해 The Ansible Institute 레지던시 참여 — Brian Shinewald Memorial Fellowship 선정</p>
+                            <p class="news-date">2026년 3월 1일</p>
+                            <p class="news-body">아카이브 오브 매터(즈) archiveofmatters.com 랜딩 페이지 임시 오픈</p>
                             <div class="news-tags">
-                                <span class="news-tag news-tag--purple">연성</span>
-                                <span class="news-tag news-tag--lime">사하라 먼지</span>
-                                <span class="news-tag news-tag--xiren">Xiren</span>
-                                <span class="news-tag news-tag--pink">레지던시</span>
-                                <span class="news-tag news-tag--sky">필드 리서치</span>
+                                <span class="news-tag">아카이브 오브 매터(즈)</span>
                             </div>
                         </article>
                     </div>
@@ -310,7 +324,7 @@
     </div>
     <script src="/vendor/gsap.min.js"></script>
     <script src="/vendor/ScrollTrigger.min.js"></script>
-    <script src="/mobile-viewport-lock.js?v=20260812c"></script>
-    <script src="/script.js?v=20260921d"></script>
+    <script src="/mobile-viewport-lock.js?v=20260925a"></script>
+    <script src="/script.js?v=20260926d"></script>
 </body>
 </html>

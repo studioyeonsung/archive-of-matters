@@ -1,0 +1,485 @@
+/* Field-research template fonts — used only on this layout */
+
+@font-face {
+    font-family: "Victor Mono";
+    src:
+        url("/fonts/victor-mono/VictorMono-Medium.woff2") format("woff2"),
+        url("/fonts/victor-mono/VictorMono-Medium.woff") format("woff"),
+        url("/fonts/victor-mono/VictorMono-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Victor Mono";
+    src:
+        url("/fonts/victor-mono/VictorMono-Bold.woff2") format("woff2"),
+        url("/fonts/victor-mono/VictorMono-Bold.woff") format("woff"),
+        url("/fonts/victor-mono/VictorMono-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    src: url("/fonts/roboto-mono/RobotoMono-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    src: url("/fonts/roboto-mono/RobotoMono-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    src: url("/fonts/roboto-mono/RobotoMono-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    src: url("/fonts/roboto-mono/RobotoMono-MediumItalic.ttf") format("truetype");
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    src: url("/fonts/roboto-mono/RobotoMono-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    src: url("/fonts/roboto-mono/RobotoMono-BoldItalic.ttf") format("truetype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+body.page-fr-maas {
+    --fr-frame-r: 48px;
+    --fr-col: min(52rem, calc(100vw - 7rem));
+    --fr-font-title: "Victor Mono", "Pretendard", sans-serif;
+    --fr-font-body: "Roboto Mono", "Pretendard", monospace;
+}
+
+body.page-fr-maas .ro-hero {
+    display: none;
+}
+
+body.page-fr-maas .ro-main {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 0 calc(var(--ro-footer-outer-h) + 48px);
+}
+
+.fr-main {
+    position: relative;
+    z-index: 1;
+    padding-bottom: calc(var(--ro-footer-outer-h, 44px) + 48px);
+}
+
+.fr-head {
+    width: var(--fr-col);
+    max-width: calc(100% - 4rem);
+    margin: 0 auto;
+    padding: calc(var(--ro-pad-top) + 40px) 0 3.8rem;
+    text-align: center;
+}
+
+.fr-head .ro-title {
+    margin: 0 auto 1.75rem;
+    font-family: var(--fr-font-title);
+    font-weight: 500;
+    font-style: normal;
+}
+
+body.page-fr-maas.page-rusty-odyssey--ko .fr-head .ro-title {
+    font-family: "parabolica", "neutronic-hangeul", "Victor Mono", "Pretendard", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.fr-head .ro-meta-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    margin: 0 0 1.05rem;
+    color: #111;
+}
+
+.fr-head .ro-tags {
+    justify-content: center;
+    margin: 0;
+}
+
+.fr-head .ro-status {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.44rem;
+    margin-top: 0.45rem;
+}
+
+.fr-flow {
+    width: var(--fr-col);
+    max-width: calc(100% - 4rem);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.fr-shot,
+.fr-video,
+.fr-pair,
+.fr-watch {
+    width: 100%;
+    margin: 2.4rem 0 0;
+}
+
+.fr-shot + .fr-shot,
+.fr-shot + .fr-pair,
+.fr-pair + .fr-shot,
+.fr-pair + .fr-pair {
+    margin-top: 1.2rem;
+}
+
+.fr-flow > :first-child {
+    margin-top: 0;
+}
+
+.fr-shot,
+.fr-video {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--fr-frame-r);
+    background: #111111;
+    aspect-ratio: 16 / 9;
+}
+
+.fr-shot img,
+.fr-video video {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -25%;
+    width: 150%;
+    max-width: none;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    object-fit: fill;
+    will-change: transform;
+    pointer-events: none;
+}
+
+.fr-shot.fr-shot--left img {
+    left: 0;
+}
+
+.fr-shot.is-portrait img,
+.fr-shot.is-tall img,
+.fr-shot--tall img,
+.fr-watch .fr-shot img {
+    left: 0;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    min-height: 0;
+    object-fit: fill;
+}
+
+.fr-shot.is-tall,
+.fr-shot--tall {
+    aspect-ratio: 16 / 8;
+}
+
+.fr-video video {
+    pointer-events: auto;
+}
+
+.fr-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    background: transparent;
+}
+
+.fr-pair .fr-shot {
+    margin: 0;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--fr-frame-r);
+}
+
+.fr-watch {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.fr-watch .fr-shot {
+    margin: 0;
+    aspect-ratio: 9 / 19.5;
+    border-radius: 22px;
+}
+
+.fr-caption {
+    margin: 0.55rem 0 0;
+    font-family: var(--fr-font-body);
+    font-size: calc(clamp(15.6px, 1.26vw, 18px) * 0.765);
+    font-style: italic;
+    line-height: 1.45;
+    color: #888888;
+}
+
+.fr-caption::before {
+    content: "▲";
+    display: inline-block;
+    margin-right: 0.4em;
+    font-style: normal;
+    font-size: 0.72em;
+    color: #111;
+    transform: translateY(-0.08em);
+}
+
+.fr-copy {
+    margin: 1.15rem 0 0;
+}
+
+.fr-caption + .fr-copy {
+    margin-top: 1.55rem;
+}
+
+.fr-copy + .fr-shot,
+.fr-copy + .fr-video,
+.fr-copy + .fr-pair,
+.fr-copy + .fr-watch {
+    margin-top: 2.6rem;
+}
+
+.fr-copy p,
+.fr-copy h2 {
+    margin: 0;
+    font-family: var(--fr-font-body);
+    font-size: calc(clamp(15.6px, 1.26vw, 18px) * 0.855);
+    letter-spacing: -0.03em;
+    line-height: 1.562;
+    color: #111;
+}
+
+.fr-copy p + p {
+    margin-top: 0.85em;
+}
+
+.fr-copy h2 {
+    font-family: var(--fr-font-body);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.35;
+}
+
+.fr-copy h2 + h2,
+.fr-copy h2 + p {
+    margin-top: 0.45em;
+}
+
+.fr-copy h2.fr-places-title + h2 {
+    margin-top: 2.4rem;
+}
+
+.fr-copy h2.fr-place-name {
+    font-weight: 700;
+}
+
+.fr-copy p + h2.fr-place-name {
+    margin-top: 3.2em;
+}
+
+.fr-hills + h2.fr-place-name {
+    margin-top: 5.6rem;
+}
+
+.fr-hills {
+    width: min(38rem, 100%);
+    max-width: 100%;
+    margin-inline: auto;
+    padding: 1.7em 0.15em;
+    border-top: 2px solid #111;
+    border-bottom: 2px solid #111;
+    text-align: center;
+}
+
+.fr-copy:not(.fr-copy--place) + .fr-copy--place,
+.fr-shot + .fr-copy--place,
+.fr-pair + .fr-copy--place {
+    margin-top: 5.6rem;
+}
+
+.fr-copy--place {
+    text-align: center;
+}
+
+.fr-copy h2.fr-places-title {
+    font-size: calc(clamp(15.6px, 1.26vw, 18px) * 0.9405);
+}
+
+.fr-copy .fr-copy-italic {
+    font-style: italic;
+}
+
+.fr-copy em {
+    font-style: italic;
+    font-weight: inherit;
+    font-family: inherit;
+    letter-spacing: inherit;
+}
+
+body.page-fr-maas.page-rusty-odyssey--ko .fr-copy p,
+body.page-fr-maas.page-rusty-odyssey--ko .fr-caption {
+    line-height: calc(1.562 * var(--kor-desc-line-height-scale));
+    word-break: keep-all;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fr-shot img,
+    .fr-video video {
+        position: static;
+        left: 0;
+        width: 100%;
+        height: auto;
+        pointer-events: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body.page-fr-maas .fr-main,
+    body.page-fr-maas .ro-main {
+        display: block !important;
+        position: fixed;
+        left: var(--ro-mobile-pad-x);
+        right: var(--ro-mobile-pad-x);
+        top: var(--ro-mobile-content-top);
+        bottom: var(--ro-mobile-footer-total);
+        z-index: 1;
+        width: auto;
+        max-width: none;
+        height: auto;
+        margin: 0;
+        padding: 8px 0 28px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        touch-action: pan-y;
+        transition: top 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    body.page-fr-maas.is-lang-hidden .fr-main,
+    body.page-fr-maas.is-lang-hidden .ro-main {
+        top: var(--ro-mobile-lang-top);
+    }
+
+    body.page-fr-maas .fr-head {
+        width: 100%;
+        max-width: none;
+        padding-top: 0.35rem;
+        padding-bottom: 2rem;
+    }
+
+    body.page-fr-maas .fr-head .ro-title {
+        margin-bottom: 0.85rem;
+    }
+
+    body.page-fr-maas .fr-head .ro-meta-line {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.22rem;
+    }
+
+    body.page-fr-maas .fr-head .ro-year,
+    body.page-fr-maas .fr-head .ro-type,
+    body.page-fr-maas .fr-head .ro-spec {
+        grid-column: auto;
+        grid-row: auto;
+        justify-self: center;
+        align-self: center;
+        width: auto;
+        max-width: 100%;
+        text-align: center;
+        margin-top: 0;
+    }
+
+    body.page-fr-maas .fr-head .ro-spec {
+        margin-top: 0.72rem;
+    }
+
+    body.page-fr-maas .fr-head .ro-tags {
+        margin-top: calc(1.5rem - 3px);
+    }
+
+    body.page-fr-maas .fr-caption {
+        text-align: center;
+    }
+
+    body.page-fr-maas.page-rusty-odyssey--ko .fr-head .ro-title {
+        font-size: calc(clamp(22px, 5.8vw, 26px) * 0.9);
+        font-weight: 400;
+    }
+
+    body.page-fr-maas .fr-head .ro-type {
+        margin-top: 0;
+    }
+
+    body.page-fr-maas .fr-head .ro-status {
+        margin-top: 0.32rem;
+    }
+
+    body.page-fr-maas .fr-flow {
+        width: 100%;
+        max-width: none;
+    }
+
+    body.page-fr-maas {
+        --fr-frame-r: 28px;
+    }
+
+    body.page-fr-maas .fr-watch .fr-shot {
+        border-radius: 10px;
+    }
+
+    body.page-fr-maas .fr-flow > .fr-shot:has(+ .fr-shot + .fr-shot + .fr-shot),
+    body.page-fr-maas .fr-flow > .fr-shot + .fr-shot:has(+ .fr-shot + .fr-shot),
+    body.page-fr-maas .fr-flow > .fr-shot + .fr-shot + .fr-shot:has(+ .fr-shot),
+    body.page-fr-maas .fr-flow > .fr-shot + .fr-shot + .fr-shot + .fr-shot {
+        border-radius: 16px;
+    }
+
+    body.page-fr-maas .fr-shot + .fr-copy--place,
+    body.page-fr-maas .fr-pair + .fr-copy--place {
+        margin-top: 2.1rem;
+    }
+
+    body.page-fr-maas .fr-copy--place + .fr-pair,
+    body.page-fr-maas .fr-copy--place + .fr-shot {
+        margin-top: 0.95rem;
+    }
+}

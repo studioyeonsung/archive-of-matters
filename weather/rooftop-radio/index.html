@@ -8,9 +8,9 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://archiveofmatters.com/weather/rooftop-radio/">
     <link rel="icon" type="image/svg+xml" href="/assets/home-icon-weather.svg">
-    <script src="/boot.js?v=3"></script>
-    <link rel="stylesheet" href="/style.css?v=20260920e">
-    <link rel="stylesheet" href="/copper/rusty-odyssey/rusty-odyssey.css?v=183">
+    <script src="/boot.js?v=6"></script>
+    <link rel="stylesheet" href="/style.css?v=20260926j">
+    <link rel="stylesheet" href="/copper/rusty-odyssey/rusty-odyssey.css?v=257">
 
 </head>
 <body class="page-rusty-odyssey page-weather-detail">
@@ -47,14 +47,14 @@
             </div>
             <div class="header-right">
                 <div class="header-top-line">
-                    <a href="/weather/" class="header-matter-slot is-current" aria-current="page" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
+                    <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-matter-icon"></a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-1">아카이브</a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-2">오브</a>
                     <a href="/" class="nav-text nav-kor nav-kor-word-3">매터(즈)</a>
                 </div>
                 <div class="dotted-line-right"></div>
                 <div class="header-bottom-line">
-                    <a href="/saharandust/" class="header-matter-link" aria-label="Saharan Dust"><img src="/assets/home-icon-saharandust.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
+                    <a href="/weather/" class="header-matter-slot is-current" aria-current="page" aria-label="Weather"><img src="/assets/home-icon-weather.svg" alt="" class="header-icon nav-icon header-right-icon-1 header-matter-icon"></a>
                     <span class="nav-text header-right-text-1"><a href="/news/">NEWS</a></span>
                     <img src="/assets/home-icon-arrow.svg" alt="" class="header-icon nav-icon header-right-icon-2">
                     <span class="nav-text header-right-text-2"><a href="/contact/">CONTACT</a></span>
@@ -129,18 +129,38 @@
 
         <main class="ro-main">
             <section class="ro-hero">
+                <div class="ro-hero-left">
+                    <div class="ro-hero-media">
+                        <img
+                            src="/weather/rooftop-radio/image/weathering-station-01.jpg"
+                            alt="Rooftop-Radio: Weathering Station"
+                            width="1600"
+                            height="900"
+                            decoding="async"
+                        >
+                    </div>
+                    <div class="ro-hero-media">
+                        <img
+                            src="/weather/rooftop-radio/image/weathering-station-02.jpg"
+                            alt="Rooftop-Radio: Weathering Station"
+                            width="1600"
+                            height="901"
+                            decoding="async"
+                        >
+                    </div>
+                </div>
                 <div class="ro-hero-meta">
                     <div class="ro-hero-meta-inner">
                         <h1 class="ro-title">Rooftop-Radio: Weathering Station</h1>
                         <div class="ro-meta-line">
                             <span class="ro-year">2023–ongoing</span>
                             <span class="ro-type">Community Radio</span>
-                            <span class="ro-spec">DIY radio booth, radio broadcasting, lecture performance, wind anemometer, speaker units, Arduino, amps, PM2.5 sensors</span>
+                            <span class="ro-spec">DIY radio booth, radio broadcasting, wind anemometer, speaker units, Arduino, amps, PM2.5 sensors</span>
                         </div>
                         <ul class="ro-tags" aria-label="Tags">
                             <li><span class="ro-tag">Weather</span></li>
-                            <li><span class="ro-tag">Community Radio</span></li>
-                            <li><span class="ro-tag">Rooftop-Radio</span></li>
+                            <li><span class="ro-tag">Radio</span></li>
+                            <li><span class="ro-tag">Weathering Station</span></li>
                         </ul>
                         <div class="ro-status">
                             <span class="ro-tag ro-tag--series">Series Ongoing</span>
@@ -149,6 +169,7 @@
                         <div class="ro-copy">
                             <div class="ro-tabs" role="tablist" aria-label="Project information">
                                 <button type="button" class="ro-tab is-active" role="tab" id="ro-tab-description" aria-selected="true" aria-controls="ro-panel-description" data-tab="description" data-text="DESCRIPTION">DESCRIPTION</button>
+                                <button type="button" class="ro-tab" role="tab" id="ro-tab-editions" aria-selected="false" aria-controls="ro-panel-editions" data-tab="editions" tabindex="-1" data-text="EDITIONS">EDITIONS</button>
                                 <button type="button" class="ro-tab" role="tab" id="ro-tab-credit" aria-selected="false" aria-controls="ro-panel-credit" data-tab="credit" tabindex="-1" data-text="CREDIT">CREDIT</button>
                                 <button type="button" class="ro-tab" role="tab" id="ro-tab-presented" aria-selected="false" aria-controls="ro-panel-presented" data-tab="presented" tabindex="-1" data-text="PRESENTED">PRESENTED</button>
                                 <button type="button" class="ro-tab" role="tab" id="ro-tab-links" aria-selected="false" aria-controls="ro-panel-links" data-tab="links" tabindex="-1" data-text="LINKS">LINKS</button>
@@ -156,34 +177,58 @@
 
                             <div class="ro-panels">
                                 <div class="ro-panel is-active" role="tabpanel" id="ro-panel-description" aria-labelledby="ro-tab-description">
-                                    <p>“Rooftop-Radio: Weathering Station” is a nomadic DIY radio booth broadcasting from various rooftops across South Korea. Inspired by the numerous weather stations atop buildings that generate a wealth of environmental data, this radio station transforms rooftops into stages. It captures the politics and aesthetics of these elevated spaces, weaving narratives of resistance and autonomy that resonate through the airwaves. Together with invited practitioners who are actively engaging in their own forms of ‘weathering,’ the radio aims to showcase their unique artistic practices and collectively sense the environmental and socio-political climate from the rooftops.</p>
+                                    <p><em>Rooftop-Radio: Weathering Station</em> is a nomadic DIY radio booth broadcasting from various rooftops across South Korea. Inspired by the numerous weather stations atop buildings that generate a wealth of environmental data, this radio station transforms rooftops into stages. It captures the politics and aesthetics of these elevated spaces, weaving narratives of resistance and autonomy that resonate through the airwaves. Together with invited practitioners who are actively engaging in their own forms of ‘weathering,’ the radio aims to showcase their unique artistic practices and collectively sense the environmental and socio-political climate from the rooftops.</p>
                                     <p>The first episode aired in October 2023 from the rooftop of the Seongbuk Art Center in Seoul, with plans to extend broadcasts to other regional rooftops. As conversations unfold, they drift like the wind, transcending the physical limits of rooftops. Together, we sense, perform, and act, gradually embodying both individual and collective experiences.</p>
-                                    <p>Weathering Station aspires to embark on a journey, traversing different countries, igniting discussions, and catalyzing action toward a sustainable future. By nurturing localized conversations on weather and pollution, it aims to cultivate the Weathering Station as a nomadic artistic platform, revitalizing discourse on environmental issues and fostering collective action.</p>
+                                </div>
+                                <div class="ro-panel" role="tabpanel" id="ro-panel-editions" aria-labelledby="ro-tab-editions" hidden>
+                                    <div class="ro-credit-list">
+                                        <p class="ro-credit">
+                                            <span class="ro-credit-role">2023. 10. 14</span><br>
+                                            #01 Women’s Laptop (Jeong Asaran, Sima Lee, Heekyun Gi)<br>
+                                            Acting Bodies—Moving Forward Together
+                                        </p>
+                                        <p class="ro-credit">
+                                            <span class="ro-credit-role">2023. 11. 04</span><br>
+                                            #02 Mina Kim<br>
+                                            Things Beyond Technology<br>
+                                            #03 Minji Kim aka Unknown Kim<br>
+                                            Traversing with Sound
+                                        </p>
+                                        <p class="ro-credit">
+                                            <span class="ro-credit-role">2023. 11. 11</span><br>
+                                            #04 Sojin Kim<br>
+                                            Connecting Regions through Art<br>
+                                            #05 Hanbee Kim<br>
+                                            Welcome to the Symbiotic Playground
+                                        </p>
+                                        <p class="ro-credit">
+                                            <span class="ro-credit-role">2023. 11. 18</span><br>
+                                            #06 Water-Culture<br>
+                                            Becoming Flowing Water<br>
+                                            #07 Dianaband<br>
+                                            The Sensing Body—And About Sensing Things
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="ro-panel" role="tabpanel" id="ro-panel-credit" aria-labelledby="ro-tab-credit" hidden>
-                                    <div class="ro-credit-list"></div>
+                                    <div class="ro-credit-list">
+                                        <p class="ro-credit">
+                                            <span class="ro-credit-role">Guest</span><br>
+                                            Women’s Laptop (Jeong Asaran, Sima Lee, Heekyun Gi)<br>
+                                            Mina Kim<br>
+                                            Minji Kim aka Unknown Kim<br>
+                                            Sojin Kim<br>
+                                            Hanbee Kim<br>
+                                            Water-Culture<br>
+                                            Dianaband
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="ro-panel" role="tabpanel" id="ro-panel-presented" aria-labelledby="ro-tab-presented" hidden>
                                     <div class="ro-credit-list">
                                         <p class="ro-credit">
-                                            <span class="ro-credit-role">2023. 10</span><br>
-                                            Rooftop-Radio: Weathering Station, Seongbuk Art Centre, Seoul, KR
-                                        </p>
-                                        <p class="ro-credit">
-                                            <span class="ro-credit-role">2023. 10. 14</span><br>
-                                            Women’s Laptop: Acting Bodies—Moving Forward Together
-                                        </p>
-                                        <p class="ro-credit">
-                                            <span class="ro-credit-role">2023. 11. 04</span><br>
-                                            Mina Kim: Things Beyond Technology; Unknown Kim: Traversing with Sound
-                                        </p>
-                                        <p class="ro-credit">
-                                            <span class="ro-credit-role">2023. 11. 11</span><br>
-                                            Sojin Kim: Connecting Regions through Art; Hanbee Kim: Welcome to the Symbiotic Playground
-                                        </p>
-                                        <p class="ro-credit">
-                                            <span class="ro-credit-role">2023. 11. 18</span><br>
-                                            Water-Culture: Becoming Flowing Water; Dianaband: The Sensing Body—And About Sensing Things
+                                            <span class="ro-credit-role">2023</span><br>
+                                            Orthodox vs Orthodox, Seongbuk Arts Center, Seoul, KR
                                         </p>
                                     </div>
                                 </div>
@@ -196,7 +241,39 @@
                 </div>
             </section>
 
-            <section class="ro-media" aria-label="Project media">
+            <section class="ro-media" aria-label="Project stills">
+                <div class="ro-still-grid ro-still-grid--fill">
+                    <figure class="ro-still">
+                        <img src="/weather/rooftop-radio/image/weathering-station-03.jpg" alt="Rooftop-Radio: Weathering Station" width="1600" height="901" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="ro-still">
+                        <img src="/weather/rooftop-radio/image/weathering-station-04.jpg" alt="Rooftop-Radio: Weathering Station" width="1600" height="901" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="ro-still">
+                        <img src="/weather/rooftop-radio/image/weathering-station-05.jpg" alt="Rooftop-Radio: Weathering Station" width="1600" height="901" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="ro-still">
+                        <img src="/weather/rooftop-radio/image/weathering-station-06.jpg" alt="Rooftop-Radio: Weathering Station" width="1600" height="900" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="ro-still">
+                        <img src="/weather/rooftop-radio/image/weathering-station-07.jpg" alt="Rooftop-Radio: Weathering Station" width="1600" height="817" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="ro-still">
+                        <img src="/weather/rooftop-radio/image/weathering-station-08.jpg" alt="Rooftop-Radio: Weathering Station" width="1600" height="901" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="ro-still">
+                        <img src="/weather/rooftop-radio/image/weathering-station-09.jpg" alt="Rooftop-Radio: Weathering Station" width="1600" height="896" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="ro-still">
+                        <img src="/weather/rooftop-radio/image/weathering-station-10.jpg" alt="Rooftop-Radio: Weathering Station" width="1600" height="928" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="ro-still">
+                        <img src="/weather/rooftop-radio/image/weathering-station-11.jpg" alt="Rooftop-Radio: Weathering Station" width="1600" height="914" loading="lazy" decoding="async">
+                    </figure>
+                    <figure class="ro-still">
+                        <img src="/weather/rooftop-radio/image/weathering-station-12.jpg" alt="Rooftop-Radio: Weathering Station" width="1600" height="907" loading="lazy" decoding="async">
+                    </figure>
+                </div>
             </section>
         </main>
     </div>
@@ -215,7 +292,7 @@
             <div class="ro-footer-trail">
                 <a class="ro-footer-item" href="/weather/" data-text="WEATHER">WEATHER</a>
                 <span class="ro-footer-dot" aria-hidden="true"></span>
-                <a class="ro-footer-item" href="/weather/rooftop-radio/" data-text="ROOFTOP-RADIO">ROOFTOP-RADIO</a>
+                <a class="ro-footer-item" href="/weather/rooftop-radio/" data-text="WEATHERING STATION">WEATHERING STATION</a>
                 <span class="ro-footer-dot" aria-hidden="true"></span>
                 <span class="ro-footer-item">COMMUNITY RADIO</span>
                 <span class="ro-footer-dot" aria-hidden="true"></span>
@@ -230,7 +307,7 @@
     <div class="grain-layer" aria-hidden="true"></div>
     <div class="copyright">© 2026 STUDIO YEON SUNG</div>
 
-    <script src="/script.js?v=20260921d"></script>
-    <script src="/copper/rusty-odyssey/rusty-odyssey.js?v=34"></script>
+    <script src="/script.js?v=20260926d"></script>
+    <script src="/copper/rusty-odyssey/rusty-odyssey.js?v=54"></script>
 </body>
 </html>
