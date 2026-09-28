@@ -1,0 +1,1725 @@
+{
+ "version": 1,
+ "note": "scripts/build_keywords.py 가 자동으로 만든 파일입니다. 직접 고치지 마세요 — 프로젝트 페이지의 키워드를 고치면 다시 만들어집니다.",
+ "keywords": [
+  {
+   "id": "weather",
+   "en": "Weather",
+   "ko": "날씨",
+   "aliases": [],
+   "terms": [
+    "weather",
+    "날씨"
+   ],
+   "count": 12,
+   "projects": [
+    "/weather/bring-your-own-bike/05-taehwa-river-ulsan/",
+    "/weather/bring-your-own-bike/04-botlek-rotterdam/",
+    "/weather/bring-your-own-bike/03-westhafen-berlin/",
+    "/weather/cynthesizer/",
+    "/weather/field-research-westhafen/",
+    "/weather/bring-your-own-bike/02-waalhaven-rotterdam/",
+    "/weather/bring-your-own-bike/01-westpoort-amsterdam/",
+    "/weather/weather-station-receiving-body/",
+    "/weather/rooftop-radio/",
+    "/weather/weathering-ports/",
+    "/weather/lecture-performance-weathering-ports/",
+    "/weather/field-research-maasvlakte/"
+   ]
+  },
+  {
+   "id": "fine-dust",
+   "en": "Fine Dust",
+   "ko": "미세먼지",
+   "aliases": [],
+   "terms": [
+    "finedust",
+    "미세먼지"
+   ],
+   "count": 9,
+   "projects": [
+    "/finedust/operation-d/02-changwon/",
+    "/finedust/operation-d/01-seoul/",
+    "/finedust/d-d-d-d/lecture-performance/",
+    "/finedust/d-d-d-d/exhibition/",
+    "/finedust/d-d-d-d/activism-performance/",
+    "/finedust/fine-dust-specimen/",
+    "/finedust/d-scape/2/",
+    "/finedust/d-scape/1/",
+    "/finedust/d-beacon/"
+   ]
+  },
+  {
+   "id": "saharan-dust",
+   "en": "Saharan Dust",
+   "ko": "사하라 먼지",
+   "aliases": [],
+   "terms": [
+    "saharandust",
+    "사하라먼지"
+   ],
+   "count": 9,
+   "projects": [
+    "/saharandust/field-research-anti-nuclear-camp-bure/",
+    "/saharandust/field-research-algerian-sahara/",
+    "/saharandust/field-research-moroccan-sahara/",
+    "/saharandust/xiren/",
+    "/saharandust/xiren-0-1v/",
+    "/saharandust/wind-sand-dust/",
+    "/saharandust/field-research-anti-nuclear-camp-la-hague/",
+    "/saharandust/field-research-cotentin/",
+    "/saharandust/x-scene/"
+   ]
+  },
+  {
+   "id": "field-research",
+   "en": "Field Research",
+   "ko": "필드 리서치",
+   "aliases": [],
+   "terms": [
+    "fieldresearch",
+    "필드리서치"
+   ],
+   "count": 8,
+   "projects": [
+    "/saharandust/field-research-anti-nuclear-camp-bure/",
+    "/saharandust/field-research-algerian-sahara/",
+    "/saharandust/field-research-moroccan-sahara/",
+    "/saharandust/field-research-anti-nuclear-camp-la-hague/",
+    "/saharandust/field-research-cotentin/",
+    "/weather/field-research-westhafen/",
+    "/weather/field-research-maasvlakte/",
+    "/copper/rusty-odyssey/field-research/"
+   ]
+  },
+  {
+   "id": "performance",
+   "en": "Performance",
+   "ko": "퍼포먼스",
+   "aliases": [],
+   "terms": [
+    "performance",
+    "퍼포먼스"
+   ],
+   "count": 8,
+   "projects": [
+    "/weather/bring-your-own-bike/05-taehwa-river-ulsan/",
+    "/weather/bring-your-own-bike/04-botlek-rotterdam/",
+    "/weather/bring-your-own-bike/03-westhafen-berlin/",
+    "/weather/bring-your-own-bike/02-waalhaven-rotterdam/",
+    "/weather/bring-your-own-bike/01-westpoort-amsterdam/",
+    "/weather/weather-station-receiving-body/",
+    "/weather/weathering-ports/",
+    "/finedust/d-d-d-d/activism-performance/"
+   ]
+  },
+  {
+   "id": "bring-your-own-bike",
+   "en": "Bring Your Own Bike",
+   "ko": "Bring Your Own Bike",
+   "aliases": [],
+   "terms": [
+    "bringyourownbike"
+   ],
+   "count": 5,
+   "projects": [
+    "/weather/bring-your-own-bike/05-taehwa-river-ulsan/",
+    "/weather/bring-your-own-bike/04-botlek-rotterdam/",
+    "/weather/bring-your-own-bike/03-westhafen-berlin/",
+    "/weather/bring-your-own-bike/02-waalhaven-rotterdam/",
+    "/weather/bring-your-own-bike/01-westpoort-amsterdam/"
+   ]
+  },
+  {
+   "id": "copper",
+   "en": "Copper",
+   "ko": "구리",
+   "aliases": [],
+   "terms": [
+    "copper",
+    "구리"
+   ],
+   "count": 5,
+   "projects": [
+    "/copper/rusty-odyssey/exhibition/",
+    "/copper/rusty-odyssey/film/",
+    "/copper/rusty-odyssey/installation/",
+    "/copper/rusty-odyssey/essay/",
+    "/copper/rusty-odyssey/field-research/"
+   ]
+  },
+  {
+   "id": "rusty-odyssey",
+   "en": "Rusty Odyssey",
+   "ko": "Rusty Odyssey",
+   "aliases": [],
+   "terms": [
+    "rustyodyssey"
+   ],
+   "count": 5,
+   "projects": [
+    "/copper/rusty-odyssey/exhibition/",
+    "/copper/rusty-odyssey/film/",
+    "/copper/rusty-odyssey/installation/",
+    "/copper/rusty-odyssey/essay/",
+    "/copper/rusty-odyssey/field-research/"
+   ]
+  },
+  {
+   "id": "d-d-d-d",
+   "en": "D: D-D-D",
+   "ko": "D: D-D-D",
+   "aliases": [],
+   "terms": [
+    "dddd"
+   ],
+   "count": 3,
+   "projects": [
+    "/finedust/d-d-d-d/lecture-performance/",
+    "/finedust/d-d-d-d/exhibition/",
+    "/finedust/d-d-d-d/activism-performance/"
+   ]
+  },
+  {
+   "id": "diy-tool",
+   "en": "DIY Tool",
+   "ko": "DIY 도구",
+   "aliases": [
+    "DIY 장치"
+   ],
+   "terms": [
+    "diytool",
+    "diy도구",
+    "diy장치"
+   ],
+   "count": 3,
+   "projects": [
+    "/saharandust/xiren-0-1v/",
+    "/weather/cynthesizer/",
+    "/finedust/d-beacon/"
+   ]
+  },
+  {
+   "id": "lecture-performance",
+   "en": "Lecture Performance",
+   "ko": "렉처 퍼포먼스",
+   "aliases": [],
+   "terms": [
+    "lectureperformance",
+    "렉처퍼포먼스"
+   ],
+   "count": 3,
+   "projects": [
+    "/saharandust/xiren/",
+    "/finedust/d-d-d-d/lecture-performance/",
+    "/weather/lecture-performance-weathering-ports/"
+   ]
+  },
+  {
+   "id": "scenography",
+   "en": "Scenography",
+   "ko": "시노그라피",
+   "aliases": [],
+   "terms": [
+    "scenography",
+    "시노그라피"
+   ],
+   "count": 3,
+   "projects": [
+    "/saharandust/x-scene/",
+    "/finedust/d-scape/2/",
+    "/finedust/d-scape/1/"
+   ]
+  },
+  {
+   "id": "weathering-ports",
+   "en": "Weathering Ports",
+   "ko": "Weathering Ports",
+   "aliases": [],
+   "terms": [
+    "weatheringports"
+   ],
+   "count": 3,
+   "projects": [
+    "/weather/weathering-ports/",
+    "/weather/lecture-performance-weathering-ports/",
+    "/weather/field-research-maasvlakte/"
+   ]
+  },
+  {
+   "id": "d-scape",
+   "en": "D-Scape",
+   "ko": "D-Scape",
+   "aliases": [],
+   "terms": [
+    "dscape"
+   ],
+   "count": 2,
+   "projects": [
+    "/finedust/d-scape/2/",
+    "/finedust/d-scape/1/"
+   ]
+  },
+  {
+   "id": "exhibition",
+   "en": "Exhibition",
+   "ko": "전시",
+   "aliases": [],
+   "terms": [
+    "exhibition",
+    "전시"
+   ],
+   "count": 2,
+   "projects": [
+    "/finedust/d-d-d-d/exhibition/",
+    "/copper/rusty-odyssey/exhibition/"
+   ]
+  },
+  {
+   "id": "game-performance",
+   "en": "Game Performance",
+   "ko": "게임 퍼포먼스",
+   "aliases": [],
+   "terms": [
+    "gameperformance",
+    "게임퍼포먼스"
+   ],
+   "count": 2,
+   "projects": [
+    "/finedust/operation-d/02-changwon/",
+    "/finedust/operation-d/01-seoul/"
+   ]
+  },
+  {
+   "id": "operation-d",
+   "en": "Operation D",
+   "ko": "Operation D",
+   "aliases": [],
+   "terms": [
+    "operationd"
+   ],
+   "count": 2,
+   "projects": [
+    "/finedust/operation-d/02-changwon/",
+    "/finedust/operation-d/01-seoul/"
+   ]
+  },
+  {
+   "id": "xiren",
+   "en": "Xiren",
+   "ko": "Xiren",
+   "aliases": [],
+   "terms": [
+    "xiren"
+   ],
+   "count": 2,
+   "projects": [
+    "/saharandust/xiren/",
+    "/saharandust/xiren-0-1v/"
+   ]
+  },
+  {
+   "id": "c-ynthesizer",
+   "en": "(C)ynthesizer",
+   "ko": "신디사이저",
+   "aliases": [],
+   "terms": [
+    "cynthesizer",
+    "신디사이저"
+   ],
+   "count": 1,
+   "projects": [
+    "/weather/cynthesizer/"
+   ]
+  },
+  {
+   "id": "activism",
+   "en": "Activism",
+   "ko": "액티비즘",
+   "aliases": [],
+   "terms": [
+    "activism",
+    "액티비즘"
+   ],
+   "count": 1,
+   "projects": [
+    "/finedust/d-d-d-d/activism-performance/"
+   ]
+  },
+  {
+   "id": "algeria",
+   "en": "Algeria",
+   "ko": "알제리",
+   "aliases": [],
+   "terms": [
+    "algeria",
+    "알제리"
+   ],
+   "count": 1,
+   "projects": [
+    "/saharandust/field-research-algerian-sahara/"
+   ]
+  },
+  {
+   "id": "archive-publication",
+   "en": "Archive Publication",
+   "ko": "아카이빙북",
+   "aliases": [],
+   "terms": [
+    "archivepublication",
+    "아카이빙북"
+   ],
+   "count": 1,
+   "projects": [
+    "/finedust/fine-dust-specimen/"
+   ]
+  },
+  {
+   "id": "d-beacon",
+   "en": "D-Beacon",
+   "ko": "D-Beacon",
+   "aliases": [],
+   "terms": [
+    "dbeacon"
+   ],
+   "count": 1,
+   "projects": [
+    "/finedust/d-beacon/"
+   ]
+  },
+  {
+   "id": "essay",
+   "en": "Essay",
+   "ko": "에세이",
+   "aliases": [],
+   "terms": [
+    "essay",
+    "에세이"
+   ],
+   "count": 1,
+   "projects": [
+    "/copper/rusty-odyssey/essay/"
+   ]
+  },
+  {
+   "id": "film",
+   "en": "Film",
+   "ko": "필름",
+   "aliases": [],
+   "terms": [
+    "film",
+    "필름"
+   ],
+   "count": 1,
+   "projects": [
+    "/copper/rusty-odyssey/film/"
+   ]
+  },
+  {
+   "id": "fine-dust-sensing-specimen",
+   "en": "Fine Dust Sensing Specimen",
+   "ko": "미세먼지 감각 표본",
+   "aliases": [],
+   "terms": [
+    "finedustsensingspecimen",
+    "미세먼지감각표본"
+   ],
+   "count": 1,
+   "projects": [
+    "/finedust/fine-dust-specimen/"
+   ]
+  },
+  {
+   "id": "installation",
+   "en": "Installation",
+   "ko": "설치",
+   "aliases": [],
+   "terms": [
+    "installation",
+    "설치"
+   ],
+   "count": 1,
+   "projects": [
+    "/copper/rusty-odyssey/installation/"
+   ]
+  },
+  {
+   "id": "making-workshop",
+   "en": "Making Workshop",
+   "ko": "메이킹 워크숍",
+   "aliases": [],
+   "terms": [
+    "makingworkshop",
+    "메이킹워크숍"
+   ],
+   "count": 1,
+   "projects": [
+    "/weather/cynthesizer/"
+   ]
+  },
+  {
+   "id": "morocco",
+   "en": "Morocco",
+   "ko": "모로코",
+   "aliases": [],
+   "terms": [
+    "morocco",
+    "모로코"
+   ],
+   "count": 1,
+   "projects": [
+    "/saharandust/field-research-moroccan-sahara/"
+   ]
+  },
+  {
+   "id": "prototype",
+   "en": "Prototype",
+   "ko": "프로토타입",
+   "aliases": [],
+   "terms": [
+    "prototype",
+    "프로토타입"
+   ],
+   "count": 1,
+   "projects": [
+    "/saharandust/xiren-0-1v/"
+   ]
+  },
+  {
+   "id": "publication",
+   "en": "Publication",
+   "ko": "출판",
+   "aliases": [],
+   "terms": [
+    "publication",
+    "출판"
+   ],
+   "count": 1,
+   "projects": [
+    "/copper/rusty-odyssey/essay/"
+   ]
+  },
+  {
+   "id": "radio",
+   "en": "Radio",
+   "ko": "라디오",
+   "aliases": [],
+   "terms": [
+    "radio",
+    "라디오"
+   ],
+   "count": 1,
+   "projects": [
+    "/weather/rooftop-radio/"
+   ]
+  },
+  {
+   "id": "research-essay",
+   "en": "Research Essay",
+   "ko": "리서치 에세이",
+   "aliases": [],
+   "terms": [
+    "researchessay",
+    "리서치에세이"
+   ],
+   "count": 1,
+   "projects": [
+    "/saharandust/wind-sand-dust/"
+   ]
+  },
+  {
+   "id": "solo",
+   "en": "Solo",
+   "ko": "개인전",
+   "aliases": [],
+   "terms": [
+    "solo",
+    "개인전"
+   ],
+   "count": 1,
+   "projects": [
+    "/copper/rusty-odyssey/exhibition/"
+   ]
+  },
+  {
+   "id": "weathering-station",
+   "en": "Weathering Station",
+   "ko": "웨더링 스테이션",
+   "aliases": [],
+   "terms": [
+    "weatheringstation",
+    "웨더링스테이션"
+   ],
+   "count": 1,
+   "projects": [
+    "/weather/rooftop-radio/"
+   ]
+  },
+  {
+   "id": "web",
+   "en": "Web",
+   "ko": "웹",
+   "aliases": [],
+   "terms": [
+    "web",
+    "웹"
+   ],
+   "count": 1,
+   "projects": [
+    "/copper/rusty-odyssey/essay/"
+   ]
+  },
+  {
+   "id": "wind-sand-dust",
+   "en": "Wind, Sand, Dust",
+   "ko": "Wind, Sand, Dust",
+   "aliases": [],
+   "terms": [
+    "windsanddust"
+   ],
+   "count": 1,
+   "projects": [
+    "/saharandust/wind-sand-dust/"
+   ]
+  },
+  {
+   "id": "x-scene",
+   "en": "X-Scene",
+   "ko": "X-Scene",
+   "aliases": [],
+   "terms": [
+    "xscene"
+   ],
+   "count": 1,
+   "projects": [
+    "/saharandust/x-scene/"
+   ]
+  }
+ ],
+ "projects": {
+  "/copper/rusty-odyssey/essay/": {
+   "material": "copper",
+   "materialName": {
+    "en": "Copper",
+    "ko": "구리"
+   },
+   "url": {
+    "en": "/copper/rusty-odyssey/essay/",
+    "ko": "/copper/rusty-odyssey/essay/ko/"
+   },
+   "title": {
+    "en": "Rusty Odyssey: The Colonial Trajectory of Copper Across the Atlantic",
+    "ko": "Rusty Odyssey: The Colonial Trajectory of Copper Across the Atlantic"
+   },
+   "type": {
+    "en": "Research Essay",
+    "ko": "리서치 에세이"
+   },
+   "year": "2019",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/copper/rusty-odyssey/essay/image/rustyodyssey-essay-01.jpg",
+   "listed": true,
+   "order": 17,
+   "keywords": [
+    "copper",
+    "essay",
+    "publication",
+    "web",
+    "rusty-odyssey"
+   ]
+  },
+  "/copper/rusty-odyssey/exhibition/": {
+   "material": "copper",
+   "materialName": {
+    "en": "Copper",
+    "ko": "구리"
+   },
+   "url": {
+    "en": "/copper/rusty-odyssey/exhibition/",
+    "ko": "/copper/rusty-odyssey/exhibition/ko/"
+   },
+   "title": {
+    "en": "Rusty Odyssey",
+    "ko": "Rusty Odyssey"
+   },
+   "type": {
+    "en": "Exhibition",
+    "ko": "전시"
+   },
+   "year": "2020",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/copper/rusty-odyssey/exhibition/image/rustyodyssey-exhibition-01.jpg",
+   "listed": true,
+   "order": 14,
+   "keywords": [
+    "copper",
+    "exhibition",
+    "solo",
+    "rusty-odyssey"
+   ]
+  },
+  "/copper/rusty-odyssey/field-research/": {
+   "material": "copper",
+   "materialName": {
+    "en": "Copper",
+    "ko": "구리"
+   },
+   "url": {
+    "en": "/copper/rusty-odyssey/field-research/",
+    "ko": "/copper/rusty-odyssey/field-research/ko/"
+   },
+   "title": {
+    "en": "Field-research: What Was Dug, What Was Melted, What Was Struck",
+    "ko": "파낸 것, 녹인 것, 찍어낸 것"
+   },
+   "type": {
+    "en": "Field Research",
+    "ko": "필드 리서치"
+   },
+   "year": "2019",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": null,
+   "listed": false,
+   "order": null,
+   "keywords": [
+    "copper",
+    "field-research",
+    "rusty-odyssey"
+   ]
+  },
+  "/copper/rusty-odyssey/film/": {
+   "material": "copper",
+   "materialName": {
+    "en": "Copper",
+    "ko": "구리"
+   },
+   "url": {
+    "en": "/copper/rusty-odyssey/film/",
+    "ko": "/copper/rusty-odyssey/film/ko/"
+   },
+   "title": {
+    "en": "Rusty Odyssey",
+    "ko": "Rusty Odyssey"
+   },
+   "type": {
+    "en": "Experimental Film",
+    "ko": "실험 영화"
+   },
+   "year": "2020",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/copper/rusty-odyssey/film/image/rustyodyssey-film-01.jpg",
+   "listed": true,
+   "order": 15,
+   "keywords": [
+    "copper",
+    "film",
+    "rusty-odyssey"
+   ]
+  },
+  "/copper/rusty-odyssey/installation/": {
+   "material": "copper",
+   "materialName": {
+    "en": "Copper",
+    "ko": "구리"
+   },
+   "url": {
+    "en": "/copper/rusty-odyssey/installation/",
+    "ko": "/copper/rusty-odyssey/installation/ko/"
+   },
+   "title": {
+    "en": "Rusty Odyssey",
+    "ko": "Rusty Odyssey"
+   },
+   "type": {
+    "en": "Installation",
+    "ko": "설치"
+   },
+   "year": "2020",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/copper/rusty-odyssey/installation/image/rustyodyssey-installation-01.jpg",
+   "listed": true,
+   "order": 16,
+   "keywords": [
+    "copper",
+    "installation",
+    "rusty-odyssey"
+   ]
+  },
+  "/finedust/d-beacon/": {
+   "material": "finedust",
+   "materialName": {
+    "en": "Fine Dust",
+    "ko": "미세먼지"
+   },
+   "url": {
+    "en": "/finedust/d-beacon/",
+    "ko": "/finedust/d-beacon/ko/"
+   },
+   "title": {
+    "en": "D-Beacon",
+    "ko": "D-Beacon"
+   },
+   "type": {
+    "en": "DIY Tool",
+    "ko": "DIY 장치"
+   },
+   "year": "2021",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/finedust/d-beacon/image/dbeacon-01.jpg",
+   "listed": true,
+   "order": 22,
+   "keywords": [
+    "fine-dust",
+    "diy-tool",
+    "d-beacon"
+   ]
+  },
+  "/finedust/d-d-d-d/activism-performance/": {
+   "material": "finedust",
+   "materialName": {
+    "en": "Fine Dust",
+    "ko": "미세먼지"
+   },
+   "url": {
+    "en": "/finedust/d-d-d-d/activism-performance/",
+    "ko": "/finedust/d-d-d-d/activism-performance/ko/"
+   },
+   "title": {
+    "en": "D: D-D-D",
+    "ko": "D: D-D-D"
+   },
+   "type": {
+    "en": "Activism Performance",
+    "ko": "액티비즘 퍼포먼스"
+   },
+   "year": "2022–ongoing",
+   "status": {
+    "en": "Series Ongoing",
+    "ko": "시리즈 진행 중"
+   },
+   "image": "/finedust/d-d-d-d/activism-performance/image/ddd-activism-01.jpg",
+   "listed": true,
+   "order": 18,
+   "keywords": [
+    "fine-dust",
+    "performance",
+    "activism",
+    "d-d-d-d"
+   ]
+  },
+  "/finedust/d-d-d-d/exhibition/": {
+   "material": "finedust",
+   "materialName": {
+    "en": "Fine Dust",
+    "ko": "미세먼지"
+   },
+   "url": {
+    "en": "/finedust/d-d-d-d/exhibition/",
+    "ko": "/finedust/d-d-d-d/exhibition/ko/"
+   },
+   "title": {
+    "en": "〈D: D-D-D〉 Fine Dust Sensing Art Practice",
+    "ko": "D: D-D-D 미세먼지 감각 예술 실천"
+   },
+   "type": {
+    "en": "Exhibition",
+    "ko": "전시"
+   },
+   "year": "2022",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/finedust/d-d-d-d/exhibition/image/ddd-exhibition-01.jpg",
+   "listed": true,
+   "order": 17,
+   "keywords": [
+    "fine-dust",
+    "exhibition",
+    "d-d-d-d"
+   ]
+  },
+  "/finedust/d-d-d-d/lecture-performance/": {
+   "material": "finedust",
+   "materialName": {
+    "en": "Fine Dust",
+    "ko": "미세먼지"
+   },
+   "url": {
+    "en": "/finedust/d-d-d-d/lecture-performance/",
+    "ko": "/finedust/d-d-d-d/lecture-performance/ko/"
+   },
+   "title": {
+    "en": "D: D-D-D",
+    "ko": "D: D-D-D"
+   },
+   "type": {
+    "en": "Lecture Performance",
+    "ko": "렉처 퍼포먼스"
+   },
+   "year": "2023",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/finedust/d-d-d-d/lecture-performance/image/ddd-lecture-01.jpg",
+   "listed": true,
+   "order": 16,
+   "keywords": [
+    "fine-dust",
+    "lecture-performance",
+    "d-d-d-d"
+   ]
+  },
+  "/finedust/d-scape/1/": {
+   "material": "finedust",
+   "materialName": {
+    "en": "Fine Dust",
+    "ko": "미세먼지"
+   },
+   "url": {
+    "en": "/finedust/d-scape/1/",
+    "ko": "/finedust/d-scape/1/ko/"
+   },
+   "title": {
+    "en": "D-Scape 1.0",
+    "ko": "D-Scape 1.0"
+   },
+   "type": {
+    "en": "Scenography",
+    "ko": "시노그라피"
+   },
+   "year": "2021",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/finedust/d-scape/1/image/dscape1-01.jpg",
+   "listed": true,
+   "order": 21,
+   "keywords": [
+    "fine-dust",
+    "scenography",
+    "d-scape"
+   ]
+  },
+  "/finedust/d-scape/2/": {
+   "material": "finedust",
+   "materialName": {
+    "en": "Fine Dust",
+    "ko": "미세먼지"
+   },
+   "url": {
+    "en": "/finedust/d-scape/2/",
+    "ko": "/finedust/d-scape/2/ko/"
+   },
+   "title": {
+    "en": "D-Scape 2.0",
+    "ko": "D-Scape 2.0"
+   },
+   "type": {
+    "en": "Scenography",
+    "ko": "시노그라피"
+   },
+   "year": "2021",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/finedust/d-scape/2/image/dscape2-01.jpg",
+   "listed": true,
+   "order": 20,
+   "keywords": [
+    "fine-dust",
+    "scenography",
+    "d-scape"
+   ]
+  },
+  "/finedust/fine-dust-specimen/": {
+   "material": "finedust",
+   "materialName": {
+    "en": "Fine Dust",
+    "ko": "미세먼지"
+   },
+   "url": {
+    "en": "/finedust/fine-dust-specimen/",
+    "ko": "/finedust/fine-dust-specimen/ko/"
+   },
+   "title": {
+    "en": "Fine Dust Sensing Specimen",
+    "ko": "미세먼지 감각 표본"
+   },
+   "type": {
+    "en": "Archive Publication",
+    "ko": "아카이빙북"
+   },
+   "year": "2022",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/finedust/fine-dust-specimen/image/finedust-specimen-01.jpg",
+   "listed": true,
+   "order": 19,
+   "keywords": [
+    "fine-dust",
+    "archive-publication",
+    "fine-dust-sensing-specimen"
+   ]
+  },
+  "/finedust/operation-d/01-seoul/": {
+   "material": "finedust",
+   "materialName": {
+    "en": "Fine Dust",
+    "ko": "미세먼지"
+   },
+   "url": {
+    "en": "/finedust/operation-d/01-seoul/",
+    "ko": "/finedust/operation-d/01-seoul/ko/"
+   },
+   "title": {
+    "en": "Operation D: In Search of D (#01 Seoul)",
+    "ko": "작전명 D: 잃어버린 D를 찾아서 (#01 서울)"
+   },
+   "type": {
+    "en": "Participatory Game Performance Series",
+    "ko": "참여형 게임 퍼포먼스 시리즈"
+   },
+   "year": "2025–ongoing",
+   "status": {
+    "en": "Series Ongoing",
+    "ko": "시리즈 진행 중"
+   },
+   "image": "/finedust/operation-d/01-seoul/image/operationd-seoul-01.jpg",
+   "listed": true,
+   "order": 15,
+   "keywords": [
+    "fine-dust",
+    "game-performance",
+    "operation-d"
+   ]
+  },
+  "/finedust/operation-d/02-changwon/": {
+   "material": "finedust",
+   "materialName": {
+    "en": "Fine Dust",
+    "ko": "미세먼지"
+   },
+   "url": {
+    "en": "/finedust/operation-d/02-changwon/",
+    "ko": "/finedust/operation-d/02-changwon/ko/"
+   },
+   "title": {
+    "en": "Operation D: In Search of D #02 Changwon",
+    "ko": "작전명 D: 잃어버린 D를 찾아서 #02 창원"
+   },
+   "type": {
+    "en": "Participatory Game Performance Series",
+    "ko": "참여형 게임 퍼포먼스 시리즈"
+   },
+   "year": "2025–ongoing",
+   "status": {
+    "en": "Series Ongoing",
+    "ko": "시리즈 진행 중"
+   },
+   "image": "/finedust/operation-d/02-changwon/image/operationd-changwon-01.jpg",
+   "listed": true,
+   "order": 14,
+   "keywords": [
+    "fine-dust",
+    "game-performance",
+    "operation-d"
+   ]
+  },
+  "/saharandust/field-research-algerian-sahara/": {
+   "material": "saharandust",
+   "materialName": {
+    "en": "Saharan Dust",
+    "ko": "사하라 먼지"
+   },
+   "url": {
+    "en": "/saharandust/field-research-algerian-sahara/",
+    "ko": "/saharandust/field-research-algerian-sahara/ko/"
+   },
+   "title": {
+    "en": "Field-research: Algerian Sahara",
+    "ko": "필드 리서치: 알제리 사하라"
+   },
+   "type": {
+    "en": "Field Research",
+    "ko": "필드 리서치"
+   },
+   "year": "2026",
+   "status": {
+    "en": "",
+    "ko": ""
+   },
+   "image": "/saharandust/field-research-algerian-sahara/image/field-research-algerian-sahara-09.jpg",
+   "listed": true,
+   "order": 15,
+   "keywords": [
+    "saharan-dust",
+    "field-research",
+    "algeria"
+   ]
+  },
+  "/saharandust/field-research-anti-nuclear-camp-bure/": {
+   "material": "saharandust",
+   "materialName": {
+    "en": "Saharan Dust",
+    "ko": "사하라 먼지"
+   },
+   "url": {
+    "en": "/saharandust/field-research-anti-nuclear-camp-bure/",
+    "ko": "/saharandust/field-research-anti-nuclear-camp-bure/ko/"
+   },
+   "title": {
+    "en": "Field-research: Anti-nuclear camp, Bure",
+    "ko": "필드 리서치: 반핵 캠프, 뷔르"
+   },
+   "type": {
+    "en": "Field Research",
+    "ko": "필드 리서치"
+   },
+   "year": "2026",
+   "status": {
+    "en": "",
+    "ko": ""
+   },
+   "image": "/saharandust/field-research-anti-nuclear-camp-bure/image/field-research-anti-nuclear-camp-bure-01.jpg",
+   "listed": true,
+   "order": 14,
+   "keywords": [
+    "saharan-dust",
+    "field-research"
+   ]
+  },
+  "/saharandust/field-research-anti-nuclear-camp-la-hague/": {
+   "material": "saharandust",
+   "materialName": {
+    "en": "Saharan Dust",
+    "ko": "사하라 먼지"
+   },
+   "url": {
+    "en": "/saharandust/field-research-anti-nuclear-camp-la-hague/",
+    "ko": "/saharandust/field-research-anti-nuclear-camp-la-hague/ko/"
+   },
+   "title": {
+    "en": "Field-research: Anti-nuclear camp, La Hague",
+    "ko": "필드 리서치: 반핵 캠프, 라 아그"
+   },
+   "type": {
+    "en": "Field Research",
+    "ko": "필드 리서치"
+   },
+   "year": "2025",
+   "status": {
+    "en": "",
+    "ko": ""
+   },
+   "image": "/saharandust/field-research-anti-nuclear-camp-la-hague/image/field-research-anti-nuclear-camp-la-hague-34.jpg",
+   "listed": true,
+   "order": 19,
+   "keywords": [
+    "saharan-dust",
+    "field-research"
+   ]
+  },
+  "/saharandust/field-research-cotentin/": {
+   "material": "saharandust",
+   "materialName": {
+    "en": "Saharan Dust",
+    "ko": "사하라 먼지"
+   },
+   "url": {
+    "en": "/saharandust/field-research-cotentin/",
+    "ko": "/saharandust/field-research-cotentin/ko/"
+   },
+   "title": {
+    "en": "Field-research: Cotentin",
+    "ko": "필드 리서치: 코탄틴"
+   },
+   "type": {
+    "en": "Field Research",
+    "ko": "필드 리서치"
+   },
+   "year": "2025",
+   "status": {
+    "en": "",
+    "ko": ""
+   },
+   "image": "/saharandust/field-research-cotentin/image/field-research-cotentin-01.jpg",
+   "listed": true,
+   "order": 20,
+   "keywords": [
+    "saharan-dust",
+    "field-research"
+   ]
+  },
+  "/saharandust/field-research-moroccan-sahara/": {
+   "material": "saharandust",
+   "materialName": {
+    "en": "Saharan Dust",
+    "ko": "사하라 먼지"
+   },
+   "url": {
+    "en": "/saharandust/field-research-moroccan-sahara/",
+    "ko": "/saharandust/field-research-moroccan-sahara/ko/"
+   },
+   "title": {
+    "en": "Field-research: Moroccan Sahara",
+    "ko": "필드 리서치: 모로코 사하라"
+   },
+   "type": {
+    "en": "Field Research",
+    "ko": "필드 리서치"
+   },
+   "year": "2026",
+   "status": {
+    "en": "",
+    "ko": ""
+   },
+   "image": "/saharandust/field-research-moroccan-sahara/image/field-research-moroccan-sahara-39.jpg",
+   "listed": true,
+   "order": 16,
+   "keywords": [
+    "saharan-dust",
+    "field-research",
+    "morocco"
+   ]
+  },
+  "/saharandust/wind-sand-dust/": {
+   "material": "saharandust",
+   "materialName": {
+    "en": "Saharan Dust",
+    "ko": "사하라 먼지"
+   },
+   "url": {
+    "en": "/saharandust/wind-sand-dust/",
+    "ko": "/saharandust/wind-sand-dust/ko/"
+   },
+   "title": {
+    "en": "Wind, Sand, Dust: Staying, Passing",
+    "ko": "Wind, Sand, Dust: Staying, Passing"
+   },
+   "type": {
+    "en": "Research Essay",
+    "ko": "리서치 에세이"
+   },
+   "year": "2026",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": null,
+   "listed": false,
+   "order": null,
+   "keywords": [
+    "saharan-dust",
+    "research-essay",
+    "wind-sand-dust"
+   ]
+  },
+  "/saharandust/x-scene/": {
+   "material": "saharandust",
+   "materialName": {
+    "en": "Saharan Dust",
+    "ko": "사하라 먼지"
+   },
+   "url": {
+    "en": "/saharandust/x-scene/",
+    "ko": "/saharandust/x-scene/ko/"
+   },
+   "title": {
+    "en": "X-Scene 1.0",
+    "ko": "X-Scene 1.0"
+   },
+   "type": {
+    "en": "Scenography",
+    "ko": "시노그라피"
+   },
+   "year": "2022",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/saharandust/x-scene/image/x-scene-01.jpg",
+   "listed": true,
+   "order": 21,
+   "keywords": [
+    "saharan-dust",
+    "scenography",
+    "x-scene"
+   ]
+  },
+  "/saharandust/xiren-0-1v/": {
+   "material": "saharandust",
+   "materialName": {
+    "en": "Saharan Dust",
+    "ko": "사하라 먼지"
+   },
+   "url": {
+    "en": "/saharandust/xiren-0-1v/",
+    "ko": "/saharandust/xiren-0-1v/ko/"
+   },
+   "title": {
+    "en": "Xiren 0.1v",
+    "ko": "Xiren 0.1v"
+   },
+   "type": {
+    "en": "DIY Tool",
+    "ko": "DIY 도구"
+   },
+   "year": "2026",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/saharandust/xiren-0-1v/image/xiren-0-1v-01.jpg",
+   "listed": true,
+   "order": 18,
+   "keywords": [
+    "saharan-dust",
+    "diy-tool",
+    "prototype",
+    "xiren"
+   ]
+  },
+  "/saharandust/xiren/": {
+   "material": "saharandust",
+   "materialName": {
+    "en": "Saharan Dust",
+    "ko": "사하라 먼지"
+   },
+   "url": {
+    "en": "/saharandust/xiren/",
+    "ko": "/saharandust/xiren/ko/"
+   },
+   "title": {
+    "en": "Xiren: Half-Life of an Alarm",
+    "ko": "Xiren: 울리지 않는 경보"
+   },
+   "type": {
+    "en": "Lecture Performance",
+    "ko": "렉처 퍼포먼스"
+   },
+   "year": "2026",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/saharandust/xiren/image/xiren-01.jpg",
+   "listed": true,
+   "order": 17,
+   "keywords": [
+    "saharan-dust",
+    "lecture-performance",
+    "xiren"
+   ]
+  },
+  "/weather/bring-your-own-bike/01-westpoort-amsterdam/": {
+   "material": "weather",
+   "materialName": {
+    "en": "Weather",
+    "ko": "날씨"
+   },
+   "url": {
+    "en": "/weather/bring-your-own-bike/01-westpoort-amsterdam/",
+    "ko": "/weather/bring-your-own-bike/01-westpoort-amsterdam/ko/"
+   },
+   "title": {
+    "en": "Bring Your Own Bike #01 Westpoort, Amsterdam",
+    "ko": "Bring Your Own Bike #01 베스트포르트, 암스테르담"
+   },
+   "type": {
+    "en": "Participatory Performance",
+    "ko": "참여형 퍼포먼스"
+   },
+   "year": "2024",
+   "status": {
+    "en": "Series Ongoing",
+    "ko": "시리즈 진행 중"
+   },
+   "image": "/weather/bring-your-own-bike/01-westpoort-amsterdam/image/byob-westpoort-01.jpg",
+   "listed": true,
+   "order": 20,
+   "keywords": [
+    "weather",
+    "performance",
+    "bring-your-own-bike"
+   ]
+  },
+  "/weather/bring-your-own-bike/02-waalhaven-rotterdam/": {
+   "material": "weather",
+   "materialName": {
+    "en": "Weather",
+    "ko": "날씨"
+   },
+   "url": {
+    "en": "/weather/bring-your-own-bike/02-waalhaven-rotterdam/",
+    "ko": "/weather/bring-your-own-bike/02-waalhaven-rotterdam/ko/"
+   },
+   "title": {
+    "en": "Bring Your Own Bike #02 Waalhaven, Rotterdam",
+    "ko": "Bring Your Own Bike #02 발하펜, 로테르담"
+   },
+   "type": {
+    "en": "Participatory Performance",
+    "ko": "참여형 퍼포먼스"
+   },
+   "year": "2024",
+   "status": {
+    "en": "Series Ongoing",
+    "ko": "시리즈 진행 중"
+   },
+   "image": "/weather/bring-your-own-bike/02-waalhaven-rotterdam/image/byob-waalhaven-01.jpg",
+   "listed": true,
+   "order": 19,
+   "keywords": [
+    "weather",
+    "performance",
+    "bring-your-own-bike"
+   ]
+  },
+  "/weather/bring-your-own-bike/03-westhafen-berlin/": {
+   "material": "weather",
+   "materialName": {
+    "en": "Weather",
+    "ko": "날씨"
+   },
+   "url": {
+    "en": "/weather/bring-your-own-bike/03-westhafen-berlin/",
+    "ko": "/weather/bring-your-own-bike/03-westhafen-berlin/ko/"
+   },
+   "title": {
+    "en": "Bring Your Own Bike #03 Westhafen, Berlin",
+    "ko": "Bring Your Own Bike #03 베스트하펜, 베를린"
+   },
+   "type": {
+    "en": "Participatory Performance",
+    "ko": "참여형 퍼포먼스"
+   },
+   "year": "2024",
+   "status": {
+    "en": "Series Ongoing",
+    "ko": "시리즈 진행 중"
+   },
+   "image": "/weather/bring-your-own-bike/03-westhafen-berlin/image/byob-westhafen-01.jpg",
+   "listed": true,
+   "order": 16,
+   "keywords": [
+    "weather",
+    "performance",
+    "bring-your-own-bike"
+   ]
+  },
+  "/weather/bring-your-own-bike/04-botlek-rotterdam/": {
+   "material": "weather",
+   "materialName": {
+    "en": "Weather",
+    "ko": "날씨"
+   },
+   "url": {
+    "en": "/weather/bring-your-own-bike/04-botlek-rotterdam/",
+    "ko": "/weather/bring-your-own-bike/04-botlek-rotterdam/ko/"
+   },
+   "title": {
+    "en": "Bring Your Own Bike #04 Botlek, Rotterdam",
+    "ko": "Bring Your Own Bike #04 보트렉, 로테르담"
+   },
+   "type": {
+    "en": "Participatory Performance",
+    "ko": "참여형 퍼포먼스"
+   },
+   "year": "2025",
+   "status": {
+    "en": "Series Ongoing",
+    "ko": "시리즈 진행 중"
+   },
+   "image": "/weather/bring-your-own-bike/04-botlek-rotterdam/image/byob-botlek-01.jpg",
+   "listed": true,
+   "order": 15,
+   "keywords": [
+    "weather",
+    "performance",
+    "bring-your-own-bike"
+   ]
+  },
+  "/weather/bring-your-own-bike/05-taehwa-river-ulsan/": {
+   "material": "weather",
+   "materialName": {
+    "en": "Weather",
+    "ko": "날씨"
+   },
+   "url": {
+    "en": "/weather/bring-your-own-bike/05-taehwa-river-ulsan/",
+    "ko": "/weather/bring-your-own-bike/05-taehwa-river-ulsan/ko/"
+   },
+   "title": {
+    "en": "Bring Your Own Bike #05 Taehwa River, Ulsan",
+    "ko": "Bring Your Own Bike #05 태화강, 울산"
+   },
+   "type": {
+    "en": "Participatory Performance",
+    "ko": "참여형 퍼포먼스"
+   },
+   "year": "2025",
+   "status": {
+    "en": "Series Ongoing",
+    "ko": "시리즈 진행 중"
+   },
+   "image": "/weather/bring-your-own-bike/05-taehwa-river-ulsan/image/byob-taehwa-01.jpg",
+   "listed": true,
+   "order": 14,
+   "keywords": [
+    "weather",
+    "performance",
+    "bring-your-own-bike"
+   ]
+  },
+  "/weather/cynthesizer/": {
+   "material": "weather",
+   "materialName": {
+    "en": "Weather",
+    "ko": "날씨"
+   },
+   "url": {
+    "en": "/weather/cynthesizer/",
+    "ko": "/weather/cynthesizer/ko/"
+   },
+   "title": {
+    "en": "(C)ynthesizer",
+    "ko": "(C)ynthesizer"
+   },
+   "type": {
+    "en": "Making Workshop",
+    "ko": "메이킹 워크숍"
+   },
+   "year": "2024–ongoing",
+   "status": {
+    "en": "Series Ongoing",
+    "ko": "시리즈 진행 중"
+   },
+   "image": "/weather/cynthesizer/image/cynthesizer-01.jpg",
+   "listed": true,
+   "order": 17,
+   "keywords": [
+    "weather",
+    "making-workshop",
+    "diy-tool",
+    "c-ynthesizer"
+   ]
+  },
+  "/weather/field-research-maasvlakte/": {
+   "material": "weather",
+   "materialName": {
+    "en": "Weather",
+    "ko": "날씨"
+   },
+   "url": {
+    "en": "/weather/field-research-maasvlakte/",
+    "ko": "/weather/field-research-maasvlakte/ko/"
+   },
+   "title": {
+    "en": "Field-research: Maasvlakte",
+    "ko": "필드 리서치: 마스블락터"
+   },
+   "type": {
+    "en": "Field Research",
+    "ko": "필드 리서치"
+   },
+   "year": "2023",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/weather/field-research-maasvlakte/image/field-research-maasvlakte-01.jpg?v=3",
+   "listed": true,
+   "order": 25,
+   "keywords": [
+    "weather",
+    "field-research",
+    "weathering-ports"
+   ]
+  },
+  "/weather/field-research-westhafen/": {
+   "material": "weather",
+   "materialName": {
+    "en": "Weather",
+    "ko": "날씨"
+   },
+   "url": {
+    "en": "/weather/field-research-westhafen/",
+    "ko": "/weather/field-research-westhafen/ko/"
+   },
+   "title": {
+    "en": "Field-research: Westhafen",
+    "ko": "필드 리서치: 베스트하펜"
+   },
+   "type": {
+    "en": "Field Research",
+    "ko": "필드 리서치"
+   },
+   "year": "2024",
+   "status": {
+    "en": "",
+    "ko": ""
+   },
+   "image": "/weather/field-research-westhafen/image/field-research-westhafen-01.jpg",
+   "listed": true,
+   "order": 18,
+   "keywords": [
+    "weather",
+    "field-research"
+   ]
+  },
+  "/weather/lecture-performance-weathering-ports/": {
+   "material": "weather",
+   "materialName": {
+    "en": "Weather",
+    "ko": "날씨"
+   },
+   "url": {
+    "en": "/weather/lecture-performance-weathering-ports/",
+    "ko": "/weather/lecture-performance-weathering-ports/ko/"
+   },
+   "title": {
+    "en": "Investigating: Weathering Ports",
+    "ko": "탐사하는 몸: 풍화하는 항구"
+   },
+   "type": {
+    "en": "Lecture Performance",
+    "ko": "렉처 퍼포먼스"
+   },
+   "year": "2023",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/weather/lecture-performance-weathering-ports/image/investigating-weathering-ports-01.jpg",
+   "listed": true,
+   "order": 24,
+   "keywords": [
+    "weather",
+    "lecture-performance",
+    "weathering-ports"
+   ]
+  },
+  "/weather/rooftop-radio/": {
+   "material": "weather",
+   "materialName": {
+    "en": "Weather",
+    "ko": "날씨"
+   },
+   "url": {
+    "en": "/weather/rooftop-radio/",
+    "ko": "/weather/rooftop-radio/ko/"
+   },
+   "title": {
+    "en": "Rooftop-Radio: Weathering Station",
+    "ko": "옥상 라디오: 웨더링 스테이션"
+   },
+   "type": {
+    "en": "Community Radio",
+    "ko": "커뮤니티 라디오"
+   },
+   "year": "2023–ongoing",
+   "status": {
+    "en": "Series Ongoing",
+    "ko": "시리즈 진행 중"
+   },
+   "image": "/weather/rooftop-radio/image/weathering-station-01.jpg",
+   "listed": true,
+   "order": 22,
+   "keywords": [
+    "weather",
+    "radio",
+    "weathering-station"
+   ]
+  },
+  "/weather/weather-station-receiving-body/": {
+   "material": "weather",
+   "materialName": {
+    "en": "Weather",
+    "ko": "날씨"
+   },
+   "url": {
+    "en": "/weather/weather-station-receiving-body/",
+    "ko": "/weather/weather-station-receiving-body/ko/"
+   },
+   "title": {
+    "en": "Weather Station: Receiving Body",
+    "ko": "기상관측소: 수신하는 몸"
+   },
+   "type": {
+    "en": "Participatory Performance",
+    "ko": "참여형 퍼포먼스"
+   },
+   "year": "2023",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/weather/weather-station-receiving-body/image/weather-station-receiving-body-01.jpg",
+   "listed": true,
+   "order": 21,
+   "keywords": [
+    "weather",
+    "performance"
+   ]
+  },
+  "/weather/weathering-ports/": {
+   "material": "weather",
+   "materialName": {
+    "en": "Weather",
+    "ko": "날씨"
+   },
+   "url": {
+    "en": "/weather/weathering-ports/",
+    "ko": "/weather/weathering-ports/ko/"
+   },
+   "title": {
+    "en": "Weathering Ports: Sensing, Performing, and Acting Bodies",
+    "ko": "웨더링: 감각하고 수행하며, 행동하는 몸"
+   },
+   "type": {
+    "en": "Performance",
+    "ko": "퍼포먼스"
+   },
+   "year": "2023",
+   "status": {
+    "en": "Completed",
+    "ko": "완료"
+   },
+   "image": "/weather/weathering-ports/image/weathering-ports-01.jpg",
+   "listed": true,
+   "order": 23,
+   "keywords": [
+    "weather",
+    "performance",
+    "weathering-ports"
+   ]
+  }
+ },
+ "warnings": [
+  "“DIY Tool” 의 한글 표기가 여러 개입니다: DIY 도구 / DIY 장치 (가장 많이 쓴 “DIY 도구” 를 대표로)"
+ ]
+}
