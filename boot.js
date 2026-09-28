@@ -48,11 +48,30 @@
         return p.endsWith('/') ? p : p + '/';
     }
 
-    function getLang() {
+    // 언어 규칙
+    // - 기본: 기기 시간대가 한국(Asia/Seoul)이면 한국어, 아니면 영어
+    // - 방문자가 언어를 바꾸면 이 탭에서 페이지를 옮겨 다녀도 그 언어 유지 (sessionStorage)
+    // - 새로고침하면 선택을 지우고 다시 시간대 기준으로
+    // localStorage 의 aom-lang 은 '지금 보이는 언어' 사본일 뿐이다 (페이지 안 스크립트·에디터 미리보기가 읽는다)
+    function defaultLang() {
         try {
-            var v = localStorage.getItem(LANG_KEY);
-            if (v === 'kor' || v === 'eng') return v;
+            var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+            if (tz === 'Asia/Seoul') return 'kor';
         } catch (err) {}
+        return 'eng';
+    }
+
+    function isReload() {
+        try {
+            var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+            if (nav) return nav.type === 'reload';
+            return !!(performance.navigation && performance.navigation.type === 1);
+        } catch (err) {
+            return false;
+        }
+    }
+
+    function chosenLang() {
         try {
             var s = sessionStorage.getItem(LANG_KEY);
             if (s === 'kor' || s === 'eng') return s;
@@ -60,15 +79,37 @@
         return null;
     }
 
+    function getLang() {
+        return chosenLang() || defaultLang();
+    }
+
     function setLang(lang) {
         if (lang !== 'kor' && lang !== 'eng') return;
         try {
-            localStorage.setItem(LANG_KEY, lang);
-        } catch (err) {}
-        try {
             sessionStorage.setItem(LANG_KEY, lang);
         } catch (err) {}
+        try {
+            localStorage.setItem(LANG_KEY, lang);
+        } catch (err) {}
     }
+
+    function mirrorLang() {
+        try {
+            localStorage.setItem(LANG_KEY, getLang());
+        } catch (err) {}
+    }
+
+    // 새로고침 → 선택 초기화. 처음 들어온 주소가 한국어 페이지(/ko/)면 이 탭은 한국어로 시작
+    if (isReload()) {
+        try {
+            sessionStorage.removeItem(LANG_KEY);
+        } catch (err) {}
+    } else if (!chosenLang() && /(?:^|\/)ko\/?$/.test(String(location.pathname).replace(/\/index\.html$/, '/'))) {
+        try {
+            sessionStorage.setItem(LANG_KEY, 'kor');
+        } catch (err) {}
+    }
+    mirrorLang();
 
     function applyHtmlLang(lang) {
         var html = document.documentElement;
