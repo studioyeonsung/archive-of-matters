@@ -1441,3 +1441,13 @@ a.weather-table-row--link {
         height: 10px;
     }
 }
+
+
+/* 설명글 속 물질명: 영문은 기울임, 한글은 굵게 */
+.weather-name--en {
+    font-style: italic;
+}
+
+.weather-name--ko {
+    font-weight: 600;
+}
