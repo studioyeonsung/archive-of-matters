@@ -831,10 +831,13 @@ a.saharandust-table-row--link {
     }
 }
 
-/* ~16" desktops — slightly larger figure */
+/* ~16" desktops — slightly larger figure
+   높이가 낮은 화면(13″ 노트북 등)에서는 그림이 아래 텍스트에 닿지 않게 화면 높이로도 제한한다.
+   텍스트 영역은 화면 아래 ~240px 에서 시작, 그림 위쪽은 132px → 여백 ~33px 기준에서 5% 키움(13″ 여백 ~17px).
+   2.807 = 그림 원본 가로/세로 비율(5334 / 1900) */
 @media (min-width: 769px) and (max-width: 1799px) {
     .saharandust-figures img {
-        width: 106%;
+        width: min(106%, max(55%, calc((100dvh - 405px) * 2.807 * 1.05)));
         max-width: 106%;
         height: auto;
         object-fit: contain;
