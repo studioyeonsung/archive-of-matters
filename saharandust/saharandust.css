@@ -685,14 +685,20 @@ a.saharandust-table-row--link {
 }
 
 /* In Progress: 진행 중 (Updated 보다 연한 회색, 행을 흐리게 하지 않음) */
+/* In Progress: 시리즈 진행 중 배지와 같은 모양 (흰 바탕 · 검은 글씨 · 테두리) */
 .saharandust-table-badge--progress {
-    background: #a6a6a6;
-    color: #ffffff;
+    background: #ffffff;
+    color: #000000;
+    border: 1.7px solid #000000;
+    padding: calc(0.32em - 1.7px) calc(0.95em - 1.7px);
 }
 
+/* Updating: 시리즈 진행 중 배지와 같은 모양 (흰 바탕 · 검은 글씨 · 테두리) */
 .saharandust-table-badge--updating {
-    background: #7a7a7a;
-    color: #ffffff;
+    background: #ffffff;
+    color: #000000;
+    border: 1.7px solid #000000;
+    padding: calc(0.32em - 1.7px) calc(0.95em - 1.7px);
 }
 
 .saharandust-table-badge--series {

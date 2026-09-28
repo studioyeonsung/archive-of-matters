@@ -4048,7 +4048,13 @@ a.news-tag--link:focus-visible {
     .copper-table-badge--series,
     .finedust-table-badge--series,
     .saharandust-table-badge--series,
-    .weather-table-badge--series {
+    .weather-table-badge--series,
+    .saharandust-table-badge--updating,
+    .weather-table-badge--updating,
+    .copper-table-badge--progress,
+    .finedust-table-badge--progress,
+    .saharandust-table-badge--progress,
+    .weather-table-badge--progress {
         border-width: 1px !important;
         padding: calc(0.32em - 1px) calc(0.95em - 1px) !important;
     }
