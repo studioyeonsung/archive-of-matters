@@ -2590,7 +2590,7 @@ body::before {
         font-size: 0.85em !important;
     }
     .page-news .about-content-mobile .about-col-eng .news-body {
-        line-height: 1.5;
+        line-height: 1.38;
     }
     .page-news .about-content-mobile .about-col-kor .news-date,
     .page-news .about-content-mobile .about-col-kor .news-body,
@@ -2601,7 +2601,13 @@ body::before {
         font-size: 0.85em !important;
     }
     .page-news .about-content-mobile .about-col-kor .news-body {
-        line-height: calc(1.8 * var(--kor-desc-line-height-scale));
+        line-height: calc(1.62 * var(--kor-desc-line-height-scale));
+    }
+    /* 키워드 태그: 프로젝트 상세 페이지 모바일 키워드와 같은 선 굵기 */
+    .page-news .news-tag {
+        border-width: 1px;
+        padding-top: 1px;
+        padding-bottom: 1px;
     }
     html:is(.aom-lang-eng, [data-aom-lang="eng"]) .page-news .about-content-mobile .about-col-kor,
     html:is(.aom-lang-eng, [data-aom-lang="eng"]) .page-news .news-updated-fixed .about-credits-block-kor,
@@ -3999,5 +4005,18 @@ a.matter-image-link .matter-image {
 
     body.page-rusty-odyssey--ko .ro-footer-item--ko {
         font-size: calc(clamp(12.1px, 1.045vw, 14.3px) * var(--kor-type-scale)) !important;
+    }
+}
+
+/* About · News (데스크탑): 텍스트가 보이는 영역을 위아래로 40px씩 넓힌다 (Contact 는 그대로) */
+@media (min-width: 769px) {
+    .page-about .about-main,
+    .page-news .about-main {
+        padding-top: 264px;
+    }
+
+    .page-about .about-scroll > .about-footer,
+    .page-news .about-scroll > .about-footer {
+        margin-top: clamp(24px, calc(7vw - 40px), 70px);
     }
 }
