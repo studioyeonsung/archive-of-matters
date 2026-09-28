@@ -11,7 +11,7 @@
     window.__AOM_LOCAL = local;
 
     var LANG_KEY = 'aom-lang';
-    var SAME_PAGE_LANG = /^(?:\/(?:about|news|contact|copper|finedust|weather|saharandust)?)\/?$/;
+    var SAME_PAGE_LANG = /^(?:\/(?:about|news|contact|copper|finedust|weather|saharandust|keywords)?)\/?$/;
     var ROW_LINKS =
         'a.copper-table-row--link[href], a.finedust-table-row--link[href], a.weather-table-row--link[href], a.saharandust-table-row--link[href]';
     var BODY_LANG = [

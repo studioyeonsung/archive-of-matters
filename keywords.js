@@ -11,12 +11,15 @@
  *   AOMKeywords.suggest('dust', 'en')       → 일부만 입력해도 맞는 키워드들
  *   AOMKeywords.related('weather', 'ko')    → 같은 프로젝트에 함께 붙은 키워드들
  *   AOMKeywords.fromUrl()                   → 주소의 ?k=… 로 고른 키워드 (링크 공유용)
- *   AOMKeywords.url('weather')              → '/keywords/?k=weather'
+ *   AOMKeywords.url('weather', 'ko')        → '/keywords/?k=weather&lang=ko'
+ *   AOMKeywords.linkTags()                  → 상세 페이지 키워드 태그를 결과 화면 링크로
  */
 (function () {
     'use strict';
 
     const SRC = '/data/keywords.json';
+    // 아직 연결할 결과가 없는 키워드: 눌러도 이동하지 않는다
+    const BLOCKED = ['Archive of Matter(s)', '아카이브 오브 매터(즈)', 'archive-of-matter-s'];
     let data = null;
     let loading = null;
     const byTerm = new Map();   // 정규화된 표기 → 키워드
@@ -47,6 +50,7 @@
             type: p.type[lang] || p.type.en,
             status: p.status[lang] || p.status.en,
             year: p.year,
+            desc: (p.desc && (p.desc[lang] || p.desc.en)) || '',
             image: p.image,
             material: p.material,
             materialName: p.materialName[lang] || p.materialName.en,
@@ -130,9 +134,38 @@
             return k ? (k.en === k.ko ? k.en : k.en + ' · ' + k.ko) : '';
         },
 
-        url(q) {
+        isBlocked(q) {
             const k = api.find(q);
-            return '/keywords/?k=' + encodeURIComponent(k ? k.id : q);
+            return BLOCKED.some((b) => norm(b) === norm(typeof q === 'object' ? q.id : q) || (k && norm(b) === norm(k.id)));
+        },
+
+        url(q, lang) {
+            const k = api.find(q);
+            return '/keywords/?k=' + encodeURIComponent(k ? k.id : q) + (lang ? '&lang=' + lang : '');
+        },
+
+        // 프로젝트 상세 페이지의 키워드 태그(span.ro-tag)를 결과 화면 링크로 바꾼다
+        // 뉴스 태그(.news-tag)는 프로젝트 키워드가 아니어도 링크한다 (결과 화면이 '아직 없음' 을 보여준다)
+        async linkTags(root, selector) {
+            root = root || document;
+            const tags = root.querySelectorAll(selector || 'ul.ro-tags .ro-tag:not(a), .ro-status .ro-tag:not(a)');
+            if (!tags.length) return;
+            try { await api.load(); } catch (e) { return; }
+            tags.forEach((el) => {
+                const text = el.textContent.trim();
+                const k = api.find(text);
+                if (api.isBlocked(k || text)) return;
+                if (!k && !el.classList.contains('news-tag')) return;
+                // 뉴스처럼 영문·한글 칸이 한 페이지에 있으면 칸을 먼저 본다 (페이지 lang 은 그다음)
+                const col = el.closest('.about-col-kor, .about-col-eng');
+                const lang = col ? (col.classList.contains('about-col-kor') ? 'ko' : 'en')
+                    : (el.closest('[lang]') || document.documentElement).getAttribute('lang') === 'ko' ? 'ko' : 'en';
+                const a = document.createElement('a');
+                a.className = el.className + (el.classList.contains('news-tag') ? ' news-tag--link' : ' ro-tag--link');
+                a.href = k ? api.url(k.id, lang) : '/keywords/?k=' + encodeURIComponent(text) + '&lang=' + lang;
+                a.innerHTML = el.innerHTML;
+                el.replaceWith(a);
+            });
         },
 
         fromUrl() {

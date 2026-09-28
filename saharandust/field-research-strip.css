@@ -284,10 +284,13 @@ body.page-fr-strip.page-rusty-odyssey--ko .wh-overlay .wh-note {
         gap: 0.352rem;
     }
 
+    /* 뉴스 모바일 키워드와 같게: 12px · 테두리 1px · 모서리 10px */
     body.page-fr-strip .wh-overlay .ro-tag {
         border-width: 1px;
-        border-radius: 8px;
-        font-size: clamp(9.6px, 2.4vw, 11.2px);
+        border-radius: 10px;
+        font-size: 12px;
+        padding-top: 1px;
+        padding-bottom: 1px;
     }
 }
 

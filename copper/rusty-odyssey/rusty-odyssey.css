@@ -441,7 +441,9 @@ body.page-rusty-odyssey--ko .ro-credit-list .ro-credit {
     padding: 0 1em 2px;
     border: 1.7px solid #000000;
     border-radius: 10px;
-    font-family: var(--ro-font);
+    /* 뉴스 키워드와 같은 서체: 영문 parabolica, 한글 neutronic-hangeul */
+    font-family: "parabolica", "neutronic-hangeul", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+    font-weight: 400;
     font-size: clamp(12px, 1vw, 14px);
     line-height: 1;
     color: #000000;
@@ -451,6 +453,39 @@ body.page-rusty-odyssey--ko .ro-credit-list .ro-credit {
 .ro-status {
     flex: 0 0 auto;
     margin-top: 0.55rem;
+}
+
+/* 키워드 태그 링크: 누르면 같은 키워드의 프로젝트 모음으로 */
+a.ro-tag--link {
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a.ro-tag--link:hover,
+a.ro-tag--link:focus-visible {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* 상태 태그(완료·시리즈 진행 중)도 링크: 검은 태그는 올리면 흰 바탕 */
+.ro-status a.ro-tag--link:not(.ro-tag--series):hover,
+.ro-status a.ro-tag--link:not(.ro-tag--series):focus-visible {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* 이미지 띠 필드 리서치: 이미지 위에 겹친 흰 글씨 복제본의 키워드도 누를 수 있게,
+   올리면 다른 페이지처럼 검은 바탕 흰 글씨 (템플릿 CSS 의 글자색 고정보다 우선) */
+body.page-rusty-odyssey .wh-overlay--cut .ro-tags {
+    pointer-events: auto !important;   /* 템플릿 CSS(나중에 로드)의 none 보다 우선 */
+}
+
+body.page-rusty-odyssey .wh-overlay a.ro-tag--link:hover,
+body.page-rusty-odyssey .wh-overlay a.ro-tag--link:focus-visible {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+    color: #ffffff !important;
 }
 
 .ro-status .ro-tag {

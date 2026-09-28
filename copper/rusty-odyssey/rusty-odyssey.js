@@ -984,3 +984,20 @@
 
     initVimeoPlayer();
 })();
+
+// 키워드 태그 → 그 키워드의 프로젝트 모음(/keywords/). (위 블록은 영상이 없으면 중간에 끝나므로 따로 둔다)
+(function () {
+    if (!document.body.classList.contains('page-rusty-odyssey')) return;
+    function initKeywordLinks() {
+        if (/[?&]__draft\b/.test(location.search)) return;
+        if (!document.querySelector('ul.ro-tags .ro-tag')) return;
+        const run = () => window.AOMKeywords && window.AOMKeywords.linkTags();
+        if (window.AOMKeywords) return run();
+        const s = document.createElement('script');
+        s.src = '/keywords.js?v=4';
+        s.onload = run;
+        document.head.appendChild(s);
+    }
+
+    initKeywordLinks();
+})();

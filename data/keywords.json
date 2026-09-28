@@ -3,6 +3,35 @@
  "note": "scripts/build_keywords.py 가 자동으로 만든 파일입니다. 직접 고치지 마세요 — 프로젝트 페이지의 키워드를 고치면 다시 만들어집니다.",
  "keywords": [
   {
+   "id": "completed",
+   "en": "Completed",
+   "ko": "완료",
+   "aliases": [],
+   "terms": [
+    "completed",
+    "완료"
+   ],
+   "count": 16,
+   "projects": [
+    "/saharandust/xiren/",
+    "/finedust/d-d-d-d/lecture-performance/",
+    "/weather/weather-station-receiving-body/",
+    "/weather/weathering-ports/",
+    "/weather/lecture-performance-weathering-ports/",
+    "/weather/field-research-maasvlakte/",
+    "/finedust/d-d-d-d/exhibition/",
+    "/finedust/fine-dust-specimen/",
+    "/saharandust/x-scene/",
+    "/finedust/d-scape/2/",
+    "/finedust/d-scape/1/",
+    "/finedust/d-beacon/",
+    "/copper/rusty-odyssey/exhibition/",
+    "/copper/rusty-odyssey/film/",
+    "/copper/rusty-odyssey/installation/",
+    "/copper/rusty-odyssey/essay/"
+   ]
+  },
+  {
    "id": "weather",
    "en": "Weather",
    "ko": "날씨",
@@ -28,6 +57,29 @@
    ]
   },
   {
+   "id": "series-ongoing",
+   "en": "Series Ongoing",
+   "ko": "시리즈 진행 중",
+   "aliases": [],
+   "terms": [
+    "seriesongoing",
+    "시리즈진행중"
+   ],
+   "count": 10,
+   "projects": [
+    "/finedust/operation-d/02-changwon/",
+    "/finedust/operation-d/01-seoul/",
+    "/weather/bring-your-own-bike/05-taehwa-river-ulsan/",
+    "/weather/bring-your-own-bike/04-botlek-rotterdam/",
+    "/weather/bring-your-own-bike/03-westhafen-berlin/",
+    "/weather/cynthesizer/",
+    "/weather/bring-your-own-bike/02-waalhaven-rotterdam/",
+    "/weather/bring-your-own-bike/01-westpoort-amsterdam/",
+    "/weather/rooftop-radio/",
+    "/finedust/d-d-d-d/activism-performance/"
+   ]
+  },
+  {
    "id": "fine-dust",
    "en": "Fine Dust",
    "ko": "미세먼지",
@@ -50,49 +102,6 @@
    ]
   },
   {
-   "id": "saharan-dust",
-   "en": "Saharan Dust",
-   "ko": "사하라 먼지",
-   "aliases": [],
-   "terms": [
-    "saharandust",
-    "사하라먼지"
-   ],
-   "count": 9,
-   "projects": [
-    "/saharandust/field-research-anti-nuclear-camp-bure/",
-    "/saharandust/field-research-algerian-sahara/",
-    "/saharandust/field-research-moroccan-sahara/",
-    "/saharandust/xiren/",
-    "/saharandust/xiren-0-1v/",
-    "/saharandust/wind-sand-dust/",
-    "/saharandust/field-research-anti-nuclear-camp-la-hague/",
-    "/saharandust/field-research-cotentin/",
-    "/saharandust/x-scene/"
-   ]
-  },
-  {
-   "id": "field-research",
-   "en": "Field Research",
-   "ko": "필드 리서치",
-   "aliases": [],
-   "terms": [
-    "fieldresearch",
-    "필드리서치"
-   ],
-   "count": 8,
-   "projects": [
-    "/saharandust/field-research-anti-nuclear-camp-bure/",
-    "/saharandust/field-research-algerian-sahara/",
-    "/saharandust/field-research-moroccan-sahara/",
-    "/saharandust/field-research-anti-nuclear-camp-la-hague/",
-    "/saharandust/field-research-cotentin/",
-    "/weather/field-research-westhafen/",
-    "/weather/field-research-maasvlakte/",
-    "/copper/rusty-odyssey/field-research/"
-   ]
-  },
-  {
    "id": "performance",
    "en": "Performance",
    "ko": "퍼포먼스",
@@ -111,6 +120,46 @@
     "/weather/weather-station-receiving-body/",
     "/weather/weathering-ports/",
     "/finedust/d-d-d-d/activism-performance/"
+   ]
+  },
+  {
+   "id": "field-research",
+   "en": "Field Research",
+   "ko": "필드 리서치",
+   "aliases": [],
+   "terms": [
+    "fieldresearch",
+    "필드리서치"
+   ],
+   "count": 7,
+   "projects": [
+    "/saharandust/field-research-anti-nuclear-camp-bure/",
+    "/saharandust/field-research-algerian-sahara/",
+    "/saharandust/field-research-moroccan-sahara/",
+    "/saharandust/field-research-anti-nuclear-camp-la-hague/",
+    "/saharandust/field-research-cotentin/",
+    "/weather/field-research-westhafen/",
+    "/weather/field-research-maasvlakte/"
+   ]
+  },
+  {
+   "id": "saharan-dust",
+   "en": "Saharan Dust",
+   "ko": "사하라 먼지",
+   "aliases": [],
+   "terms": [
+    "saharandust",
+    "사하라먼지"
+   ],
+   "count": 7,
+   "projects": [
+    "/saharandust/field-research-anti-nuclear-camp-bure/",
+    "/saharandust/field-research-algerian-sahara/",
+    "/saharandust/field-research-moroccan-sahara/",
+    "/saharandust/xiren/",
+    "/saharandust/field-research-anti-nuclear-camp-la-hague/",
+    "/saharandust/field-research-cotentin/",
+    "/saharandust/x-scene/"
    ]
   },
   {
@@ -139,13 +188,12 @@
     "copper",
     "구리"
    ],
-   "count": 5,
+   "count": 4,
    "projects": [
     "/copper/rusty-odyssey/exhibition/",
     "/copper/rusty-odyssey/film/",
     "/copper/rusty-odyssey/installation/",
-    "/copper/rusty-odyssey/essay/",
-    "/copper/rusty-odyssey/field-research/"
+    "/copper/rusty-odyssey/essay/"
    ]
   },
   {
@@ -156,13 +204,12 @@
    "terms": [
     "rustyodyssey"
    ],
-   "count": 5,
+   "count": 4,
    "projects": [
     "/copper/rusty-odyssey/exhibition/",
     "/copper/rusty-odyssey/film/",
     "/copper/rusty-odyssey/installation/",
-    "/copper/rusty-odyssey/essay/",
-    "/copper/rusty-odyssey/field-research/"
+    "/copper/rusty-odyssey/essay/"
    ]
   },
   {
@@ -178,25 +225,6 @@
     "/finedust/d-d-d-d/lecture-performance/",
     "/finedust/d-d-d-d/exhibition/",
     "/finedust/d-d-d-d/activism-performance/"
-   ]
-  },
-  {
-   "id": "diy-tool",
-   "en": "DIY Tool",
-   "ko": "DIY 도구",
-   "aliases": [
-    "DIY 장치"
-   ],
-   "terms": [
-    "diytool",
-    "diy도구",
-    "diy장치"
-   ],
-   "count": 3,
-   "projects": [
-    "/saharandust/xiren-0-1v/",
-    "/weather/cynthesizer/",
-    "/finedust/d-beacon/"
    ]
   },
   {
@@ -261,6 +289,24 @@
    ]
   },
   {
+   "id": "diy-tool",
+   "en": "DIY Tool",
+   "ko": "DIY 장치",
+   "aliases": [
+    "DIY 도구"
+   ],
+   "terms": [
+    "diytool",
+    "diy도구",
+    "diy장치"
+   ],
+   "count": 2,
+   "projects": [
+    "/weather/cynthesizer/",
+    "/finedust/d-beacon/"
+   ]
+  },
+  {
    "id": "exhibition",
    "en": "Exhibition",
    "ko": "전시",
@@ -293,29 +339,16 @@
   {
    "id": "operation-d",
    "en": "Operation D",
-   "ko": "Operation D",
+   "ko": "작전명 D",
    "aliases": [],
    "terms": [
-    "operationd"
+    "operationd",
+    "작전명d"
    ],
    "count": 2,
    "projects": [
     "/finedust/operation-d/02-changwon/",
     "/finedust/operation-d/01-seoul/"
-   ]
-  },
-  {
-   "id": "xiren",
-   "en": "Xiren",
-   "ko": "Xiren",
-   "aliases": [],
-   "terms": [
-    "xiren"
-   ],
-   "count": 2,
-   "projects": [
-    "/saharandust/xiren/",
-    "/saharandust/xiren-0-1v/"
    ]
   },
   {
@@ -472,20 +505,6 @@
    ]
   },
   {
-   "id": "prototype",
-   "en": "Prototype",
-   "ko": "프로토타입",
-   "aliases": [],
-   "terms": [
-    "prototype",
-    "프로토타입"
-   ],
-   "count": 1,
-   "projects": [
-    "/saharandust/xiren-0-1v/"
-   ]
-  },
-  {
    "id": "publication",
    "en": "Publication",
    "ko": "출판",
@@ -511,20 +530,6 @@
    "count": 1,
    "projects": [
     "/weather/rooftop-radio/"
-   ]
-  },
-  {
-   "id": "research-essay",
-   "en": "Research Essay",
-   "ko": "리서치 에세이",
-   "aliases": [],
-   "terms": [
-    "researchessay",
-    "리서치에세이"
-   ],
-   "count": 1,
-   "projects": [
-    "/saharandust/wind-sand-dust/"
    ]
   },
   {
@@ -570,19 +575,6 @@
    ]
   },
   {
-   "id": "wind-sand-dust",
-   "en": "Wind, Sand, Dust",
-   "ko": "Wind, Sand, Dust",
-   "aliases": [],
-   "terms": [
-    "windsanddust"
-   ],
-   "count": 1,
-   "projects": [
-    "/saharandust/wind-sand-dust/"
-   ]
-  },
-  {
    "id": "x-scene",
    "en": "X-Scene",
    "ko": "X-Scene",
@@ -593,6 +585,19 @@
    "count": 1,
    "projects": [
     "/saharandust/x-scene/"
+   ]
+  },
+  {
+   "id": "xiren",
+   "en": "Xiren",
+   "ko": "Xiren",
+   "aliases": [],
+   "terms": [
+    "xiren"
+   ],
+   "count": 1,
+   "projects": [
+    "/saharandust/xiren/"
    ]
   }
  ],
@@ -616,6 +621,10 @@
     "ko": "리서치 에세이"
    },
    "year": "2019",
+   "desc": {
+    "en": "Copper, the first metal processed by Neolithic humans, has accompanied human history for approximately 10,000 years, disguised as tools, ornaments, sculptures, currency, weapons, and conductors of electricity. From the perspective of New Materialism, this material, assigned atomic number 29, has been an animate object through which transversal human agency spread colonial ideologies between two former imperial powers, the Netherlands and Japan. These former imperial powers,…",
+    "ko": "신석기 인류가 처음 다루었던 금속인 구리는 도구, 장신구, 조각, 화폐, 무기, 전도체 등 다양한 형태로 변모하며 약 10,000년간 인류의 역사와 동행해 왔다. 신유물론적 관점에서 원자번호 29번의 이 물질은 두 주요 제국주의 국가인 네덜란드와 일본 사이에서 식민주의 이데올로기의 확산을 실어 나른 횡단적(transversal) 인간 행위성을 매개하는 생동하는 주체였다. 태평양의 반대편 연안에 자리했던 옛 제국주의 국가들은 구리 무역을 통해 상품과 진보적 사상을 교류하며 자신들의 영토를 풍요롭게 만들었고, 이는 식민주의의 부흥으로 이어졌다. 채굴된 원광 상태의 구리는 식민지 수탈 속에서 제국주의자들의 물리적·정신적 욕망을 체현하는 다양한 형태로 제련되었다. 식민의 시대는 저물었으나, 구리로 조각된 후기 식민주의의 유령들은 역사적 유산과 제국주의적 헤게모니라는 이름으로 상속되어 현대 사회에 깊은 상흔을 남기고 있다. 식민주의적 궤적 안에서 이뤄진…"
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -628,7 +637,8 @@
     "essay",
     "publication",
     "web",
-    "rusty-odyssey"
+    "rusty-odyssey",
+    "completed"
    ]
   },
   "/copper/rusty-odyssey/exhibition/": {
@@ -650,6 +660,10 @@
     "ko": "전시"
    },
    "year": "2020",
+   "desc": {
+    "en": "The trajectory of copper traced through the essay and the field research took the form of an exhibition. Some things are hard to convey in words alone: the slow pace at which copper oxidizes, or the enormous weight of history held in a single small coin. The exhibition set out to make these felt intuitively, inviting visitors to let their bodies dwell in the material's time as they looked. The dark room was lit only by the video. Projected onto the sand covering the floor,…",
+    "ko": "에세이와 필드 리서치를 관통한 구리의 궤적을 전시의 매체로 표현했다. 글이나 영상으로는 구리가 산화하는 느린 속도나 작은 동전 하나가 지닌 거대한 역사의 무게 같은 감각을 전달하는 것에 많은 한계가 있었다. 전시는 이를 설명하기보다 직관적으로 느끼게 하는 데 초점을 맞추었다. 관객이 눈으로 보는 데 그치지 않고 몸으로 물질의 시간에 머물도록 이끌고자 했다. 어두운 방 안, 영상에서 흘러나오는 빛이 공간을 밝히는 유일한 광원이었다. 바닥에 깔린 모래 위로 투사된 구리의 모습은 마치 여러 단계로 산화된 지질학적 표면처럼 보였다. 물질의 느린 호흡은 물이 가득 찬 수조 너머로 이어졌다. 구리 동전들이 잠긴 물 표면 위로 변모하는 구리의 모습이 겹쳐졌다. 관객들은 자신의 동전을 직접 물속에 던지며 그것이 다른 동전들 사이에 침전하는 과정을 지켜보았다. 물은 시간과 공간을 가로지르는 매개체가 되어 어디에도 고정되지 않는 서사의 흐름을 이어갔다."
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -661,39 +675,8 @@
     "copper",
     "exhibition",
     "solo",
-    "rusty-odyssey"
-   ]
-  },
-  "/copper/rusty-odyssey/field-research/": {
-   "material": "copper",
-   "materialName": {
-    "en": "Copper",
-    "ko": "구리"
-   },
-   "url": {
-    "en": "/copper/rusty-odyssey/field-research/",
-    "ko": "/copper/rusty-odyssey/field-research/ko/"
-   },
-   "title": {
-    "en": "Field-research: What Was Dug, What Was Melted, What Was Struck",
-    "ko": "파낸 것, 녹인 것, 찍어낸 것"
-   },
-   "type": {
-    "en": "Field Research",
-    "ko": "필드 리서치"
-   },
-   "year": "2019",
-   "status": {
-    "en": "Completed",
-    "ko": "완료"
-   },
-   "image": null,
-   "listed": false,
-   "order": null,
-   "keywords": [
-    "copper",
-    "field-research",
-    "rusty-odyssey"
+    "rusty-odyssey",
+    "completed"
    ]
   },
   "/copper/rusty-odyssey/film/": {
@@ -715,6 +698,10 @@
     "ko": "실험 영화"
    },
    "year": "2020",
+   "desc": {
+    "en": "Rusty Odyssey depicts the colonial faces of three copper coins (VOC Duit, Japanese Sen, and Euro coin), tracing their guilty chronicle from the 18th century to the present day in the Netherlands, Japan, and Korea. Transcending time and territories, the film cuts across the temporal dimensions of the geographies where the coins were born and follows the transformation of the monetary material as it is vitalized by capital. Rusty Odyssey reveals the colonial phantom behind the…",
+    "ko": "《Rusty Odyssey》는 18세기부터 현재까지의 네덜란드, 일본, 한국으로 이어지는 세 동(銅) 동전(동인도무역회사의 Duit, 일본의 센, 유로 코인)의 죄악의 연대기를 추적하며 그 식민 초상을 그려낸다. 필름은 시공을 초월하며 동(銅) 동전이 태어난 공간의 시간적 단면을 조명하고 자본에 의해 살아 숨 쉬는 물질의 변이를 쫓는다. 《Rusty Odyssey》는 왜곡된 역사의 장소들을 통해 그 이면에 감춰진 식민 유령의 민낯을 밝혀내고자 한다. 격동하는 동(銅)의 심장 소리는 식민 자본주의의 후계자로서, 오늘날까지 울려 퍼진다."
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -725,7 +712,8 @@
    "keywords": [
     "copper",
     "film",
-    "rusty-odyssey"
+    "rusty-odyssey",
+    "completed"
    ]
   },
   "/copper/rusty-odyssey/installation/": {
@@ -747,6 +735,10 @@
     "ko": "설치"
    },
    "year": "2020",
+   "desc": {
+    "en": "Nicknamed “Dr. Copper,” copper has long been a vital mineral, valued for its many uses and as a barometer of the world economy. Global copper reserves have thus come to represent economic value. The installation presents copper as a monetary material vitalized by capital. Copper scrap, the raw flesh of current euro coins, grows into crystals through electrolysis at a rate set by the real-time market price of copper. At this very moment, the price of copper (about 2.7 dollars…",
+    "ko": "Doctor Copper라는 별명을 지닌 동(銅)은 다양한 산업에 쓰이는 핵심 광물로 전 세계 경제를 예측하는 지표이며, 전 세계 구리의 매장량은 국가의 경제적 가치를 나타낸다. 설치 《Rusty Odyssey》는 동(銅)이 자본에 의해 생동하는 화폐 물질임을 증명한다. 구리 스크랩으로 불리며 유로 동전의 소전으로 쓰이는 물질은 전기 분해 과정을 통해 실시간 동(銅) 시장 가격에 따라 크리스털의 형태로 자라난다. 지금 이 순간에도 동(銅)의 가격은 1파운드당 약 2.7달러를 평균으로 조금씩 변화하고 있으며, 이 죄악의 심장 박동은 여전히 역동 중이다."
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -757,7 +749,8 @@
    "keywords": [
     "copper",
     "installation",
-    "rusty-odyssey"
+    "rusty-odyssey",
+    "completed"
    ]
   },
   "/finedust/d-beacon/": {
@@ -779,6 +772,10 @@
     "ko": "DIY 장치"
    },
    "year": "2021",
+   "desc": {
+    "en": "D-Beacon is an attempt to develop a sensing observatory for fine particulate matter (Dutch: fijnstof). It looks for autonomous methods of demonstration that go beyond turning dust into data. The project aims to decentralize the governance of data about visible and invisible dust phenomena and to explore the artistic potential of the dust itself. Haarlem, one of the most air-polluted cities, paradoxically has no PM2.5 monitoring stations. In response, a sensing observatory,…",
+    "ko": "《D-Beacon》은 미세먼지(네덜란드어: fijnstof) 감각 관측기(Sensing Observatory)를 개발하는 시도이다. 먼지를 데이터화하는 데 그치지 않고 주체적인 증명 방식을 모색함으로써 먼지 현상에 대한 정부 중심의 데이터 거버넌스를 분산시키고 먼지 자체에 내재된 예술적 가능성을 탐색한다. 대기 오염이 심각함에도 불구하고 네덜란드 할렘(Haarlem)에 미세먼지 관측소가 없다는 사실을 인지하고, 감지 관측기 《D-Beacon 1.0》을 Nieuwe Vide의 뒷마당에 설치했다. 이 관측기는 데이터 모니터링 기술을 재적용해 대기오염을 데이터화하는 일반적인 추세를 거스르고 직관적이고 구체적인 “감각”을 경험하게 한다. PM2.5와 풍향, 풍속, 온도, 습도 같은 기상 데이터는 관측기의 즉각적인 움직임으로 변환된다. 측정된 데이터는 실내 전시 공간에서 대기 시노그라피 작업 《D-Scape 1.0》을 구동한다. 동시에 이 관측기는 할렘의…"
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -789,7 +786,8 @@
    "keywords": [
     "fine-dust",
     "diy-tool",
-    "d-beacon"
+    "d-beacon",
+    "completed"
    ]
   },
   "/finedust/d-d-d-d/activism-performance/": {
@@ -811,6 +809,10 @@
     "ko": "액티비즘 퍼포먼스"
    },
    "year": "2022–ongoing",
+   "desc": {
+    "en": "D: D-D-D is an artistic activism project that explores the sensing of fine dust through a set of experimental practices called ‘DOCUMENT-DIY-DEMONSTRATE’. By building its own sensing tools and staging guerrilla sensing performances at monitoring stations, D: D-D-D offers an alternative approach to the fine dust problem in South Korea and seeks to redefine the social role of artists in an era of dust pollution. The project takes a critical look at the particular phenomena of…",
+    "ko": "《D: D-D-D》는 ‘DOCUMENT-DIY-DEMONSTRATE’라는 실험적 실천을 통해 미세먼지의 감각을 탐구하는 예술 액티비즘 프로젝트이다. 센싱 도구를 직접 개발하고 측정소에서 게릴라 센싱 퍼포먼스를 수행함으로써, 《D: D-D-D》는 한국의 미세먼지 문제에 대한 대안적 접근을 제안하고 먼지 오염이 지배하는 시대에 예술가의 사회적 역할을 재정의하고자 한다. 이 프로젝트는 매시간 수천 개의 데이터를 전송하는 614개 도시 대기 측정소가 제공하는 정량적·시각적 데이터에 대한 전통적 의존을 질문하며 미세먼지 특유의 현상을 비판적으로 살펴본다. 환경과학자 Emma Garnett가 포착한 미세먼지의 원소적 모호함에 기대어 사회적·윤리적·정치적 문제가 얽힌 복합적 관계를 더 깊이 탐색하고, 정부와 시민의 구체적인 행동의 중요성을 강조한다. 우리는 더 이상 측정하지 않는다. 우리는 감각한다."
+   },
    "status": {
     "en": "Series Ongoing",
     "ko": "시리즈 진행 중"
@@ -822,7 +824,8 @@
     "fine-dust",
     "performance",
     "activism",
-    "d-d-d-d"
+    "d-d-d-d",
+    "series-ongoing"
    ]
   },
   "/finedust/d-d-d-d/exhibition/": {
@@ -844,6 +847,10 @@
     "ko": "전시"
    },
    "year": "2022",
+   "desc": {
+    "en": "The exhibition brought D: D-D-D's different ways of sensing fine dust together in one room. Until then, these methods had existed apart from each other, and the exhibition gathered them as methods rather than summarizing them as finished work. A video documenting the D: D-D-D activism performance played on one wall, showing the guerrilla sensing carried out at official monitoring stations. Beside it stood Fine Dust Sensing Specimen, which collects matter that is normally…",
+    "ko": "전시는 완결된 작업의 요약에 머무르기보다, 그동안 파편화되어 있던 감각의 방식을 한자리에 포개어 놓으며 미세먼지를 감지하는 《D: D-D-D》의 다층적 시선과 마주한다. 전시 공간 전반에 나란히 배치된 매개체들이 미세먼지의 행동, 표본, 인프라, 그리고 관찰의 과정을 지속적으로 컨트롤한다. 한쪽 벽면에서는 공공 측정소에서 수행된 게릴라 센싱의 기록 영상이 흐르고 그 곁에는 흡입되고 흩어지기 직전 수집되어 비가시성에서 가시성의 영역으로 붙잡힌 《미세먼지 감각 표본》이 위치한다. 화면 속 614개 측정소의 위치망은 대기 질을 측정하는 행정적 격자를 몸으로 더듬어보는 촉각적 인프라로 전환된다. 연구 과정에서 축적된 환경과학 논문과 현장 메모는 보완적 증거에 그치지 않고 독립된 텍스트의 풍경을 이룬다."
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -854,7 +861,8 @@
    "keywords": [
     "fine-dust",
     "exhibition",
-    "d-d-d-d"
+    "d-d-d-d",
+    "completed"
    ]
   },
   "/finedust/d-d-d-d/lecture-performance/": {
@@ -876,6 +884,10 @@
     "ko": "렉처 퍼포먼스"
    },
    "year": "2023",
+   "desc": {
+    "en": "D: D-D-D opens with two people speaking before they speak as themselves. Yeon Sung and Mina Kim take the names diː and dɪ, the two ways an English speaker pronounces the letter D, and stand in for the very substance the piece is about: something so diffuse and interchangeable that even its own initial splits into two sounds. Before naming the sources of fine dust (soil, sea salt, pollen, soot, skin, plastic), the performance names the instruments that measure it. The…",
+    "ko": "《D: D-D-D》는 두 퍼포머가 자신들의 이름 대신 언어의 소리를 빌린 이름을 호명하며 시작된다. 연성과 김민아는 알파벳 D의 두 가지 발음인 'diː'와 'dɪ'라는 이름을 얻고, 퍼포먼스가 다루는 물질 그 자체가 되어 무대에 선다. 공기 중으로 쉽게 번지고 뒤섞여 자신의 첫 글자마저 두 개의 소리로 갈라지고 마는 미세먼지의 속성을 몸으로 체화하는 것이다. 퍼포먼스는 흙, 해일, 꽃가루, 매연, 피부, 플라스틱 같은 미세먼지의 발생원을 지목하기에 앞서 그것을 측정하는 도구의 이름들을 먼저 호출한다. 서울 시내 공공 측정소의 명칭과 매 시각 쏟아지는 수치들을 읊조리는 과정은 어느덧 하나의 주술적인 반복으로 변모한다. 600개가 넘는 측정소와 연간 500만 건이 넘는 데이터는 재난 경보를 발령할 만큼 정밀하지만, 먼지라는 물질의 본질에 대해서는 아무것도 말해주지 못한다. 이 읊조림은 무대 위에서 그치지 않는다. diː와 dɪ는 바람을 소리로…"
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -886,7 +898,8 @@
    "keywords": [
     "fine-dust",
     "lecture-performance",
-    "d-d-d-d"
+    "d-d-d-d",
+    "completed"
    ]
   },
   "/finedust/d-scape/1/": {
@@ -908,6 +921,10 @@
     "ko": "시노그라피"
    },
    "year": "2021",
+   "desc": {
+    "en": "The D-Scape series is a set of prototypes for a real-time scenography that changes constantly, driven by dust data. The first prototype, D-Scape 1.0, attempts to materialize PM2.5 as an atmospheric work, using data transmitted from D-Beacon 1.0 in Haarlem.",
+    "ko": "《D-Scape》 시리즈는 실시간 미세먼지 데이터를 기반으로 끊임없이 변모하는 먼지 데이터의 시노그라피를 프로토타이핑한다. 첫 번째 프로토타입 《D-Scape 1.0》은 먼지 감각 관측기 《D-Beacon 1.0》이 실시간으로 수집한 할렘의 미세먼지를 대기적 시노그라피로 물질화하는 시도이다."
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -918,7 +935,8 @@
    "keywords": [
     "fine-dust",
     "scenography",
-    "d-scape"
+    "d-scape",
+    "completed"
    ]
   },
   "/finedust/d-scape/2/": {
@@ -940,6 +958,10 @@
     "ko": "시노그라피"
    },
    "year": "2021",
+   "desc": {
+    "en": "The second prototype, D-Scape 2.0, confronts the “fundamental ambiguity” of fine dust that drifts between indeterminate states. D-Beacon, placed at the center of the exhibition space, continuously controls the processes of sensing, measuring, and observing dust. The cycle repeats endlessly: matter shifts between dust and data, and its state keeps toggling between visibility and invisibility, sensing and non-sensing. The measured data turns into new fine dust, which forms a…",
+    "ko": "두 번째 프로토타입 《D-Scape 2.0》은 모호한 상태의 사이를 배회하는 미세먼지의 “근본적 모호성”과 마주한다. 전시장 중앙에 배치된 《D-Beacon》이 먼지의 감지, 측정, 관찰 과정을 지속적으로 컨트롤한다. 이 과정은 끊임없이 반복되며 물질의 형태는 먼지와 데이터로, 물질의 상태는 가시성-비가시성, 감지-미감지로 전환된다. 측정된 데이터는 새로운 미세먼지가 되어 공간을 가득 메우는 먼지의 풍경으로 변모한다. 먼지의 풍경은 또다시 데이터가 되어 앞선 감지, 측정, 관찰의 과정을 거듭한다."
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -950,7 +972,8 @@
    "keywords": [
     "fine-dust",
     "scenography",
-    "d-scape"
+    "d-scape",
+    "completed"
    ]
   },
   "/finedust/fine-dust-specimen/": {
@@ -972,6 +995,10 @@
     "ko": "아카이빙북"
    },
    "year": "2022",
+   "desc": {
+    "en": "Fine Dust Sensing Specimen catalogues the acts of measuring fine dust rather than the dust itself. Moving along a single axis of scale, from ultrafine particles of 100 nanometers through PM2.5 and PM10 to planetary-scale air pollution, it gathers every measuring practice currently in use in South Korea. Nineteen consumer-grade sensors sold on the domestic market, priced from ₩35,400 to ₩1,779,000, are laid out side by side and identified only by price and sensing method. The…",
+    "ko": "《미세먼지 감각 표본집》은 미세먼지 자체가 아니라, 미세먼지를 측정하는 행위들을 채집한다. 100나노미터의 극초미세먼지부터 2.5마이크로미터, 10마이크로미터를 거쳐 전-지구적 규모의 대기오염 현상에 이르기까지, 크기라는 하나의 축을 따라 지금 대한민국에서 작동 중인 측정 행위 전부를 표본으로 삼는다. 3만 5천 원짜리 가정용 레이저 센서부터 177만 원짜리 전문가용 파티클카운터까지, 시판 간이측정기 19종이 가격과 측정 방식만을 이름표 삼아 나란히 놓이고, 전국 519개 도시대기측정소는 설치연도와 주소, GPS 좌표, 옥상에 선 사진 한 장으로 각각 박제된다. 대기과학자 엠마 가넷이 짚은 미세먼지 측정의 근본적 모호성, 즉 무엇을 측정하고 있는가라는 물음이 기술적인 동시에 사회적, 윤리적, 정치적이라는 사실은 이 표본집의 핵심이 된다. 먼지 대신 그 먼지를 붙잡으려는 장치와 제도 자체가 표본이 될 때, 우리는 비로소 무엇을 보게 되는가."
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -982,7 +1009,8 @@
    "keywords": [
     "fine-dust",
     "archive-publication",
-    "fine-dust-sensing-specimen"
+    "fine-dust-sensing-specimen",
+    "completed"
    ]
   },
   "/finedust/operation-d/01-seoul/": {
@@ -1004,6 +1032,10 @@
     "ko": "참여형 게임 퍼포먼스 시리즈"
    },
    "year": "2025–ongoing",
+   "desc": {
+    "en": "The Seoul edition opened the series with a search across Segeomjeong, a neighborhood where past and present cross in strange ways. Explorers gathered at Space illi, the base of operations, took on their roles after a briefing, and set out into the neighborhood. Each of the five roles defined D differently. The Dust Archivist saw it as something that accumulates, the Tactile Medium as a sensory afterimage read through vibration, the Flow Sensor as a signal that flows and…",
+    "ko": "시리즈의 첫 장을 연 서울 에디션은 과거와 현재가 묘하게 교차하는 세검정 일대를 무대로 탐색을 펼쳤다. 작전 기지인 공간 일리에 모인 탐험가들은 브리핑을 통해 각자의 역할을 맡은 뒤 동네로 발을 내디뎠다. 다섯 개 역할은 D라는 존재를 저마다 다르게 정의했다. 먼지 기록자는 축적되는 무언가로, 촉각 매개자는 진동으로 읽어내는 감각의 잔상으로, 흐름 감지자는 흐르고 충돌하는 신호로, 형상 관찰자는 빛 속을 떠도는 패턴으로 D를 바라보았다. 데이터 연산자의 임무가 가장 독특했는데, 하나의 정확한 수치를 도출하는 대신 세 대의 D-Meter가 서로 다른 값을 가리키는 지점을 찾아내는 역할이었다."
+   },
    "status": {
     "en": "Series Ongoing",
     "ko": "시리즈 진행 중"
@@ -1014,7 +1046,8 @@
    "keywords": [
     "fine-dust",
     "game-performance",
-    "operation-d"
+    "operation-d",
+    "series-ongoing"
    ]
   },
   "/finedust/operation-d/02-changwon/": {
@@ -1036,6 +1069,10 @@
     "ko": "참여형 게임 퍼포먼스 시리즈"
    },
    "year": "2025–ongoing",
+   "desc": {
+    "en": "The Changwon edition set out from the Changwon operation base and narrowed its search to a single structure: Big Tree, the city's new landmark. Modeled after Singapore's Supertree Grove and conceived as an eco-friendly icon, Big Tree looked nothing like its renderings once completed and earned nicknames such as the bald tree, the drum barrel, and the smokestack. A structure that had tried to imitate nature and ended up exposing only an artificial, unsightly cross-section was…",
+    "ko": "창원 에디션은 창원 작전 기지를 출발해 도시의 새로운 상징물인 ‘빅트리(Big Tree)’라는 단 하나의 구조물로 수색 범위를 좁혔다. 싱가포르의 슈퍼트리 그리너리를 본떠 친환경적인 상징으로 기획되었던 빅트리는 완공된 후 예상도와는 전혀 다른 모습을 보이며 ‘탈모 트리’, ‘드럼통’, ‘굴뚝’ 같은 별명을 얻었다. 자연을 본뜨려다 도리어 인공의 흉물스러운 단면만 드러내 버린 이 구조물은 거대한 D의 흔적이 숨어 있을 최적의 장소로 지목되었다."
+   },
    "status": {
     "en": "Series Ongoing",
     "ko": "시리즈 진행 중"
@@ -1046,7 +1083,8 @@
    "keywords": [
     "fine-dust",
     "game-performance",
-    "operation-d"
+    "operation-d",
+    "series-ongoing"
    ]
   },
   "/saharandust/field-research-algerian-sahara/": {
@@ -1068,6 +1106,10 @@
     "ko": "필드 리서치"
    },
    "year": "2026",
+   "desc": {
+    "en": "",
+    "ko": ""
+   },
    "status": {
     "en": "",
     "ko": ""
@@ -1100,6 +1142,10 @@
     "ko": "필드 리서치"
    },
    "year": "2026",
+   "desc": {
+    "en": "",
+    "ko": ""
+   },
    "status": {
     "en": "",
     "ko": ""
@@ -1131,6 +1177,10 @@
     "ko": "필드 리서치"
    },
    "year": "2025",
+   "desc": {
+    "en": "",
+    "ko": ""
+   },
    "status": {
     "en": "",
     "ko": ""
@@ -1162,6 +1212,10 @@
     "ko": "필드 리서치"
    },
    "year": "2025",
+   "desc": {
+    "en": "",
+    "ko": ""
+   },
    "status": {
     "en": "",
     "ko": ""
@@ -1193,6 +1247,10 @@
     "ko": "필드 리서치"
    },
    "year": "2026",
+   "desc": {
+    "en": "",
+    "ko": ""
+   },
    "status": {
     "en": "",
     "ko": ""
@@ -1204,38 +1262,6 @@
     "saharan-dust",
     "field-research",
     "morocco"
-   ]
-  },
-  "/saharandust/wind-sand-dust/": {
-   "material": "saharandust",
-   "materialName": {
-    "en": "Saharan Dust",
-    "ko": "사하라 먼지"
-   },
-   "url": {
-    "en": "/saharandust/wind-sand-dust/",
-    "ko": "/saharandust/wind-sand-dust/ko/"
-   },
-   "title": {
-    "en": "Wind, Sand, Dust: Staying, Passing",
-    "ko": "Wind, Sand, Dust: Staying, Passing"
-   },
-   "type": {
-    "en": "Research Essay",
-    "ko": "리서치 에세이"
-   },
-   "year": "2026",
-   "status": {
-    "en": "Completed",
-    "ko": "완료"
-   },
-   "image": null,
-   "listed": false,
-   "order": null,
-   "keywords": [
-    "saharan-dust",
-    "research-essay",
-    "wind-sand-dust"
    ]
   },
   "/saharandust/x-scene/": {
@@ -1257,6 +1283,10 @@
     "ko": "시노그라피"
    },
    "year": "2022",
+   "desc": {
+    "en": "Between 15 and 17 March 2022, historic clouds of Saharan dust swirled across Europe. Scientists recently found that the dust particles also carried abnormal levels of radiation to Europe, spectres of France’s nuclear tests in the colonized Sahara in the 1960s. X-Scene 1.0 speculates on a scenography of dust-borne colonial toxicity entangled in the Dutch sand dunes. The vibration of the dust, mediated by real-time radiation·dust data from the soil surface in The Hague,…",
+    "ko": "2022년 3월 15일부터 17일까지, 역대 최악의 사하라 먼지가 유럽을 휩쓸었다. 최근 과학자들은 사하라 사막 먼지 입자에 1960년대 프랑스 식민 정부 주도하에 알제리 사하라 사막에서 이뤄진 핵무기 실험으로 발생한 방사능이 포함되어 있음을 밝혀냈다. 《X-Scene 1.0》은 사하라 사막 먼지의 식민지적 독성(Colonial Toxicity, Henni 2022)이 뒤얽힌 네덜란드 모래 언덕의 시노그라피를 상상한다. 헤이그의 모래 언덕 표면에서 측정된 방사능·먼지 데이터로 생성된 먼지의 진동은 끊임없이 요동치며 신체와 환경을 관통하는 비인간 물질의 식민지적 독성을 그려낸다. 프로젝트는 보이지 않는 물질의 공명을 통해 우리의 시야 너머 보이지 않는 재앙의 시급성을 들려줌으로써, 떨림과 울림으로 맺어지는 인간과 비-인간의 연결이 중요하다고 역설한다. 먼지는 결코 잊지 않는다."
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -1267,40 +1297,8 @@
    "keywords": [
     "saharan-dust",
     "scenography",
-    "x-scene"
-   ]
-  },
-  "/saharandust/xiren-0-1v/": {
-   "material": "saharandust",
-   "materialName": {
-    "en": "Saharan Dust",
-    "ko": "사하라 먼지"
-   },
-   "url": {
-    "en": "/saharandust/xiren-0-1v/",
-    "ko": "/saharandust/xiren-0-1v/ko/"
-   },
-   "title": {
-    "en": "Xiren 0.1v",
-    "ko": "Xiren 0.1v"
-   },
-   "type": {
-    "en": "DIY Tool",
-    "ko": "DIY 도구"
-   },
-   "year": "2026",
-   "status": {
-    "en": "Completed",
-    "ko": "완료"
-   },
-   "image": "/saharandust/xiren-0-1v/image/xiren-0-1v-01.jpg",
-   "listed": true,
-   "order": 18,
-   "keywords": [
-    "saharan-dust",
-    "diy-tool",
-    "prototype",
-    "xiren"
+    "x-scene",
+    "completed"
    ]
   },
   "/saharandust/xiren/": {
@@ -1322,6 +1320,10 @@
     "ko": "렉처 퍼포먼스"
    },
    "year": "2026",
+   "desc": {
+    "en": "Xiren is an interdisciplinary project that builds a DIY siren as a performance instrument, sounding an alarm about the “slow violence” of radioactive dust carried from the Algerian Sahara into Europe. This lecture performance draws on research showing that the dust is more than a weather event. It carries the residue of French nuclear testing in colonial Algeria and keeps moving it across borders, decades after the tests ended. Over thirty minutes, the live presentation…",
+    "ko": "Xiren은 알제리 사하라 사막에서 유럽으로 불어오는 방사성 먼지의 ‘느린 폭력(slow violence)’을 알리기 위해 DIY 사이렌 악기를 퍼포먼스 도구로 제작하는 다학제 프로젝트다. 이번 렉처 퍼포먼스는 이 먼지가 단순한 기상 현상이 아니라 핵 식민주의가 남긴 상흔을 증언하는 물질적 기록임을 보여주는 연구 결과를 바탕으로 한다. 30분 동안 진행되는 라이브 발표는 영상과 사운드를 엮어내며 지도, 위성 데이터, 아카이브 자료, 그리고 프랑스 라 아그(La Hague) 현장 조사 영상을 다각도로 펼쳐낸다. 말과 소리가 겹겹이 쌓이며 방사성 먼지의 순환을 닮은 공간이 만들어지고 퍼포먼스의 마지막 순간 오직 공기와 회전력으로 움직이는 기계식 사이렌 ‘Xiren ver.0’이 울려 퍼지며 프로젝트의 메시지를 강렬한 물리적·청각적 경험으로 완성한다."
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -1332,7 +1334,8 @@
    "keywords": [
     "saharan-dust",
     "lecture-performance",
-    "xiren"
+    "xiren",
+    "completed"
    ]
   },
   "/weather/bring-your-own-bike/01-westpoort-amsterdam/": {
@@ -1354,6 +1357,10 @@
     "ko": "참여형 퍼포먼스"
    },
    "year": "2024",
+   "desc": {
+    "en": "The first edition of BYOB took place under a nationwide storm warning. The route ran from Hembrugterrein, a former munitions factory site in Zaandam that had been closed to the public for decades, across the North Sea Canal by ferry to Westpoort, Amsterdam’s industrial port. Along the way, the ride passed wind turbines powering the harbour, scrap metal terminals loading compressed steel for export to Turkey, and the oil terminals of the world’s largest gasoline port. With a…",
+    "ko": "BYOB의 첫 번째 에디션은 네덜란드 전역에 강풍 경보가 내려진 날 진행되었다. 경로는 수십 년간 대중에게 닫혀 있던 Zaandam의 옛 군수공장 부지 Hembrugterrein에서 출발해, 페리로 북해 운하를 건너 암스테르담의 산업 항구 Westpoort에 이르렀다. 라이딩은 항구에 전력을 공급하는 풍력발전기, 터키로 수출될 압축 철강이 쌓인 고철 터미널, 그리고 세계 최대 가솔린 항구의 오일 터미널을 지나쳤다. 시속 35마일의 맞바람이 페달을 밀어내는 가운데, 풍화(weathering)는 관념이 아니라 온몸으로 통과해야 하는 물리적 조건이 되었다. 암스테르담 수변의 군사적 과거와 공업화된 현재가 우리의 몸을 통해 어떻게 날씨와 만나는지 감각할 수 있는 에디션이었다. ↳ 전체 로그 읽기"
+   },
    "status": {
     "en": "Series Ongoing",
     "ko": "시리즈 진행 중"
@@ -1364,7 +1371,8 @@
    "keywords": [
     "weather",
     "performance",
-    "bring-your-own-bike"
+    "bring-your-own-bike",
+    "series-ongoing"
    ]
   },
   "/weather/bring-your-own-bike/02-waalhaven-rotterdam/": {
@@ -1386,6 +1394,10 @@
     "ko": "참여형 퍼포먼스"
    },
    "year": "2024",
+   "desc": {
+    "en": "Conceived within Varia's programme Colonial Infrastructures: on Containerisation and developed with artists Amy Pickles and Czarina Calinawagan, this ride set out from south Rotterdam into the container terminals of Waalhaven, where boxes stacked several storeys high form continuous steel walls. It ended in Pernis, a village of around five thousand people enclosed by Europe's largest Shell refinery. Looking past cargo and throughput figures, the ride asked whose lives go…",
+    "ko": "Varia의 프로그램 Colonial Infrastructures: on Containerisation의 일환으로 작가 Amy Pickles, Czarina Calinawagan과 함께 만든 이 라이딩은 로테르담 남부에서 출발해 컨테이너가 몇 층 높이의 철제 벽을 이루는 Waalhaven 터미널로 들어갔다. 도착지는 유럽 최대 규모의 Shell 정유 공장에 둘러싸인 인구 5천여 명의 마을 Pernis였다. 우리는 화물과 물동량이라는 숫자 너머, 모든 것을 컨테이너 단위로 셈하는 항구에서 누구의 삶이 사라지는가를 질문하기도 했다. 컨테이너선에서 일하던 아버지가 집으로 보낸 편지들을 추적해 온 Czarina의 작업은 이 경로에 또 하나의 층위를 더했고 컨테이너는 물건을 나르는 상자라기보다 개인의 삶을 거대한 시스템의 규모 속에 접어 넣는 장치에 가까웠다. ↳ 전체 로그 읽기"
+   },
    "status": {
     "en": "Series Ongoing",
     "ko": "시리즈 진행 중"
@@ -1396,7 +1408,8 @@
    "keywords": [
     "weather",
     "performance",
-    "bring-your-own-bike"
+    "bring-your-own-bike",
+    "series-ongoing"
    ]
   },
   "/weather/bring-your-own-bike/03-westhafen-berlin/": {
@@ -1418,6 +1431,10 @@
     "ko": "참여형 퍼포먼스"
    },
    "year": "2024",
+   "desc": {
+    "en": "During the CYCLE UP! residency at ZK/U, the smell of melting metal drifted in from Westhafen every morning, and the air sensor facing the port kept flagging poor air quality. The closing ride took that air as its starting point. Setting off from ZK/U, a former freight depot on the Spree, resident artists and local riders followed the artist's performance bike, modified during the residency, through Moabit, a neighbourhood built a century ago around coal arriving by barge.…",
+    "ko": "ZK/U의 CYCLE UP! 레지던시 기간에 Westhafen에서는 매일 아침 쇠를 녹이는 듯한 냄새가 흘러들어왔고 항구 앞에 설치된 미세먼지 측정기는 수시로 나쁜 공기질을 알렸다. 그 공기를 들이마시며 레지던시의 마지막 라이딩을 시작했다. 레지던시 작가들과 현지 라이더들은 레지던시 동안 개조한 작가의 퍼포먼스 자전거를 따라 Spree 강변의 옛 화물 창고 ZK/U에서 100년 전 바지선으로 실어 온 석탄을 중심으로 형성된 동네 Moabit으로 향했다. 브란덴부르크 문에서 불과 4km 거리에 있는 모아비트 발전소는 지금도 베를린 시내로 난방열을 보낸다. 베를린 최대의 내륙 항구에는 모래와 건설 폐기물이 담긴 사일로, 함부르크로 향하는 화물열차 컨테이너, 백 년 전과 다를 바 없는 바지선이 늘어서 있다. 그 곁에 새로 들어선 수소 탱크까지 어우러진 모습을 보고 있노라면, 이 물길이 과연 어느 세기에 속해 있는지 아득해진다. ↳ 전체 로그 읽기"
+   },
    "status": {
     "en": "Series Ongoing",
     "ko": "시리즈 진행 중"
@@ -1428,7 +1445,8 @@
    "keywords": [
     "weather",
     "performance",
-    "bring-your-own-bike"
+    "bring-your-own-bike",
+    "series-ongoing"
    ]
   },
   "/weather/bring-your-own-bike/04-botlek-rotterdam/": {
@@ -1450,6 +1468,10 @@
     "ko": "참여형 퍼포먼스"
    },
    "year": "2025",
+   "desc": {
+    "en": "For Wasteland Festival 2025, BYOB rode out with a new instrument: a performance bike fitted with a portable lithium battery, which generated sound in real time in response to the air around it. Organised with Katya Borisova, the 30 km route began in Oeverbos, a forest in Vlaardingen planted over the port's polluted soil and industrial sediment, where what industry left behind lies hidden under the trees. A ferry across Het Scheur took riders to the quiet gardens of…",
+    "ko": "Wasteland Festival 2025에서 BYOB는 새로운 퍼포먼스 자전거와 함께했다. 휴대용 리튬 배터리를 탑재한 자전거는 주변 공기에 반응하며 실시간 사운드를 만들어냈다. Katya Borisova와 함께 기획한 30km 코스는 항구의 오염된 흙과 산업 폐기물 위에 나무를 심어 산업의 흔적을 덮어버린 인공 숲 Vlaardingen의 Oeverbos 숲에서 시작되었다. 페리로 Het Scheur 물길을 건너면 조용한 정원이 늘어선 Rozenburg에 이르고, 이어 유럽 최대 규모의 폐기물 에너지화 시설인 AVR의 연통들이 모습을 드러낸다. 그 너머, 유럽에서 가장 밀집된 석유화학 단지 중 하나인 Botlek은 석탄 더미와 저장 탱크, 컨테이너가 빽빽이 들어차 공장과 공장 사이의 경계조차 아득하다. 참가자들은 Air Products사의 HyCO4 수소 공장 그늘 아래서 여정을 잠시 멈췄다. 항구의 '청정에너지 미래'라는 홍보 문구와 달리,…"
+   },
    "status": {
     "en": "Series Ongoing",
     "ko": "시리즈 진행 중"
@@ -1460,7 +1482,8 @@
    "keywords": [
     "weather",
     "performance",
-    "bring-your-own-bike"
+    "bring-your-own-bike",
+    "series-ongoing"
    ]
   },
   "/weather/bring-your-own-bike/05-taehwa-river-ulsan/": {
@@ -1482,6 +1505,10 @@
     "ko": "참여형 퍼포먼스"
    },
    "year": "2025",
+   "desc": {
+    "en": "BYOB's first ride in South Korea, presented at U-Spectrum, followed the Taehwa River in Ulsan. Called a \"river of death\" in the 1960s after decades of industrial wastewater, the river is now a national garden and the city's favourite cycling route. Citizens and artists rode upstream past sewage treatment plants, floodgates and pollution monitoring stations until the Hyundai Motor complex came into view across the water. Unlike in the port cities of earlier editions,…",
+    "ko": "한국에서 열린 첫 BYOB는 U-Spectrum 프로그램을 통해 울산 태화강변을 따라 달렸다. 1960년대 수십 년간 축적된 산업폐수로 '죽음의 강'이라 불리던 태화강은 오늘날 국가정원이자 시민들이 즐겨 찾는 자전거길로 변모했다. 참여자들은 하수처리장과 수문, 수질 측정소를 지나 강을 따라 올라갔고, 라이딩 도착지 강 너머로 현대자동차 공장이 눈에 들어왔다. 그간 거쳐 온 유럽의 항구 도시들과 달리 울산의 산업지대들은 굳게 닫혀 있었고, 자전거 도로 역시 펜스 앞에서 멈춰 설 수밖에 없었다. 퍼포먼스 동안 현대자동차 공장으로 자전거를 타고 출근하는 노동자들이 많았다. 출근길 페달을 밟는 노동자들과 우리는 같은 길 위에서, 같은 동작으로, 서로 다른 목적을 향해 달렸다. 그 강변의 풍경 속에서 생태와 노동, 예술은 잠시나마 하나의 공간으로 엮였다. ↳ 전체 로그 읽기"
+   },
    "status": {
     "en": "Series Ongoing",
     "ko": "시리즈 진행 중"
@@ -1492,7 +1519,8 @@
    "keywords": [
     "weather",
     "performance",
-    "bring-your-own-bike"
+    "bring-your-own-bike",
+    "series-ongoing"
    ]
   },
   "/weather/cynthesizer/": {
@@ -1514,6 +1542,10 @@
     "ko": "메이킹 워크숍"
    },
    "year": "2024–ongoing",
+   "desc": {
+    "en": "(C)ynthesizer is a DIY synthesizer that turns air pollution into sound in real time. Mounted on a bicycle, it reads air quality as the rider moves through the city and translates each measurement into tone, so that the air one is breathing can also be heard. Built from low-cost components and open-source code, it was never meant to remain a single instrument. During the CYCLE UP! residency at ZK/U in Berlin, the synthesizer became the basis of a tool-making workshop with…",
+    "ko": "《(C)ynthesizer》는 대기오염 수치를 실시간 소리로 바꿔주는 DIY 신디사이저다. 자전거에 달린 이 장치는 도시를 달리는 동안 공기질을 측정하고, 그 값을 소리로 바꿔 지금 마시고 있는 공기를 귀로 들을 수 있게 한다. 누구나 구할 수 있는 부품과 오픈소스 코드로 만들어 한 사람의 악기로 끝나기보다, 여러 사람이 나눠 쓸 수 있는 도구가 되는 것을 목적으로 한다. 베를린 ZK/U의 CYCLE UP! 레지던시 동안에는 석탄 발전소 바로 옆 동네인 Moabit 주민들과 함께 신디사이저 제작 워크숍을 열었다. 참여자들은 자기만의 측정 장치를 직접 만들고 집 주변의 공기를 읽는 법을 배웠다. 공기를 관측하는 일이 기관의 손을 떠나 매일 그 공기를 마시며 사는 사람들에게로 넘어온 것이다."
+   },
    "status": {
     "en": "Series Ongoing",
     "ko": "시리즈 진행 중"
@@ -1525,7 +1557,8 @@
     "weather",
     "making-workshop",
     "diy-tool",
-    "c-ynthesizer"
+    "c-ynthesizer",
+    "series-ongoing"
    ]
   },
   "/weather/field-research-maasvlakte/": {
@@ -1547,6 +1580,10 @@
     "ko": "필드 리서치"
    },
    "year": "2023",
+   "desc": {
+    "en": "",
+    "ko": ""
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -1557,7 +1594,8 @@
    "keywords": [
     "weather",
     "field-research",
-    "weathering-ports"
+    "weathering-ports",
+    "completed"
    ]
   },
   "/weather/field-research-westhafen/": {
@@ -1579,6 +1617,10 @@
     "ko": "필드 리서치"
    },
    "year": "2024",
+   "desc": {
+    "en": "",
+    "ko": ""
+   },
    "status": {
     "en": "",
     "ko": ""
@@ -1610,6 +1652,10 @@
     "ko": "렉처 퍼포먼스"
    },
    "year": "2023",
+   "desc": {
+    "en": "Investigating: Weathering Ports is a 15-minute lecture performance and the final presentation of the Goethe-Investigating residency. It draws on research into Maasvlakte, an artificial industrial zone built on reclaimed land in the Port of Rotterdam, where the weather arrives already mixed with emissions from the port. Taking as its method the concept of weathering proposed by Astrida Neimanis and Jennifer Mae Hamilton (2018), the performance treats polluted weather as…",
+    "ko": "《탐사하는 몸: 풍화하는 항구》는 Goethe-Investigating 레지던시의 최종 발표로 선보인 15분 길이의 렉처 퍼포먼스다. 작업은 로테르담 항구 안의 매립지 위에 조성된 인공 산업지대 Maasvlakte에 대한 리서치를 다루며, 이곳의 날씨는 항구에서 배출된 물질과 이미 뒤섞인 채로 도착한다. 아스트리다 네이마니스(Astrida Neimanis)와 제니퍼 메이 해밀턴(Jennifer Mae Hamilton)이 제안한 풍화(weathering, 2018) 개념을 방법론으로 삼아, 퍼포먼스는 오염된 날씨를 멀리서 관찰하는 대상이 아니라 몸으로 겪어내는 현상으로 다룬다. 현장 탐사에서 얻은 경험은 변화하는 날씨와 오염을 감각하고 흡수하며 기록하는 바이오 아카이브로서 작가의 몸을 통해 펼쳐진다. 강연과 퍼포먼스를 오가며 작업은 예술가가 자신이 연구하는 대기 안에서 감각하고 수행하며 행동하는 '날씨-몸'이 된다는 것이 무엇을 의미하는지 묻고,…"
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -1620,7 +1666,8 @@
    "keywords": [
     "weather",
     "lecture-performance",
-    "weathering-ports"
+    "weathering-ports",
+    "completed"
    ]
   },
   "/weather/rooftop-radio/": {
@@ -1642,6 +1689,10 @@
     "ko": "커뮤니티 라디오"
    },
    "year": "2023–ongoing",
+   "desc": {
+    "en": "Rooftop-Radio: Weathering Station is a nomadic DIY radio booth that broadcasts from rooftops across South Korea. It takes its cue from the weather stations on top of many buildings, which produce large amounts of environmental data, and turns rooftops into stages. The station looks at the politics and aesthetics of these raised spaces and broadcasts stories of resistance and autonomy. It invites practitioners who are engaged in their own forms of ‘weathering’ to share their…",
+    "ko": "《옥상 라디오: 웨더링 스테이션》은 한국 전역의 각기 다른 옥상에서 송출되는 노마드 DIY 라디오 프로젝트이다. 환경·오염 데이터를 측정·송출하는 도심 대기 관측소의 대부분이 옥상에 설치되어 있다는 점에서, 웨더링 스테이션은 옥상을 무대로 삼는다. 라디오는 옥상의 정치와 미학을 담아내며, 바람에 흩날리는 저항과 자유의 이야기를 엮어낸다. 호스트는 각자 웨더링을 실천하는 창작자들을 초대해 그들의 예술적 실천을 소개하고, 함께 환경과 사회정치적 기후를 체화한다. 라디오의 첫 번째 에피소드는 2023년 10월 서울 성북예술센터의 옥상에서 방송되었으며, 다른 지역의 옥상에서도 (비)정기 방송이 진행될 예정이다. 함께 나눈 대화는 바람이 되어 옥상 너머로 흩어진다. 우리는 그렇게 함께 감각하고, 수행하며, 행동하는 예술가의 몸이 되어간다."
+   },
    "status": {
     "en": "Series Ongoing",
     "ko": "시리즈 진행 중"
@@ -1652,7 +1703,8 @@
    "keywords": [
     "weather",
     "radio",
-    "weathering-station"
+    "weathering-station",
+    "series-ongoing"
    ]
   },
   "/weather/weather-station-receiving-body/": {
@@ -1674,6 +1726,10 @@
     "ko": "참여형 퍼포먼스"
    },
    "year": "2023",
+   "desc": {
+    "en": "Weather Station: Receiving Body is a guided weather meditation performed on a rooftop in Seoul, delivered as a live broadcast from the Weathering Station. Blindfolded, participants are asked to set aside what they can see and turn toward what cannot be seen, heard or touched. The voice begins with coordinates, temperature, humidity and wind, locating everyone at the same point on the planet, then slowly moves inward. Ultraviolet light settles on an outstretched hand, the…",
+    "ko": "《기상관측소: 수신하는 몸》은 서울의 한 옥상에서 웨더링 스테이션의 방송 형식으로 진행된 날씨 명상 퍼포먼스다. 안대를 쓴 참여자들은 눈에 보이는 것을 잠시 내려놓고, 보이지도 들리지도 만져지지도 않는 것들로 감각을 돌린다. 목소리는 좌표와 기온, 습도, 풍향을 읊으며 모두를 행성의 같은 지점에 위치시킨 뒤 천천히 몸 안으로 향한다. 앞으로 뻗은 손끝에 자외선이 내려앉고, 남쪽에서 불어오는 바람의 냄새가 닿으며 숨을 쉴 때마다 입자들이 몸을 통과하도록 허락된다. 질소와 오존, 꽃가루와 포자는 아황산가스와 PM2.5, 수은과 한 호흡 안에서 호명되고, 이어 자본과 계층, 차별과 억압 역시 공기의 일부처럼 불린다. 물질들이 폐포와 달팽이관에 이르는 여정을 따라가며 퍼포먼스는 우리 몸을 하나의 수신기로 정의하기를 제안한다. 환경의 영향이 끊임없이 몸을 통과하고 그 과정에서 스쳐 간 날씨와 시간이 온전히 기록되는 장치다. 그리고 이 여정 끝에, 우리가…"
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -1683,7 +1739,8 @@
    "order": 21,
    "keywords": [
     "weather",
-    "performance"
+    "performance",
+    "completed"
    ]
   },
   "/weather/weathering-ports/": {
@@ -1705,6 +1762,10 @@
     "ko": "퍼포먼스"
    },
    "year": "2023",
+   "desc": {
+    "en": "Weathering Ports: Sensing, Performing, and Acting Bodies is an artistic research project that investigates the polluted weather of the Maasvlakte, an artificial industrial zone within the Port of Rotterdam, Europe’s largest port. Drawing on the conceptual methodology of Weathering (Neimanis and Hamilton, 2018), the project approaches this weather as an embodied phenomenon and develops artistic practices and tactics that bring the human body into contact with the port’s…",
+    "ko": "《웨더링: 감각하고, 수행하며, 행동하는 몸》은 유럽 최대 항구인 로테르담 항구 내 인공 산업 지대 Maasvlakte의 오염 현상을 조사하는 예술 연구 프로젝트이다. 웨더링(Weathering, Neimanis and Hamilton, 2018)의 개념적 방법론을 바탕으로, 프로젝트는 Maasvlakte의 오염된 날씨를 체화 현상으로 탐구하고, 항구의 날씨, 환경, 생태, 오염이 인간과 교차하는 예술적 실천과 전략을 실험한다. 자전거에 설치한 DIY 감각 도구는 네덜란드 최대 오염 지역이 사이클리스트의 루트로 활용되는 현상을 비판적으로 바라본다. Maasvlakte를 한 바퀴 도는 4시간의 사이클링 퍼포먼스 동안 풍속·풍향, 유해 가스, 인체 지표(체온·심박수 등)를 소리로 변환한 사운드가 혼 스피커를 통해 흘러나오고, 인간의 몸은 오염된 날씨의 생물학적 아카이브로 변모한다. 자연–문화, 인간–환경의 대립을 넘어서는 날씨의…"
+   },
    "status": {
     "en": "Completed",
     "ko": "완료"
@@ -1715,11 +1776,17 @@
    "keywords": [
     "weather",
     "performance",
-    "weathering-ports"
+    "weathering-ports",
+    "completed"
    ]
   }
  },
+ "hidden": [
+  "/copper/rusty-odyssey/field-research/",
+  "/saharandust/wind-sand-dust/",
+  "/saharandust/xiren-0-1v/"
+ ],
  "warnings": [
-  "“DIY Tool” 의 한글 표기가 여러 개입니다: DIY 도구 / DIY 장치 (가장 많이 쓴 “DIY 도구” 를 대표로)"
+  "“DIY Tool” 의 한글 표기가 여러 개입니다: DIY 장치 / DIY 도구 (가장 많이 쓴 “DIY 장치” 를 대표로)"
  ]
 }

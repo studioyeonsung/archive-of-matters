@@ -1,0 +1,339 @@
+/* 키워드 결과 화면: 고른 키워드 → 해당 프로젝트 카드 (4열, 넘치면 아래로) */
+
+.page-keywords {
+    --kw-copper: #ffff00;
+    --kw-finedust: #f8b716;
+    --kw-saharandust: #00f723;
+    --kw-weather: #4bbdf8;
+    --kw-font: "parabolica", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --kw-font-ko: "neutronic-hangeul", "parabolica", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+    --kw-pad-x: clamp(40px, 8vw, 120px);
+}
+
+html:has(body.page-keywords) {
+    background-color: #000000;
+}
+
+.page-keywords .site-content {
+    position: relative;
+    z-index: 1;
+}
+
+.kw-main {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    width: 100%;
+    /* 좌우는 헤더 점선 끝에 맞춘다 (keywords-page.js 가 실제 헤더 위치를 재서 --kw-left / --kw-right 로 넣음) */
+    padding: 200px var(--kw-right, var(--kw-pad-x)) 80px var(--kw-left, var(--kw-pad-x));
+    font-family: var(--kw-font);
+    color: #000000;
+}
+
+.kw-main:lang(ko) {
+    font-family: var(--kw-font-ko);
+}
+
+/* ── 헤더 · 오버레이: 프로젝트 상세 페이지와 같게 ── */
+@media (min-width: 769px) {
+    .page-keywords .fixed-header {
+        z-index: 1100;
+        background-color: transparent;
+        min-height: 120px;
+        padding-top: clamp(20px, 3vw, 40px);
+        padding-bottom: clamp(20px, 3vw, 40px);
+    }
+
+    /* 헤더 아래 흰 영역: 스크롤하면 결과가 이 아래로 들어간다.
+       데스크탑 헤더는 translateX(40px) 로 밀려 있으므로 배경은 되돌려 화면 폭에 맞춘다 */
+    .page-keywords .fixed-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -40px;
+        right: 40px;
+        width: auto;
+        height: 80%;
+        background-color: #ffffff;
+        border-radius: 50px 50px 0 0;
+        z-index: -1;
+        pointer-events: none;
+    }
+}
+
+.page-keywords .grain-layer {
+    position: fixed;
+    inset: 0;
+    width: auto;
+    height: auto;
+    background-image: url("/assets/matters-grain.png");
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: 0 0;
+    z-index: 10002;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.page-keywords .copyright {
+    z-index: 10001;
+    opacity: 1;
+}
+
+/* ── 고른 키워드 · 결과 수 ── */
+.kw-head {
+    display: grid;
+    justify-items: start;
+    gap: 11px;
+    margin-bottom: 44px;
+}
+
+.kw-current {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.32em 0.8em 0.42em;
+    border: 1.5px solid #000000;
+    border-radius: 8px;
+    font-size: clamp(14px, 0.88vw, 16px);
+    line-height: 1.15;
+    white-space: nowrap;
+}
+
+.kw-count {
+    margin: 0;
+    font-size: clamp(16px, 0.95vw, 17px);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* ── 카드 격자 ── */
+.kw-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: clamp(28px, 5.2vw, 104px);
+    row-gap: clamp(44px, 4.2vw, 72px);
+}
+
+.kw-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+}
+
+.kw-card:focus-visible {
+    outline: 2px solid #000000;
+    outline-offset: 6px;
+    border-radius: 4px;
+}
+
+/* 물질 태그: 평소 검정 바탕 흰 글씨 → 카드에 올리면 물질 색 */
+.kw-mat {
+    align-self: flex-start;
+    margin-bottom: 10px;
+    padding: 3px 7px 4px;
+    border-radius: 6px;
+    background: #000000;
+    color: #ffffff;
+    font-family: var(--kw-font);
+    font-size: clamp(9.5px, 0.646vw, 10.45px);
+    line-height: calc(clamp(10px, 0.68vw, 11px) * 1.1);   /* 글자만 줄이고 태그 높이는 유지 */
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.kw-main:lang(ko) .kw-mat {
+    font-family: var(--kw-font-ko);
+    text-transform: none;
+}
+
+.kw-card:hover .kw-mat,
+.kw-card:focus-visible .kw-mat {
+    background: var(--kw-mat-color);
+    color: #000000;
+}
+
+.kw-card[data-mat="copper"] { --kw-mat-color: var(--kw-copper); }
+.kw-card[data-mat="finedust"] { --kw-mat-color: var(--kw-finedust); }
+.kw-card[data-mat="saharandust"] { --kw-mat-color: var(--kw-saharandust); }
+.kw-card[data-mat="weather"] { --kw-mat-color: var(--kw-weather); }
+
+/* 섬네일: 흑백 → 올리면 컬러 */
+.kw-thumb {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #d9d9d9;
+}
+
+.kw-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.35s ease;
+}
+
+.kw-card:hover .kw-thumb img,
+.kw-card:focus-visible .kw-thumb img {
+    filter: none;
+}
+
+/* 제목 · 연도 · 매체 */
+.kw-meta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    column-gap: 12px;
+    align-items: start;
+    margin-top: 14px;
+}
+
+.kw-title {
+    margin: 0;
+    font-family: "parabolica-medium", var(--kw-font);
+    font-size: clamp(11px, 0.77vw, 13px);
+    /* 미디움: parabolica 는 굵기 단계가 없어 획을 아주 살짝만 더한다 */
+    font-weight: 500;
+    -webkit-text-stroke: 0.2px currentColor;
+    /* 제목 칸을 좁혀 긴 제목은 두 줄로 넘긴다 */
+    max-width: 15em;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: start;
+    line-height: 1.3;
+    /* 길면 두 줄까지, 넘치면 … */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+}
+
+.kw-year,
+.kw-type {
+    grid-column: 2;
+    justify-self: end;
+    font-size: clamp(11px, 0.77vw, 13px);
+    line-height: 1.3;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.kw-year { grid-row: 1; }
+.kw-type { grid-row: 2; }
+
+/* 설명: 4줄까지, 넘치면 … */
+.kw-desc {
+    margin: 16px 0 0;
+    font-size: clamp(12px, 0.82vw, 14px);
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+}
+
+.kw-main:lang(ko) .kw-title {
+    font-family: var(--kw-font-ko);
+    font-weight: 500;
+    -webkit-text-stroke: 0;
+}
+
+.kw-main:lang(ko) .kw-desc {
+    line-height: 1.7;
+}
+
+/* 키워드를 고르지 않았거나 없는 키워드일 때: 전체 키워드 */
+.kw-empty {
+    grid-column: 1 / -1;
+    margin: 0 0 20px;
+    font-size: clamp(14px, 1vw, 16px);
+}
+
+.kw-all {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.kw-all a {
+    display: inline-flex;
+    align-items: center;
+    height: 2em;
+    padding: 0 1em 2px;
+    border: 1.7px solid #000000;
+    border-radius: 10px;
+    color: #000000;
+    font-size: clamp(12px, 1vw, 14px);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.kw-all a:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+/* 카드에 올리면 제목 · 연도 · 매체 · 설명 모두 밑줄 */
+.kw-card:hover :is(.kw-title, .kw-year, .kw-type, .kw-desc),
+.kw-card:focus-visible :is(.kw-title, .kw-year, .kw-type, .kw-desc) {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+}
+
+/* 한글: neutronic-hangeul 은 글자가 살짝 위에 앉는다 → 태그 안 글자를 아주 조금 내린다 (태그 높이는 그대로) */
+.kw-main:lang(ko) .kw-current {
+    padding-top: calc(0.32em + 1px);
+    padding-bottom: calc(0.42em - 1px);
+}
+
+.kw-main:lang(ko) .kw-mat {
+    padding-top: 4px;
+    padding-bottom: 3px;
+}
+
+/* ── 좁은 화면 ── */
+@media (max-width: 1100px) {
+    .kw-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .page-keywords .mobile-placeholder {
+        display: none !important;
+    }
+
+    .kw-main {
+        padding: 150px 22px 60px;
+    }
+
+    .kw-head {
+        margin-bottom: 36px;
+    }
+
+    .kw-grid {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 44px;
+    }
+
+    /* 휴대폰은 올릴(hover) 수 없으니 컬러로 */
+    .kw-thumb img {
+        filter: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kw-mat,
+    .kw-thumb img {
+        transition: none;
+    }
+}

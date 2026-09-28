@@ -299,6 +299,8 @@
 
     stage.addEventListener('pointerdown', (e) => {
         if (e.button && e.button !== 0) return;
+        // 키워드 링크를 누를 때는 드래그를 시작하지 않는다 (포인터를 붙잡으면 클릭이 링크에 가지 않음)
+        if (e.target.closest && e.target.closest('a[href]')) return;
         if (document.querySelector('.nav-overlay.is-open')) return;
         dragging = true;
         vel = 0;
