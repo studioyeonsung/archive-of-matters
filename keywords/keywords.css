@@ -312,8 +312,82 @@ html:has(body.page-keywords) {
         display: none !important;
     }
 
+    /* 상세 페이지 모바일과 같게: 문서는 고정하고 결과만 안에서 스크롤한다
+       → 브라우저 주소창·탭 바가 사라지지 않고, 헤더 아래 흰 영역이 유지된다 */
+    html:has(body.page-keywords) {
+        height: 100svh;
+        max-height: 100svh;
+        overflow: hidden;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+    }
+
+    body.page-keywords {
+        --kw-mobile-top: 116px;
+        --kw-mobile-radius: 50px;
+        height: 100svh;
+        max-height: 100svh;
+        min-height: 0;
+        overflow: hidden;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        overscroll-behavior: none;
+        touch-action: manipulation;
+    }
+
+    body.page-keywords::before {
+        inset: auto;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--kw-mobile-radius);
+    }
+
+    .page-keywords .site-content {
+        display: block !important;
+        height: 100svh;
+        max-height: 100svh;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    /* 헤더 아래 흰 영역 (결과가 이 밑으로 들어간다) */
+    .page-keywords .site-content::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--kw-mobile-top);
+        background: #ffffff;
+        border-radius: var(--kw-mobile-radius) var(--kw-mobile-radius) 0 0;
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    .page-keywords .fixed-header {
+        z-index: 20;
+    }
+
     .kw-main {
-        padding: 150px 22px 60px;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: var(--kw-mobile-top);
+        bottom: 0;
+        z-index: 1;
+        padding: 8px 22px calc(60px + env(safe-area-inset-bottom, 0px));
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        touch-action: pan-y;
+        /* 흰 배경(둥근 모서리 50px) 밖으로 이미지·글이 삐져나가지 않게 아래 모서리를 같은 반지름으로 자른다
+           (스크롤 상자는 clip-path 가 제대로 안 먹는 브라우저가 있어 border-radius + overflow 로 자른다) */
+        border-radius: 0 0 var(--kw-mobile-radius) var(--kw-mobile-radius);
     }
 
     .kw-head {
