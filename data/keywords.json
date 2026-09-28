@@ -291,14 +291,11 @@
   {
    "id": "diy-tool",
    "en": "DIY Tool",
-   "ko": "DIY 장치",
-   "aliases": [
-    "DIY 도구"
-   ],
+   "ko": "DIY 도구",
+   "aliases": [],
    "terms": [
     "diytool",
-    "diy도구",
-    "diy장치"
+    "diy도구"
    ],
    "count": 2,
    "projects": [
@@ -769,7 +766,7 @@
    },
    "type": {
     "en": "DIY Tool",
-    "ko": "DIY 장치"
+    "ko": "DIY 도구"
    },
    "year": "2021",
    "desc": {
@@ -1786,7 +1783,5 @@
   "/saharandust/wind-sand-dust/",
   "/saharandust/xiren-0-1v/"
  ],
- "warnings": [
-  "“DIY Tool” 의 한글 표기가 여러 개입니다: DIY 장치 / DIY 도구 (가장 많이 쓴 “DIY 장치” 를 대표로)"
- ]
+ "warnings": []
 }
