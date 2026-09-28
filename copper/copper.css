@@ -298,7 +298,7 @@ body.page-copper .fixed-header .header-right-text-2 a:hover {
 }
 
 .copper-name--ko {
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .copper-copy-mobile {
@@ -338,20 +338,29 @@ body.page-copper .fixed-header .header-right-text-2 a:hover {
     right: 0;
     bottom: 100%;
     display: grid;
-    grid-template-rows: 0fr;
+    grid-template-rows: 1fr;
     width: 100%;
-    transition: grid-template-rows 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
 }
 
 .copper-archive.is-open .copper-archive-clip {
-    grid-template-rows: 1fr;
     pointer-events: auto;
+}
+
+.copper-archive.is-open .copper-archive-panel {
+    transform: none;
+    clip-path: inset(0);
 }
 
 .copper-archive-panel {
     min-height: 0;
     overflow: hidden;
+    transform: translateY(100%);
+    clip-path: inset(0 0 100% 0);
+    transition:
+        transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+        clip-path 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, clip-path;
     background: rgba(255, 255, 255, 0.4);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
@@ -780,7 +789,8 @@ a.copper-table-row--link {
         animation: none;
     }
 
-    .copper-archive-clip {
+    .copper-archive-clip,
+    .copper-archive-panel {
         transition: none;
     }
 

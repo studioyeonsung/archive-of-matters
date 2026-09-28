@@ -5,7 +5,9 @@
     if (!document.body.classList.contains('page-weather')) return;
 
     const MOBILE_MAX = 768;
-    const WHEEL_THRESHOLD = 36;
+    const WHEEL_THRESHOLD = 20;
+    // 텍스트 끝에 닿은 뒤: 관성이 이미 약해진 상태라 조금만 더 내려도 바로 목록을 연다
+    const TEXT_WHEEL_THRESHOLD = 4;
     const TOUCH_THRESHOLD = 48;
     const BOTTOM_SLACK = 2;
     const columns = [];
@@ -169,11 +171,34 @@
         let touchFromAbove = false;
         let openLockUntil = 0;
 
+        // 트랙패드 관성: 목록을 열고 닫은 직후 이어지는 휠 이벤트는 손을 뗄 때까지(휠이 잠잠해질 때까지) 삼킨다.
+        // 그러지 않으면 관성 스크롤이 방금 연 목록을 다시 닫았다 열어 위아래로 튄다.
+        let gestureLocked = false;
+        let gestureTimer = null;
+        const holdGesture = () => {
+            gestureLocked = true;
+            clearTimeout(gestureTimer);
+            gestureTimer = setTimeout(() => {
+                gestureLocked = false;
+            }, 220);
+        };
+        window.addEventListener(
+            'wheel',
+            (e) => {
+                if (!gestureLocked) return;
+                holdGesture();
+                e.preventDefault();
+                e.stopImmediatePropagation();
+            },
+            { capture: true, passive: false }
+        );
+
         const setOpen = (open) => {
             const next = Boolean(open);
             if (!next && Date.now() < openLockUntil) return;
             if (archive.classList.contains('is-open') === next) return;
             archive.classList.toggle('is-open', next);
+            holdGesture();
             if (next) {
                 openLockUntil = Date.now() + 500;
             } else {
@@ -202,7 +227,7 @@
             textWheelResetTimer = setTimeout(() => {
                 textWheelAcc = 0;
             }, 180);
-            if (textWheelAcc >= WHEEL_THRESHOLD) {
+            if (textWheelAcc >= TEXT_WHEEL_THRESHOLD) {
                 setOpen(true);
                 textWheelAcc = 0;
                 return true;

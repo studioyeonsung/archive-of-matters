@@ -308,20 +308,29 @@ body.page-saharandust::before {
     right: 0;
     bottom: 100%;
     display: grid;
-    grid-template-rows: 0fr;
+    grid-template-rows: 1fr;
     width: 100%;
-    transition: grid-template-rows 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
 }
 
 .saharandust-archive.is-open .saharandust-archive-clip {
-    grid-template-rows: 1fr;
     pointer-events: auto;
+}
+
+.saharandust-archive.is-open .saharandust-archive-panel {
+    transform: none;
+    clip-path: inset(0);
 }
 
 .saharandust-archive-panel {
     min-height: 0;
     overflow: hidden;
+    transform: translateY(100%);
+    clip-path: inset(0 0 100% 0);
+    transition:
+        transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+        clip-path 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, clip-path;
     background: rgba(255, 255, 255, 0.4);
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
@@ -772,7 +781,8 @@ a.saharandust-table-row--link {
         animation: none;
     }
 
-    .saharandust-archive-clip {
+    .saharandust-archive-clip,
+    .saharandust-archive-panel {
         transition: none;
     }
 
@@ -1435,5 +1445,5 @@ a.saharandust-table-row--link {
 }
 
 .saharandust-name--ko {
-    font-weight: 600;
+    font-weight: 500;
 }
