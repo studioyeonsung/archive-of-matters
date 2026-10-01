@@ -1,13 +1,1 @@
-# 공개 사이트에 올리지 않는 것: 개인 도구와 작업 파일 (내 맥에만 남는다)
-editor/
-editor.sh
-dev.sh
-scripts/
-package.json
-finedust-descriptions.txt
-portfolio-builder/
-application-docs/
-Claude outputs/
-.editor-backup/
-.editor-trash/
 .DS_Store
