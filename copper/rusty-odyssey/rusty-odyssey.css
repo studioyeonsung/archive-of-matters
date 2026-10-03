@@ -475,10 +475,10 @@ a.ro-tag--link:focus-visible {
     color: #000000;
 }
 
-/* 이미지 띠 필드 리서치: 이미지 위에 겹친 흰 글씨 복제본의 키워드도 누를 수 있게,
-   올리면 다른 페이지처럼 검은 바탕 흰 글씨 (템플릿 CSS 의 글자색 고정보다 우선) */
-body.page-rusty-odyssey .wh-overlay--cut .ro-tags {
-    pointer-events: auto !important;   /* 템플릿 CSS(나중에 로드)의 none 보다 우선 */
+/* 사진 위 흰 글씨 복제본의 키워드만 누를 수 있게. 복제본 전체는 클릭을 막지 않는다. */
+body.page-rusty-odyssey .wh-overlay--cut .ro-tags,
+body.page-rusty-odyssey .wh-overlay--cut .ro-tags .ro-tag {
+    pointer-events: auto !important;
 }
 
 body.page-rusty-odyssey .wh-overlay a.ro-tag--link:hover,

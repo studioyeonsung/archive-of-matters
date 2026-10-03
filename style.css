@@ -3991,8 +3991,9 @@ a.matter-image-link .matter-image {
         font-size: calc(clamp(14px, 1.15vw, 16px) * var(--kor-type-scale)) !important;
     }
 
+    /* 키워드 태그는 뉴스 한글 키워드와 같은 크기. 10% 줄이면 아래 2px 여백 때문에 글자가 더 위로 뜬다. */
     body.page-rusty-odyssey--ko .ro-tag {
-        font-size: calc(clamp(12px, 1vw, 14px) * var(--kor-type-scale)) !important;
+        font-size: clamp(12px, 1vw, 14px) !important;
     }
 
     body.page-rusty-odyssey--ko .ro-tab {

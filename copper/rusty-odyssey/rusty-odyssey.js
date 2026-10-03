@@ -989,12 +989,11 @@
 (function () {
     if (!document.body.classList.contains('page-rusty-odyssey')) return;
     function initKeywordLinks() {
-        if (/[?&]__draft\b/.test(location.search)) return;
         if (!document.querySelector('ul.ro-tags .ro-tag')) return;
         const run = () => window.AOMKeywords && window.AOMKeywords.linkTags();
         if (window.AOMKeywords) return run();
         const s = document.createElement('script');
-        s.src = '/keywords.js?v=4';
+        s.src = '/keywords.js?v=5';
         s.onload = run;
         document.head.appendChild(s);
     }

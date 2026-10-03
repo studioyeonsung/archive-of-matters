@@ -148,10 +148,11 @@
         // 뉴스 태그(.news-tag)는 프로젝트 키워드가 아니어도 링크한다 (결과 화면이 '아직 없음' 을 보여준다)
         async linkTags(root, selector) {
             root = root || document;
-            const tags = root.querySelectorAll(selector || 'ul.ro-tags .ro-tag:not(a), .ro-status .ro-tag:not(a)');
-            if (!tags.length) return;
+            const sel = selector || 'ul.ro-tags .ro-tag:not(a), .ro-status .ro-tag:not(a)';
+            if (!root.querySelector(sel)) return;
             try { await api.load(); } catch (e) { return; }
-            tags.forEach((el) => {
+            // 색인을 받는 동안 필드 리서치가 흰 글씨 복제본을 만든다. 그 다음에 다시 찾는다.
+            root.querySelectorAll(sel).forEach((el) => {
                 const text = el.textContent.trim();
                 const k = api.find(text);
                 if (api.isBlocked(k || text)) return;

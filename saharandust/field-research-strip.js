@@ -194,6 +194,7 @@
         cut.style.clipPath = 'inset(100%)';
         cut.style.webkitClipPath = 'inset(100%)';
         overlay.after(cut);
+        if (window.AOMKeywords) window.AOMKeywords.linkTags(cut);
     }
 
     function apply() {
